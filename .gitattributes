@@ -1,3 +1,4 @@
+mapo filter=lfs diff=lfs merge=lfs -text
 map filter=lfs diff=lfs merge=lfs -text
 map.* filter=lfs diff=lfs merge=lfs -text
 finishedmap.xml filter=lfs diff=lfs merge=lfs -text
