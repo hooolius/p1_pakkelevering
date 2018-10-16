@@ -44,6 +44,9 @@
     <task id="7" name="P1-projektaflevering " note="" work="0" start="20181219T000000Z" end="20181219T000000Z" work-start="20181219T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20181219T000000Z"/>
     </task>
+    <task id="8" name="Programmerings eksamen" note="Programmerings eksamen." work="201600" start="20181126T000000Z" end="20181204T170000Z" work-start="20181126T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <constraint type="must-start-on" time="20181126T000000Z"/>
+    </task>
   </tasks>
   <resource-groups/>
   <resources/>
