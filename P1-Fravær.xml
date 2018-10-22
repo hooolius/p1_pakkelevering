@@ -32,400 +32,469 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s16">
+  <Style ss:ID="s62">
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s17">
-   <Interior ss:Color="#92D050" ss:Pattern="Solid"/>
+  <Style ss:ID="s65">
+   <Interior ss:Color="#70AD47" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Interior ss:Color="#FF0000" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Interior/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Ark1">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="104" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="51" ss:DefaultRowHeight="14.25">
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 42</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
-    <Cell ss:StyleID="s17"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 42</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">syg</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">syg</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 43</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">syg</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 44</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
-    <Cell ss:StyleID="s17"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 45</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
-    <Cell ss:StyleID="s17"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
-    <Cell ss:StyleID="s17"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
-    <Cell ss:StyleID="s17"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
-    <Cell ss:StyleID="s17"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
-    <Cell ss:StyleID="s17"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 46</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 43</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 47</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 44</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 48</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 45</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 49</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 46</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 50</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 47</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 51</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 48</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 52</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Tirsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Onsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Torsdag</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Fredag</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 49</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 50</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 51</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Uge 52</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mandag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Tirsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Onsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Torsdag</Data></Cell>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Fredag</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Alexander</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Christoffer</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Floris</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Julius</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mark</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Mostaan</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"><Data ss:Type="String">Sten</Data></Cell>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s16"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -434,6 +503,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -444,8 +514,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
