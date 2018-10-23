@@ -23,7 +23,7 @@
     </calendar>
   </calendars>
   <tasks>
-    <task id="1" name="Rapport" note="" work="1152000" start="20181015T000000Z" end="20181207T170000Z" work-start="20181015T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="1" name="Rapport" note="" work="1152000" start="20181015T000000Z" end="20181207T170000Z" work-start="20181015T080000Z" percent-complete="16" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="must-start-on" time="20181015T000000Z"/>
     </task>
     <task id="2" name="Ret rapport" note="" work="144000" start="20181210T000000Z" end="20181214T170000Z" work-start="20181210T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
@@ -35,7 +35,7 @@
     <task id="4" name="Litteraturs&#xF8;gning" note="" work="144000" start="20181015T000000Z" end="20181019T170000Z" work-start="20181015T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="must-start-on" time="20181015T000000Z"/>
     </task>
-    <task id="5" name="Problemanalyse" note="" work="547200" start="20181015T000000Z" end="20181108T170000Z" work-start="20181015T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="5" name="Problemanalyse" note="" work="547200" start="20181015T000000Z" end="20181108T170000Z" work-start="20181015T080000Z" percent-complete="34" priority="0" type="normal" scheduling="fixed-work">
       <constraint type="must-start-on" time="20181015T000000Z"/>
     </task>
     <task id="6" name="Status siminar" note="" work="201600" duration="201600" start="20181108T000000Z" end="20181116T170000Z" work-start="20181108T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-duration">
