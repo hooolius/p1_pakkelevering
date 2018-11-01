@@ -9,15 +9,15 @@
   <Author>Mark Christiansen</Author>
   <LastAuthor>Mark Christiansen</LastAuthor>
   <Created>2018-10-15T07:18:29Z</Created>
-  <LastSaved>2018-10-15T07:29:27Z</LastSaved>
+  <LastSaved>2018-11-01T08:47:50Z</LastSaved>
   <Version>16.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9255</WindowHeight>
-  <WindowWidth>24000</WindowWidth>
+  <WindowHeight>5738</WindowHeight>
+  <WindowWidth>17985</WindowWidth>
   <WindowTopX>32767</WindowTopX>
   <WindowTopY>32767</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -36,19 +36,27 @@
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s63">
    <Interior ss:Color="#70AD47" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s64">
    <Interior ss:Color="#FF0000" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
-   <Interior/>
+  <Style ss:ID="s65">
+   <Interior ss:Color="#FFC000" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Interior ss:Color="#70AD47" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11"/>
+   <Interior ss:Color="#FF0000" ss:Pattern="Solid"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Ark1">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="104" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="51" ss:DefaultRowHeight="14.25">
+   <Column ss:Index="5" ss:Width="72.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 42</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mandag</Data></Cell>
@@ -59,59 +67,59 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">syg</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">syg</Data></Cell>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">syg</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">syg</Data></Cell>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 43</Data></Cell>
@@ -123,59 +131,59 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PV FRI</Data></Cell>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">ARBEJDE</Data></Cell>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">syg</Data></Cell>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">syg</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s63"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 44</Data></Cell>
@@ -187,24 +195,52 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">syg</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Sov over 30min</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
+    <Cell ss:StyleID="s63"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 45</Data></Cell>
@@ -514,8 +550,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>25</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
