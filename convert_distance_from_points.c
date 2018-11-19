@@ -73,7 +73,8 @@ double calculate_distance_to_points_2(struct gps_point *point1, struct gps_point
 }
 
 /* https://github.com/pkohut/GeoFormulas/blob/master/include/GeoFormulas.h */
-/* Most accurate formula */
+/* https://community.esri.com/groups/coordinate-reference-systems/blog/2017/10/11/vincenty-formula */
+/* Most accurate Vincenty’s formula */
 double calculate_distance_to_points_3(struct gps_point *point1, struct gps_point *point2)
 {
     const double kInverseFlattening = 298.2572235636654651;
