@@ -9,15 +9,15 @@
   <Author>Mark Christiansen</Author>
   <LastAuthor>Mark Christiansen</LastAuthor>
   <Created>2018-10-15T07:18:29Z</Created>
-  <LastSaved>2018-11-14T07:40:46Z</LastSaved>
+  <LastSaved>2018-11-20T07:36:23Z</LastSaved>
   <Version>16.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>5738</WindowHeight>
-  <WindowWidth>13485</WindowWidth>
+  <WindowHeight>32767</WindowHeight>
+  <WindowWidth>32767</WindowWidth>
   <WindowTopX>32767</WindowTopX>
   <WindowTopY>32767</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -51,6 +51,9 @@
   </Style>
   <Style ss:ID="s67">
    <Interior ss:Color="#70AD47" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Interior ss:Color="#FFC000" ss:Pattern="Solid"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Ark1">
@@ -388,24 +391,38 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Alexander</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Christoffer</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">syg</Data></Cell>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Floris</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Julius</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mark</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Mostaan</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Sten</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">sov 30 over</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Uge 48</Data></Cell>
@@ -625,12 +642,12 @@
     <VerticalResolution>-1</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>25</TopRowVisible>
+   <TopRowVisible>21</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>30</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>44</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
