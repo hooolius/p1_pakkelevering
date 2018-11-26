@@ -22,7 +22,7 @@ void a_star(point start, point goal) {
   point came_from[SOME_VALUE];
   point current;
 
-  while (open_list != 0) {
+  while (open_list != NULL) {
     current = extract_min(open_list);
     if(current.x == goal.x && current.y == goal.y){
       return reconstruct_path(came_from, current);
@@ -30,11 +30,15 @@ void a_star(point start, point goal) {
     delete(open_list, current);
     insert(closed_list, current);
     int number_of_neighbours = calculate_neighbours();
-    for (size_t i = 0; i < ; i++) {
+    for (size_t i = 0; i < number_of_neighbours; ++i) {
       if (contains(closed_list, neighbour)) {
         continue;
       }
-
+    neighbour_g = current_g + jorden_er_ikke_flad(current, neighbour);
+    neighbour_h = jorden_er_ikke_flad(neighbour, goal);
+    neighbour_f = neighbour_h + neighbour_g;
+    insert(open_list, neighbour);
+    came_from[i] = current;
     }
   }
 }
@@ -45,7 +49,11 @@ point reconstruct_path(came_from, current) {
   }
 }
 
-void insert(point list, point point_to_insert) {
+void insert(point list[], point point_to_insert) {
+
+}
+
+void delete(point list[], point point_to_delete) {
 
 }
 
