@@ -1,3 +1,3 @@
 p1_pakkelevering (VERSION 0.1)
-project (P1_Pakkelevering)
-add_executable(main src/main.c)
+project (p1_pakkelevering)
+add_executable(p1_pakkelevering src/main.c)
