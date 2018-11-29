@@ -1,3 +1,3 @@
 cmake_minimum_required (VERSION 0.1)
 project (p1_pakkelevering)
-add_executable(p1_pakkelevering src/main.c)
+add_executable(p1_pakkelevering main.c)
