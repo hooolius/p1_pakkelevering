@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 project (p1_pakkelevering)
 #Version number
 set (p1_pakkelevering_VERSION_MAJOR 0)
-set (p1_pakkelevering_VERSION_MINOR 1)
+set (p1_pakkelevering_VERSION_MINOR 2)
 
 #configure the header file to pass CMake settings to the source code
 configure_file (
