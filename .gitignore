@@ -58,6 +58,7 @@ dkms.conf
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
+src/CMakeFiles/
 CMakeScripts
 Testing
 Makefile
