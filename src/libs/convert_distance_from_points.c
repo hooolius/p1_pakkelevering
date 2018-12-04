@@ -1,21 +1,12 @@
 #include <stdio.h>
+#include <stdio.h>
 #include <math.h>
-
-#define R 6371e3;
-
-struct gps_point{
-    double latitude;
-    double longitude;
-};
-
-double calculate_distance_to_points(struct gps_point *point1, struct gps_point *point2);
-double calculate_distance_to_points_2(struct gps_point *point1, struct gps_point *point2);
-double calculate_distance_to_points_3(struct gps_point *point1, struct gps_point *point2);
-
+#include "convert_distance_from_points.h"
 int main()
 {
-    struct gps_point point1;
-    struct gps_point point2;
+	//struct point
+	s_point point1;
+	s_point point2;
 
     /* Deltavej raw data */
     /*point1.latitude = 57.0451913;
