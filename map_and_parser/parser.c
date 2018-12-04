@@ -82,7 +82,7 @@ void convert_to_array(char *text) {
     cJSON *tags = NULL;
     char *test_string;
     struct address *addresses;
-    int i;
+    int i,j=0;
     char test[50];
     int lines = lines_counter();
     char search_street[100];
@@ -91,32 +91,43 @@ void convert_to_array(char *text) {
     addresses = calloc(lines, sizeof(address));
     json = cJSON_Parse(text);
 
+
     if (!json) {
         printf("Error before: [%s]\n", cJSON_GetErrorPtr());
 
     } else {
-        for (i = 0; i < lines; i++) {
-            addresses[i].lat = cJSON_GetObjectItem(json, "lat")->valuedouble;
-            addresses[i].lon = cJSON_GetObjectItem(json, "lon")->valuedouble;
-            tags = cJSON_GetObjectItem(json, "tags");
+        elements = cJSON_GetObjectItemCaseSensitive(elements, "resolutions");
+        cJSON_ArrayForEach(element, elements) {
+            printf("hej");
+            strcpy(addresses[i].tags.street, cJSON_GetObjectItemCaseSensitive(elements,"addr:street")->valuestring);
+            printf("Adresses %s Run: %d \n",addresses[i].tags.street,i);
+            //addresses[i].lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
+            //addresses[i].lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
+            //tags = cJSON_GetObjectItem(element, "tags");
+            /*printf("im here");
+            printf("Sizeof Json: %d",cJSON_GetArraySize(tags));
+            printf("teststring %s \n", cJSON_GetObjectItem(tags, "addr:housenumber")->valuestring);
             strcpy(addresses[i].tags.street, cJSON_GetObjectItem(tags, "addr:street")->valuestring);
             strcpy(addresses[i].tags.country, cJSON_GetObjectItem(tags, "addr:country")->valuestring);
             strcpy(addresses[i].tags.muncipality, cJSON_GetObjectItem(tags, "addr:municipality")->valuestring);
             strcpy(addresses[i].tags.city, cJSON_GetObjectItem(tags, "addr:city")->valuestring);
             addresses[i].tags.house_number = cJSON_GetObjectItem(tags, "addr:housenumber")->valueint;
             addresses[i].tags.postcode = cJSON_GetObjectItem(tags, "addr:postcode")->valueint;
+            printf("\n Streetname %s \n",addresses[i].tags.street);*/
+
+            //printf("lateral: %f \n",addresses[i].lat);
         }
     }
-    
+
     strcpy(search_street, "Abelsvej");
     search_number = 4;
     for (int j = 0; j < lines; ++j) {
         if (strcmp(search_street, addresses[j].tags.street) == 0 ) {
             if (search_number == addresses[j].tags.house_number) {
-                printf("Latitude %f \n "
-                       "Longtitude %f \n", addresses[j].lat, addresses[j].lon);
+                //printf("Latitude %f \n "
+                  //     "Longtitude %f \n", addresses[j].lat, addresses[j].lon);
             } else{
-                printf("Street found, not right address \n");
+                //printf("Street found, not right address \n");
             }
         } else {
           //  printf("Reached end, no such thing");
