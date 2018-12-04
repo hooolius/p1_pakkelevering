@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdio.h>
 #include <math.h>
+/*link header fil*/
 #include "convert_distance_from_points.h"
+
 int main()
 {
 	//struct point
@@ -24,60 +26,31 @@ int main()
     point2.latitude = 57.046114;
     point2.longitude = 9.867273;
 
-    printf("%lf\n", calculate_distance_to_points(&point1, &point2));
-    printf("%lf\n", calculate_distance_to_points_2(&point1, &point2));
+/*test function*/
+
+//    printf("%lf\n", calculate_distance_to_points(&point1, &point2));
+//    printf("%lf\n", calculate_distance_to_points_2(&point1, &point2));
     printf("%lf\n", calculate_distance_to_points_3(&point1, &point2));
 
     return 0;
 }
 
-/* http://www.5thandpenn.com/GeoMaps/GMapsExamples/distanceComplete2.html */
-double calculate_distance_to_points(struct gps_point *point1, struct gps_point *point2)
-{
-    double phi_1 = (point1->latitude * M_PI) / 180;
-    double phi_2 = (point2->latitude * M_PI) / 180;
-    double lambda_1 = (point1->longitude * M_PI) / 180;
-    double lambda_2 = (point2->longitude * M_PI) / 180;
-
-    double x = (lambda_2 - lambda_1) * cos((phi_1+phi_2)/2);
-    double y = (phi_2 - phi_1);
-    double d = sqrt(x*x + y*y) * R;
-
-    return d;
-}
-
-/* http://www.5thandpenn.com/GeoMaps/GMapsExamples/distanceComplete2.html */
-double calculate_distance_to_points_2(struct gps_point *point1, struct gps_point *point2)
-{
-    double phi_1 = (point1->latitude * M_PI) / 180;
-    double phi_2 = (point2->latitude * M_PI) / 180;
-
-    double delta_phi = ((point2->latitude - point1->latitude) * M_PI) / 180;
-    double delta_lambda = ((point2->longitude - point1->longitude) * M_PI) / 180;
-
-    double a = sin(delta_phi/2) * sin(delta_phi/2) + cos(phi_1) * cos(phi_2) * sin(delta_lambda/2) * sin(delta_lambda/2);
-    double c = 2 * atan(sqrt(a));
-    double radius = R;
-    double d = radius * c;
-
-    return d;
-}
-
 /* https://github.com/pkohut/GeoFormulas/blob/master/include/GeoFormulas.h */
 /* https://community.esri.com/groups/coordinate-reference-systems/blog/2017/10/11/vincenty-formula */
 /* Most accurate Vincenty’s formula */
-double calculate_distance_to_points_3(struct gps_point *point1, struct gps_point *point2)
+/*the function we use Vincenty,s distance formula*/
+double calculate_distance_to_points_3(s_point *point1, s_point *point2)
 {
-    const double kInverseFlattening = 298.2572235636654651;
-    const double kFlattening = 1.0 / kInverseFlattening;
-    const double kSemiMajorAxis = 6378137.0;
-    const double kSemiMinorAxis = kSemiMajorAxis * (1 - kFlattening);
+    const double k_inverse_flattening = 298.2572235636654651;
+    const double k_flattening = 1.0 / k_inverse_flattening;
+    const double k_semi_major_axis = 6378137.0;
+    const double k_semi_minor_axis = k_semi_major_axis * (1 - k_flattening);
     const double kEps = 0.5e-15;
 
 
     double L = ((point2->longitude * M_PI) / 180) - ((point1->longitude * M_PI) / 180);
-    double U1 = atan((1 - kFlattening) * tan(((point1->latitude * M_PI) / 180)));
-    double U2 = atan((1 - kFlattening) * tan(((point2->latitude * M_PI) / 180)));
+    double U1 = atan((1 - k_flattening) * tan(((point1->latitude * M_PI) / 180)));
+    double U2 = atan((1 - k_flattening) * tan(((point2->latitude * M_PI) / 180)));
 
     double sinU1 = sin(U1);
     double cosU1 = cos(U1);
@@ -123,15 +96,15 @@ double calculate_distance_to_points_3(struct gps_point *point1, struct gps_point
 
         if (cos2SigmaM < 0.0)
             cos2SigmaM = 0.0;  // equatorial line: cosSqAlpha=0
-        C = kFlattening / 16.0 * cosSqAlpha * (4.0 + kFlattening * (4.0 - 3.0 * cosSqAlpha));
+        C = k_flattening / 16.0 * cosSqAlpha * (4.0 + k_flattening * (4.0 - 3.0 * cosSqAlpha));
         lambdaP = lambda;
-        lambda = L + (1.0 - C) * kFlattening * sinAlpha *
+        lambda = L + (1.0 - C) * k_flattening * sinAlpha *
                      (sigma + C * sinSigma * (cos2SigmaM + C * cosSigma * (-1.0 + 2.0 * cos2SigmaM * cos2SigmaM)));
     }
     while (fabs(lambda - lambdaP) > kEps && ++iterLimit < 40);
 
-    double uSq = cosSqAlpha * (kSemiMajorAxis * kSemiMajorAxis - kSemiMinorAxis * kSemiMinorAxis) /
-                 (kSemiMinorAxis * kSemiMinorAxis);
+    double uSq = cosSqAlpha * (k_semi_major_axis * k_semi_major_axis - k_semi_minor_axis * k_semi_minor_axis) /
+                 (k_semi_minor_axis * k_semi_minor_axis);
     double A = 1.0 + uSq / 16384.0 * (4096.0 + uSq * (-768.0 + uSq * (320.0 - 175.0 * uSq)));
     double B = uSq / 1024.0 * (256.0 + uSq * (-128.0 + uSq * (74.0 - 47.0 * uSq)));
     double deltaSigma = B * sinSigma * (cos2SigmaM + B / 4.0 * (cosSigma * (-1.0 + 2.0 * cos2SigmaM * cos2SigmaM) -
@@ -139,7 +112,41 @@ double calculate_distance_to_points_3(struct gps_point *point1, struct gps_point
                                                                 (-3.0 + 4.0 * sinSigma * sinSigma) *
                                                                 (-3.0 + 4.0 * cos2SigmaM * cos2SigmaM)));
 
-    result = kSemiMinorAxis * A * (sigma - deltaSigma);
+    result = k_semi_minor_axis * A * (sigma - deltaSigma);
 
     return result;
 }
+
+/* http://www.5thandpenn.com/GeoMaps/GMapsExamples/distanceComplete2.html */
+/*double calculate_distance_to_points(struct gps_point *point1, struct gps_point *point2)
+{
+    double phi_1 = (point1->latitude * M_PI) / 180;
+    double phi_2 = (point2->latitude * M_PI) / 180;
+    double lambda_1 = (point1->longitude * M_PI) / 180;
+    double lambda_2 = (point2->longitude * M_PI) / 180;
+
+    double x = (lambda_2 - lambda_1) * cos((phi_1+phi_2)/2);
+    double y = (phi_2 - phi_1);
+    double d = sqrt(x*x + y*y) * R;
+
+    return d;
+}
+*/
+/* http://www.5thandpenn.com/GeoMaps/GMapsExamples/distanceComplete2.html */
+/*
+double calculate_distance_to_points_2(struct gps_point *point1, struct gps_point *point2)
+{
+    double phi_1 = (point1->latitude * M_PI) / 180;
+    double phi_2 = (point2->latitude * M_PI) / 180;
+
+    double delta_phi = ((point2->latitude - point1->latitude) * M_PI) / 180;
+    double delta_lambda = ((point2->longitude - point1->longitude) * M_PI) / 180;
+
+    double a = sin(delta_phi/2) * sin(delta_phi/2) + cos(phi_1) * cos(phi_2) * sin(delta_lambda/2) * sin(delta_lambda/2);
+    double c = 2 * atan(sqrt(a));
+    double radius = R;
+    double d = radius * c;
+
+    return d;
+}
+*/
