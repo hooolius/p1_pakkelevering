@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define SOME_VALUE 10
 
@@ -8,6 +9,7 @@ struct a_node{
   double g;
   double h;
   double f;
+  int is_active;
 };
 
 typedef struct a_node node;
@@ -16,19 +18,20 @@ int main(void) {
   a_star();
   return 0;
 }
-
+/* A star setup */
 void a_star(node start, node goal) {
-  node closed_list[SOME_VALUE];
-  float start_g;
-  float start_f = start_g + h;
-  node open_list[SOME_VALUE] = start;
-  node came_from[SOME_VALUE];
+  node closed_list = calloc(SOME_VALUE, sizeof(node));
+  start.g = 0;
+  start.f = start.g + jorden_er_ikke_flad(start, goal);
+  heap_clear(open_list);
+  heap_insert(start);
+  dyn_memory came_from;
   node current;
 
   node neighbour;
 
-  insert(open_list, start);
-  /* A star algoritme  */
+  heap_insert(open_list, start);
+  /* A star algoritme */
   while (count_elements_in_list(open_list) != 0) {
     /* Take node with the smallest value and copy to current */
     copy_node_to_node(current, extract_min(open_list));
@@ -37,8 +40,8 @@ void a_star(node start, node goal) {
       return reconstruct_path(came_from, current);
     }
     /* Move current node from open_list to closed_list */
-    delete(open_list, current);
-    insert(closed_list, current);
+    heap_delete(open_list, current);
+    heap_insert(closed_list, current);
     /* Count number of neighbours and check if they exied in closed_list */
     int number_of_neighbours = calculate_neighbours();
     for (size_t i = 0; i < number_of_neighbours; ++i) {
@@ -49,21 +52,21 @@ void a_star(node start, node goal) {
     neighbour.g = current_g + jorden_er_ikke_flad(current, neighbour);
     neighbour.h = jorden_er_ikke_flad(neighbour, goal);
     neighbour.f = neighbour_h + neighbour_g;
-    insert(open_list, neighbour);
+    heap_insert(open_list, neighbour);
     insert(came_from, current);
     }
   }
 }
-
+/* Function copys one node to a other node */
 void copy_node_to_node(node destination, node source){
   destination.lat = source.lat;
   destination.lon = source.lon;
 }
-
+/* Julius ved ikke om du skal tænke over om denne funktion skal virke sådan */
 int count_elements_in_list(node *list){
   int res = 0;
   for (size_t i = 0; i < count; i++) {
-    if (list[i].x != 0 && list[i].y != 0) {
+    if (list[i].is_active == 1) {
       ++res;
     }
   }
@@ -78,15 +81,15 @@ node reconstruct_path(came_from, current) {
 }
 
 void insert(node list[], node node_to_insert) {
-
+  /* Julius du laver sådan en her tak */
 }
 
 void delete(node list[], node node_to_delete) {
-
+  /* Julius du laver sådan en her tak */
 }
 
 node extract_min(node list[]) {
-
+  /* Julius du laver sådan en her tak */
 }
 
 /*
