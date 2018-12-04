@@ -2,53 +2,65 @@
 
 #define SOME_VALUE 10
 
-struct a_point{
-  float x;
-  float y;
+struct a_node{
+  float lat;
+  float lon;
+  double g;
+  double h;
+  double f;
 };
 
-typedef struct a_point point;
+typedef struct a_node node;
 
 int main(void) {
   a_star();
   return 0;
 }
 
-void a_star(point start, point goal) {
-  point closed_list[SOME_VALUE];
+void a_star(node start, node goal) {
+  node closed_list[SOME_VALUE];
   float start_g;
   float start_f = start_g + h;
-  point open_list[SOME_VALUE] = start;
-  point came_from[SOME_VALUE];
-  point current;
+  node open_list[SOME_VALUE] = start;
+  node came_from[SOME_VALUE];
+  node current;
 
+  node neighbour;
+
+  insert(open_list, start);
+  /* A star algoritme  */
   while (count_elements_in_list(open_list) != 0) {
-    copy_point_to_point(current, extract_min(open_list));
+    /* Take node with the smallest value and copy to current */
+    copy_node_to_node(current, extract_min(open_list));
+    /* if the distance to goal is less than 1 meter then reconstruct path */
     if(jorden_er_ikke_flad(current, goal) < 1){
       return reconstruct_path(came_from, current);
     }
+    /* Move current node from open_list to closed_list */
     delete(open_list, current);
     insert(closed_list, current);
+    /* Count number of neighbours and check if they exied in closed_list */
     int number_of_neighbours = calculate_neighbours();
     for (size_t i = 0; i < number_of_neighbours; ++i) {
       if (contains(closed_list, neighbour)) {
         continue;
       }
-    neighbour_g = current_g + jorden_er_ikke_flad(current, neighbour);
-    neighbour_h = jorden_er_ikke_flad(neighbour, goal);
-    neighbour_f = neighbour_h + neighbour_g;
+    /* Neighbour is calculated and put in open_list and current is put in came_from */
+    neighbour.g = current_g + jorden_er_ikke_flad(current, neighbour);
+    neighbour.h = jorden_er_ikke_flad(neighbour, goal);
+    neighbour.f = neighbour_h + neighbour_g;
     insert(open_list, neighbour);
-    came_from[i] = current;
+    insert(came_from, current);
     }
   }
 }
 
-void copy_point_to_point(point destination, point source){
-  destination.x = source.x;
-  destination.y = source.y;
+void copy_node_to_node(node destination, node source){
+  destination.lat = source.lat;
+  destination.lon = source.lon;
 }
 
-int count_elements_in_list(point *list){
+int count_elements_in_list(node *list){
   int res = 0;
   for (size_t i = 0; i < count; i++) {
     if (list[i].x != 0 && list[i].y != 0) {
@@ -58,21 +70,22 @@ int count_elements_in_list(point *list){
   return res;
 }
 
-point reconstruct_path(came_from, current) {
+node reconstruct_path(came_from, current) {
   while (contains(came_from, current)) {
-    insert(total_path);
+    insert(total_path, current);
+    current = came_from[current];
   }
 }
 
-void insert(point list[], point point_to_insert) {
+void insert(node list[], node node_to_insert) {
 
 }
 
-void delete(point list[], point point_to_delete) {
+void delete(node list[], node node_to_delete) {
 
 }
 
-point extract_min(point list[]) {
+node extract_min(node list[]) {
 
 }
 
@@ -81,25 +94,25 @@ point extract_min(point list[]) {
 
 #define SOME_VALUE 10
 
-struct a_point{
+struct a_node{
   float x;
   float y;
 };
 
-typedef struct a_point point;
+typedef struct a_node node;
 
 int main(void) {
   a_star();
   return 0;
 }
 
-void a_star(point start, point goal) {
-  point closed_list[SOME_VALUE];
+void a_star(node start, node goal) {
+  node closed_list[SOME_VALUE];
   float start_g;
   float start_f = start_g + h;
-  point open_list[SOME_VALUE] = start;
-  point came_from[SOME_VALUE];
-  point current;
+  node open_list[SOME_VALUE] = start;
+  node came_from[SOME_VALUE];
+  node current;
 
   while (count_elements_in_list(open_list) != 0) {
     current = extract_min(open_list);
@@ -122,12 +135,12 @@ void a_star(point start, point goal) {
   }
 }
 
-void copy_point_to_point(point destination, point source){
+void copy_node_to_node(node destination, node source){
   destination.x = source.x;
   destination.y = source.y;
 }
 
-int count_elements_in_list(point *list){
+int count_elements_in_list(node *list){
   int res = 0;
   for (size_t i = 0; i < count; i++) {
     if (list[i].x != 0 && list[i].y != 0) {
@@ -137,21 +150,21 @@ int count_elements_in_list(point *list){
   return res;
 }
 
-point reconstruct_path(came_from, current) {
+node reconstruct_path(came_from, current) {
   while (contains(came_from, current)) {
     insert(total_path);
   }
 }
 
-void insert(point list[], point point_to_insert) {
+void insert(node list[], node node_to_insert) {
 
 }
 
-void delete(point list[], point point_to_delete) {
+void delete(node list[], node node_to_delete) {
 
 }
 
-point extract_min(point list[]) {
+node extract_min(node list[]) {
 
 }
 
