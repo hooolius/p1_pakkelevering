@@ -27,17 +27,33 @@ pairing_heap merge(pairing_heap heap1, pairing_heap heap2) {
   else if (heap1.proot->value < heap2.proot->value) {
     if (heap1.proot->pleft_child == NULL) {
       heap1.proot->pleft_child = heap2.proot;
+      return heap1;
     }
     else if (heap1.proot->pleft_child->pprev_sibling == NULL) {
       heap1.proot->pleft_child->pprev_sibling = heap2.proot;
+      return heap1;
     }
     else {
       ptemp = heap1.proot->pleft_child;
       heap1.proot->pleft_child = heap2.proot;
       heap1.proot->pleft_child->pnext_sibling = ptemp;
+      return heap1;
     }
   }
   else {
-    //return ?
+    if (heap2.proot->pleft_child == NULL) {
+      heap2.proot->pleft_child = heap1.proot;
+      return heap2;
+    }
+    else if (heap2.proot->pleft_child->pprev_sibling == NULL) {
+      heap2.proot->pleft_child->pprev_sibling = heap1.proot;
+      return heap2;
+    }
+    else {
+      ptemp = heap2.proot->pleft_child;
+      heap2.proot->pleft_child = heap1.proot;
+      heap2.proot->pleft_child->pnext_sibling = ptemp;
+      return heap2;
+    }
   }
 }
