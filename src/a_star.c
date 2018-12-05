@@ -43,19 +43,18 @@ void a_star(node start, node goal) {
     heap_delete(open_list, current);
     dyn_insert(closed_list, current);
     /* Count number of neighbours and check if they exied in closed_list */
-    int number_of_neighbours = count_elements_in_list();
+    node *neighbour_list = make_neighbours_list(current);
+    int number_of_neighbours = count_elements_in_list(neighbour_list);
     for (size_t i = 0; i < number_of_neighbours; ++i) {
-
-      if (contains(closed_list, next_neighbour(current)) || ) {
-
+      if (contains(closed_list, next_neighbour(neighbour_list, i))) {
         continue;
       }
-    /* Neighbour is calculated and put in open_list and current is put in came_from */
-    neighbour.g = current_g + jorden_er_ikke_flad(current, neighbour);
-    neighbour.h = jorden_er_ikke_flad(neighbour, goal);
-    neighbour.f = neigh bour_h + neighbour_g;
-    heap_insert(open_list, neighbour);
-    insert(came_from, current);
+      /* Neighbour is calculated and put in open_list and current is put in came_from */
+      neighbour.g = current.g + jorden_er_ikke_flad(current, neighbour);
+      neighbour.h = jorden_er_ikke_flad(neighbour, goal);
+      neighbour.f = neighbour.h + neighbour.g;
+      heap_insert(open_list, neighbour);
+      insert(came_from, current);
     }
   }
 }
@@ -63,9 +62,13 @@ void a_star(node start, node goal) {
 /*if (contains(closed_list, neighbour)) {
   continue;
 }*/
+node *next_neighbour(node *neighbour_list, int number_of_neighbour) {
 
-node calculate_neighbours() {
+}
 
+node *make_neighbours_list(node current) {
+  /* Follow pointers and count number of neighbours */
+  /* return a pointer from a memory space where neighbours are stored */
 }
 
 /* Function copys one node to a other node */
@@ -76,7 +79,7 @@ void copy_node_to_node(node destination, node source) {
 /* Julius ved ikke om du skal tænke over om denne funktion skal virke sådan */
 int count_elements_in_list(node *list){
   int res = 0;
-  for (size_t i = 0; i < count; i++) {
+  for (size_t i = 0; i < list.count; i++) {
     if (list[i].is_active == 1) {
       ++res;
     }
