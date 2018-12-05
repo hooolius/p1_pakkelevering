@@ -41,24 +41,35 @@ void a_star(node start, node goal) {
     }
     /* Move current node from open_list to closed_list */
     heap_delete(open_list, current);
-    heap_insert(closed_list, current);
+    dyn_insert(closed_list, current);
     /* Count number of neighbours and check if they exied in closed_list */
-    int number_of_neighbours = calculate_neighbours();
+    int number_of_neighbours = count_elements_in_list();
     for (size_t i = 0; i < number_of_neighbours; ++i) {
-      if (contains(closed_list, neighbour)) {
+
+      if (contains(closed_list, next_neighbour(current)) || ) {
+
         continue;
       }
     /* Neighbour is calculated and put in open_list and current is put in came_from */
     neighbour.g = current_g + jorden_er_ikke_flad(current, neighbour);
     neighbour.h = jorden_er_ikke_flad(neighbour, goal);
-    neighbour.f = neighbour_h + neighbour_g;
+    neighbour.f = neigh bour_h + neighbour_g;
     heap_insert(open_list, neighbour);
     insert(came_from, current);
     }
   }
 }
+
+/*if (contains(closed_list, neighbour)) {
+  continue;
+}*/
+
+node calculate_neighbours() {
+
+}
+
 /* Function copys one node to a other node */
-void copy_node_to_node(node destination, node source){
+void copy_node_to_node(node destination, node source) {
   destination.lat = source.lat;
   destination.lon = source.lon;
 }
