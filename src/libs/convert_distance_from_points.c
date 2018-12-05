@@ -45,74 +45,74 @@ double calculate_distance_to_points_3(s_point *point1, s_point *point2)
     const double k_flattening = 1.0 / k_inverse_flattening;
     const double k_semi_major_axis = 6378137.0;
     const double k_semi_minor_axis = k_semi_major_axis * (1 - k_flattening);
-    const double kEps = 0.5e-15;
+    const double keps = 0.5e-15;
 
 
-    double L = ((point2->longitude * M_PI) / 180) - ((point1->longitude * M_PI) / 180);
-    double U1 = atan((1 - k_flattening) * tan(((point1->latitude * M_PI) / 180)));
-    double U2 = atan((1 - k_flattening) * tan(((point2->latitude * M_PI) / 180)));
+    double l = ((point2->longitude * M_PI) / 180) - ((point1->longitude * M_PI) / 180);
+    double u1 = atan((1 - k_flattening) * tan(((point1->latitude * M_PI) / 180)));
+    double u2 = atan((1 - k_flattening) * tan(((point2->latitude * M_PI) / 180)));
 
-    double sinU1 = sin(U1);
-    double cosU1 = cos(U1);
-    double sinU2 = sin(U2);
-    double cosU2 = cos(U2);
+    double sinu1 = sin(u1);
+    double cosu1 = cos(u1);
+    double sinu2 = sin(u2);
+    double cosu2 = cos(u2);
 
-    double dCosU1CosU2 = cosU1 * cosU2;
-    double dCosU1SinU2 = cosU1 * sinU2;
+    double dcosu1cosu2 = cosu1 * cosu2;
+    double dcosu1sinu2 = cosu1 * sinu2;
 
-    double dSinU1SinU2 = sinU1 * sinU2;
-    double dSinU1CosU2 = sinU1 * cosU2;
+    double dsinu1sinu2 = sinu1 * sinu2;
+    double dsinu1cosu2 = sinu1 * cosu2;
 
 
-    double lambda = L;
-    double lambdaP = 2.0 * M_PI;
-    int iterLimit = 0;
-    double cosSqAlpha;
-    double sinSigma;
-    double cos2SigmaM;
-    double cosSigma;
+    double lambda = l;
+    double lambdap = 2.0 * M_PI;
+    int iterlimit = 0;
+    double cossqalpha;
+    double sinsigma;
+    double cos2sigmam;
+    double cossigma;
     double sigma;
-    double sinAlpha;
-    double C;
-    double sinLambda, cosLambda;
+    double sinalpha;
+    double c;
+    double sinlambda, coslambda;
 
     double result = 0;
 
     do
     {
-        sinLambda = sin(lambda);
-        cosLambda = cos(lambda);
-        sinSigma = sqrt((cosU2 * sinLambda) * (cosU2 * sinLambda) +
-                        (dCosU1SinU2 - dSinU1CosU2 * cosLambda) * (dCosU1SinU2 - dSinU1CosU2 * cosLambda));
+        sinlambda = sin(lambda);
+        coslambda = cos(lambda);
+        sinsigma = sqrt((cosu2 * sinlambda) * (cosu2 * sinlambda) +
+                        (dcosu1sinu2 - dsinu1cosu2 * coslambda) * (dcosu1sinu2 - dsinu1cosu2 * coslambda));
 
-        if (sinSigma == 0)
+        if (sinsigma == 0)
             return 0;
 
-        cosSigma = dSinU1SinU2 + dCosU1CosU2 * cosLambda;
-        sigma = atan2(sinSigma, cosSigma);
-        sinAlpha = dCosU1CosU2 * sinLambda / sinSigma;
-        cosSqAlpha = 1.0 - sinAlpha * sinAlpha;
-        cos2SigmaM = cosSigma - 2.0 * dSinU1SinU2 / cosSqAlpha;
+        cossigma = dsinu1sinu2 + dcosu1cosu2 * coslambda;
+        sigma = atan2(sinsigma, cossigma);
+        sinalpha = dcosu1cosu2 * sinlambda / sinsigma;
+        cossqalpha = 1.0 - sinalpha * sinalpha;
+        cos2sigmam = cossigma - 2.0 * dsinu1sinu2 / cossqalpha;
 
-        if (cos2SigmaM < 0.0)
-            cos2SigmaM = 0.0;  // equatorial line: cosSqAlpha=0
-        C = k_flattening / 16.0 * cosSqAlpha * (4.0 + k_flattening * (4.0 - 3.0 * cosSqAlpha));
-        lambdaP = lambda;
-        lambda = L + (1.0 - C) * k_flattening * sinAlpha *
-                     (sigma + C * sinSigma * (cos2SigmaM + C * cosSigma * (-1.0 + 2.0 * cos2SigmaM * cos2SigmaM)));
+        if (cos2sigmam < 0.0)
+            cos2sigmam = 0.0;  // equatorial line: cosSqAlpha=0
+        c = k_flattening / 16.0 * cossqalpha * (4.0 + k_flattening * (4.0 - 3.0 * cossqalpha));
+        lambdap = lambda;
+        lambda = l + (1.0 - c) * k_flattening * sinalpha *
+                     (sigma + c * sinsigma * (cos2sigmam + c * cossigma * (-1.0 + 2.0 * cos2sigmam * cos2sigmam)));
     }
-    while (fabs(lambda - lambdaP) > kEps && ++iterLimit < 40);
+    while (fabs(lambda - lambdap) > keps && ++iterlimit < 40);
 
-    double uSq = cosSqAlpha * (k_semi_major_axis * k_semi_major_axis - k_semi_minor_axis * k_semi_minor_axis) /
+    double usq = cossqalpha * (k_semi_major_axis * k_semi_major_axis - k_semi_minor_axis * k_semi_minor_axis) /
                  (k_semi_minor_axis * k_semi_minor_axis);
-    double A = 1.0 + uSq / 16384.0 * (4096.0 + uSq * (-768.0 + uSq * (320.0 - 175.0 * uSq)));
-    double B = uSq / 1024.0 * (256.0 + uSq * (-128.0 + uSq * (74.0 - 47.0 * uSq)));
-    double deltaSigma = B * sinSigma * (cos2SigmaM + B / 4.0 * (cosSigma * (-1.0 + 2.0 * cos2SigmaM * cos2SigmaM) -
-                                                                B / 6.0 * cos2SigmaM *
-                                                                (-3.0 + 4.0 * sinSigma * sinSigma) *
-                                                                (-3.0 + 4.0 * cos2SigmaM * cos2SigmaM)));
+    double a = 1.0 + usq / 16384.0 * (4096.0 + usq * (-768.0 + usq * (320.0 - 175.0 * usq)));
+    double b = usq / 1024.0 * (256.0 + usq * (-128.0 + usq * (74.0 - 47.0 * usq)));
+    double deltaSigma = b * sinsigma * (cos2sigmam + b / 4.0 * (cossigma * (-1.0 + 2.0 * cos2sigmam * cos2sigmam) -
+                                                                b / 6.0 * cos2sigmam *
+                                                                (-3.0 + 4.0 * sinsigma * sinsigma) *
+                                                                (-3.0 + 4.0 * cos2sigmam * cos2sigmam)));
 
-    result = k_semi_minor_axis * A * (sigma - deltaSigma);
+    result = k_semi_minor_axis * a * (sigma - deltaSigma);
 
     return result;
 }

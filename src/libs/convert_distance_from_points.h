@@ -11,7 +11,7 @@ struct gps_point{
 typedef struct gps_point s_point; 
 
 
-//function prototyper
+//function prototyp
 //double calculate_distance_to_points(s_point *point1, s_point *point2);
 //double calculate_distance_to_points_2(s_point *point1, s_point *point2);
 
