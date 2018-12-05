@@ -23,8 +23,9 @@ void a_star(node start, node goal) {
   node closed_list = calloc(SOME_VALUE, sizeof(node));
   start.g = 0;
   start.f = start.g + jorden_er_ikke_flad(start, goal);
+  pairing_heap open_list;
   heap_clear(open_list);
-  heap_insert(start);
+  insert_elem(start);
   dyn_memory came_from;
   node current;
 
@@ -34,7 +35,7 @@ void a_star(node start, node goal) {
   /* A star algoritme */
   while (count_elements_in_list(open_list) != 0) {
     /* Take node with the smallest value and copy to current */
-    copy_node_to_node(current, extract_min(open_list));
+    copy_node_to_node(current, find_min(open_list));
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if(jorden_er_ikke_flad(current, goal) < 1){
       return reconstruct_path(came_from, current);
