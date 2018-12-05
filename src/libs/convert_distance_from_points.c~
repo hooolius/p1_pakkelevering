@@ -7,8 +7,8 @@
 int main()
 {
 	//struct point
-	/*s_point point1;
-	s_point point2;*/
+	s_point point1;
+	s_point point2;
 
     /* Deltavej raw data */
     /*point1.latitude = 57.0451913;
@@ -39,7 +39,6 @@ int main()
 /* https://community.esri.com/groups/coordinate-reference-systems/blog/2017/10/11/vincenty-formula */
 /* Most accurate Vincenty’s formula */
 /*the function we use Vincenty,s distance formula*/
-/*
 double calculate_distance_to_points_3(s_point *point1, s_point *point2)
 {
     const double k_inverse_flattening = 298.2572235636654651;
@@ -117,7 +116,7 @@ double calculate_distance_to_points_3(s_point *point1, s_point *point2)
 
     return result;
 }
-*/
+
 /* http://www.5thandpenn.com/GeoMaps/GMapsExamples/distanceComplete2.html */
 /*double calculate_distance_to_points(struct gps_point *point1, struct gps_point *point2)
 {
