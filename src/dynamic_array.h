@@ -14,7 +14,7 @@ void trim_to_size();
 
 void ensure_capacity();
 
-dyn_array resize_array(dyn_array *array, int new_size);
+dyn_array *resize_array(dyn_array *array, int new_size);
 
 void add_element_to_end(dyn_array *array_to_insert_in, element element_to_insert);
 
