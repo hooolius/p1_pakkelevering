@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 /*link header fil*/
-#include "convert_distance_from_points.h"
+#include "Vincent_inv_dist_points.h"
 
 int main()
 {
