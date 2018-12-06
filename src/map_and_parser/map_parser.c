@@ -142,15 +142,15 @@ void search_and_parse_streets(char *data, struct point points_array[]) {
             cJSON_ArrayForEach(road_point, road_points) {
 
                 input = road_point->valuedouble;
-                printf("%.0lf \n", input);
-
                 j = binary_searcher(input, points_array, array_len);
-                printf("\t Test of return : %d \n", j);
-                pointer_writer(points_array, j, j_old);
-
+                if (j_old !=0) {
+                    pointer_writer(points_array, j, j_old);
+                    printf("\t Test of return  ID:: %d Array key: %lf \nJ_Old: %d", j, input, j_old);
+                    printf("\n P1: %d \n P2: %d \n P3: %d \n P4: %d \n P5: %d \n", points_array[j].p1, points_array[j].p2,
+                           points_array[j].p3, points_array[j].p4, points_array[j].p5);
+                }
                 j_old = j;
-                printf("\n P1: %d \n P2: %d \n P3: %d \n P4: %d \n P5: %d \n", points_array[j].p1, points_array[j].p2,
-                       points_array[j].p3, points_array[j].p4, points_array[j].p5);
+
             }
 
             j_old = 0;
@@ -163,27 +163,60 @@ void pointer_writer(struct point points_array[], int j, int j_old) {
     if (!is_written(points_array[j], j, j_old)) {
         if (points_array[j].p1 == 0) {
             points_array[j].p1 = j;
+
         } else if (points_array[j].p2 == 0) {
             points_array[j].p2 = j;
+
         } else if (points_array[j].p3 == 0) {
             points_array[j].p3 = j;
+
         } else if (points_array[j].p4 == 0) {
             points_array[j].p4 = j;
+
         } else if (points_array[j].p5 == 0) {
             points_array[j].p5 = j;
+
+        } else if (points_array[j].p6 == 0) {
+            points_array[j].p6 = j;
         }
 
         if (j_old != 0) {
             if (points_array[j_old].p1 == 0) {
                 points_array[j_old].p1 = j;
+
             } else if (points_array[j_old].p2 == 0) {
                 points_array[j_old].p2 = j;
+
             } else if (points_array[j_old].p3 == 0) {
                 points_array[j_old].p3 = j;
+
             } else if (points_array[j_old].p4 == 0) {
                 points_array[j_old].p4 = j;
+
             } else if (points_array[j_old].p5 == 0) {
                 points_array[j_old].p5 = j;
+
+            } else if (points_array[j_old].p6 == 0) {
+                points_array[j_old].p6 = j;
+            }
+
+            if (points_array[j].p1 == 0) {
+                points_array[j].p1 = j_old;
+
+            } else if (points_array[j].p2 == 0) {
+                points_array[j].p2 = j_old;
+
+            } else if (points_array[j].p3 == 0) {
+                points_array[j].p3 = j_old;
+
+            } else if (points_array[j].p4 == 0) {
+                points_array[j].p4 = j_old;
+
+            } else if (points_array[j].p5 == 0) {
+                points_array[j].p5 = j_old;
+
+            } else if (points_array[j].p6 == 0) {
+                points_array[j].p6 = j_old;
             }
         }
     }
@@ -200,7 +233,10 @@ int is_written(struct point point, int j, int j_old) {
         return 1;
     } else if (point.p5 == j) {
         return 1;
+    } else if (point.p6 == j) {
+        return 1;
     }
+
     if (point.p1 == j_old) {
         return 1;
     } else if (point.p2 == j_old) {
@@ -210,6 +246,8 @@ int is_written(struct point point, int j, int j_old) {
     } else if (point.p4 == j_old) {
         return 1;
     } else if (point.p5 == j_old) {
+        return 1;
+    } else if (point.p6 == j_old) {
         return 1;
     }
     return 0;
