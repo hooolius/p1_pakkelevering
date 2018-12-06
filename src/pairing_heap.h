@@ -16,6 +16,7 @@ struct heap_elem {
 struct pairing_heap {
   int size;
   heap_elem *proot;
+  heap_secrets *secrets;
 };
 
 struct heap_secrets {
@@ -25,7 +26,7 @@ struct heap_secrets {
 };
 
 // returns the lowest value in the heap
-heap_elem *find_min(pairing_heap heap);
+heap_elem find_min(pairing_heap heap);
 // merges two heaps together
 pairing_heap merge(pairing_heap heap1, pairing_heap heap2);
 // returns and deletes the min element in a heap

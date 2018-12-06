@@ -2,13 +2,15 @@
 #include <stdlib.h>
 #include "pairing_heap.h"
 
-heap_elem *find_min(pairing_heap heap) {
+pairing_heap merge_pairs(pairing_heap heap, pairing_heap subheaps[]);
+
+heap_elem find_min(pairing_heap heap) {
   if (heap.proot == NULL) {
     perror("Error, heap is empty");
     exit(EXIT_FAILURE);
   }
   else {
-    return heap.proot;
+    return *heap.proot;
   }
 }
 
@@ -25,6 +27,7 @@ pairing_heap merge(pairing_heap heap1, pairing_heap heap2) {
     return heap1;
   }
   else if (heap1.proot->value < heap2.proot->value) {
+    heap1.secrets->subheaps[++heap1.secrets->size_subheaps] = heap2;
     if (heap1.proot->pleft_child == NULL) {
       heap1.proot->pleft_child = heap2.proot;
       return heap1;
@@ -41,6 +44,7 @@ pairing_heap merge(pairing_heap heap1, pairing_heap heap2) {
     }
   }
   else {
+    heap2.secrets->subheaps[++heap1.secrets->size_subheaps] = heap1;
     if (heap2.proot->pleft_child == NULL) {
       heap2.proot->pleft_child = heap1.proot;
       return heap2;
@@ -58,7 +62,7 @@ pairing_heap merge(pairing_heap heap1, pairing_heap heap2) {
   }
 }
 
-void insert_elem(pairing_heap heap, heap_elem elem){
+void insert_elem(pairing_heap heap, heap_elem elem) {
   heap.size++;
   pairing_heap addition;
   heap_elem *pelem = &elem;
@@ -67,7 +71,7 @@ void insert_elem(pairing_heap heap, heap_elem elem){
   pelem->pprev_sibling = NULL;
   pelem->pnext_sibling = NULL;
 
-  if (heap.proot == NULL){
+  if (heap.proot == NULL) {
     heap.proot = pelem;
   }
   else {
@@ -75,3 +79,33 @@ void insert_elem(pairing_heap heap, heap_elem elem){
     heap = merge(heap, addition);
   }
 }
+
+heap_elem extract_min(pairing_heap heap) {
+  heap_elem min;
+  min = find_min(heap);
+  delete_min(heap);
+  return min;
+}
+
+void delete_min(pairing_heap heap) {
+  if (heap.proot == NULL) {
+    perror("Error, heap is empty");
+    exit(EXIT_FAILURE);
+  } 
+  else {
+    merge_pairs(heap, heap.secrets->subheaps);
+  }
+}
+
+pairing_heap merge_pairs(pairing_heap heap, pairing_heap subheaps[]) {
+  if (heap.secrets->size_subheaps == 0) {
+    return heap;
+  }
+  else if (heap.secrets->size_subheaps == 1) {
+    return merge(heap, subheaps[1]);
+  }
+  else {
+    return merge((subheaps[1], subheaps[2]), merge_pairs(subheaps[3], subheaps));
+  }
+}
+//lav helper function til merge_pairs, så den kører rekursivt
