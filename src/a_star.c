@@ -26,7 +26,7 @@ void a_star(node start, node goal) {
   pairing_heap open_list;
   heap_clear(open_list);
   insert_elem(start);
-  dyn_memory came_from;
+  dyn_array came_from;
   node current;
 
   node neighbour;
@@ -48,7 +48,7 @@ void a_star(node start, node goal) {
     int number_of_neighbours = count_elements_in_list(neighbour_list);
     for (size_t i = 0; i < number_of_neighbours; ++i) {
       if (contains(closed_list, next_neighbour(neighbour_list, i))) {
-        continue;
+        continue;   // husk at ændre neighbour til neighbour[i] i koden
       }
       /* Neighbour is calculated and put in open_list and current is put in came_from */
       neighbour.g = current.g + jorden_er_ikke_flad(current, neighbour);
