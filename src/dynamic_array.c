@@ -56,3 +56,13 @@ dyn_array *delete_element(dyn_array *array, element elem_to_delete) {
   }
   return res;
 }
+
+dyn_array *find_element(dyn_array *array, element elem_to_find) {
+  dyn_array *res;
+  for (int i = 0; i < array.items; ++i) {
+    if(array.elements[i] == elem_to_find) {
+      res = &array.elements[i];
+    }
+  }
+  return res;
+}

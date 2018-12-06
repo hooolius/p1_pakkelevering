@@ -16,9 +16,9 @@ struct dyn_array {
 };
 
 typedef dyn_array dyn_array;
-/* Makes  */
+/* Makes a empty array */
 dyn_array *make_dyn_array(int size);
-
+/* Not implemented yet */
 void trim_to_size();
 /* Maybe implemented */
 void ensure_capacity(dyn_array *array, int capacity);
@@ -29,4 +29,4 @@ dyn_array *add_element_to_end(dyn_array *array_to_insert_in, element elem_to_ins
 /* Implemented */
 dyn_array *delete_element(dyn_array *array, element elem_to_delete);
 /* Not implemented yet */
-void find_element();
+dyn_array *find_element(dyn_array *array, element elem_to_find);
