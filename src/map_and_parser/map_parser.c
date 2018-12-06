@@ -8,41 +8,38 @@ struct point {
     double id;
     double lon;
     double lat;
-    struct point *p1;
-    struct point *p2;
-    struct point *p3;
-    struct point *p4;
-    struct point *p5;
-    struct point *p6;
+    int p1;
+    int p2;
+    int p3;
+    int p4;
+    int p5;
+    int p6;
 };
 
-
-void nodes_parser(struct point *points_array);
-
-void search_and_parse(char data[], struct point *points_array);
+void search_and_parse_points(char data[], struct point *points_array);
 
 int sorter_function(const void *a, const void *b);
 
-void streets_parser(struct point *points_array);
-
-void search_and_parse_streets(char *data, struct point *points_array);
+void search_and_parse_streets(char *data, struct point points_array[]);
 
 int binary_searcher(double input, struct point points_array[], int array_len);
 
 int points_counter(cJSON *pJSON);
 
-int main(void) {
-    struct point *points_array;
-    nodes_parser(points_array);
-    streets_parser(points_array);
-}
+void pointer_writer(struct point points_array[], int j, int j_old);
 
-void nodes_parser(struct point *points_array) {
+int is_written(struct point point, int j, int j_old);
+
+int main(void) {
+    cJSON *json = NULL;
+    struct point *points_array;
+    int i = 0;
     long len;
     char *data = NULL;
     FILE *paddress_file;
     paddress_file = fopen("map_data.json", "rb");
-    /* get the length */
+
+
     if (paddress_file == NULL) {
         printf("SHIT");
         exit(-1);
@@ -54,35 +51,47 @@ void nodes_parser(struct point *points_array) {
 
     data = (char *) malloc(len + 1);
     fread(data, 1, len, paddress_file);
-    search_and_parse(data, points_array);
-}
 
-void search_and_parse(char data[], struct point *points_array) {
-    cJSON *json = NULL;
-    const cJSON *points = NULL;
-    const cJSON *point = NULL;
-
-    int i = 0, j = 0;
 
     json = cJSON_Parse(data);
 
     if (json == NULL) {
         printf("Error before: [%s]\n", cJSON_GetErrorPtr());
-
+        exit(-1);
     } else {
-        points = cJSON_GetObjectItemCaseSensitive(json, "points");
+
         /*Counts the amount of points within the file*/
         i = points_counter(json);
         points_array = calloc(i, sizeof(points_array[0]));
 
-        cJSON_ArrayForEach(point, points) { ;
-            points_array[j].id = cJSON_GetObjectItemCaseSensitive(point, "id")->valuedouble;
-            points_array[j].lat = cJSON_GetObjectItemCaseSensitive(point, "lat")->valuedouble;
-            points_array[j].lon = cJSON_GetObjectItemCaseSensitive(point, "lon")->valuedouble;
-            j++;
-        }
-        qsort(points_array, i, sizeof(points_array[0]), sorter_function);
+        search_and_parse_points(data, points_array);
+
+        printf("Points array: %lf", points_array[0].id);
+        search_and_parse_streets(data, points_array);
     }
+
+}
+
+
+void search_and_parse_points(char data[], struct point points_array[]) {
+    cJSON *json = NULL;
+    const cJSON *points = NULL;
+    const cJSON *point = NULL;
+    json = cJSON_Parse(data);
+
+    int i = 0, j = 0;
+
+    points = cJSON_GetObjectItemCaseSensitive(json, "points");
+    i = points_counter(json);
+
+    cJSON_ArrayForEach(point, points) { ;
+        points_array[j].id = cJSON_GetObjectItemCaseSensitive(point, "id")->valuedouble;
+        points_array[j].lat = cJSON_GetObjectItemCaseSensitive(point, "lat")->valuedouble;
+        points_array[j].lon = cJSON_GetObjectItemCaseSensitive(point, "lon")->valuedouble;
+        j++;
+    }
+    qsort(points_array, i, sizeof(points_array[0]), sorter_function);
+
 }
 
 int points_counter(cJSON *pJSON) {
@@ -108,35 +117,15 @@ int sorter_function(const void *a, const void *b) {
 
 }
 
-void streets_parser(struct point *points_array) {
-    long len;
-    char *data = NULL;
-    FILE *paddress_file;
-    paddress_file = fopen("map_data.json", "rb");
-    /* get the length */
-    if (paddress_file == NULL) {
-        printf("SHIT");
-        exit(-1);
-    }
-    fseek(paddress_file, 0, SEEK_END);
-    len = ftell(paddress_file);
-    fseek(paddress_file, 0, SEEK_SET);
 
-
-    data = (char *) malloc(len + 1);
-    fread(data, 1, len, paddress_file);
-    search_and_parse_streets(data, points_array);
-}
-
-void search_and_parse_streets(char *data, struct point *points_array) {
+void search_and_parse_streets(char *data, struct point points_array[]) {
     cJSON *json = NULL;
     const cJSON *road_points = NULL;
     const cJSON *road_point = NULL;
     const cJSON *roads = NULL;
     const cJSON *road = NULL;
-    int i = 0;
+    int array_len = 0, j = 0, j_old = 0;
     double input;
-    double test,j=0;
 
     json = cJSON_Parse(data);
 
@@ -144,44 +133,103 @@ void search_and_parse_streets(char *data, struct point *points_array) {
         printf("Error before: [%s]\n", cJSON_GetErrorPtr());
 
     } else {
-        i = points_counter(json);
+        array_len = points_counter(json);
         roads = cJSON_GetObjectItemCaseSensitive(json, "roads");
         cJSON_ArrayForEach(road, roads) {
 
             road_points = cJSON_GetObjectItemCaseSensitive(road, "nodes");
-            //i = cJSON_GetArraySize(road_point);
+            //array_len = cJSON_GetArraySize(road_point);
             cJSON_ArrayForEach(road_point, road_points) {
 
                 input = road_point->valuedouble;
-                printf("%.0lf \n",input);
+                printf("%.0lf \n", input);
 
-                //printf("Test of return : %lf \n", j);
-               // j = binary_searcher(input, points_array, i);
+                j = binary_searcher(input, points_array, array_len);
+                printf("\t Test of return : %d \n", j);
+                pointer_writer(points_array, j, j_old);
 
+                j_old = j;
+                printf("\n P1: %d \n P2: %d \n P3: %d \n P4: %d \n P5: %d \n", points_array[j].p1, points_array[j].p2,
+                       points_array[j].p3, points_array[j].p4, points_array[j].p5);
             }
+
+            j_old = 0;
             printf("End of section \n");
         }
     }
+}
+
+void pointer_writer(struct point points_array[], int j, int j_old) {
+    if (!is_written(points_array[j], j, j_old)) {
+        if (points_array[j].p1 == 0) {
+            points_array[j].p1 = j;
+        } else if (points_array[j].p2 == 0) {
+            points_array[j].p2 = j;
+        } else if (points_array[j].p3 == 0) {
+            points_array[j].p3 = j;
+        } else if (points_array[j].p4 == 0) {
+            points_array[j].p4 = j;
+        } else if (points_array[j].p5 == 0) {
+            points_array[j].p5 = j;
+        }
+
+        if (j_old != 0) {
+            if (points_array[j_old].p1 == 0) {
+                points_array[j_old].p1 = j;
+            } else if (points_array[j_old].p2 == 0) {
+                points_array[j_old].p2 = j;
+            } else if (points_array[j_old].p3 == 0) {
+                points_array[j_old].p3 = j;
+            } else if (points_array[j_old].p4 == 0) {
+                points_array[j_old].p4 = j;
+            } else if (points_array[j_old].p5 == 0) {
+                points_array[j_old].p5 = j;
+            }
+        }
+    }
+}
+
+int is_written(struct point point, int j, int j_old) {
+    if (point.p1 == j) {
+        return 1;
+    } else if (point.p2 == j) {
+        return 1;
+    } else if (point.p3 == j) {
+        return 1;
+    } else if (point.p4 == j) {
+        return 1;
+    } else if (point.p5 == j) {
+        return 1;
+    }
+    if (point.p1 == j_old) {
+        return 1;
+    } else if (point.p2 == j_old) {
+        return 1;
+    } else if (point.p3 == j_old) {
+        return 1;
+    } else if (point.p4 == j_old) {
+        return 1;
+    } else if (point.p5 == j_old) {
+        return 1;
+    }
+    return 0;
 }
 
 int binary_searcher(double input, struct point points_array[], int array_len) {
     int first;
     int middle;
 
-    while (input <= points_array[array_len - 1].id) {
+    first = 0;
+    middle = (first + array_len) / 2;
 
-        first = 0;
-        middle = (first + array_len - 1) / 2;
-
-        while (first <= array_len) {
-            if (points_array[middle].id < input) {
-                first = middle + 1;
-            } else if (points_array[middle].id == input) {
-                return middle;
-            } else {
-                array_len = middle - 1;
-            }
-            middle = (first + array_len) / 2;
+    while (first <= array_len) {
+        if (points_array[middle].id < input) {
+            first = middle + 1;
+        } else if (points_array[middle].id == input) {
+            return middle;
+        } else {
+            array_len = middle - 1;
         }
+        middle = (first + array_len) / 2;
     }
 }
