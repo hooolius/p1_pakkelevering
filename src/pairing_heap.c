@@ -57,3 +57,21 @@ pairing_heap merge(pairing_heap heap1, pairing_heap heap2) {
     }
   }
 }
+
+void insert_elem(pairing_heap heap, heap_elem elem){
+  heap.size++;
+  pairing_heap addition;
+  heap_elem *pelem = &elem;
+
+  pelem->pleft_child = NULL;
+  pelem->pprev_sibling = NULL;
+  pelem->pnext_sibling = NULL;
+
+  if (heap.proot == NULL){
+    heap.proot = pelem;
+  }
+  else {
+    addition.proot = pelem;
+    heap = merge(heap, addition);
+  }
+}

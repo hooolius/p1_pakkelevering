@@ -3,6 +3,8 @@
 
 typedef struct heap_elem heap_elem;
 typedef struct pairing_heap pairing_heap;
+typedef struct heap_secrets heap_secrets;
+
 
 struct heap_elem {
   double value;
@@ -12,7 +14,14 @@ struct heap_elem {
 };
 
 struct pairing_heap {
+  int size;
   heap_elem *proot;
+};
+
+struct heap_secrets {
+  int size;
+  int size_subheaps;
+  pairing_heap subheaps[100];
 };
 
 // returns the lowest value in the heap
@@ -24,7 +33,7 @@ heap_elem extract_min(pairing_heap heap);
 // deletes the minimum element of the heap
 void delete_min(pairing_heap heap);
 // inserts an element into a heap 
-void insert_elem(heap_elem element, pairing_heap heap);
+void insert_elem(pairing_heap heap, heap_elem elem);
 // removes a node from the heap 
 void delete_elem(int i, pairing_heap heap);
 // redefines the element i to n 
