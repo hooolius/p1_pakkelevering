@@ -8,5 +8,6 @@ int main(void){
   printf("Hello World \n");
   printf("Version %d.%d \n",
       p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
-  dyn_array *test = calloc(10)
+  dyn_array *test = make_dyn_array(100);
+  
 }
