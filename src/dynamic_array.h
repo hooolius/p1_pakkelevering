@@ -15,7 +15,7 @@ struct dyn_array {
   //element elements[];
 };
 
-typedef dyn_array dyn_array;
+typedef struct dyn_array dyn_array;
 /* Makes a empty array */
 dyn_array *make_dyn_array(int size);
 /* Not implemented yet */
