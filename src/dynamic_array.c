@@ -1,9 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "dynamic_array.h"
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
+
+dyn_array *make_dyn_array(int min_capacity, ) {
+  dyn_array *array = calloc(min_capacity, sizeof(dyn_array) + sizeof());
+  array.min_capacity = min_capacity;
+  array.low_water_mark = min_capacity;
+  array.high_water_mark = 2 * min_capacity;
+  array.items = 0;
+  return array;
+}
 
 dyn_array *resize_array(dyn_array *array, int new_size) {
   array.low_water_mark = (int)ceil(new_size/4);

@@ -16,6 +16,8 @@ struct dyn_array {
 };
 
 typedef dyn_array dyn_array;
+/* Makes  */
+dyn_array *make_dyn_array(int size);
 
 void trim_to_size();
 /* Maybe implemented */
