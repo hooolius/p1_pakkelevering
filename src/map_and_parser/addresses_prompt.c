@@ -23,7 +23,7 @@ void addresses_prompt(void) {
 
         while (strcmp(check_for_end, end) != 0) {
             printf("Please enter the streetname (Element number %d)\n", j);
-            scanf("%s", check_for_end);
+            scanf("%[ ]s", check_for_end);
 
             if (0 != strcmp(check_for_end, end)) {
                 strcpy(arr_number_addresses[i].tags.street, check_for_end);
