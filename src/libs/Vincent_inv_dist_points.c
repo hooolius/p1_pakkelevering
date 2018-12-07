@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdio.h>
-#include <math.h>
 /*link header fil*/
 #include "Vincent_inv_dist_points.h"
 
