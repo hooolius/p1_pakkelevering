@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <math.h>
 #include "pairing_heap.h"
+struct a_node{
+  float lat;
+  float lon;
+  double g;
+  double h;
+  double f;
+  int is_active;
+};
+
+typedef struct a_node node;
 #include "dynamic_array.h"
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
@@ -30,7 +40,7 @@ dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size) {
 
 dyn_array_heap *add_element_to_end_h(dyn_array_heap *array_to_insert_in, heap_elem heap_to_insert) {
   dyn_array_heap *res = array_to_insert_in;
-  ++items;
+  ++array_to_insert_in->items;
   /* If array is not able to hold another element then resize array */
   if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
     /* If array is resized then a pointer to the new array is returned */
@@ -48,8 +58,8 @@ void ensure_capacity_h(dyn_array_heap *array, int capacity) {
 dyn_array_heap *delete_element_h(dyn_array_heap *array, heap_elem heap_to_delete) {
   dyn_array_heap *res = array;
   for (int i = 0; i < array->items; ++i) {
-    if(array.elements[i] == heap_to_delete) {
-      array.elements[i] = array.elements[items];
+    if(array->heap_elems[i] == heap_to_delete) {
+      array->heap_elems[i] = array->heap_elems[array->items];
       --array->items;
     }
   }
@@ -62,8 +72,8 @@ dyn_array_heap *delete_element_h(dyn_array_heap *array, heap_elem heap_to_delete
 dyn_array_heap *find_element_h(dyn_array_heap *array, heap_elem heap_to_find) {
   dyn_array_heap *res;
   for (int i = 0; i < array->items; ++i) {
-    if(array.elements[i] == elem_to_find) {
-      res = &array.elements[i];
+    if(array->heap_elems[i] == heapto_find) {
+      res = &array->heap_elems[i];
     }
   }
   return res;
@@ -110,8 +120,8 @@ void ensure_capacity_n(dyn_array_node *array, int capacity) {
 dyn_array_node *delete_element_n(dyn_array_node *array, node node_to_delete) {
   dyn_array_node *res = array;
   for (int i = 0; i < array->items; ++i) {
-    if(array.elements[i] == elem_to_delete) {
-      array.elements[i] = array.elements[items];
+    if(array->nodes[i] == node_to_delete) {
+      array->nodes[i] = array->nodes[array->items];
       --array->items;
     }
   }
@@ -124,8 +134,8 @@ dyn_array_node *delete_element_n(dyn_array_node *array, node node_to_delete) {
 dyn_array_node *find_element_n(dyn_array_node *array, node node_to_find) {
   dyn_array_node *res;
   for (int i = 0; i < array->items; ++i) {
-    if(array.elements[i] == elem_to_find) {
-      res = &array.elements[i];
+    if(array->nodes[i] == node_to_find) {
+      res = &array->nodes[i];
     }
   }
   return res;
