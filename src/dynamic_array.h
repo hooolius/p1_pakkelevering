@@ -12,7 +12,7 @@ struct dyn_array_heap {
   int items;
   //The size of the array
   //int size; maybe not needed
-  heap_elem heap_elems[];
+  heap_elem *heap_elems;
 };
 
 struct dyn_array_node {
@@ -26,7 +26,7 @@ struct dyn_array_node {
   int items;
   //The size of the array
   //int size; maybe not needed
-  node nodes[];
+  node *nodes;
 };
 
 typedef struct dyn_array_heap dyn_array_heap;
