@@ -1,53 +1,8 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "parser_addresses.h"
 #include "cJSON.c"
 #include "cJSON.h"
 
-void convert_to_array(char *text);
-
-void parse_file();
-
-struct tags {
-    char city[30];
-    char street[30];
-    char country[5];
-    char house_number[5];
-    char muncipality[20];
-    char postcode[4];
-};
-
-struct address {
-    int id;
-    double lat;
-    double lon;
-    struct tags tags;
-
-} address;
-
-struct address parser(struct address curr_address, FILE *paddress_file, char search[], int line);
-
-int is_in_array(char input_streetname[], char input_housenumber[]);
-
-int main() {
-
-    FILE *paddress_file;
-    paddress_file = fopen("addresses.json", "rb");
-
-    parse_file();
-
-    if (paddress_file == NULL) {
-        printf("ERROR ON LOADING FILE");
-        exit(-1);
-    }
-
-    rewind(paddress_file);
-    fclose(paddress_file);
-
-    return 0;
-}
-
-void parse_file() {
+void parser_addreses(struct address searches[]) {
     long len = 0;
     char *data = NULL;
     FILE *paddress_file;
@@ -61,17 +16,14 @@ void parse_file() {
     len = ftell(paddress_file);
     fseek(paddress_file, 0, SEEK_SET);
 
-
     data = (char *) malloc(len + 1);
     fread(data, 1, len, paddress_file);
     data[len] = '\0';
     fclose(paddress_file);
-    convert_to_array(data);
-
-
+    convert_to_array(data,searches);
 }
 
-void convert_to_array(char *text) {
+void convert_to_array(char *text,struct address searches[]) {
     cJSON *json = NULL;
     const cJSON *element = NULL;
     const cJSON *elements = NULL;
@@ -90,7 +42,7 @@ void convert_to_array(char *text) {
             tags = cJSON_GetObjectItemCaseSensitive(element, "tags");
 
             if (is_in_array(cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring,
-                            cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring) == 1) {
+                            cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring,searches) == 1) {
 
                 addresses[j].lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
                 addresses[j].lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
@@ -108,55 +60,17 @@ void convert_to_array(char *text) {
 
                 strcpy(addresses[j].tags.postcode,
                        cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
-
-                printf("Succes you git: Streetnam: %s \n Housenumber %s \n "
-                       "Long: %lf \n"
-                       "Lat: %lf \n", addresses[j].tags.street,
-                       addresses[j].tags.house_number, addresses[j].lon, addresses[j].lat);
                 j++;
             }
         }
     }
 }
 
-int is_in_array(char input_streetname[], char input_housenumber[]) {
-    struct address searches[20];
-    strcpy(searches[0].tags.street, "Abelsvej");
-    strcpy(searches[0].tags.house_number, "2");
-    strcpy(searches[1].tags.street, "James Tobins Alle");
-    strcpy(searches[1].tags.house_number, "2");
-    strcpy(searches[2].tags.street, "Jernbanegade");
-    strcpy(searches[2].tags.house_number, "10");
-    strcpy(searches[3].tags.street, "Borgmestervæeget");
-    strcpy(searches[3].tags.house_number, "1");
-    strcpy(searches[4].tags.street, "Vesterled");
-    strcpy(searches[4].tags.house_number, "22");
-    strcpy(searches[5].tags.street, "Kastetvej");
-    strcpy(searches[5].tags.house_number, "117");
-    strcpy(searches[6].tags.street, "Bobsvinvej");
-    strcpy(searches[6].tags.house_number, "2");
-    strcpy(searches[7].tags.street, "Brandstrupsgade");
-    strcpy(searches[7].tags.house_number, "10");
-    strcpy(searches[8].tags.street, "Danmarksgade");
-    strcpy(searches[8].tags.house_number, "49");
-    strcpy(searches[9].tags.street, "Fyensgade");
-    strcpy(searches[9].tags.house_number, "54");
-    strcpy(searches[10].tags.street, "Herskindsgade");
-    strcpy(searches[10].tags.house_number, "20");
-    strcpy(searches[11].tags.street, "Absalonsgade");
-    strcpy(searches[11].tags.house_number, "12");
-    strcpy(searches[12].tags.street, "Adjunktvej");
-    strcpy(searches[12].tags.house_number, "12");
-    strcpy(searches[13].tags.street, "Fyrkildevej");
-    strcpy(searches[13].tags.house_number, "67");
-    strcpy(searches[14].tags.street, "Læsøgade");
-    strcpy(searches[14].tags.house_number, "26B");
-    strcpy(searches[15].tags.street, "Norgesgade");
-    strcpy(searches[15].tags.house_number, "7B");
-
+int is_in_array(char input_streetname[], char input_housenumber[],struct address searches[]) {
     for (int k = 0; k < 20; ++k) {
         if (strcmp(input_streetname, searches[k].tags.street) == 0) {
             if (strcmp(input_housenumber, searches[k].tags.house_number) == 0) {
+                printf("Check");
                 return 1;
             }
         }

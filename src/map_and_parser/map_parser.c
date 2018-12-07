@@ -1,36 +1,6 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "cJSON.c"
-#include "cJSON.h"
+#include "map_parser.h"
 
-struct point {
-    double id;
-    double lon;
-    double lat;
-    int p1;
-    int p2;
-    int p3;
-    int p4;
-    int p5;
-    int p6;
-};
-
-void search_and_parse_points(char data[], struct point *points_array);
-
-int sorter_function(const void *a, const void *b);
-
-void search_and_parse_streets(char *data, struct point points_array[]);
-
-int binary_searcher(double input, struct point points_array[], int array_len);
-
-int points_counter(cJSON *pJSON);
-
-void pointer_writer(struct point points_array[], int array_key, int old_array_key);
-
-int is_written(struct point point, int array_key, int old_array_key);
-
-int main(void) {
+void map_parser(void) {
     /*Terms:
      *  Points: A representation of a geographical point.*/
     cJSON *json = NULL;
@@ -132,7 +102,6 @@ void search_and_parse_streets(char *data, struct point points_array[]) {
     const cJSON *roads = NULL;
     const cJSON *road = NULL;
     int array_len = 0, array_key = 0, old_array_key = 0;
-    double input;
 
     json = cJSON_Parse(data);
 
@@ -154,18 +123,11 @@ void search_and_parse_streets(char *data, struct point points_array[]) {
                 array_key = binary_searcher(road_point->valuedouble, points_array, array_len);
                 if (old_array_key != 0) {
                     pointer_writer(points_array, array_key, old_array_key);
-                    printf("\t Test of return  ID:: %d Array key: %.0lf \nJ_Old: %d", array_key,
-                           road_point->valuedouble, old_array_key);
-                    printf("\n P1: %d \n P2: %d \n P3: %d \n P4: %d \n P5: %d \n", points_array[array_key].p1,
-                           points_array[array_key].p2,
-                           points_array[array_key].p3, points_array[array_key].p4, points_array[array_key].p5);
                 }
                 old_array_key = array_key;
-
             }
 
             old_array_key = 0;
-            printf("End of section \n");
         }
     }
 }
@@ -174,8 +136,8 @@ void pointer_writer(struct point points_array[], int array_key, int old_array_ke
     /*Inputs the array_key and old_array key into the points.
      * The points gets connected to eachoter, by writing the array key into the struct,
      * of the points to which its connected.*/
-    if (!is_written(points_array[array_key], array_key, old_array_key)) {
 
+    if (!is_written(points_array[array_key],array_key,old_array_key)) {
         if (points_array[array_key].p1 == 0) {
             points_array[array_key].p1 = old_array_key;
 
@@ -197,7 +159,7 @@ void pointer_writer(struct point points_array[], int array_key, int old_array_ke
         }
     }
 
-    if (!is_written(points_array[old_array_key], array_key, old_array_key)) {
+    if (!is_written(points_array[old_array_key],array_key,old_array_key)) {
         if (points_array[old_array_key].p1 == 0) {
             points_array[old_array_key].p1 = array_key;
 

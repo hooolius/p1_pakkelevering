@@ -23,6 +23,9 @@ struct point {
     int p6;
 };
 
+
+void map_parser(void);
+
 void search_and_parse_points(char data[], struct point *points_array);
 
 int sorter_function(const void *a, const void *b);
