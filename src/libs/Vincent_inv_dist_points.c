@@ -1,11 +1,14 @@
 /*link header fil*/
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
 #include "Vincent_inv_dist_points.h"
 
 /* https://github.com/pkohut/GeoFormulas/blob/master/include/GeoFormulas.h */
 /* https://community.esri.com/groups/coordinate-reference-systems/blog/2017/10/11/vincenty-formula */
 /* Most accurate Vincenty’s formula */
 /*the function we use Vincenty's distance formula*/
-double calculate_distance_to_points_3(s_point *point1, s_point *point2)
+double calculate_distance_to_points_3(struct gps_point *point1, struct gps_point *point2)
 {
     const double k_inverse_flattening = 298.2572235636654651;
     const double k_flattening = 1.0 / k_inverse_flattening;
