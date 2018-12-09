@@ -77,7 +77,7 @@ void a_star(node start, node goal, node *nodes) {
       heap_insert(open_list, neighbour_list);
       add_node_to_end_n(came_from, current);
     }
-    dyn_array_free(neighbour_list);
+    free(neighbour_list);
   }
 }
 
