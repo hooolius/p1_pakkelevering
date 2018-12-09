@@ -3,30 +3,51 @@
 
 #define SOME_VALUE 10
 
-struct a_node{
-  float lat;
-  float lon;
+struct node{
+  int id;
+  double lat;
+  double lon;
   double g;
   double h;
   double f;
   int is_active;
+  int p1;
+  int p2;
+  int p3;
+  int p4;
+  int p5;
+  int p6;
 };
 
-typedef struct a_node node;
+struct point {
+    double id;
+    double lon;
+    double lat;
+    int p1;
+    int p2;
+    int p3;
+    int p4;
+    int p5;
+    int p6;
+};
+
+typedef struct point point;
+typedef struct node node;
 
 int main(void) {
-  a_star();
+  node *nodes = convert_point_to_node();
+  a_star(start, goal, nodes);
   return 0;
 }
 /* A star setup */
-void a_star(node start, node goal) {
-  node closed_list = calloc(SOME_VALUE, sizeof(node));
+void a_star(node start, node goal, node *nodes) {
+  dyn_array_node *closed_list = make_dyn_array_n(100);
   start.g = 0;
   start.f = start.g + jorden_er_ikke_flad(start, goal);
   pairing_heap open_list;
   heap_clear(open_list);
   insert_elem(start);
-  dyn_array came_from;
+  dyn_array_node came_from;
   node current;
 
   node neighbour;
@@ -42,12 +63,11 @@ void a_star(node start, node goal) {
     }
     /* Move current node from open_list to closed_list */
     heap_delete(open_list, current);
-    dyn_insert(closed_list, current);
+    add_node_to_end_n(closed_list, current);
     /* Count number of neighbours and check if they exied in closed_list */
-    node *neighbour_list = make_neighbours_list(current);
-    int number_of_neighbours = count_elements_in_list(neighbour_list);
-    for (size_t i = 0; i < number_of_neighbours; ++i) {
-      if (contains(closed_list, next_neighbour(neighbour_list, i))) {
+    dyn_array_node *neighbour_list = make_neighbours_list(current);
+    for (size_t i = 0; i < neighbour_list.items; ++i) {
+      if (contains(closed_list, neighbour_list[i])) {
         continue;   // husk at ændre neighbour til neighbour[i] i koden
       }
       /* Neighbour is calculated and put in open_list and current is put in came_from */
@@ -57,6 +77,7 @@ void a_star(node start, node goal) {
       heap_insert(open_list, neighbour);
       insert(came_from, current);
     }
+    dyn_array_free(neighbour_list);
   }
 }
 
@@ -67,9 +88,29 @@ node *next_neighbour(node *neighbour_list, int number_of_neighbour) {
 
 }
 
-node *make_neighbours_list(node current) {
+dyn_array_node *make_neighbours_list(node current, node *nodes) {
   /* Follow pointers and count number of neighbours */
   /* return a pointer from a memory space where neighbours are stored */
+  dyn_array_node *neighbour_list = make_dyn_array_n(6);
+  if(current.p1 != 0) {
+  neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p1 - 1])
+  }
+  if(current.p2 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p2 - 1])
+  }
+  if(current.p3 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p3 - 1])
+  }
+  if(current.p4 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p4 - 1])
+  }
+  if(current.p5 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p5 - 1])
+  }
+  if(current.p6 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p6 - 1])
+  }
+  return neighbour_list;
 }
 
 /* Function copys one node to a other node */
@@ -77,15 +118,13 @@ void copy_node_to_node(node destination, node source) {
   destination.lat = source.lat;
   destination.lon = source.lon;
 }
-/* Julius ved ikke om du skal tænke over om denne funktion skal virke sådan */
-int count_elements_in_list(node *list){
-  int res = 0;
-  for (size_t i = 0; i < list.count; i++) {
-    if (list[i].is_active == 1) {
-      ++res;
-    }
-  }
-  return res;
+
+int count_elements_in_list(dyn_array_node *list) {
+  return list.items;
+}
+
+void contains() {
+
 }
 
 node reconstruct_path(came_from, current) {
@@ -105,4 +144,23 @@ void delete(node list[], node node_to_delete) {
 
 node extract_min(node list[]) {
   /* Julius du laver sådan en her tak */
+}
+
+node *convert_point_to_node(int number_of_points, point *points) {
+  node *nodes = malloc(sizeof(node) * number_of_points);
+  for (int i = 0; i < number_of_points; ++i) {
+    nodes[i].id = points[i].id;
+    nodes[i].lon = points[i].lon;
+    nodes[i].lat = points[i].lat;
+    nodes[i].is_active = 0;
+    nodes[i].g = 0;
+    nodes[i].h = 0;
+    nodes[i].f = 0;
+    nodes[i].p1 = points[i].p1;
+    nodes[i].p2 = points[i].p2;
+    nodes[i].p3 = points[i].p3;
+    nodes[i].p4 = points[i].p4;
+    nodes[i].p5 = points[i].p5;
+    nodes[i].p6 = points[i].p6;
+  }
 }
