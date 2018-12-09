@@ -47,7 +47,7 @@ void a_star(node start, node goal, node *nodes) {
   pairing_heap open_list;
   heap_clear(open_list);
   insert_elem(start);
-  dyn_array_node came_from;
+  dyn_array_node *came_from = make_dyn_array_n(100);
   node current;
 
   node neighbour;
@@ -71,11 +71,11 @@ void a_star(node start, node goal, node *nodes) {
         continue;   // husk at ændre neighbour til neighbour[i] i koden
       }
       /* Neighbour is calculated and put in open_list and current is put in came_from */
-      neighbour.g = current.g + jorden_er_ikke_flad(current, neighbour);
-      neighbour.h = jorden_er_ikke_flad(neighbour, goal);
-      neighbour.f = neighbour.h + neighbour.g;
-      heap_insert(open_list, neighbour);
-      insert(came_from, current);
+      neighbour_list.nodes[i].g = current.g + jorden_er_ikke_flad(current, neighbour_list.nodes[i]);
+      neighbour_list.nodes[i].h = jorden_er_ikke_flad(neighbour_list.nodes[i], goal);
+      neighbour_list.nodes[i].f = neighbour_list.nodes[i].h + neighbour_list.nodes[i].g;
+      heap_insert(open_list, neighbour_list);
+      add_node_to_end_n(came_from, current);
     }
     dyn_array_free(neighbour_list);
   }
@@ -123,8 +123,15 @@ int count_elements_in_list(dyn_array_node *list) {
   return list.items;
 }
 
-void contains() {
-
+int contains(dyn_array_node *closed_list, node item) {
+  int res = 0;
+  for (int i = 0; i < closed_list.items; ++i) {
+    if (closed_list.nodes[i].id == item.id) {
+      res = 1;
+      break;
+    }
+  }
+  return res;
 }
 
 node reconstruct_path(came_from, current) {
