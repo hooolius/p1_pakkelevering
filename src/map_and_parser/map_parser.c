@@ -1,6 +1,22 @@
 #include "map_parser.h"
+#include "cJSON.c"
+#include "cJSON.h"
 
-void map_parser(void) {
+void search_and_parse_points(char data[], struct point *points_array);
+
+int sorter_function(const void *a, const void *b);
+
+void search_and_parse_streets(char *data, struct point points_array[]);
+
+int binary_searcher(double input, struct point points_array[], int array_len);
+
+int points_counter(cJSON *pJSON);
+
+void pointer_writer(struct point points_array[], int array_key, int old_array_key);
+
+int is_written(struct point point, int array_key, int old_array_key);
+
+void map_parser(struct point *map_points) {
     /*Terms:
      *  Points: A representation of a geographical point.*/
     cJSON *json = NULL;
@@ -35,11 +51,11 @@ void map_parser(void) {
 
         /*Counts the amount of elements within the file*/
         i = points_counter(json);
-        points_array = calloc(i, sizeof(points_array[0]));
+        map_points = calloc(i, sizeof(points_array[0]));
 
         /*Calls the parsing functions*/
-        search_and_parse_points(data, points_array);
-        search_and_parse_streets(data, points_array);
+        search_and_parse_points(data, map_points);
+        search_and_parse_streets(data, map_points);
     }
 
 }

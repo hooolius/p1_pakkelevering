@@ -5,12 +5,9 @@
 #include "parser_addresses.h"
 #include "addresses_prompt.h"
 
-#define MAX_NUMBER_OF_NODES 20
 
-
-void addresses_prompt() {
+void addresses_prompt(struct address *searches) {
     int i = 0, number_of_packages = 0, j = 1;
-    struct address arr_number_addresses[MAX_NUMBER_OF_NODES];
     char check_for_end[50], end[] = "END", input_choice[2], manual_check[] = "1", document_check[] = "2", newline_find;
 
     printf("Hello there! - I need to know if you want to insert the addresses manually or using a document."
@@ -27,9 +24,9 @@ void addresses_prompt() {
             scanf("  %[^\n]s  ", check_for_end);
 
             if (0 != strcmp(check_for_end, end)) {
-                strcpy(arr_number_addresses[i].tags.street, check_for_end);
+                strcpy(searches[i].tags.street, check_for_end);
                 printf("Please enter the housenumber (Element number %d)\n", j);
-                scanf("%s", arr_number_addresses[i].tags.house_number);
+                scanf("%s", searches[i].tags.house_number);
                 i++;
                 number_of_packages++;
                 j++;
@@ -53,14 +50,14 @@ void addresses_prompt() {
 
         for (i = 0; i < number_of_packages; i++) {
             fscanf(pinput_file, " %[A-Za-z ], %[A-Za-z], %[0-9], %[A-Za-z-], %[0-9], %[A-Za-z].",
-                   arr_number_addresses[i].tags.city, arr_number_addresses[i].tags.country,
-                   arr_number_addresses[i].tags.house_number, arr_number_addresses[i].tags.muncipality,
-                   arr_number_addresses[i].tags.postcode, arr_number_addresses[i].tags.street);
+                   searches[i].tags.city, searches[i].tags.country,
+                   searches[i].tags.house_number, searches[i].tags.muncipality,
+                   searches[i].tags.postcode, searches[i].tags.street);
         }
 
 
     } else {
         printf("Invalid input - Try again\n");
     }
-    parser_addreses(arr_number_addresses);
+    parser_addreses(searches);
 }

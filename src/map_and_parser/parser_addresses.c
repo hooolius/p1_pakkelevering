@@ -1,6 +1,5 @@
 #include "parser_addresses.h"
-#include "cJSON.c"
-#include "cJSON.h"
+
 
 void parser_addreses(struct address searches[]) {
     long len = 0;
@@ -20,10 +19,10 @@ void parser_addreses(struct address searches[]) {
     fread(data, 1, len, paddress_file);
     data[len] = '\0';
     fclose(paddress_file);
-    convert_to_array(data,searches);
+    convert_to_array(data, searches);
 }
 
-void convert_to_array(char *text,struct address searches[]) {
+void convert_to_array(char *text, struct address searches[]) {
     cJSON *json = NULL;
     const cJSON *element = NULL;
     const cJSON *elements = NULL;
@@ -42,7 +41,7 @@ void convert_to_array(char *text,struct address searches[]) {
             tags = cJSON_GetObjectItemCaseSensitive(element, "tags");
 
             if (is_in_array(cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring,
-                            cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring,searches) == 1) {
+                            cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring, searches) == 1) {
 
                 addresses[j].lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
                 addresses[j].lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
@@ -64,13 +63,23 @@ void convert_to_array(char *text,struct address searches[]) {
             }
         }
     }
+    for (int i = 0; i < 20; ++i) {
+        strcpy(searches[i].tags.street, addresses[i].tags.street);
+        strcpy(searches[i].tags.house_number, addresses[i].tags.house_number);
+        strcpy(searches[i].tags.country, addresses[i].tags.country);
+        strcpy(searches[i].tags.muncipality, addresses[i].tags.muncipality);
+        strcpy(searches[i].tags.postcode, addresses[i].tags.postcode);
+        searches[i].lat = addresses[i].lat;
+        searches[i].lon = addresses[i].lon;
+
+
+    }
 }
 
-int is_in_array(char input_streetname[], char input_housenumber[],struct address searches[]) {
+int is_in_array(char input_streetname[], char input_housenumber[], struct address searches[]) {
     for (int k = 0; k < 20; ++k) {
         if (strcmp(input_streetname, searches[k].tags.street) == 0) {
             if (strcmp(input_housenumber, searches[k].tags.house_number) == 0) {
-                printf("Check");
                 return 1;
             }
         }

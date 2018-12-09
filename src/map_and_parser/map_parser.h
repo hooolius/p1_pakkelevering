@@ -8,8 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "cJSON.c"
-#include "cJSON.h"
+
 
 struct point {
     double id;
@@ -24,21 +23,9 @@ struct point {
 };
 
 
-void map_parser(void);
+void map_parser(struct point *map_points);
 
-void search_and_parse_points(char data[], struct point *points_array);
 
-int sorter_function(const void *a, const void *b);
-
-void search_and_parse_streets(char *data, struct point points_array[]);
-
-int binary_searcher(double input, struct point points_array[], int array_len);
-
-int points_counter(cJSON *pJSON);
-
-void pointer_writer(struct point points_array[], int array_key, int old_array_key);
-
-int is_written(struct point point, int array_key, int old_array_key);
 
 
 #endif //MAP_AND_PARSER_PARSERS_H

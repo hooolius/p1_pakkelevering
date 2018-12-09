@@ -3,10 +3,17 @@
 //
 
 #include "addresses_prompt.h"
-
-
+#include "parser_addresses.h"
+#include "map_parser.h"
 
 
 int main(void) {
-    addresses_prompt();
+    struct address *searches;
+    struct point *map_points;
+
+
+    addresses_prompt(searches);
+    map_parser(map_points);
+
+    return 1;
 }

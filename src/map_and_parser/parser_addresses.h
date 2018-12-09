@@ -4,6 +4,8 @@
 
 #ifndef MAP_AND_PARSER_PARSER_ADDRESSES_C_H
 #define MAP_AND_PARSER_PARSER_ADDRESSES_C_H
+#include "cJSON.c"
+#include "cJSON.h"
 
 struct tags {
     char city[30];
@@ -18,6 +20,8 @@ struct address {
     int id;
     double lat;
     double lon;
+    int closest_point;
+    double closest_point_dist;
     struct tags tags;
 
 } address;
