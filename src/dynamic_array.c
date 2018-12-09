@@ -4,12 +4,18 @@
 #include "pairing_heap.h"
 struct a_node{
   int id;
-  float lat;
-  float lon;
+  double lat;
+  double lon;
   double g;
   double h;
   double f;
   int is_active;
+  int p1;
+  int p2;
+  int p3;
+  int p4;
+  int p5;
+  int p6;
 };
 
 typedef struct a_node node;
