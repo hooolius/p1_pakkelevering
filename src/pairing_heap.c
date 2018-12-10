@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pairing_heap.h"
+#include "dynamic_array.h"
 
 pairing_heap merge_pairs(pairing_heap heap, pairing_heap subheaps[]);
 
 pairing_heap heap_init(pairing_heap heap) {
+  dyn_array_heap *subheap_arr;
+  subheap_arr = make_dyn_array_h(2);
+
   heap.size = 0;
   heap.proot = NULL;
-  heap.subheaps->size_subheaps = 0;
+  heap.subheaps = subheap_arr;
   
   return heap;
 }
@@ -35,7 +39,7 @@ pairing_heap merge(pairing_heap heap1, pairing_heap heap2) {
     return heap1;
   }
   else if (heap1.proot->value < heap2.proot->value) {
-    heap1.subheaps->subheaps[++heap1.subheaps->size_subheaps] = heap2;
+    heap1.subheaps[++heap1.subheaps->items] = heap2;
     if (heap1.proot->pleft_child == NULL) {
       heap1.proot->pleft_child = heap2.proot;
       return heap1;
@@ -116,4 +120,4 @@ pairing_heap merge_pairs(pairing_heap heap, pairing_heap subheaps[]) {
     return merge((subheaps[0], subheaps[1]), merge_pairs(heap, subheaps));
   }
 }
-//lav helper function til merge_pairs, så den kører rekursivt
+//lav helper function til merge_pairs, så den kører rekursivt?

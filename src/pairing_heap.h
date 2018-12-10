@@ -1,9 +1,9 @@
 /* pairing_heap.h - pairing heap implementation for C, to be used in our P1 
  * project at AAU. Designed for use in our A* implementation. */
+#include "dynamic_array.h"
 
 typedef struct heap_elem heap_elem;
 typedef struct pairing_heap pairing_heap;
-typedef struct heap_subheaps heap_subheaps;
 
 
 struct heap_elem {
@@ -16,12 +16,7 @@ struct heap_elem {
 struct pairing_heap {
   int size;
   heap_elem *proot;
-  heap_subheaps *subheaps;
-};
-
-struct heap_subheaps {
-  int size_subheaps;
-  pairing_heap subheaps[100];
+  dyn_array_heap *subheaps;
 };
 
 //initialize heap

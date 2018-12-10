@@ -12,7 +12,7 @@ struct dyn_array_heap {
   int items;
   //The size of the array
   //int size; maybe not needed
-  heap_elem *heap_elems;
+  pairing_heap *heaps;
 };
 
 struct dyn_array_node {
@@ -42,11 +42,11 @@ void ensure_capacity_h(dyn_array_heap *array, int capacity);
 /* Implemented */
 dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
 /* Implemented */
-dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_elem heap_to_insert);
+dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, pairing_heap heap_to_insert);
 /* Implemented */
-dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_elem heap_to_delete);
+dyn_array_heap *delete_heap_h(dyn_array_heap *array, pairing_heap heap_to_delete);
 /* Not implemented yet */
-dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_elem heap_to_find);
+dyn_array_heap *find_heap_h(dyn_array_heap *array, pairing_heap heap_to_find);
 
 /* NODE FUNCTIONS */
 /* Makes a empty array */
