@@ -141,14 +141,6 @@ node reconstruct_path(came_from, current) {
   }
 }
 
-void insert(node list[], node node_to_insert) {
-  /* Julius du laver sådan en her tak */
-}
-
-void delete(node list[], node node_to_delete) {
-  /* Julius du laver sådan en her tak */
-}
-
 node extract_min(node list[]) {
   /* Julius du laver sådan en her tak */
 }
