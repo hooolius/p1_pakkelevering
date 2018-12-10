@@ -16,6 +16,7 @@ include_directories ("${PROJECT_BINARY_DIR}")
 #nclude the distance lib
 #include_directories ("${PROJECT_SOURCE_DIR}/libs")
 #add_subdirectory (convert_distance)
+add_subdirectory (map_and_parser)
 
 #add our executable
 add_executable (p1_pakkelevering main.c)
