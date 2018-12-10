@@ -108,7 +108,7 @@ int points_counter() {
         i++;
     }
     fclose(paddress_file);
-    return i+1;
+    return i + 1;
 
 }
 
@@ -125,7 +125,6 @@ int sorter_function(const void *a, const void *b) {
     return 0;
 
 }
-
 
 void search_and_parse_streets(char *data, struct point *map_points) {
     /*Function passes streets, and connects the points, so all the points know what points they are connected to.*/

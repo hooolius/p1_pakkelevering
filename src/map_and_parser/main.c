@@ -16,8 +16,6 @@ int main(void) {
     map_parser(map_points);
     addresses_to_point_calc(searches,map_points);
 
-    printf("Testing: %lf",searches[0].closest_point_dist);
-
 
     return 1;
 }
