@@ -3,7 +3,7 @@
 
 typedef struct heap_elem heap_elem;
 typedef struct pairing_heap pairing_heap;
-typedef struct heap_secrets heap_secrets;
+typedef struct heap_subheaps heap_subheaps;
 
 
 struct heap_elem {
@@ -16,15 +16,16 @@ struct heap_elem {
 struct pairing_heap {
   int size;
   heap_elem *proot;
-  heap_secrets *secrets;
+  heap_subheaps *subheaps;
 };
 
-struct heap_secrets {
-  int size;
+struct heap_subheaps {
   int size_subheaps;
   pairing_heap subheaps[100];
 };
 
+//initialize heap
+pairing_heap heap_init(pairing_heap heap);
 // returns the lowest value in the heap
 heap_elem find_min(pairing_heap heap);
 // merges two heaps together

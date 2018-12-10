@@ -4,6 +4,14 @@
 
 pairing_heap merge_pairs(pairing_heap heap, pairing_heap subheaps[]);
 
+pairing_heap heap_init(pairing_heap heap) {
+  heap.size = 0;
+  heap.proot = NULL;
+  heap.subheaps->size_subheaps = 0;
+  
+  return heap;
+}
+
 heap_elem find_min(pairing_heap heap) {
   if (heap.proot == NULL) {
     perror("Error, heap is empty");
@@ -27,7 +35,7 @@ pairing_heap merge(pairing_heap heap1, pairing_heap heap2) {
     return heap1;
   }
   else if (heap1.proot->value < heap2.proot->value) {
-    heap1.secrets->subheaps[++heap1.secrets->size_subheaps] = heap2;
+    heap1.subheaps->subheaps[++heap1.subheaps->size_subheaps] = heap2;
     if (heap1.proot->pleft_child == NULL) {
       heap1.proot->pleft_child = heap2.proot;
       return heap1;
@@ -44,7 +52,7 @@ pairing_heap merge(pairing_heap heap1, pairing_heap heap2) {
     }
   }
   else {
-    heap2.secrets->subheaps[++heap1.secrets->size_subheaps] = heap1;
+    heap2.subheaps->subheaps[++heap1.subheaps->size_subheaps] = heap1;
     if (heap2.proot->pleft_child == NULL) {
       heap2.proot->pleft_child = heap1.proot;
       return heap2;
@@ -93,15 +101,15 @@ void delete_min(pairing_heap heap) {
     exit(EXIT_FAILURE);
   } 
   else {
-    merge_pairs(heap, heap.secrets->subheaps);
+    merge_pairs(heap, heap.subheaps->subheaps);
   }
 }
 
 pairing_heap merge_pairs(pairing_heap heap, pairing_heap subheaps[]) {
-  if (heap.secrets->size_subheaps == 0) {
+  if (heap.subheaps->size_subheaps == 0) {
     return heap;
   }
-  else if (heap.secrets->size_subheaps == 1) {
+  else if (heap.subheaps->size_subheaps == 1) {
     return merge(heap, subheaps[0]);
   }
   else {
