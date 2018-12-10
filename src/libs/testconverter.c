@@ -29,11 +29,16 @@ int converter_main(points_address *addresses, node *nodes) {
 
 	node start;
 	node slut;
-	while (number_of_address) {
-		start.lat = nodes[addresses.closest_node].lat;
-		start.lon = nodes[addresses.closest_node].lon;
-		slut.lat = addresses.lat;
-		slut.lon = addresses.lon;
+	int number_of_address = 0;
+	while (addresses[number_of_address].closest_node != 0) {
+		++number_of_address;
+	}
+
+	for (int i = 0; i < number_of_address, ++i) {
+		start.lat = nodes[addresses[i].closest_node].lat;
+		start.lon = nodes[addresses[i].closest_node].lon;
+		slut.lat = nodes[addresses[i].closest_node].lat;
+		slut.lon = nodes[addresses[i].closest_node].lon;
 
 		struct gps_point *ptrarr_punkter = a_star(start, slut);
 		if(ptrarr_punkter == NULL)
@@ -53,12 +58,13 @@ int converter_main(points_address *addresses, node *nodes) {
 		matrice_maker();
 
 		free(ptrarr_punkter);
+		++number_of_address;
 	}
 
 	return 0;
 }
 /*converter input output funtion fra a* til kombinatorisk */
-double converter(struct gps_point *arr_punkter){
+double converter(gps_point *arr_punkter){
 	int i;
 	/*resultat*/
 	double res=0;
