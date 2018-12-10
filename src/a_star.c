@@ -141,10 +141,6 @@ node reconstruct_path(came_from, current) {
   }
 }
 
-node extract_min(node list[]) {
-  /* Julius du laver sådan en her tak */
-}
-
 node *convert_point_to_node(int number_of_points, point *points) {
   node *nodes = malloc(sizeof(node) * number_of_points);
   for (int i = 0; i < number_of_points; ++i) {
