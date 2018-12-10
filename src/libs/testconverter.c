@@ -16,9 +16,11 @@
 
 
 /*input param med antal punkter fra a* filen laves om*/
-#define ANTALPUNKTER 100
+//#define ANTALPUNKTER 100
 
 double converter(struct gps_point *arr_punkter);
+
+gps_point *node_to_gps_point_converter(node *nodes)
 
 
 int converter_main(points_address *addresses, node *nodes) {
@@ -36,9 +38,7 @@ int converter_main(points_address *addresses, node *nodes) {
 
 	for (int i = 0; i < number_of_address, ++i) {
 		struct gps_point *ptrarr_punkter;
-
 		double afstantest[number_of_address][number_of_address];
-		printf("test afstand %lf", afstantest);
 		for (int i = 0; i < number_of_address; ++i) {
 			for (int j = 0; j < number_of_address; ++j) {
 				start.lat = nodes[addresses[i].closest_node].lat;
@@ -51,7 +51,7 @@ int converter_main(points_address *addresses, node *nodes) {
 					printf("Error! memory not allocated.");
 					exit(-1);
 				}
-				afstantest[i][j] = converter(ptrarr_punkter);
+				afstantest[i][j] = converter(ptrarr_punkter int number_of_address);
 				free(ptrarr_punkter);
 			}
 		}
@@ -59,13 +59,13 @@ int converter_main(points_address *addresses, node *nodes) {
 	return 0;
 }
 /*converter input output funtion fra a* til kombinatorisk */
-double converter(gps_point *arr_punkter){
+double converter(gps_point *arr_punkter int number_of_address){
 	double res = 0;
 	if(arr_punkter > 1) {
 		int i;
 		/*resultat*/
 
-		for (i = 0; i < ANTALPUNKTER - 1; ++i) {
+		for (i = 0; i < number_of_address - 1; ++i) {
 			/*Beregn afstanden mellem to punkter og summere til res*/
 			res += vincent_inv_dist(&arr_punkter[i],&arr_punkter[i++]);
 		}
