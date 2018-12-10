@@ -25,8 +25,6 @@ int main(int argc, char **argv) {
 	/*array af punkter fra A* med calloc*/
 	//struct gps_point *ptrarr_punkter=calloc(ANTALPUNKTER,sizeof(struct gps_point));
 
-	node_to_gps_point_converter();
-
 	struct gps_point *ptrarr_punkter = a_star(start, slut);
 	if(ptrarr_punkter == NULL)
 	{
