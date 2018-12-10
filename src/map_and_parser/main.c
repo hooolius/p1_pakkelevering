@@ -1,7 +1,3 @@
-//
-// Created by alexandern on 07/12/18.
-//
-
 #include "addresses_prompt.h"
 #include "parser_addresses.h"
 #include "map_parser.h"
@@ -11,15 +7,17 @@
 int main(void) {
     struct address *searches;
     struct point *map_points;
-    struct address *addresses;
+
+    searches = calloc(20, sizeof(struct address));
+    map_points = calloc(points_counter(), sizeof(struct point));
 
 
-    addresses_prompt(searches,addresses);
-    printf("Searches  %s",searches[0].tags.country);
-    //printf("Error yet?");
-    //map_parser(map_points);
-    //printf("Error yet? 2");
-  //  addresses_to_point_calc(searches,map_points);
+    addresses_prompt(searches);
+    map_parser(map_points);
+    addresses_to_point_calc(searches,map_points);
+
+    printf("Testing: %lf",searches[0].closest_point_dist);
+
 
     return 1;
 }

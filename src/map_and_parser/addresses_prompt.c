@@ -5,10 +5,10 @@
 #include "addresses_prompt.h"
 
 
-void addresses_prompt(struct address *searches,struct address *addresses) {
+void addresses_prompt(struct address *searches) {
     int i = 0, number_of_packages = 0, j = 1;
     char check_for_end[50], end[] = "END", input_choice[2], manual_check[] = "1", document_check[] = "2", newline_find;
-    searches = calloc(20, sizeof(struct address));
+    //searches = calloc(20, sizeof(struct address));
     printf("Hello there! - I need to know if you want to insert the addresses manually or using a document."
            "\nPress (1) for typing them in yourself and press (2) for using a document\n");
     scanf("%s", input_choice);
@@ -52,7 +52,6 @@ void addresses_prompt(struct address *searches,struct address *addresses) {
         }
 
         rewind(pinput_file);
-
         for (i = 0; i < number_of_packages; i++) {
             fscanf(pinput_file, " %[A-Za-z ], %[A-Za-z], %[0-9], %[A-Za-z-], %[0-9], %[A-Za-z].",
                    searches[i].tags.city, searches[i].tags.country,
@@ -67,4 +66,5 @@ void addresses_prompt(struct address *searches,struct address *addresses) {
     }
     printf("Got this far?");
     parser_addreses(searches);
+    printf("lat is: %lf \n", searches[0].lat);
 }

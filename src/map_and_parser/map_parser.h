@@ -1,7 +1,3 @@
-//
-// Created by alexandern on 07/12/18.
-//
-
 #ifndef MAP_AND_PARSER_PARSERS_H
 #define MAP_AND_PARSER_PARSERS_H
 
@@ -25,6 +21,7 @@ struct point {
 
 void map_parser(struct point *map_points);
 
+int points_counter();
 
 
 
