@@ -13,7 +13,7 @@ configure_file (
 #add the binary tree to the search path for include files
 include_directories ("${PROJECT_BINARY_DIR}")
 
-#include the distance lib
+#include the map_gen lib
 include_directories ("${PROJECT_SOURCE_DIR}/map_gen")
 add_subdirectory (map_gen)
 
