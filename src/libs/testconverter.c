@@ -35,51 +35,59 @@ int converter_main(points_address *addresses, node *nodes) {
 	}
 
 	for (int i = 0; i < number_of_address, ++i) {
-		start.lat = nodes[addresses[i].closest_node].lat;
-		start.lon = nodes[addresses[i].closest_node].lon;
-		slut.lat = nodes[addresses[++i].closest_node].lat;
-		slut.lon = nodes[addresses[++i].closest_node].lon;
+		struct gps_point *ptrarr_punkter;
 
-		struct gps_point *ptrarr_punkter = a_star(start, slut);
-		if(ptrarr_punkter == NULL)
-		{
-			printf("Error! memory not allocated.");
-			exit(-1);
-		}
-
-		/*test punkter
-		ptrarr_punkter[0].latitude = 57.048270;
-		ptrarr_punkter[0].longitude = 9.863372;
-		ptrarr_punkter[1].latitude = 57.046114;
-		ptrarr_punkter[1].longitude = 9.867273;*/
 		double afstantest[number_of_address][number_of_address];
 		printf("test afstand %lf", afstantest);
 		for (int i = 0; i < number_of_address; ++i) {
 			for (int j = 0; j < number_of_address; ++j) {
-				 afstantest[i][j] = converter(ptrarr_punkter);
+				start.lat = nodes[addresses[i].closest_node].lat;
+				start.lon = nodes[addresses[i].closest_node].lon;
+				slut.lat = nodes[addresses[j].closest_node].lat;
+				slut.lon = nodes[addresses[j].closest_node].lon;
+				ptrarr_punkter; = a_star(start, slut);
+				if(ptrarr_punkter == NULL)
+				{
+					printf("Error! memory not allocated.");
+					exit(-1);
+				}
+				afstantest[i][j] = converter(ptrarr_punkter);
+				free(ptrarr_punkter);
 			}
 		}
-		matrice_maker();
-
-		free(ptrarr_punkter);
-		++number_of_address;
 	}
-
 	return 0;
 }
 /*converter input output funtion fra a* til kombinatorisk */
 double converter(gps_point *arr_punkter){
-	int i;
-	/*resultat*/
-	double res=0;
-	for (i = 0; i < ANTALPUNKTER - 1; ++i) {
-		/*Beregn afstanden mellem to punkter og summere til res*/
-		res += vincent_inv_dist(&arr_punkter[i],&arr_punkter[i++]);
+	double res = 0;
+	if(arr_punkter > 1) {
+		int i;
+		/*resultat*/
+
+		for (i = 0; i < ANTALPUNKTER - 1; ++i) {
+			/*Beregn afstanden mellem to punkter og summere til res*/
+			res += vincent_inv_dist(&arr_punkter[i],&arr_punkter[i++]);
+		}
 	}
+	else {
+		res = 0;
+	}
+
 	return res;
 }
 
 void matrice_maker() {
+	double matrice[number_of_address][number_of_address];
+	int i, j;
+
+   /* for every value of   */
+   for ( i = 0; i < number_of_address; i++ ) {
+
+      for ( j = 0; j < number_of_address; j++ ) {
+
+      }
+   }
 
 }
 
