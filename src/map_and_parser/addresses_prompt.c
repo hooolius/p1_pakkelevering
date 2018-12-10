@@ -2,14 +2,13 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "parser_addresses.h"
 #include "addresses_prompt.h"
 
 
-void addresses_prompt(struct address *searches) {
+void addresses_prompt(struct address *searches,struct address *addresses) {
     int i = 0, number_of_packages = 0, j = 1;
     char check_for_end[50], end[] = "END", input_choice[2], manual_check[] = "1", document_check[] = "2", newline_find;
-
+    searches = calloc(20, sizeof(struct address));
     printf("Hello there! - I need to know if you want to insert the addresses manually or using a document."
            "\nPress (1) for typing them in yourself and press (2) for using a document\n");
     scanf("%s", input_choice);
@@ -33,10 +32,16 @@ void addresses_prompt(struct address *searches) {
             }
         }
 
-    } else if (strcmp(input_choice, document_check) == 0) {
+    }
+    else if (strcmp(input_choice, document_check) == 0) {
 
         FILE *pinput_file;
         pinput_file = fopen("leveringsfil.txt", "r");
+
+        if (pinput_file == NULL) {
+            printf("Input file not found");
+            exit(-1);
+        }
 
         /*Cound the number of lines in the txt file*/
         while (!feof(pinput_file)) {
@@ -56,8 +61,10 @@ void addresses_prompt(struct address *searches) {
         }
 
 
-    } else {
+    }
+    else {
         printf("Invalid input - Try again\n");
     }
+    printf("Got this far?");
     parser_addreses(searches);
 }

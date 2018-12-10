@@ -10,6 +10,6 @@
 #include "map_parser.h"
 
 
-void addresses_to_point_calc(struct address searches[],struct point map_points[]);
+void addresses_to_point_calc(struct address *searches,struct point *map_points);
 
 #endif //MAP_AND_PARSER_ADDRESS_TO_POINT_CALC_H

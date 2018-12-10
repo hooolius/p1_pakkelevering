@@ -1,6 +1,6 @@
 #include "address_to_point_calc.h"
 
-void addresses_to_point_calc(struct address searches[], struct point map_points[]) {
+void addresses_to_point_calc(struct address *searches, struct point *map_points) {
     double difference = 0;
     int points = 30000;
     int number_of_searches = 30;
@@ -20,7 +20,8 @@ void addresses_to_point_calc(struct address searches[], struct point map_points[
             if (searches[j].closest_point == 0) {
                 searches[j].closest_point_dist = difference;
                 searches[j].closest_point = i;
-            } else if (lat_difference + lon_difference < searches[j].closest_point_dist) {
+            }
+            else if (lat_difference + lon_difference < searches[j].closest_point_dist) {
                 searches[j].closest_point_dist = difference;
                 searches[j].closest_point = i;
             }

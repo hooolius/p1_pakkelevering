@@ -1,7 +1,8 @@
 #include "parser_addresses.h"
+#include "cJSON.c"
+#include "cJSON.h"
 
-
-void parser_addreses(struct address searches[]) {
+void parser_addreses(struct address *searches) {
     long len = 0;
     char *data = NULL;
     FILE *paddress_file;
@@ -19,10 +20,11 @@ void parser_addreses(struct address searches[]) {
     fread(data, 1, len, paddress_file);
     data[len] = '\0';
     fclose(paddress_file);
+    printf("Searches : 1 %d",searches[0].id);
     convert_to_array(data, searches);
 }
 
-void convert_to_array(char *text, struct address searches[]) {
+void convert_to_array(char *text, struct address *searches) {
     cJSON *json = NULL;
     const cJSON *element = NULL;
     const cJSON *elements = NULL;
@@ -60,23 +62,13 @@ void convert_to_array(char *text, struct address searches[]) {
                 strcpy(addresses[j].tags.postcode,
                        cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
                 j++;
+                printf("address: %s",addresses[j].tags.street);
             }
         }
     }
-    for (int i = 0; i < 20; ++i) {
-        strcpy(searches[i].tags.street, addresses[i].tags.street);
-        strcpy(searches[i].tags.house_number, addresses[i].tags.house_number);
-        strcpy(searches[i].tags.country, addresses[i].tags.country);
-        strcpy(searches[i].tags.muncipality, addresses[i].tags.muncipality);
-        strcpy(searches[i].tags.postcode, addresses[i].tags.postcode);
-        searches[i].lat = addresses[i].lat;
-        searches[i].lon = addresses[i].lon;
-
-
-    }
 }
 
-int is_in_array(char input_streetname[], char input_housenumber[], struct address searches[]) {
+int is_in_array(char input_streetname[], char input_housenumber[], struct address *searches) {
     for (int k = 0; k < 20; ++k) {
         if (strcmp(input_streetname, searches[k].tags.street) == 0) {
             if (strcmp(input_housenumber, searches[k].tags.house_number) == 0) {
