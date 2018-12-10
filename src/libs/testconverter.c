@@ -37,8 +37,8 @@ int converter_main(points_address *addresses, node *nodes) {
 	for (int i = 0; i < number_of_address, ++i) {
 		start.lat = nodes[addresses[i].closest_node].lat;
 		start.lon = nodes[addresses[i].closest_node].lon;
-		slut.lat = nodes[addresses[i].closest_node].lat;
-		slut.lon = nodes[addresses[i].closest_node].lon;
+		slut.lat = nodes[addresses[++i].closest_node].lat;
+		slut.lon = nodes[addresses[++i].closest_node].lon;
 
 		struct gps_point *ptrarr_punkter = a_star(start, slut);
 		if(ptrarr_punkter == NULL)
