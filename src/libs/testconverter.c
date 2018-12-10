@@ -52,9 +52,13 @@ int converter_main(points_address *addresses, node *nodes) {
 		ptrarr_punkter[0].longitude = 9.863372;
 		ptrarr_punkter[1].latitude = 57.046114;
 		ptrarr_punkter[1].longitude = 9.867273;*/
-		double afstandtest = converter(ptrarr_punkter);
-		printf("test afstand %lf", afstandtest);
-
+		double afstantest[number_of_address][number_of_address];
+		printf("test afstand %lf", afstantest);
+		for (int i = 0; i < number_of_address; ++i) {
+			for (int j = 0; j < number_of_address; ++j) {
+				 afstantest[i][j] = converter(ptrarr_punkter);
+			}
+		}
 		matrice_maker();
 
 		free(ptrarr_punkter);
@@ -76,16 +80,6 @@ double converter(gps_point *arr_punkter){
 }
 
 void matrice_maker() {
-	double matrice[number_of_address][number_of_address];
-	int i, j;
- 
-   /* for every value of   */
-   for ( i = 0; i < number_of_address; i++ ) {
-
-      for ( j = 0; j < number_of_address; j++ ) {
-        
-      }
-   }
 
 }
 
