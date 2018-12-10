@@ -1,10 +1,21 @@
 /* pairing_heap.h - pairing heap implementation for C, to be used in our P1 
  * project at AAU. Designed for use in our A* implementation. */
-#include "dynamic_array.h"
 
+typedef struct dyn_array_heap dyn_array_heap;
 typedef struct heap_elem heap_elem;
 typedef struct pairing_heap pairing_heap;
 
+struct dyn_array_heap {
+  //The threshold for then the array is reduced in size
+  int low_water_mark;
+  //The threshold for then the array is expanded in size
+  int high_water_mark;
+  //The minimum size the array can have
+  int min_capacity;
+  //Number of items in array
+  int items;
+  pairing_heap *heaps;
+};
 
 struct heap_elem {
   double value;
@@ -20,7 +31,7 @@ struct pairing_heap {
 };
 
 //initialize heap
-pairing_heap heap_init(pairing_heap heap);
+void heap_init(pairing_heap heap);
 // returns the lowest value in the heap
 heap_elem find_min(pairing_heap heap);
 // merges two heaps together
@@ -30,8 +41,7 @@ heap_elem extract_min(pairing_heap heap);
 // deletes the minimum element of the heap
 void delete_min(pairing_heap heap);
 // inserts an element into a heap 
-void insert_elem(pairing_heap heap, heap_elem elem);
+void insert_elem(pairing_heap heap, heap_elem elem, double value);
 // removes a node from the heap 
 void delete_elem(int i, pairing_heap heap);
 // redefines the element i to n 
-void decrease_key(int i, int n, pairing_heap heap);
