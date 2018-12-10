@@ -9,7 +9,7 @@ struct gps_point{
 
 //function prototype
 //function that we use in this project
-double calculate_distance_to_points_3(struct gps_point *point1 , struct gps_point *point2);
+double vincent_inv_dist(struct gps_point *point1 , struct gps_point *point2);
 
 //struct point input data
 //	struct gps_point point1;
