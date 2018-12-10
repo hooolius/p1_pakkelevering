@@ -102,10 +102,10 @@ pairing_heap merge_pairs(pairing_heap heap, pairing_heap subheaps[]) {
     return heap;
   }
   else if (heap.secrets->size_subheaps == 1) {
-    return merge(heap, subheaps[1]);
+    return merge(heap, subheaps[0]);
   }
   else {
-    return merge((subheaps[1], subheaps[2]), merge_pairs(subheaps[3], subheaps));
+    return merge((subheaps[0], subheaps[1]), merge_pairs(heap, subheaps));
   }
 }
 //lav helper function til merge_pairs, så den kører rekursivt
