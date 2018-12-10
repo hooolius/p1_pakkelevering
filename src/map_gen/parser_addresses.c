@@ -6,7 +6,7 @@ void parser_addreses(struct address *searches) {
     long len = 0;
     char *data = NULL;
     FILE *paddress_file;
-    paddress_file = fopen("addresses.json", "rb");
+    paddress_file = fopen("/usr/local/include/app_data/addresses.json", "rb");
     /* get the length */
     if (paddress_file == NULL) {
         printf("SHIT");
