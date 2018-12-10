@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "pairing_heap.h"
-struct a_node{
+struct a_node {
   int id;
   double lat;
   double lon;
