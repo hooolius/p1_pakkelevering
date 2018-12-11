@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#define SOME_VALUE 10
+#include "libs/convert_distance_from_points.h"
 
 struct node{
   int id;
@@ -34,8 +33,17 @@ struct point {
 typedef struct point point;
 typedef struct node node;
 
+#include "pairing_heap.h"
+#include "dynamic_array.h"
+
+#define SOME_VALUE 10
+
+node *convert_point_to_node(int number_of_points, point *points);
+void a_star(node start, node goal, node *nodes);
+
 int main(void) {
-  node *nodes = convert_point_to_node();
+  point *points = NULL;
+  node *nodes = convert_point_to_node(10, points);
   a_star(start, goal, nodes);
   return 0;
 }
