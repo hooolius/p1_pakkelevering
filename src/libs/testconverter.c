@@ -16,7 +16,7 @@
 /*input param med antal punkter fra a* filen laves om*/
 //#define ANTALPUNKTER 100
 
-double converter(struct gps_point *arr_punkter);
+double converter(gps_point *arr_punkter int number_of_address);
 
 gps_point *node_to_gps_point_converter(node *nodes)
 
