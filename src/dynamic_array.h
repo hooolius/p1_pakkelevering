@@ -7,12 +7,16 @@ typedef struct dyn_array_node dyn_array_node;
 /* HEAP FUNCTIONS */
 /* Makes a empty array */
 dyn_array_heap *make_dyn_array_h(int size);
+
 /* Not implemented yet */
 void trim_to_size_h();
+
 /* Maybe implemented */
 void ensure_capacity_h(dyn_array_heap *array, int capacity);
+
 /* Implemented */
 dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
+
 /* Implemented */
 dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, pairing_heap heap_to_insert);
 /* Implemented */

@@ -60,7 +60,7 @@ dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, pairing_he
 }
 
 void ensure_capacity_h(dyn_array_heap *array, int capacity) {
-  array->min_capacity = capacity;
+    array->min_capacity = capacity;
 }
 
 dyn_array_heap *delete_heap_h(dyn_array_heap *array, pairing_heap heap_to_delete) {
@@ -83,6 +83,5 @@ dyn_array_heap *find_heap_h(dyn_array_heap *array, pairing_heap heap_to_find) {
     if(array->heaps[i].proot == heap_to_find.proot) {
       res = &array->heaps[i];
     }
-  }
-  return res;
+    return res;
 }
