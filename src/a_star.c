@@ -1,54 +1,25 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "libs/convert_distance_from_points.h"
+#include "a_star.h"
 
-struct node{
-  int id;
-  double lat;
-  double lon;
-  double g;
-  double h;
-  double f;
-  int is_active;
-  int p1;
-  int p2;
-  int p3;
-  int p4;
-  int p5;
-  int p6;
-};
-
-struct point {
-    double id;
-    double lon;
-    double lat;
-    int p1;
-    int p2;
-    int p3;
-    int p4;
-    int p5;
-    int p6;
-};
-
-typedef struct point point;
-typedef struct node node;
-
-#include "pairing_heap.h"
-#include "dynamic_array.h"
-
-#define SOME_VALUE 10
 
 node *convert_point_to_node(int number_of_points, point *points);
-void a_star(node start, node goal, node *nodes);
 
-int main(void) {
+/*int main(void) {
   point *points = NULL;
   node *nodes = convert_point_to_node(10, points);
   a_star(start, goal, nodes);
   return 0;
-}
+}*/
 /* A star setup */
-void a_star(node start, node goal, node *nodes) {
+node *a_star(point start_p, point goal_p, point *points) {
+  int number_of_points = 0;
+  while (points[0].id != 0) {
+    ++number_of_points;
+  }
+  /* Debug code */
+  node *start = convert_point_to_node(1, start_p);
+  node *slut = convert_point_to_node(1, goal_p);
+  node *nodes = convert_point_to_node(number_of_points, points);
+
   int count = 0;
   dyn_array_node *closed_list = make_dyn_array_n(100);
   start.g = 0;
@@ -78,7 +49,7 @@ void a_star(node start, node goal, node *nodes) {
     delete_node_n(open_list, current);
     add_node_to_end_n(closed_list, current);
     /* Count number of neighbours and check if they exied in closed_list */
-    dyn_array_node *neighbour_list = make_neighbours_list(current);
+    dyn_array_node *neighbour_list = make_neighbours_list(current, nodes);
     for (size_t i = 0; i < neighbour_list.items; ++i) {
       if (contains(closed_list, neighbour_list[i])) {
         continue;   // husk at ændre neighbour til neighbour[i] i koden
