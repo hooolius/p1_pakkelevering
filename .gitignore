@@ -55,6 +55,8 @@ dkms.conf
 .idea/
 
 #CMake
+build/
+src/build
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles

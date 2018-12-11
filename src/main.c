@@ -32,9 +32,9 @@ struct node{
 typedef struct node node;
 
 
-#include "pairing_heap.h"
+#include "pathfinding/pairing_heap.h"
 #include "dynamic_array.h"
-#include "a_star.h"
+#include "pathfinding/a_star.h"
 #include "map_gen/addresses_prompt.h"
 #include "map_gen/parser_addresses.h"
 #include "map_gen/map_parser.h"
