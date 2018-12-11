@@ -45,24 +45,29 @@ void a_star(node start, node goal, node *nodes) {
   dyn_array_node *closed_list = make_dyn_array_n(100);
   start.g = 0;
   start.f = start.g + jorden_er_ikke_flad(start, goal);
-  pairing_heap open_list;
-  heap_clear(open_list);
-  insert_elem(start);
+  //pairing_heap open_list;
+  dyn_array_node *open_list = make_dyn_array_n(10);
+  //heap_clear(open_list);
+  add_node_to_end_n(open_list, start);
   dyn_array_node *came_from = make_dyn_array_n(100);
   node current;
   node neighbour;
 
-  heap_insert(open_list, start);
+  //heap_insert(open_list, start);
+  //heap_insert(open_list, start);
   /* A star algoritme */
   while (count_elements_in_list(open_list) != 0) {
     /* Take node with the smallest value and copy to current */
     copy_node_to_node(current, find_min(open_list));
     /* if the distance to goal is less than 1 meter then reconstruct path */
-    if(jorden_er_ikke_flad(current, goal) < 1.0){
+    if(jorden_er_ikke_flad(current, goal) < 1.0) {
+      free(closed_list);
+      free(open_list);
       return reconstruct_path(came_from);
     }
     /* Move current node from open_list to closed_list */
-    heap_delete(open_list, current);
+    //heap_delete(open_list, current);
+    delete_node_n(open_list, current);
     add_node_to_end_n(closed_list, current);
     /* Count number of neighbours and check if they exied in closed_list */
     dyn_array_node *neighbour_list = make_neighbours_list(current);
@@ -74,7 +79,8 @@ void a_star(node start, node goal, node *nodes) {
       neighbour_list.nodes[i].g = current.g + jorden_er_ikke_flad(current, neighbour_list.nodes[i]);
       neighbour_list.nodes[i].h = jorden_er_ikke_flad(neighbour_list.nodes[i], goal);
       neighbour_list.nodes[i].f = neighbour_list.nodes[i].h + neighbour_list.nodes[i].g;
-      heap_insert(open_list, neighbour_list);
+      //heap_insert(open_list, neighbour_list.nodes[i]);
+      add_node_to_end_n(open_list, neighbour_list.nodes[i]);
       add_node_to_end_n(came_from, current);
       ++count;
     }
@@ -82,6 +88,28 @@ void a_star(node start, node goal, node *nodes) {
   }
   printf("A star: No path exiting program!\n");
   exit(-1);
+}
+
+node *find_min(dyn_array_node list) {
+  qsort(list.nodes, list.items, sizeof(node), cmp_func);
+  return list.nodes[0];
+}
+
+int cmp_func(void *a, void *b) {
+  int res;
+  node *aa = (node*)a;
+  node *bb = (node*)b;
+
+  if(aa.f < bb.f) {
+    res = -1;
+  }
+  else if(aa.f == aa.f) {
+    res = 0;
+  }
+  else {
+    res = 1;
+  }
+  return res;
 }
 
 /*if (contains(closed_list, neighbour)) {
@@ -142,6 +170,7 @@ node reconstruct_path(dyn_array_node came_from, current) {
   for (int i = 0; i < came_from.items; i++) {
     total_path[i] = came_from.nodes[i];
   }
+  free(came_from);
   return total_path;
 }
 
