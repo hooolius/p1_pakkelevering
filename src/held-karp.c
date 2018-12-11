@@ -42,8 +42,9 @@ void held_karp(int **matrix, int size,
   for(i=0;i<size;i++) {
     matrix[i]=(int *) calloc((int) pow(2, size), sizeof(int));
   }
-
   setup(matrix, memo, start_node, size);
+  solve(matrix, memo, start_node, size);
+  min_cost = calc_min_cost(matrix, memo, start_node, size);
 }
 
 /* finds the optimal route from start_node to i, as given in the distance
@@ -122,3 +123,20 @@ void combinations_subset_helper(int j, int set,
     }
   }
 }
+int calc_min_cost(int **matrix, int **memo, int start_node, int size) {
+  int plan_cost = INT_MAX;
+  int end_state = (1 << size) - 1;
+  int min_plan_cost = INT_MAX;
+
+  for (int i = 0; i < size; i++) {
+    if (i != start_node) {
+      plan_cost = memo[i][end_state] + matrix[i][start_node];
+      if (plan_cost < min_plan_cost) {
+        min_plan_cost = plan_cost;
+      }
+    }
+  }
+  return min_plan_cost;
+}
+void calc_best_plan(int **matrix, int **memo,
+    int start_node, int size, int plan[]);
