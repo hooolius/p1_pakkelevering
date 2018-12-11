@@ -1,4 +1,17 @@
-/* pairing_heap.h - pairing heap implementation for C, to be used in our P1 
+/* pairing_heap.h - pairing heap implementation for C, to be used in our P1 #include <stdio.h>
+#include <math.h>
+
+#define R 6371e3;
+
+struct gps_point{
+    double latitude;
+    double longitude;
+};
+
+double calculate_distance_to_points(struct gps_point *point1, struct gps_point *point2);
+double calculate_distance_to_points_2(struct gps_point *point1, struct gps_point *point2);
+double calculate_distance_to_points_3(struct gps_point *point1, struct gps_point *point2);
+
  * project at AAU. Designed for use in our A* implementation. */
 
 typedef struct heap_elem heap_elem;
