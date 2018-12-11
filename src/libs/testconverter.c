@@ -28,64 +28,67 @@ gps_point * node_to_gps_point_converter(node *nodes);
 
 /**
  *main function in converter remember to add param:
- * an array of struct of point AKA param points_adress
- * an pointer array of point struct from map parser
+ * an array of pointers of struct of point AKA param points_adress
+ * an array of pointer from point struct from map parser
  * @param addresses
  * @param nodes
  * @return
  */
-int converter_main(points_address *addresses, point_arr *nodes);
+int converter_main(struct address *addresses, struct point *map_points);
 
 int main (void){
-	converter_main();
+
 	return 0;
 }
 
 
-int converter_main(points_address *addresses, point_arr *point) {
+int converter_main(struct address *addresses, struct point *map_points) {
 	/*array af punkter fra A* med calloc*/
 	//struct gps_point *ptrarr_punkter=calloc(ANTALPUNKTER,sizeof(struct gps_point));
+	/*struct gps_point *ptrarr_punkter;
+	 */
 
-	/*node_to_gps_point_converter(node *nodes);*/
 
 	node start;
 	node slut;
 	int number_of_address = 0;
 	/*count number of addresses*/
-	while (addresses[number_of_address].closest_node != 0) {
+	while (addresses[number_of_address].closest_point != 0) {
 		++number_of_address;
 	}
-
-	for (int i = 0; i < number_of_address, ++i) {
-		struct gps_point *ptrarr_punkter;
-		double afstantest[number_of_address][number_of_address];
+	/*calloc array nodes*/
+	node *ptrarr_punkter=calloc(number_of_address,sizeof(node));
+	if(ptrarr_punkter == NULL)
+	{
+		printf("Error! memory not allocated.");
+		exit(-1);
+	}
+	for (int g = 0; g < number_of_address; ++g) {
+		double afstandtest[number_of_address][number_of_address];
 		for (int i = 0; i < number_of_address; ++i) {
 			for (int j = 0; j < number_of_address; ++j) {
-				start.lat = nodes[addresses[i].closest_node].lat;
-				start.lon = nodes[addresses[i].closest_node].lon;
-				slut.lat = nodes[addresses[j].closest_node].lat;
-				slut.lon = nodes[addresses[j].closest_node].lon;
-				ptrarr_punkter = a_star(start, slut);
-				if(ptrarr_punkter == NULL)
-				{
-					printf("Error! memory not allocated.");
-					exit(-1);
-				}
-				afstantest[i][j] = converter(ptrarr_punkter int number_of_address);
-				free(ptrarr_punkter);
+				start.lat = map_points[addresses[i].closest_point].lat;
+				start.lon = map_points[addresses[i].closest_point].lon;
+				slut.lat = map_points[addresses[j].closest_point].lat;
+				slut.lon = map_points[addresses[j].closest_point].lon;
+				ptrarr_punkter[g] = a_star(start, slut);
+				afstandtest[i][j] = converter(ptrarr_punkter, number_of_address);
+
 			}
 		}
 	}
-
+	free(ptrarr_punkter);
 }
 
 
 /*converter input output funtion fra a* til kombinatorisk */
-double converter(gps_point *arr_punkter int number_of_address){
+double converter(node *arr_punkter, int number_of_address){
 	double res = 0;
+	int i;
+	/*sporg mark*/
 	if(arr_punkter > 1) {
-		int i;
-		/*resultat*/
+
+		/*calc result*/
 
 		for (i = 0; i < number_of_address - 1; ++i) {
 			/*Beregn afstanden mellem to punkter og summere til res*/
