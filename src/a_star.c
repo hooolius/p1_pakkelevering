@@ -41,6 +41,7 @@ int main(void) {
 }
 /* A star setup */
 void a_star(node start, node goal, node *nodes) {
+  int count = 0;
   dyn_array_node *closed_list = make_dyn_array_n(100);
   start.g = 0;
   start.f = start.g + jorden_er_ikke_flad(start, goal);
@@ -49,7 +50,6 @@ void a_star(node start, node goal, node *nodes) {
   insert_elem(start);
   dyn_array_node *came_from = make_dyn_array_n(100);
   node current;
-
   node neighbour;
 
   heap_insert(open_list, start);
@@ -58,8 +58,8 @@ void a_star(node start, node goal, node *nodes) {
     /* Take node with the smallest value and copy to current */
     copy_node_to_node(current, find_min(open_list));
     /* if the distance to goal is less than 1 meter then reconstruct path */
-    if(jorden_er_ikke_flad(current, goal) < 1){
-      return reconstruct_path(came_from, current);
+    if(jorden_er_ikke_flad(current, goal) < 1.0){
+      return reconstruct_path(came_from);
     }
     /* Move current node from open_list to closed_list */
     heap_delete(open_list, current);
@@ -76,9 +76,12 @@ void a_star(node start, node goal, node *nodes) {
       neighbour_list.nodes[i].f = neighbour_list.nodes[i].h + neighbour_list.nodes[i].g;
       heap_insert(open_list, neighbour_list);
       add_node_to_end_n(came_from, current);
+      ++count;
     }
     free(neighbour_list);
   }
+  printf("A star: No path exiting program!\n");
+  exit(-1);
 }
 
 /*if (contains(closed_list, neighbour)) {
@@ -134,11 +137,12 @@ int contains(dyn_array_node *closed_list, node item) {
   return res;
 }
 
-node reconstruct_path(came_from, current) {
-  while (contains(came_from, current)) {
-    insert(total_path, current);
-    current = came_from[current];
+node reconstruct_path(dyn_array_node came_from, current) {
+  node *total_path = calloc(came_from.items, sizeof(node));
+  for (int i = 0; i < came_from.items; i++) {
+    total_path[i] = came_from.nodes[i];
   }
+  return total_path;
 }
 
 node *convert_point_to_node(int number_of_points, point *points) {
