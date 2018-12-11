@@ -23,16 +23,26 @@ unsigned long factorial(unsigned long i);
 
 int main(void) {
   int **matrix;
-  int n = 10;
+  int n = 11;
   matrix = calloc(n, sizeof(int*));
   int q;
   for(q=0;q<n;q++)
     matrix[q]=(int *) calloc(n, sizeof(int));
 
-  int x, y;
-  for(x = 0; x < n; x ++) {
-    for(y = 0; y < n; y ++) matrix[x][y] = x+y;
+  for(int i=0;i<n;i++)
+    {
+    printf("\n Enter Elements of Row # : %d\n", i);
+    for(int j=0;j<n;j++)
+    scanf("%d",&matrix[i][j]);
+    }
+
+for(int i=0;i<n;i++)
+    {
+    printf("\n\n");
+    for(int j=0;j<n;j++)
+         printf("\t%d",matrix[i][j]);
   }
+
   int min_cost = 0;
   int start_node = 0;
   int a[n+1];
@@ -44,7 +54,7 @@ int main(void) {
 
   held_karp(matrix, size, start_node, &min_cost, a);
   printf("min cost: %d, optimal route: \n", min_cost);
-  for (int i = 0; i < size; i++) {
+  for (int i = 0; i < size+1; i++) {
     printf("%d, ", a[i]);
   }
   printf("\n");
@@ -90,12 +100,10 @@ void solve(int **matrix, int **memo, int start_node, int size) {
           int min_dist = INT_MAX;
           if (next != start_node && in_subset(next, subsets->subsets[i])) {
             int state = subsets->subsets[i] ^ (1 << next);
-            printf("%d, i %d\n", state, next);
             for (int end = 0; end < size; end++) {
               if (end != start_node && end != next
                   && in_subset(end, subsets->subsets[i])) {
                 int new_dist = memo[end][state] + matrix[end][next];
-                //printf("%d\n", new_dist);
                 if (new_dist < min_dist) {
                   min_dist = new_dist;
                 }
@@ -112,7 +120,7 @@ void solve(int **matrix, int **memo, int start_node, int size) {
 
 /* checks whether or not bit i in the subset is a 1 and returns a bool */
 int in_subset(int i, int subset) {
-  return !(((1 << i) | subset) == 0);
+  return !(((1 << i) & subset) == 0);
 }
 
 int combinations(int r, int n) {
@@ -169,13 +177,15 @@ void calc_best_plan(int **matrix, int **memo,
   int last_index = start_node;
   int end_state = (1 << size) - 1;
 
-  for (int i = size-1; i >= 1; i--) {
-    int index = size;
+  for (int i = size - 1; i >= 1; i--) {
+    int index = -1;
     for (int j = 0; j < size; j++) {
       if (j != start_node && in_subset(j, end_state)) {
-        index = index == size ? j : index;
+        if (index == -1) {
+          index = j;
+        }
         int prev_dist = memo[index][end_state] + matrix[index][last_index];
-        int new_dist = memo[j][end_state] + matrix[j][end_state];
+        int new_dist = memo[j][end_state] + matrix[j][last_index];
         index = new_dist < prev_dist ? j : index;
       }
     }
