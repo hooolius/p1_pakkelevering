@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <limits.h>
 #include "held-karp.h"
 
 void setup(int **matrix, int **memo, int start_node, int size);
@@ -58,8 +59,29 @@ void setup(int **matrix, int **memo, int start_node, int size) {
 }
 
 void solve(int **matrix, int **memo, int start_node, int size) {
-  for (int i = 3; i < size; i++) {
-
+  for (int r = 3; r < size; r++) {
+    int *subsets;
+    subsets = calloc(combinations(r, size), sizeof(int));
+    for (int i = 0; i < combinations(r, size); i++) {
+      if (in_subset(start_node, subsets[i])) {
+        for (int next = 0; next < size; next++) {
+          if (next != start_node && in_subset(next, subsets[i])) {
+            int state = subsets[0] ^ (1 << next);
+            int min_dist = INT_MAX;
+            for (int end = 0; end < size; end++) {
+              if (end != start_node && end != next
+                  && in_subset(end, subsets[i])) {
+                int new_dist = memo[end][state] + matrix[end][next];
+                if (new_dist < min_dist) {
+                  min_dist = new_dist;
+                }
+              }
+            }
+            memo[next][subsets[0]] = min_dist;
+          }
+        }
+      }
+    }
   }
 }
 
