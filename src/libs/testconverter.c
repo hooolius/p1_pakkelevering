@@ -8,12 +8,10 @@
  *      summere afstandene sammen
  */
 
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include "Vincent_inv_dist_points.h"
-
 
 /*input param med antal punkter fra a* filen laves om*/
 //#define ANTALPUNKTER 100
@@ -21,7 +19,6 @@
 double converter(struct gps_point *arr_punkter);
 
 gps_point *node_to_gps_point_converter(node *nodes)
-
 
 int converter_main(points_address *addresses, node *nodes) {
 	/*array af punkter fra A* med calloc*/
@@ -73,7 +70,6 @@ double converter(gps_point *arr_punkter int number_of_address){
 	else {
 		res = 0;
 	}
-
 	return res;
 }
 
@@ -82,13 +78,12 @@ void matrice_maker() {
 	int i, j;
 
    /* for every value of   */
-   for ( i = 0; i < number_of_address; i++ ) {
+   for (i = 0; i < number_of_address; ++i) {
 
-      for ( j = 0; j < number_of_address; j++ ) {
+      for (j = 0; j < number_of_address; ++j) {
 
       }
    }
-
 }
 
 gps_point *node_to_gps_point_converter(node *nodes) {
@@ -101,6 +96,5 @@ gps_point *node_to_gps_point_converter(node *nodes) {
 		points.latitude = nodes.lat;
 		points.longitude = nodes.lon;
 	}
-
 	return points;
 }
