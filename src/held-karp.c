@@ -29,9 +29,14 @@ int main(void) {
   }
   int min_cost = 0;
   int start_node = 0;
-  int a[20];
+  int a[21];
   int size = sizeof(a) / sizeof(int);
   held_karp(matrix, size, start_node, &min_cost, a);
+  printf("min cost: %d, optimal route: ", min_cost);
+  for (int i = 0; i < size; i++) {
+    printf("%d, ", a[i]);
+  }
+  printf("\n");
 }
 
 void held_karp(int **matrix, int size,
@@ -44,7 +49,8 @@ void held_karp(int **matrix, int size,
   }
   setup(matrix, memo, start_node, size);
   solve(matrix, memo, start_node, size);
-  min_cost = calc_min_cost(matrix, memo, start_node, size);
+  *min_cost = calc_min_cost(matrix, memo, start_node, size);
+  calc_best_plan(matrix, memo, start_node, size, plan);
 }
 
 /* finds the optimal route from start_node to i, as given in the distance
@@ -139,4 +145,23 @@ int calc_min_cost(int **matrix, int **memo, int start_node, int size) {
   return min_plan_cost;
 }
 void calc_best_plan(int **matrix, int **memo,
-    int start_node, int size, int plan[]);
+    int start_node, int size, int plan[]) {
+  int last_index = start_node;
+  int end_state = (1 << size) - 1;
+
+  for (int i = size-1; i >= 1; i--) {
+    int index = size;
+    for (int j = 0; j < size; j++) {
+      if (j != start_node && in_subset(j, end_state)) {
+        index = index == size ? j : index;
+        int prev_dist = memo[index][end_state] + matrix[index][last_index];
+        int new_dist = memo[j][end_state] + matrix[j][end_state];
+        index = new_dist < prev_dist ? j : index;
+      }
+    }
+    plan[i] = index;
+    end_state = end_state ^ (1 << index);
+    last_index = index;
+  }
+  plan[0] = plan[size] = start_node;
+}
