@@ -52,7 +52,7 @@ double vincent_inv_dist(double lat1, double lon1, double lat2, double lon2) {
                         (dcosu1sinu2 - dsinu1cosu2 * coslambda) * (dcosu1sinu2 - dsinu1cosu2 * coslambda));
 
         if (sinsigma == 0) {
-          return 0;
+            return 0;
         }
 
         cossigma = dsinu1sinu2 + dcosu1cosu2 * coslambda;
@@ -67,8 +67,7 @@ double vincent_inv_dist(double lat1, double lon1, double lat2, double lon2) {
         lambdap = lambda;
         lambda = l + (1.0 - c) * k_flattening * sinalpha *
                      (sigma + c * sinsigma * (cos2sigmam + c * cossigma * (-1.0 + 2.0 * cos2sigmam * cos2sigmam)));
-    }
-    while (fabs(lambda - lambdap) > keps && ++iterlimit < 40);
+    } while (fabs(lambda - lambdap) > keps && ++iterlimit < 40);
 
     double usq = cossqalpha * (k_semi_major_axis * k_semi_major_axis - k_semi_minor_axis * k_semi_minor_axis) /
                  (k_semi_minor_axis * k_semi_minor_axis);
