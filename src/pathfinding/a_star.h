@@ -1,29 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../map_gen/map_parser.h"
-#include "convert_distance_from_points.h"
-
-struct node{
-  int id;
-  double lat;
-  double lon;
-  double g;
-  double h;
-  double f;
-  int is_active;
-  int p1;
-  int p2;
-  int p3;
-  int p4;
-  int p5;
-  int p6;
-};
+#include "../libs/vincent_inv_dist_points.h"
+//#include "pairing_heap.h"
+#include "../libs/dynamic_array.h"
 
 typedef struct point point;
-typedef struct node node;
-
-//#include "pairing_heap.h"
-//#include "dynamic_array.h"
 
 #define SOME_VALUE 10
 
