@@ -1,6 +1,27 @@
 /* dynamic_array.h - made with inspiration from
 "A Practical Guide to Data Structures and Algorithms using Java" */
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include "pairing_heap.h"
+
+struct node{
+  int id;
+  double lat;
+  double lon;
+  double g;
+  double h;
+  double f;
+  int is_active;
+  int p1;
+  int p2;
+  int p3;
+  int p4;
+  int p5;
+  int p6;
+};
+
+typedef struct node node;
 
 struct dyn_array_node {
   int low_water_mark;
@@ -8,7 +29,7 @@ struct dyn_array_node {
   int min_capacity;
   int number_of_elements;
   int items;
-  node nodes[];
+  node *nodes;
 };
 
 typedef struct dyn_array_node dyn_array_node;

@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 project (p1_pakkelevering)
 #Version number
 set (p1_pakkelevering_VERSION_MAJOR 0)
-set (p1_pakkelevering_VERSION_MINOR 6)
+set (p1_pakkelevering_VERSION_MINOR 7)
 
 #configure the header file to pass CMake settings to the source code
 configure_file (
@@ -19,10 +19,16 @@ include_directories ("${PROJECT_SOURCE_DIR}/pathfinding")
 add_subdirectory (pathfinding)
 add_subdirectory (map_gen)
 
+#include the dyn array lib
+add_library(dyn_array dynamic_array.c)
+install (TARGETS dyn_array DESTINATION bin)
+install (FILES dynamic_array.h DESTINATION include)
+
 #add our executable
 add_executable (p1_pakkelevering main.c)
 target_link_libraries (p1_pakkelevering map_gen)
 target_link_libraries (p1_pakkelevering pathfinding)
+target_link_libraries (p1_pakkelevering dyn_array)
 
 # add the install targets
 install (TARGETS p1_pakkelevering DESTINATION bin)
