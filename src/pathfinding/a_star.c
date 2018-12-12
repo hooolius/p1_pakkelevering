@@ -1,5 +1,5 @@
 #include "a_star.h"
-
+#include "../libs/Vincent_inv_dist_points.h"
 
 /* A star setup */
 node *a_star(point *start_p, point *goal_p, point *points) {
