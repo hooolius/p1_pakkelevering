@@ -64,7 +64,7 @@ int converter_main(struct address *addresses, struct point *map_points) {
 		exit(-1);
 	}
 	for (int g = 0; g < number_of_address; ++g) {
-		double afstandtest[number_of_address][number_of_address];
+		double afstand[number_of_address][number_of_address];
 		for (int i = 0; i < number_of_address; ++i) {
 			for (int j = 0; j < number_of_address; ++j) {
 				start.lat = map_points[addresses[i].closest_point].lat;
@@ -72,7 +72,7 @@ int converter_main(struct address *addresses, struct point *map_points) {
 				slut.lat = map_points[addresses[j].closest_point].lat;
 				slut.lon = map_points[addresses[j].closest_point].lon;
 				ptrarr_punkter[g] = a_star(start, slut);
-				afstandtest[i][j] = converter(ptrarr_punkter, number_of_address);
+				afstand[i][j] = converter(ptrarr_punkter, number_of_address);
 
 			}
 		}
