@@ -4,20 +4,14 @@
 
 node *convert_point_to_node(int number_of_points, point *points);
 
-/*int main(void) {
-  point *points = NULL;
-  node *nodes = convert_point_to_node(10, points);
-  a_star(start, goal, nodes);
-  return 0;
-}*/
 int count_elements_in_list(dyn_array_node *list);
 
 /* Function copys one node to a other node */
 void copy_node_to_node(node destination, node source);
 
-node *find_min(dyn_array_node list);
+node *find_min_array(dyn_array_node list);
 
-node reconstruct_path(dyn_array_node came_from, current);
+node reconstruct_path(dyn_array_node came_from, node current);
 
 dyn_array_node *make_neighbours_list(node current, node *nodes);
 
@@ -33,13 +27,13 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     }
     /* Debug code */
     node *start = convert_point_to_node(1, start_p);
-    node *slut = convert_point_to_node(1, goal_p);
+    node *goal = convert_point_to_node(1, goal_p);
     node *nodes = convert_point_to_node(number_of_points, points);
 
     int count = 0;
     dyn_array_node *closed_list = make_dyn_array_n(100);
-    start.g = 0;
-    start.f = start.g + jorden_er_ikke_flad(start, goal);
+    start->g = 0;
+    start->f = start->g + vincent_inv_dist(start, goal);
     //pairing_heap open_list;
     dyn_array_node *open_list = make_dyn_array_n(10);
     //heap_clear(open_list);
@@ -53,9 +47,9 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     /* A star algoritme */
     while (count_elements_in_list(open_list) != 0) {
         /* Take node with the smallest value and copy to current */
-        copy_node_to_node(current, find_min(open_list));
+        copy_node_to_node(current, find_min_array(open_list));
         /* if the distance to goal is less than 1 meter then reconstruct path */
-        if (jorden_er_ikke_flad(current, goal) < 1.0) {
+        if (vincent_inv_dist(current, goal) < 1.0) {
             free(closed_list);
             free(open_list);
             return reconstruct_path(came_from);
@@ -75,8 +69,8 @@ node *a_star(point *start_p, point *goal_p, point *points) {
             neighbour_list.nodes[i].h = jorden_er_ikke_flad(neighbour_list.nodes[i], goal);
             neighbour_list.nodes[i].f = neighbour_list.nodes[i].h + neighbour_list.nodes[i].g;
             //heap_insert(open_list, neighbour_list.nodes[i]);
-            add_node_to_end_n(open_list, neighbour_list.nodes[i]);
-            add_node_to_end_n(came_from, current);
+            add_node_to_end_n(open_list, &neighbour_list.nodes[i]);
+            add_node_to_end_n(came_from, &current);
             ++count;
         }
         free(neighbour_list);
@@ -85,9 +79,9 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     exit(-1);
 }
 
-node *find_min(dyn_array_node list) {
+node *find_min_array(dyn_array_node list) {
     qsort(list.nodes, list.items, sizeof(node), cmp_func);
-    return list.nodes[0];
+    return &list.nodes[0];
 }
 
 int cmp_func(void *a, void *b) {
