@@ -278,7 +278,7 @@ int bool_remove(pairing_heap *pheap, node *element) {
     return 0;
 }
 
-node extract_min(pairing_heap pheap) {
+node extract_min(pairing_heap *pheap) {
     if (is_empty(pheap)) {
         perror("Error, heap is empty");
         exit(EXIT_FAILURE);

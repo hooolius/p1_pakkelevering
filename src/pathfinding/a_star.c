@@ -1,7 +1,7 @@
 #include "a_star.h"
 
 node *convert_points_to_nodes(int number_of_points, point *points);
-node convert_point_to_node(point *the_point);
+node *convert_point_to_node(point *the_point);
 
 int count_elements_in_list(dyn_array_node *list);
 
@@ -22,7 +22,7 @@ int cmp_func(const void *a, const void *b);
 /* A star setup */
 node *a_star(point *start_p, point *goal_p, point *points) {
     int number_of_points = 0;
-    while (points[0].id != 0) {
+    while (points[number_of_points].id != 0) {
         ++number_of_points;
     }
     /* Debug code */
@@ -183,20 +183,20 @@ node *convert_points_to_nodes(int number_of_points, point *points) {
     return nodes;
 }
 
-node convert_point_to_node(point *the_point) {
-  node the_node = malloc(sizeof(node));
-  nodes[i].id = points[i].id;
-  nodes[i].lon = points[i].lon;
-  nodes[i].lat = points[i].lat;
-  nodes[i].is_active = 0;
-  nodes[i].g = 0;
-  nodes[i].h = 0;
-  nodes[i].f = 0;
-  nodes[i].p1 = points[i].p1;
-  nodes[i].p2 = points[i].p2;
-  nodes[i].p3 = points[i].p3;
-  nodes[i].p4 = points[i].p4;
-  nodes[i].p5 = points[i].p5;
-  nodes[i].p6 = points[i].p6;
-  return the_node
+node *convert_point_to_node(point *point) {
+  node *node = malloc(sizeof(node));
+  node->id = point->id;
+  node->lon = point->lon;
+  node->lat = point->lat;
+  node->is_active = 0;
+  node->g = 0;
+  node->h = 0;
+  node->f = 0;
+  node->p1 = point->p1;
+  node->p2 = point->p2;
+  node->p3 = point->p3;
+  node->p4 = point->p4;
+  node->p5 = point->p5;
+  node->p6 = point->p6;
+  return node;
 }

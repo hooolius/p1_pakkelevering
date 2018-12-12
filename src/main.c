@@ -1,39 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main_config.h"
-/*#include "convert_distance.h"*/
-/*struct node{
-  int id;
-  double lat;
-  double lon;
-  double g;
-  double h;
-  double f;
-  int is_active;
-  int p1;
-  int p2;
-  int p3;
-  int p4;
-  int p5;
-  int p6;
-};*/
-/*struct point {
-    double id;
-    double lon;
-    double lat;
-    int p1;
-    int p2;
-    int p3;
-    int p4;
-    int p5;
-    int p6;
-};
-*/
-//typedef struct node node;
-
-
-//#include "pathfinding/pairing_heap.h"
-//#include "dynamic_array.h"
 #include "pathfinding/a_star.h"
 #include "map_gen/addresses_prompt.h"
 #include "map_gen/parser_addresses.h"
@@ -55,7 +22,6 @@ int main(void) {
 
     printf("Version %d.%d \n",
       p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
-    printf("Testing: %lf",searches[0].closest_point_dist);
 
     point start = map_points[0];
     point slut = map_points[100];
