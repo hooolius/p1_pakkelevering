@@ -28,6 +28,7 @@ add_executable (p1_pakkelevering main.c)
 target_link_libraries (p1_pakkelevering map_gen)
 target_link_libraries (p1_pakkelevering pathfinding)
 target_link_libraries (p1_pakkelevering libs)
+target_link_libraries(p1_pakkelevering m)
 
 # add the install targets
 install (TARGETS p1_pakkelevering DESTINATION bin)

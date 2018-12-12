@@ -25,7 +25,7 @@ void map_parser(struct point *map_points) {
 
     /*Start of standard modification of file to make it capable of JSON parsing*/
     if (paddress_file == NULL) {
-        printf("File not found\n");
+        printf("File not found in map parser\n");
         exit(-1);
     }
     fseek(paddress_file, 0, SEEK_END);

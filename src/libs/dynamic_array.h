@@ -3,26 +3,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "pairing_heap.h"
+#include "../pathfinding/pairing_heap.h"
 //#include "../pathfinding/a_star.h"
 
-struct node{
-  int id;
-  double lat;
-  double lon;
-  double g;
-  double h;
-  double f;
-  int is_active;
-  int p1;
-  int p2;
-  int p3;
-  int p4;
-  int p5;
-  int p6;
-};
 
-typedef struct node node;
 
 struct dyn_array_node {
   int low_water_mark;
@@ -50,11 +34,11 @@ void ensure_capacity_h(dyn_array_heap *array, int capacity);
 dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
 
 /* Implemented */
-dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, pairing_heap heap_to_insert);
+dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node heap_to_insert);
 /* Implemented */
-dyn_array_heap *delete_heap_h(dyn_array_heap *array, pairing_heap heap_to_delete);
+dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node heap_to_delete);
 /* Not implemented yet */
-dyn_array_heap *find_heap_h(dyn_array_heap *array, pairing_heap heap_to_find);
+dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find);
 
 // NODE FUNCTIONS
 dyn_array_node *make_dyn_array_n(int size);
