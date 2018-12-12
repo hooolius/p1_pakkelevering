@@ -1,6 +1,6 @@
 /* dynamic_array.h - made with inspiration from
 "A Practical Guide to Data Structures and Algorithms using Java" */
-#include "pairing_heap.h"
+#include "pathfinding/new_pairing_heap/pairing_heap.h"
 
 typedef struct dyn_array_node dyn_array_node;
 
