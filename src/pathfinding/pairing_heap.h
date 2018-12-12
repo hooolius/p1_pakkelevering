@@ -1,6 +1,26 @@
 /* pairing_heap.h - pairing heap implementation for C, to be used in our P1
  * project at AAU. Designed for use in our A* implementation. */
-#include "a_star.h"
+/*#ifndef NODE
+#define NODE
+#endif*/
+struct node {
+  int id;
+  double lat;
+  double lon;
+  double g;
+  double h;
+  double f;
+  int is_active;
+  int p1;
+  int p2;
+  int p3;
+  int p4;
+  int p5;
+  int p6;
+};
+
+typedef struct node node;
+
 
 typedef struct heap_node heap_node;
 typedef struct pairing_heap pairing_heap;
@@ -8,15 +28,15 @@ typedef struct locator locator;
 typedef struct dyn_array_heap dyn_array_heap;
 
 struct dyn_array_heap {
-    //The threshold for then the array is reduced in size
-    int low_water_mark;
-    //The threshold for then the array is expanded in size
-    int high_water_mark;
-    //The minimum size the array can have
-    int min_capacity;
-    //Number of items in array
-    int items;
-    heap_node *heap_nodes;
+  //The threshold for then the array is reduced in size
+  int low_water_mark;
+  //The threshold for then the array is expanded in size
+  int high_water_mark;
+  //The minimum size the array can have
+  int min_capacity;
+  //Number of items in array
+  int items;
+  heap_node *heap_nodes;
 };
 
 struct heap_node {
@@ -37,5 +57,5 @@ struct pairing_heap {
 };
 
 // struct locator {
-  // heap_node tracked_element;
+// heap_node tracked_element;
 // };
