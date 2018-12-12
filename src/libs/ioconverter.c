@@ -26,7 +26,11 @@ int * converter_main(struct address *addresses, struct point *map_points){
 	node *ptrarr_punkter;
     
 	/*distance matrix*/
-    int *afstand_matrix[][]=calloc(number_of_address*number_of_address,sizeof(int));
+	/*calloc two dim array of pointer*/
+    int **afstand_matrix=calloc(number_of_address,sizeof(int*));
+    for (int y=0; y<number_of_address;++y){
+		afstand_matrix[y]=(int *) calloc(number_of_address,sizeof(int))
+	}
 	afstand_matrix[number_of_address][number_of_address];
 	for (int g = 0; g < number_of_address; ++g) {
 		for (int i = 0; i < number_of_address; ++i) {
