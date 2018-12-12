@@ -37,7 +37,7 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     //pairing_heap open_list;
     dyn_array_node *open_list = make_dyn_array_n(10);
     //heap_clear(open_list);
-    add_node_to_end_n(open_list, start);
+    add_node_to_end_n(open_list, *start);
     dyn_array_node *came_from = make_dyn_array_n(100);
     node current;
     node neighbour;
@@ -65,11 +65,11 @@ node *a_star(point *start_p, point *goal_p, point *points) {
                 continue;   // husk at ændre neighbour til neighbour[i] i koden
             }
             /* Neighbour is calculated and put in open_list and current is put in came_from */
-            neighbour_list.nodes[i].g = current.g + jorden_er_ikke_flad(current, neighbour_list.nodes[i]);
-            neighbour_list.nodes[i].h = jorden_er_ikke_flad(neighbour_list.nodes[i], goal);
-            neighbour_list.nodes[i].f = neighbour_list.nodes[i].h + neighbour_list.nodes[i].g;
+            neighbour_list->nodes[i].g = current.g + jorden_er_ikke_flad(current, neighbour_list.nodes[i]);
+            neighbour_list->nodes[i].h = jorden_er_ikke_flad(neighbour_list.nodes[i], goal);
+            neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list.nodes[i].g;
             //heap_insert(open_list, neighbour_list.nodes[i]);
-            add_node_to_end_n(open_list, &neighbour_list.nodes[i]);
+            add_node_to_end_n(open_list, &neighbour_list->nodes[i]);
             add_node_to_end_n(came_from, &current);
             ++count;
         }
@@ -89,10 +89,10 @@ int cmp_func(void *a, void *b) {
     node *aa = (node *) a;
     node *bb = (node *) b;
 
-    if (aa.f < bb.f) {
+    if (aa->f < bb->f) {
         res = -1;
     }
-    else if (aa.f == aa.f) {
+    else if (aa->f == aa->f) {
         res = 0;
     }
     else {
@@ -113,22 +113,22 @@ dyn_array_node *make_neighbours_list(node current, node *nodes) {
     /* return a pointer from a memory space where neighbours are stored */
     dyn_array_node *neighbour_list = make_dyn_array_n(6);
     if (current.p1 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p1 - 1])
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p1 - 1]);
     }
     if (current.p2 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p2 - 1])
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p2 - 1]);
     }
     if (current.p3 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p3 - 1])
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p3 - 1]);
     }
     if (current.p4 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p4 - 1])
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p4 - 1]);
     }
     if (current.p5 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p5 - 1])
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p5 - 1]);
     }
     if (current.p6 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p6 - 1])
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p6 - 1]);
     }
     return neighbour_list;
 }
