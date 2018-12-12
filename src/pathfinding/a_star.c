@@ -1,6 +1,7 @@
 #include "a_star.h"
 
-node *convert_point_to_node(int number_of_points, point *points);
+node *convert_points_to_nodes(int number_of_points, point *points);
+node convert_point_to_node(point *the_point);
 
 int count_elements_in_list(dyn_array_node *list);
 
@@ -25,9 +26,9 @@ node *a_star(point *start_p, point *goal_p, point *points) {
         ++number_of_points;
     }
     /* Debug code */
-    node *start = convert_point_to_node(1, start_p);
-    node *goal = convert_point_to_node(1, goal_p);
-    node *nodes = convert_point_to_node(number_of_points, points);
+    node *start = convert_point_to_node(start_p);
+    node *goal = convert_point_to_node(goal_p);
+    node *nodes = convert_points_to_nodes(number_of_points, points);
 
     int count = 0;
     dyn_array_node *closed_list = make_dyn_array_n(100);
@@ -162,7 +163,7 @@ node *reconstruct_path(dyn_array_node *came_from) {
     return total_path;
 }
 
-node *convert_point_to_node(int number_of_points, point *points) {
+node *convert_points_to_nodes(int number_of_points, point *points) {
     node *nodes = malloc(sizeof(node) * number_of_points);
     for (int i = 0; i < number_of_points; ++i) {
         nodes[i].id = points[i].id;
@@ -179,4 +180,23 @@ node *convert_point_to_node(int number_of_points, point *points) {
         nodes[i].p5 = points[i].p5;
         nodes[i].p6 = points[i].p6;
     }
+    return nodes;
+}
+
+node convert_point_to_node(point *the_point) {
+  node the_node = malloc(sizeof(node));
+  nodes[i].id = points[i].id;
+  nodes[i].lon = points[i].lon;
+  nodes[i].lat = points[i].lat;
+  nodes[i].is_active = 0;
+  nodes[i].g = 0;
+  nodes[i].h = 0;
+  nodes[i].f = 0;
+  nodes[i].p1 = points[i].p1;
+  nodes[i].p2 = points[i].p2;
+  nodes[i].p3 = points[i].p3;
+  nodes[i].p4 = points[i].p4;
+  nodes[i].p5 = points[i].p5;
+  nodes[i].p6 = points[i].p6;
+  return the_node
 }
