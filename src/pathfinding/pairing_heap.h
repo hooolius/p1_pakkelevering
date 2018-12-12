@@ -1,6 +1,6 @@
 /* pairing_heap.h - pairing heap implementation for C, to be used in our P1
  * project at AAU. Designed for use in our A* implementation. */
-#include "../a_star.h"
+#include "a_star.h"
 
 typedef struct heap_node heap_node;
 typedef struct pairing_heap pairing_heap;
