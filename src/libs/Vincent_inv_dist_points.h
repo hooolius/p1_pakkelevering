@@ -2,14 +2,14 @@
 #define R 6371e3;
 
 //struct GPS points
-struct gps_point{
+/*struct gps_point{
     double lat;
     double lon;
-};
+};*/
 
 //function prototype
 //function that we use in this project
-double vincent_inv_dist(node *point1 , node *point2);
+double vincent_inv_dist(double lat1, double lon1, double lat2, double lon2);
 
 //struct point input data
 //	struct gps_point point1;

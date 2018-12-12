@@ -22,16 +22,12 @@ add_subdirectory (map_gen)
 add_subdirectory (libs)
 
 #include the dyn array lib
-add_library(dyn_array dynamic_array.c)
-install (TARGETS dyn_array DESTINATION bin)
-install (FILES dynamic_array.h DESTINATION include)
 
 #add our executable
 add_executable (p1_pakkelevering main.c)
 target_link_libraries (p1_pakkelevering map_gen)
 target_link_libraries (p1_pakkelevering pathfinding)
-target_link_libraries (libs)
-target_link_libraries (p1_pakkelevering dyn_array)
+target_link_libraries (p1_pakkelevering libs)
 
 # add the install targets
 install (TARGETS p1_pakkelevering DESTINATION bin)

@@ -2,13 +2,13 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-#include "Vincent_inv_dist_points.h"
+#include "vincent_inv_dist_points.h"
 
 /* https://github.com/pkohut/GeoFormulas/blob/master/include/GeoFormulas.h */
 /* https://community.esri.com/groups/coordinate-reference-systems/blog/2017/10/11/vincenty-formula */
 /* Most accurate Vincenty’s formula */
 /*the function we use Vincenty's distance formula*/
-double vincent_inv_dist(node *point1, node *point2)
+double vincent_inv_dist(double lat1, double lon1, double lat2, double lon2);
 {
     const double k_inverse_flattening = 298.2572235636654651;
     const double k_flattening = 1.0 / k_inverse_flattening;
@@ -16,10 +16,9 @@ double vincent_inv_dist(node *point1, node *point2)
     const double k_semi_minor_axis = k_semi_major_axis * (1 - k_flattening);
     const double keps = 0.5e-15;
 
-
-    double l = ((point2->lon * M_PI) / 180) - ((point1->lon * M_PI) / 180);
-    double u1 = atan((1 - k_flattening) * tan(((point1->lat * M_PI) / 180)));
-    double u2 = atan((1 - k_flattening) * tan(((point2->lat * M_PI) / 180)));
+    double l = ((lon2 * M_PI) / 180) - ((lon1 * M_PI) / 180);
+    double u1 = atan((1 - k_flattening) * tan(((lat1 * M_PI) / 180)));
+    double u2 = atan((1 - k_flattening) * tan(((lat2 * M_PI) / 180)));
 
     double sinu1 = sin(u1);
     double cosu1 = cos(u1);

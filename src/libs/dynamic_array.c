@@ -106,10 +106,10 @@ void ensure_capacity_n(dyn_array_node *array, int capacity) {
   array->min_capacity = capacity;
 }
 
-dyn_array_node *delete_node_n(dyn_array_node *array, node node_to_delete) {
+dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
   dyn_array_node *res = array;
   for (int i = 0; i < array->items; ++i) {
-    if(array->nodes[i].id == node_to_delete.id) {
+    if(array->nodes[i].id == node_to_delete->id) {
       array->nodes[i] = array->nodes[array->items];
       --array->items;
     }

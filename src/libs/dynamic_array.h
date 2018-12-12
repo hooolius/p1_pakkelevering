@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "pairing_heap.h"
+//#include "../pathfinding/a_star.h"
 
 struct node{
   int id;
@@ -33,6 +34,7 @@ struct dyn_array_node {
 };
 
 typedef struct dyn_array_node dyn_array_node;
+
 
 /* HEAP FUNCTIONS */
 /* Makes a empty array */
@@ -69,6 +71,6 @@ dyn_array_node *resize_array_n(dyn_array_node *array, int new_size);
 /* Implemented */
 dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_to_insert);
 /* Implemented */
-dyn_array_node *delete_node_n(dyn_array_node *array, node node_to_delete);
+dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete);
 /* Not implemented yet */
 dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find);
