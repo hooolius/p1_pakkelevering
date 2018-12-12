@@ -57,23 +57,18 @@ int converter_main(struct address *addresses, struct point *map_points) {
 		++number_of_address;
 	}
 	/*calloc array nodes*/
-	node *ptrarr_punkter=calloc(number_of_address,sizeof(node));
-	if(ptrarr_punkter == NULL)
-	{
-		printf("Error! memory not allocated.");
-		exit(-1);
-	}
+	node *ptrarr_punkter;
+	/*distance matrix*/
+	double afstand[number_of_address][number_of_address];
 	for (int g = 0; g < number_of_address; ++g) {
-		double afstand[number_of_address][number_of_address];
 		for (int i = 0; i < number_of_address; ++i) {
 			for (int j = 0; j < number_of_address; ++j) {
 				start.lat = map_points[addresses[i].closest_point].lat;
 				start.lon = map_points[addresses[i].closest_point].lon;
 				slut.lat = map_points[addresses[j].closest_point].lat;
 				slut.lon = map_points[addresses[j].closest_point].lon;
-				ptrarr_punkter[g] = a_star(start, slut);
+				ptrarr_punkter = a_star(start, slut,map_points);
 				afstand[i][j] = converter(ptrarr_punkter, number_of_address);
-
 			}
 		}
 	}
