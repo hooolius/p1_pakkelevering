@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "main_config.h"
 /*#include "convert_distance.h"*/
-struct node{
+/*struct node{
   int id;
   double lat;
   double lon;
@@ -16,7 +16,7 @@ struct node{
   int p4;
   int p5;
   int p6;
-};
+};*/
 /*struct point {
     double id;
     double lon;
@@ -29,11 +29,11 @@ struct node{
     int p6;
 };
 */
-typedef struct node node;
+//typedef struct node node;
 
 
-#include "pathfinding/pairing_heap.h"
-#include "dynamic_array.h"
+//#include "pathfinding/pairing_heap.h"
+//#include "dynamic_array.h"
 #include "pathfinding/a_star.h"
 #include "map_gen/addresses_prompt.h"
 #include "map_gen/parser_addresses.h"
@@ -60,7 +60,7 @@ int main(void) {
     point start = map_points[0];
     point slut = map_points[100];
 
-    node *star = a_star(start, slut, map_points);
+    node *star = a_star(&start, &slut, map_points);
     int i = 0;
     while (star[i].id != 0) {
       printf("%lf : %lf\n", star[i].lat, star[i].lon);

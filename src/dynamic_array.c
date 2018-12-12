@@ -2,23 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "dynamic_array.h"
-struct a_node{
-  int id;
-  double lat;
-  double lon;
-  double g;
-  double h;
-  double f;
-  int is_active;
-  int p1;
-  int p2;
-  int p3;
-  int p4;
-  int p5;
-  int p6;
-};
-
-typedef struct a_node node;
+#include "a_star.h"
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))

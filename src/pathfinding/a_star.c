@@ -1,23 +1,5 @@
 #include "a_star.h"
-#include "../dynamic_array.h"
 
-
-node *convert_point_to_node(int number_of_points, point *points);
-
-int count_elements_in_list(dyn_array_node *list);
-
-/* Function copys one node to a other node */
-void copy_node_to_node(node destination, node source);
-
-node *find_min_array(dyn_array_node list);
-
-node reconstruct_path(dyn_array_node came_from);
-
-dyn_array_node *make_neighbours_list(node current, node *nodes);
-
-int contains(dyn_array_node *closed_list, node item);
-
-int cmp_func(void *a, void *b);
 
 /* A star setup */
 node *a_star(point *start_p, point *goal_p, point *points) {
@@ -47,7 +29,7 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     /* A star algoritme */
     while (count_elements_in_list(open_list) != 0) {
         /* Take node with the smallest value and copy to current */
-        copy_node_to_node(current, *find_min_array(*open_list));
+        copy_node_to_node(current, *find_min_array(open_list));
         /* if the distance to goal is less than 1 meter then reconstruct path */
         if (vincent_inv_dist(current, goal) < 1.0) {
             free(closed_list);
@@ -60,17 +42,17 @@ node *a_star(point *start_p, point *goal_p, point *points) {
         add_node_to_end_n(closed_list, current);
         /* Count number of neighbours and check if they exied in closed_list */
         dyn_array_node *neighbour_list = make_neighbours_list(current, nodes);
-        for (size_t i = 0; i < neighbour_list.items; ++i) {
-            if (contains(closed_list, neighbour_list[i])) {
+        for (size_t i = 0; i < neighbour_list->items; ++i) {
+            if (contains(closed_list, neighbour_list->nodes[i])) {
                 continue;   // husk at ændre neighbour til neighbour[i] i koden
             }
             /* Neighbour is calculated and put in open_list and current is put in came_from */
-            neighbour_list->nodes[i].g = current.g + vincent_inv_dist(current, neighbour_list.nodes[i]);
-            neighbour_list->nodes[i].h = vincent_inv_dist(neighbour_list.nodes[i], goal);
-            neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list.nodes[i].g;
+            neighbour_list->nodes[i].g = current.g + vincent_inv_dist(current, neighbour_list->nodes[i]);
+            neighbour_list->nodes[i].h = vincent_inv_dist(neighbour_list->nodes[i], goal);
+            neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list->nodes[i].g;
             //heap_insert(open_list, neighbour_list.nodes[i]);
-            add_node_to_end_n(open_list, &neighbour_list->nodes[i]);
-            add_node_to_end_n(came_from, &current);
+            add_node_to_end_n(open_list, neighbour_list->nodes[i]);
+            add_node_to_end_n(came_from, current);
             ++count;
         }
         free(neighbour_list);
@@ -79,12 +61,12 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     exit(-1);
 }
 
-node *find_min_array(dyn_array_node list) {
-    qsort(list.nodes, list.items, sizeof(node), cmp_func);
-    return &list.nodes[0];
+node *find_min_array(dyn_array_node *list) {
+    qsort(list->nodes, list->items, sizeof(node), cmp_func);
+    return &list->nodes[0];
 }
 
-int cmp_func(void *a, void *b) {
+int cmp_func(const void *a, const void *b) {
     int res;
     node *aa = (node *) a;
     node *bb = (node *) b;
@@ -140,13 +122,13 @@ void copy_node_to_node(node destination, node source) {
 }
 
 int count_elements_in_list(dyn_array_node *list) {
-    return list.items;
+    return list->items;
 }
 
 int contains(dyn_array_node *closed_list, node item) {
     int res = 0;
-    for (int i = 0; i < closed_list.items; ++i) {
-        if (closed_list.nodes[i].id == item.id) {
+    for (int i = 0; i < closed_list->items; ++i) {
+        if (closed_list->nodes[i].id == item.id) {
             res = 1;
             break;
         }
@@ -154,10 +136,10 @@ int contains(dyn_array_node *closed_list, node item) {
     return res;
 }
 
-node reconstruct_path(dyn_array_node came_from) {
-    node *total_path = calloc(came_from.items, sizeof(node));
-    for (int i = 0; i < came_from.items; i++) {
-        total_path[i] = came_from.nodes[i];
+node *reconstruct_path(dyn_array_node *came_from) {
+    node *total_path = calloc(came_from->items, sizeof(node));
+    for (int i = 0; i < came_from->items; i++) {
+        total_path[i] = came_from->nodes[i];
     }
     free(came_from);
     return total_path;
