@@ -11,7 +11,7 @@ void copy_node_to_node(node destination, node source);
 
 node *find_min_array(dyn_array_node list);
 
-node reconstruct_path(dyn_array_node came_from, node current);
+node reconstruct_path(dyn_array_node came_from);
 
 dyn_array_node *make_neighbours_list(node current, node *nodes);
 
@@ -47,7 +47,7 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     /* A star algoritme */
     while (count_elements_in_list(open_list) != 0) {
         /* Take node with the smallest value and copy to current */
-        copy_node_to_node(current, find_min_array(open_list));
+        copy_node_to_node(current, *find_min_array(*open_list));
         /* if the distance to goal is less than 1 meter then reconstruct path */
         if (vincent_inv_dist(current, goal) < 1.0) {
             free(closed_list);
@@ -65,8 +65,8 @@ node *a_star(point *start_p, point *goal_p, point *points) {
                 continue;   // husk at ændre neighbour til neighbour[i] i koden
             }
             /* Neighbour is calculated and put in open_list and current is put in came_from */
-            neighbour_list->nodes[i].g = current.g + jorden_er_ikke_flad(current, neighbour_list.nodes[i]);
-            neighbour_list->nodes[i].h = jorden_er_ikke_flad(neighbour_list.nodes[i], goal);
+            neighbour_list->nodes[i].g = current.g + vincent_inv_dist(current, neighbour_list.nodes[i]);
+            neighbour_list->nodes[i].h = vincent_inv_dist(neighbour_list.nodes[i], goal);
             neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list.nodes[i].g;
             //heap_insert(open_list, neighbour_list.nodes[i]);
             add_node_to_end_n(open_list, &neighbour_list->nodes[i]);
@@ -154,7 +154,7 @@ int contains(dyn_array_node *closed_list, node item) {
     return res;
 }
 
-node reconstruct_path(dyn_array_node came_from, current) {
+node reconstruct_path(dyn_array_node came_from) {
     node *total_path = calloc(came_from.items, sizeof(node));
     for (int i = 0; i < came_from.items; i++) {
         total_path[i] = came_from.nodes[i];

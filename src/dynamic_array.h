@@ -2,15 +2,6 @@
 "A Practical Guide to Data Structures and Algorithms using Java" */
 #include "pairing_heap.h"
 
-struct dyn_array_heap {
-  int low_water_mark;
-  int high_water_mark;
-  int min_capacity;
-  int number_of_elements;
-  int items;
-  heap_elem heap_elems[];
-};
-
 struct dyn_array_node {
   int low_water_mark;
   int high_water_mark;
@@ -21,7 +12,6 @@ struct dyn_array_node {
 };
 
 typedef struct dyn_array_node dyn_array_node;
-typedef struct dyn_array_heap dyn_array_heap;
 
 /* HEAP FUNCTIONS */
 /* Makes a empty array */
