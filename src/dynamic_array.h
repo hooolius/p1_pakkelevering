@@ -25,7 +25,7 @@ dyn_array_heap *delete_heap_h(dyn_array_heap *array, pairing_heap heap_to_delete
 dyn_array_heap *find_heap_h(dyn_array_heap *array, pairing_heap heap_to_find);
 
 // NODE FUNCTIONS
-dyn_array_heap *make_dyn_array_n(int size);
+dyn_array_node *make_dyn_array_n(int size);
 
 /* Not implemented yet */
 void trim_to_size_n();
@@ -34,11 +34,11 @@ void trim_to_size_n();
 void ensure_capacity_n(dyn_array_node *array, int capacity);
 
 /* Implemented */
-dyn_array_heap *resize_array_n(dyn_array_node *array, int new_size);
+dyn_array_node *resize_array_n(dyn_array_node *array, int new_size);
 
 /* Implemented */
-dyn_array_heap *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_to_insert);
+dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_to_insert);
 /* Implemented */
-dyn_array_heap *delete_node_n(dyn_array_node *array, node node_to_delete);
+dyn_array_node *delete_node_n(dyn_array_node *array, node node_to_delete);
 /* Not implemented yet */
-dyn_array_heap *find_node_n(dyn_array_node *array, node node_to_find);
+dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find);
