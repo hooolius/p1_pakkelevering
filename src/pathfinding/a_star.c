@@ -1,6 +1,5 @@
 #include "a_star.h"
 
-
 node *convert_point_to_node(int number_of_points, point *points);
 
 int count_elements_in_list(dyn_array_node *list);
@@ -33,7 +32,7 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     int count = 0;
     dyn_array_node *closed_list = make_dyn_array_n(100);
     start->g = 0;
-    start->f = start->g + vincent_inv_dist(start, goal);
+    start->f = start->g + vincent_inv_dist(start->lat, start->lon, goal->lat, goal->lon);
     //pairing_heap open_list;
     dyn_array_node *open_list = make_dyn_array_n(10);
     //heap_clear(open_list);
@@ -49,7 +48,7 @@ node *a_star(point *start_p, point *goal_p, point *points) {
         /* Take node with the smallest value and copy to current */
         copy_node_to_node(current, find_min_array(open_list));
         /* if the distance to goal is less than 1 meter then reconstruct path */
-        if (vincent_inv_dist(current, goal) < 1.0) {
+        if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
             free(closed_list);
             free(open_list);
             return reconstruct_path(came_from);

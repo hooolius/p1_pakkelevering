@@ -8,8 +8,7 @@
 /* https://community.esri.com/groups/coordinate-reference-systems/blog/2017/10/11/vincenty-formula */
 /* Most accurate Vincenty’s formula */
 /*the function we use Vincenty's distance formula*/
-double vincent_inv_dist(double lat1, double lon1, double lat2, double lon2);
-{
+double vincent_inv_dist(double lat1, double lon1, double lat2, double lon2) {
     const double k_inverse_flattening = 298.2572235636654651;
     const double k_flattening = 1.0 / k_inverse_flattening;
     const double k_semi_major_axis = 6378137.0;
@@ -46,15 +45,15 @@ double vincent_inv_dist(double lat1, double lon1, double lat2, double lon2);
 
     double result = 0;
 
-    do
-    {
+    do {
         sinlambda = sin(lambda);
         coslambda = cos(lambda);
         sinsigma = sqrt((cosu2 * sinlambda) * (cosu2 * sinlambda) +
                         (dcosu1sinu2 - dsinu1cosu2 * coslambda) * (dcosu1sinu2 - dsinu1cosu2 * coslambda));
 
-        if (sinsigma == 0)
-            return 0;
+        if (sinsigma == 0) {
+          return 0;
+        }
 
         cossigma = dsinu1sinu2 + dcosu1cosu2 * coslambda;
         sigma = atan2(sinsigma, cossigma);
