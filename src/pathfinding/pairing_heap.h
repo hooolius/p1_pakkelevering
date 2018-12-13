@@ -4,7 +4,7 @@
 #define NODE
 
 struct node {
-  int id;
+  double id;
   double lat;
   double lon;
   double g;

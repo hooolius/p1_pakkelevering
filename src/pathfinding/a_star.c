@@ -1,6 +1,7 @@
 #include "a_star.h"
 
 node *convert_points_to_nodes(int number_of_points, point *points);
+
 node *convert_point_to_node(point *the_point);
 
 int count_elements_in_list(dyn_array_node *list);
@@ -65,8 +66,11 @@ node *a_star(point *start_p, point *goal_p, point *points) {
                 continue;   // husk at ændre neighbour til neighbour[i] i koden
             }
             /* Neighbour is calculated and put in open_list and current is put in came_from */
-            neighbour_list->nodes[i].g = current->g + vincent_inv_dist(current->lat, current->lon, neighbour_list->nodes[i].lat, neighbour_list->nodes[i].lon);
-            neighbour_list->nodes[i].h = vincent_inv_dist(neighbour_list->nodes[i].lat, neighbour_list->nodes[i].lon, goal->lat, goal->lon);
+            neighbour_list->nodes[i].g = current->g +
+                                         vincent_inv_dist(current->lat, current->lon, neighbour_list->nodes[i].lat,
+                                                          neighbour_list->nodes[i].lon);
+            neighbour_list->nodes[i].h = vincent_inv_dist(neighbour_list->nodes[i].lat, neighbour_list->nodes[i].lon,
+                                                          goal->lat, goal->lon);
             neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list->nodes[i].g;
             //heap_insert(open_list, neighbour_list.nodes[i]);
             add_node_to_end_n(open_list, neighbour_list->nodes[i]);
@@ -184,19 +188,19 @@ node *convert_points_to_nodes(int number_of_points, point *points) {
 }
 
 node *convert_point_to_node(point *point) {
-  node *node = malloc(sizeof(node));
-  node->id = point->id;
-  node->lon = point->lon;
-  node->lat = point->lat;
-  node->is_active = 0;
-  node->g = 0;
-  node->h = 0;
-  node->f = 0;
-  node->p1 = point->p1;
-  node->p2 = point->p2;
-  node->p3 = point->p3;
-  node->p4 = point->p4;
-  node->p5 = point->p5;
-  node->p6 = point->p6;
-  return node;
+    node *node = calloc(1, sizeof(struct node));
+    node->id = point->id;
+    node->lon = point->lon;
+    node->lat = point->lat;
+    node->is_active = 0;
+    node->g = 0;
+    node->h = 0;
+    node->f = 0;
+    node->p1 = point->p1;
+    node->p2 = point->p2;
+    node->p3 = point->p3;
+    node->p4 = point->p4;
+    node->p5 = point->p5;
+    node->p6 = point->p6;
+    return node;
 }
