@@ -45,8 +45,10 @@ int * converter_main(struct address *addresses, struct point *map_points){
 			}
 		}
 	}
-	free(ptrarr_punkter);
+	
     return afstand_matrix;
+free(ptrarr_punkter);
+free(afstand_matrix);
 }
 
 
