@@ -97,7 +97,7 @@ dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_
     res = resize_array_n(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
   }
   array_to_insert_in->nodes[array_to_insert_in->items] = node_to_insert;
-  ++array_to_insert_in->items;
+  array_to_insert_in->items += 1;
   /* If array is not resized then NULL is returned */
   return res;
 }
@@ -110,8 +110,8 @@ dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
   dyn_array_node *res = array;
   for (int i = 0; i < array->items; ++i) {
     if(array->nodes[i].id == node_to_delete->id) {
-      array->nodes[i] = array->nodes[array->items];
-      --array->items;
+      array->nodes[i] = array->nodes[array->items - 1];
+      array->items -= 1;
     }
   }
   if(array->items < array->low_water_mark) {

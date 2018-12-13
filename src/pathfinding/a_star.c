@@ -91,7 +91,8 @@ node *a_star(point *start_p, point *goal_p, point *points) {
 
 node *find_min_array(dyn_array_node *list) {
     qsort(list->nodes, list->items, sizeof(node), cmp_func);
-    printf("ID: %lf LAT: %lf LON: %lf\n", list->nodes[0].id, list->nodes[0].lat, list->nodes[0].lon);
+    //printf("ID: %lf LAT: %lf LON: %lf\n", list->nodes[0].id, list->nodes[0].lat, list->nodes[0].lon);
+    //printf("ITEMS: %d\n", list->items);
     return &list->nodes[0];
 }
 
@@ -99,8 +100,13 @@ int cmp_func(const void *a, const void *b) {
     int res;
     node *aa = (node *) a;
     node *bb = (node *) b;
-
-    if (aa->f > bb->f) {
+    /*if(aa->f == 0) {
+      res = -1;
+    }
+    else if(bb->f == 0) {
+      res = 1;
+    }
+    else*/ if (aa->f > bb->f) {
         res = -1;
     }
     else if (aa->f == aa->f) {
