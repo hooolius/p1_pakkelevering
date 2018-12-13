@@ -26,10 +26,15 @@ node *a_star(point *start_p, point *goal_p, point *points) {
     while (points[number_of_points].id != 0) {
         ++number_of_points;
     }
+
     /* Debug code */
     node *start = convert_point_to_node(start_p);
     node *goal = convert_point_to_node(goal_p);
     node *nodes = convert_points_to_nodes(number_of_points, points);
+
+    /*for (int j = 0; j < number_of_points; ++j) {
+      printf("ID:%.0lf LAT: %.0lf LON: %.0lf\n", nodes[j].id, nodes[j].lat, nodes[j].lon);
+    }*/
 
     int count = 0;
     dyn_array_node *closed_list = make_dyn_array_n(100);
@@ -84,7 +89,7 @@ node *a_star(point *start_p, point *goal_p, point *points) {
 }
 
 node *find_min_array(dyn_array_node *list) {
-    qsort(list->nodes, list->items, sizeof(node), cmp_func);
+    //qsort(list->nodes, list->items, sizeof(node), cmp_func);
     return &list->nodes[0];
 }
 
@@ -93,7 +98,7 @@ int cmp_func(const void *a, const void *b) {
     node *aa = (node *) a;
     node *bb = (node *) b;
 
-    if (aa->f < bb->f) {
+    if (aa->f > bb->f) {
         res = -1;
     }
     else if (aa->f == aa->f) {
@@ -110,22 +115,22 @@ dyn_array_node *make_neighbours_list(node current, node *nodes) {
     /* return a pointer from a memory space where neighbours are stored */
     dyn_array_node *neighbour_list = make_dyn_array_n(6);
     if (current.p1 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p1 - 1]);
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p1 - 0]);
     }
     if (current.p2 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p2 - 1]);
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p2 - 0]);
     }
     if (current.p3 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p3 - 1]);
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p3 - 0]);
     }
     if (current.p4 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p4 - 1]);
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p4 - 0]);
     }
     if (current.p5 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p5 - 1]);
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p5 - 0]);
     }
     if (current.p6 != 0) {
-        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p6 - 1]);
+        neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p6 - 0]);
     }
     return neighbour_list;
 }
