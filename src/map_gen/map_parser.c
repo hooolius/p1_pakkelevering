@@ -21,7 +21,7 @@ void map_parser(struct point *map_points) {
     long len;
     char *data = NULL;
     FILE *paddress_file;
-    paddress_file = fopen("/usr/local/include/app_data/map_data.json", "rb");
+    paddress_file = fopen("map_data.json", "rb");
 
     /*Start of standard modification of file to make it capable of JSON parsing*/
     if (paddress_file == NULL) {
@@ -85,7 +85,7 @@ int points_counter() {
     char *data = NULL;
     FILE *paddress_file;
     const cJSON *json;
-    paddress_file = fopen("/usr/local/include/app_data/map_data.json", "rb");
+    paddress_file = fopen("map_data.json", "rb");
 
     /*Start of standard modification of file to make it capable of JSON parsing*/
     if (paddress_file == NULL) {

@@ -23,7 +23,7 @@ int main(void) {
     printf("Version %d.%d \n",
       p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
 
-    point start = map_points[0];
+    point start = map_points[1];
     point slut = map_points[100];
 
     node *star = a_star(&start, &slut, map_points);
