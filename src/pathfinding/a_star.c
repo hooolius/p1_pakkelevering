@@ -105,13 +105,6 @@ int cmp_func(const void *a, const void *b) {
     return res;
 }
 
-/*if (contains(closed_list, neighbour)) {
-  continue;
-}*/
-node *next_neighbour(node *neighbour_list, int number_of_neighbour) {
-
-}
-
 dyn_array_node *make_neighbours_list(node current, node *nodes) {
     /* Follow pointers and count number of neighbours */
     /* return a pointer from a memory space where neighbours are stored */
@@ -139,8 +132,19 @@ dyn_array_node *make_neighbours_list(node current, node *nodes) {
 
 /* Function copys one node to a other node */
 void copy_node_to_node(node *destination, node *source) {
-    destination->lat = source->lat;
-    destination->lon = source->lon;
+  destination->id = source->id;
+  destination->lat = source->lat;
+  destination->lon = source->lon;
+  destination->is_active = source ->is_active;
+  destination->g = source->g;
+  destination->h = source->h;
+  destination->f = source->f;
+  destination->p1 = source->p1;
+  destination->p2 = source->p2;
+  destination->p3 = source->p3;
+  destination->p4 = source->p4;
+  destination->p5 = source->p5;
+  destination->p6 = source->p6;
 }
 
 int count_elements_in_list(dyn_array_node *list) {
@@ -168,7 +172,7 @@ node *reconstruct_path(dyn_array_node *came_from) {
 }
 
 node *convert_points_to_nodes(int number_of_points, point *points) {
-    node *nodes = malloc(sizeof(node) * number_of_points);
+    node *nodes = calloc(number_of_points, sizeof(struct node));
     for (int i = 0; i < number_of_points; ++i) {
         nodes[i].id = points[i].id;
         nodes[i].lon = points[i].lon;
