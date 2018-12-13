@@ -60,7 +60,7 @@ void search_and_parse_points(char data[], struct point *map_points) {
     cJSON *json = NULL;
     const cJSON *points = NULL;
     const cJSON *json_point = NULL;
-    int i = 0, j = 0;
+    int i = 0, j = 1;
 
     json = cJSON_Parse(data);
 
