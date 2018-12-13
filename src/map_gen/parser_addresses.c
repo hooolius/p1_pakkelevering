@@ -29,7 +29,7 @@ void convert_to_array(char *text, struct address *searches) {
     const cJSON *elements = NULL;
     cJSON *tags = NULL;
     struct address addresses[20];
-    int j = 1;
+    int j = 0;
 
     json = cJSON_Parse(text);
 

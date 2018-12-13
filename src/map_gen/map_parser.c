@@ -271,7 +271,7 @@ int binary_searcher(double input, struct point *map_points, int array_len) {
     int first;
     int middle;
 
-    first = 1;
+    first = 0;
     middle = (first + array_len) / 2;
 
     while (first <= array_len) {

@@ -64,7 +64,6 @@ void addresses_prompt(struct address *searches) {
     else {
         printf("Invalid input - Try again\n");
     }
-    printf("Got this far?");
     parser_addreses(searches);
     printf("lat is: %lf \n", searches[0].lat);
 }
