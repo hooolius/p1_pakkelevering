@@ -14,22 +14,27 @@
 #include "ioconverter.h"
 
 int * converter_main(struct address *addresses, struct point *map_points){
-    /*start and end point to A-star*/
+	/*start and end point to A-star*/
 	node start;
 	node slut;
-    /*count number of addresses*/
+	/*count number of addresses*/
 	int number_of_address = 0;
 	while (addresses[number_of_address].closest_point != 0) {
 		++number_of_address;
 	}
 	/*pointer array nodes*/
 	node *ptrarr_punkter;
-    
+
 	/*distance matrix*/
 	/*calloc two dim array of pointer*/
-    int **afstand_matrix=calloc(number_of_address,sizeof(int*));
-    for (int y=0; y<number_of_address;++y){
+	int **afstand_matrix=calloc(number_of_address,sizeof(int*));
+	for (int y=0; y<number_of_address;++y){
 		afstand_matrix[y]=(int *) calloc(number_of_address,sizeof(int))
+	}
+	if(afstand_matrix == NULL)
+	{
+		printf("Error! memory not allocated.");
+		exit(-1);
 	}
 	afstand_matrix[number_of_address][number_of_address];
 	for (int g = 0; g < number_of_address; ++g) {
@@ -45,10 +50,10 @@ int * converter_main(struct address *addresses, struct point *map_points){
 			}
 		}
 	}
-	
-    return afstand_matrix;
-free(ptrarr_punkter);
-free(afstand_matrix);
+
+	return afstand_matrix;
+	free(ptrarr_punkter);
+	free(afstand_matrix);
 }
 
 
@@ -56,11 +61,11 @@ free(afstand_matrix);
 double converter(node *arr_punkter, int number_of_address){
 	double res = 0;
 	int i;
-		/*calc result*/
+	/*calc result*/
 	for (i = 0; i < number_of_address - 1; ++i) {
-			/*calc dist between two points as res and add it to it self.*/
-			res+=vincent_inv_dist(arr_punkter[i].lat, arr_punkter[i].lon, arr_punkter[++i].lat,arr_punkter[++i].lon);
-		}
+		/*calc dist between two points as res and add it to it self.*/
+		res+=vincent_inv_dist(arr_punkter[i].lat, arr_punkter[i].lon, arr_punkter[++i].lat,arr_punkter[++i].lon);
+	}
 	return res;
 }
 
