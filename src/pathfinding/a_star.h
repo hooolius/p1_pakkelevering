@@ -9,4 +9,4 @@ typedef struct point point;
 
 #define SOME_VALUE 10
 
-node *a_star(struct point *start_p, struct point *goal_p, struct point *points);
+dyn_array_node *a_star(struct point *start_p, struct point *goal_p, struct point *points);

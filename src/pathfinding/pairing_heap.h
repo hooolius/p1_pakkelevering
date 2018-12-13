@@ -3,6 +3,7 @@
 #ifndef NODE
 #define NODE
 
+typedef struct node node;
 struct node {
   double id;
   double lat;
@@ -17,9 +18,9 @@ struct node {
   int p4;
   int p5;
   int p6;
+  node *came_from;
 };
 
-typedef struct node node;
 typedef struct heap_node heap_node;
 typedef struct pairing_heap pairing_heap;
 typedef struct dyn_array_heap dyn_array_heap;

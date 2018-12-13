@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main_config.h"
+#include "libs/dynamic_array.h"
 #include "pathfinding/a_star.h"
 #include "map_gen/addresses_prompt.h"
 #include "map_gen/parser_addresses.h"
@@ -28,10 +29,12 @@ main(int argc, char *argv[]) {
     point start = map_points[1];
     point slut = map_points[100];
 
-  node *star = a_star(&start, &slut, map_points);
+  //dyn_array_node *star = a_star(&start, &slut, map_points);
+  dyn_array_node *star;
+  a_star(&start, &slut, map_points);
   int i = 0;
-  while (star[i].id != 0) {
-    printf("%lf : %lf\n", star[i].lat, star[i].lon);
+  while (star->nodes[i].id != 0) {
+    printf("%lf : %lf\n", star->nodes[i].lat, star->nodes[i].lon);
     ++i;
   }
 

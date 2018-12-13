@@ -6,7 +6,8 @@
 #include "../pathfinding/pairing_heap.h"
 //#include "../pathfinding/a_star.h"
 
-
+#ifndef DYN_NODE
+#define DYN_NODE
 
 struct dyn_array_node {
   int low_water_mark;
@@ -19,6 +20,7 @@ struct dyn_array_node {
 
 typedef struct dyn_array_node dyn_array_node;
 
+#endif
 
 /* HEAP FUNCTIONS */
 /* Makes a empty array */
