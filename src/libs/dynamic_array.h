@@ -1,13 +1,18 @@
 /* dynamic_array.h - made with inspiration from
 "A Practical Guide to Data Structures and Algorithms using Java" */
+#ifndef DYN_NODE2
+#define DYN_NODE2
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include "../pathfinding/pairing_heap.h"
 //#include "../pathfinding/a_star.h"
+#endif
 
 #ifndef DYN_NODE
 #define DYN_NODE
+typedef struct dyn_array_node dyn_array_node;
 
 struct dyn_array_node {
   int low_water_mark;
@@ -18,7 +23,6 @@ struct dyn_array_node {
   node *nodes;
 };
 
-typedef struct dyn_array_node dyn_array_node;
 
 #endif
 
@@ -36,9 +40,9 @@ void ensure_capacity_h(dyn_array_heap *array, int capacity);
 dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
 
 /* Implemented */
-dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node heap_to_insert);
+dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node *heap_to_insert);
 /* Implemented */
-dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node heap_to_delete);
+dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete);
 /* Not implemented yet */
 dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find);
 

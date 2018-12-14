@@ -18,14 +18,17 @@
 /* function prototypes */
 void make_root(heap_node *hnode);
 
-pairing_heap init_heap();
-
 /* heap node functions */
 
-heap_node init_node(node *element) {
-    heap_node hnode;
-    hnode.element = element;
-    make_root(&hnode);
+heap_node *init_node(node *element) {
+    heap_node *hnode = calloc(1, sizeof(heap_node));
+    hnode->element = element;
+    hnode->child = NULL;
+    hnode->next = NULL;
+    hnode->prev = NULL;
+    hnode->sib_left = NULL;
+    hnode->sib_right = NULL;
+    make_root(hnode);
 
     return hnode;
 }
@@ -83,28 +86,27 @@ void remove_from_chain(heap_node *hnode) {
     else {
         hnode->sib_left->sib_right = hnode->sib_right;
     }
-    if (is_rightmost_child(hnode)) {
+    if (!is_rightmost_child(hnode)) {
         hnode->sib_right->sib_left = hnode->sib_left;
     }
 }
 
 /* heap functions */
 
-pairing_heap init_heap() {
-    pairing_heap pheap;
-    heap_node nFORE;
-    heap_node nAFT;
-    pheap.detached = *make_dyn_array_h(10);
+pairing_heap *init_heap() {
+    pairing_heap *pheap = calloc(1, sizeof(pairing_heap));
+    heap_node *nFORE = init_node(NULL);
+    heap_node *nAFT = init_node(NULL);
+    pheap->detached = *make_dyn_array_h(10);
 
-    pheap.size = 0;
-    pheap.root = NULL;
+    pheap->size = 0;
+    pheap->root = NULL;
+    pheap->FORE = *nFORE;
+    pheap->AFT = *nAFT;
+    mark_deleted(&pheap->FORE);
+    mark_deleted(&pheap->AFT);
 
-    set_next(&nFORE, &nAFT);
-
-    mark_deleted(&nFORE);
-    pheap.FORE = &nFORE;
-    mark_deleted(&nAFT);
-    pheap.AFT = &nAFT;
+    set_next(&pheap->FORE, &pheap->AFT);
 
     return pheap;
 }
@@ -116,7 +118,7 @@ int is_empty(pairing_heap *pheap) {
 void heap_reinit(pairing_heap *pheap) {
     pheap->size = 0;
     pheap->root = NULL;
-    set_next(pheap->FORE, pheap->AFT);
+    set_next(&pheap->FORE, &pheap->AFT);
 }
 
 node min(pairing_heap *pheap) {
@@ -129,14 +131,21 @@ node min(pairing_heap *pheap) {
 }
 
 heap_node *find(pairing_heap *pheap,node *element) {
-    heap_node *ptr = pheap->FORE->next;
-    while (ptr != pheap->AFT) {
+    heap_node *ptr = pheap->FORE.next;
+    while (ptr != &pheap->AFT) {
         if (ptr->element->id == element->id) {
             return ptr;
         }
         ptr = ptr->next;
     }
     return NULL;
+}
+
+int heap_contains(pairing_heap *pheap, node *element) {
+    if (find(pheap, element) == NULL) {
+        return 0;
+    }
+    else return 1;
 }
 
 node get_equivalent_element(pairing_heap *pheap, node *target) {
@@ -165,8 +174,8 @@ heap_node *merge(heap_node *hnode_a, heap_node *hnode_b) {
     }
 }
 
-void merge_with_root(pairing_heap *pheap,heap_node *hnode) {
-    if (pheap->root == NULL) {
+void merge_with_root(pairing_heap *pheap, heap_node *hnode) {
+    if (pheap->root == NULL || pheap->size == 0) {
         pheap->root = hnode;
     }
     else {
@@ -174,18 +183,19 @@ void merge_with_root(pairing_heap *pheap,heap_node *hnode) {
     }
 }
 
-heap_node insert(pairing_heap *pheap, node *element) {
-    heap_node hnode = init_node(element);
-    merge_with_root(pheap,&hnode);
-    set_next(pheap->AFT->prev, &hnode);
-    set_next(&hnode, pheap->AFT);
+heap_node *insert(pairing_heap *pheap, node *element) {
+    heap_node *hnode = init_node(element);
+    merge_with_root(pheap, hnode);
+    set_next(pheap->AFT.prev, hnode);
+    set_next(hnode, &pheap->AFT);
     pheap->size++;
     return hnode;
 }
 
-void add_element(pairing_heap *pheap, node *element
-) {
-    insert(pheap, element);
+void add_element(pairing_heap *pheap, node *element) {
+    if (element != NULL) {
+        insert(pheap, element);
+    }
 }
 
 // locator add_tracked(node *element) {
@@ -194,33 +204,35 @@ void add_element(pairing_heap *pheap, node *element
 // return l;
 // }
 
-dyn_array_heap move_children(dyn_array_heap *detached, heap_node *hnode) {
+dyn_array_heap *move_children(dyn_array_heap *detached, heap_node *hnode) {
     heap_node *ptr = hnode->child;
     hnode->child = NULL;
     while (ptr != NULL) {
         heap_node *right = ptr->sib_right;
         make_root(ptr);
-        add_heap_to_end_h(detached, *ptr);
+        add_heap_to_end_h(detached, ptr);
         ptr = right;
     }
-    return *detached;
+    return detached;
 }
 
-heap_node merge_detached(dyn_array_heap *detached) {
+heap_node *merge_detached(dyn_array_heap *detached) {
     while (detached->items > 1) {
-        heap_node a = detached->heap_nodes[0];
-        heap_node b = detached->heap_nodes[1];
-        add_heap_to_end_h(detached, *merge(&a, &b));
+        heap_node *a = &detached->heap_nodes[0];
+        heap_node *b = &detached->heap_nodes[1];
+        add_heap_to_end_h(detached, merge(a, b));
+        delete_heap_h(detached, a);
+        delete_heap_h(detached, b);
     }
-    return (detached->heap_nodes[0]);
+    return &(detached->heap_nodes[0]);
 }
 
 void decrease_priority(pairing_heap *pheap, heap_node *hnode, node *element) {
     hnode->element = element;
     if (hnode->child != NULL) {
         move_children(&pheap->detached, hnode);
-        heap_node merged = merge_detached(&pheap->detached);
-        pheap->root = merge(pheap->root, &merged);
+        heap_node *merged = merge_detached(&pheap->detached);
+        pheap->root = merge(pheap->root, merged);
         make_root(pheap->root);
     }
 }
@@ -248,25 +260,28 @@ void update(pairing_heap *pheap, heap_node *hnode, node *element) {
     }
 }
 
-node remove_from_heap(pairing_heap *pheap, heap_node *hnode) {
-    if (hnode->child == NULL) {
+node *remove_from_heap(pairing_heap *pheap, heap_node *hnode) {
+    if (hnode->child == NULL /*|| hnode->child->element == NULL*/) {
         remove_from_chain(hnode);
     }
     else {
         move_children(&pheap->detached, hnode);
-        heap_node merged = merge_detached(&pheap->detached);
+        heap_node *merged = merge_detached(&pheap->detached);
         if (hnode == pheap->root) {
-            pheap->root = &merged;
+            pheap->root = merged;
         }
         else {
             remove_from_chain(hnode);
-            pheap->root = merge(pheap->root, &merged);
+            pheap->root = merge(pheap->root, merged);
         }
     }
     mark_deleted(hnode);
     set_next(hnode->prev, hnode->next);
     pheap->size--;
-    return *hnode->element;
+    if (pheap->size != 0) {
+        make_root(pheap->root);
+    }
+    return hnode->element;
 }
 
 int bool_remove(pairing_heap *pheap, node *element) {
@@ -278,12 +293,12 @@ int bool_remove(pairing_heap *pheap, node *element) {
     return 0;
 }
 
-node extract_min(pairing_heap *pheap) {
+node *extract_min(pairing_heap *pheap) {
     if (is_empty(pheap)) {
         perror("Error, heap is empty");
         exit(EXIT_FAILURE);
     }
     else {
         return remove_from_heap(pheap, pheap->root);
-    }//TODO: Pointer or not?
+    }
 }

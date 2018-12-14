@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "../map_gen/map_parser.h"
 #include "../libs/vincent_inv_dist_points.h"
-//#include "pairing_heap.h"
+#include "pairing_heap.h"
 #include "../libs/dynamic_array.h"
 
 typedef struct point point;

@@ -26,12 +26,11 @@ main(int argc, char *argv[]) {
   printf("Version %d.%d \n",
       p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
 
-    point start = map_points[1];
+    point start = map_points[searches[0].closest_point];//map_points[1];
     point slut = map_points[100];
 
   //dyn_array_node *star = a_star(&start, &slut, map_points);
-  dyn_array_node *star;
-  a_star(&start, &slut, map_points);
+  dyn_array_node *star = a_star(&start, &slut, map_points);
   int i = 0;
   while (star->nodes[i].id != 0) {
     printf("%lf : %lf\n", star->nodes[i].lat, star->nodes[i].lon);

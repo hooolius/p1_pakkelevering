@@ -26,14 +26,14 @@ dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size) {
   return array;
 }
 
-dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node heap_to_insert) {
+dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node *heap_to_insert) {
   dyn_array_heap *res = array_to_insert_in;
   /* If array is not able to hold another element then resize array */
   if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
     /* If array is resized then a pointer to the new array is returned */
     res = resize_array_h(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
   }
-  array_to_insert_in->heap_nodes[array_to_insert_in->items] = heap_to_insert;
+  array_to_insert_in->heap_nodes[array_to_insert_in->items] = *heap_to_insert;
   ++array_to_insert_in->items;
   /* If array is not resized then NULL is returned */
   return res;
@@ -43,11 +43,11 @@ void ensure_capacity_h(dyn_array_heap *array, int capacity) {
     array->min_capacity = capacity;
 }
 
-dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node heap_to_delete) {
+dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete) {
   dyn_array_heap *res = array;
   for (int i = 0; i < array->items; ++i) {
-    if(array->heap_nodes[i].element == heap_to_delete.element) {
-      array->heap_nodes[i] = array->heap_nodes[array->items];
+    if(array->heap_nodes[i].element == heap_to_delete->element) {
+      array->heap_nodes[i] = array->heap_nodes[array->items-1];
       --array->items;
     }
   }

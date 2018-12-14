@@ -20,7 +20,9 @@ struct node {
   int p6;
   node *came_from;
 };
-
+#endif
+#ifndef PAIRING
+#define PAIRING
 typedef struct heap_node heap_node;
 typedef struct pairing_heap pairing_heap;
 typedef struct dyn_array_heap dyn_array_heap;
@@ -49,11 +51,17 @@ struct dyn_array_heap {
 struct pairing_heap {
     int size;
     heap_node *root;
-    heap_node *FORE;
-    heap_node *AFT;
+    heap_node FORE;
+    heap_node AFT;
     dyn_array_heap detached;
 };
 
-
+pairing_heap *init_heap();
+node min(pairing_heap *pheap);
+heap_node *find(pairing_heap *pheap,node *element);
+int heap_contains(pairing_heap *pheap, node *element);
+void add_element(pairing_heap *pheap, node *element);
+void update(pairing_heap *pheap, heap_node *hnode, node *element);
+node *extract_min(pairing_heap *pheap);
 
 #endif
