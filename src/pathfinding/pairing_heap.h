@@ -45,7 +45,7 @@ struct dyn_array_heap {
   int min_capacity;
   //Number of items in array
   int items;
-  heap_node *heap_nodes;
+  heap_node **heap_nodes;
 };
 
 struct pairing_heap {
@@ -53,7 +53,7 @@ struct pairing_heap {
     heap_node *root;
     heap_node FORE;
     heap_node AFT;
-    dyn_array_heap detached;
+    dyn_array_heap *detached;
 };
 
 pairing_heap *init_heap();

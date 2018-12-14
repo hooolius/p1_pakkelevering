@@ -70,10 +70,13 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
     if (current == NULL) {
       printf("%d current is null \n", q);
     }
-   // if (contains(closed_list, *current)) {
-   //   printf("aaar det burde ik ske \n");
-   //   continue;
-   // }
+    if (current->id == 3451659694.0) {
+      printf("jajajajjajaj\n");
+    }
+   if (contains(closed_list, *current)) {
+      printf("aaar det burde ik ske \n");
+      continue;
+   }
     printf("%lf,%lf,%lf\n", current->id, current->lat, current->lon);
     //printf("G: %lf H: %lf F: %lf\n", current->g, current->h, current->f);
     /* if the distance to goal is less than 1 meter then reconstruct path */
@@ -90,8 +93,11 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
     /* Count number of neighbours and check if they exied in closed_list */
     dyn_array_node *neighbour_list = make_neighbours_list(*current, nodes);
     for (size_t i = 0; i < neighbour_list->items; ++i) {
+      if (neighbour_list->nodes[i].id == 3451659694.0) {
+        printf("jajajajjajaj\n");
+      }
       //if (contains(closed_list, neighbour_list->nodes[i]) || contains(open_list, neighbour_list->nodes[i])) {
-      if (contains(closed_list, neighbour_list->nodes[i])) {
+      if (contains(closed_list, neighbour_list->nodes[i]) || heap_contains(open_list, &neighbour_list->nodes[i])) {
         continue;
       }
       heap_node *curr_value = find(open_list, &neighbour_list->nodes[i]);
@@ -110,17 +116,10 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
       neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list->nodes[i].g;
       //heap_insert(open_list, neighbour_list.nodes[i]);
       neighbour_list->nodes[i].came_from = current;
-      if(neighbour_list->nodes[i].id == 60117825.000000)
-      {
+      if(neighbour_list->nodes[i].id == 60117825.000000) {
         printf("\n");
       }
-      if (heap_contains(open_list, &neighbour_list->nodes[i]))
-      {
-        update(open_list, curr_value, &neighbour_list->nodes[i]);
-      }
-      else {
-        add_element(open_list, &neighbour_list->nodes[i]);
-      }
+      add_element(open_list, &neighbour_list->nodes[i]);
       //add_node_to_end_n(open_list, neighbour_list->nodes[i]);
       //add_node_to_end_n(came_from, *current);
     }
