@@ -21,11 +21,11 @@ void map_parser(struct point *map_points) {
     long len;
     char *data = NULL;
     FILE *paddress_file;
-    paddress_file = fopen("/usr/local/include/app_data/map_data.json", "rb");
+    paddress_file = fopen("map_data.json", "rb");
 
     /*Start of standard modification of file to make it capable of JSON parsing*/
     if (paddress_file == NULL) {
-        printf("File not found\n");
+        printf("File not found in map parser\n");
         exit(-1);
     }
     fseek(paddress_file, 0, SEEK_END);
@@ -35,6 +35,8 @@ void map_parser(struct point *map_points) {
 
     data = (char *) malloc(len + 1);
     fread(data, 1, len, paddress_file);
+    data[len] = '\0';
+    fclose(paddress_file);
     /*End of standard modification of file to make it capable of JSON parsing*/
 
     /*Calls the cJSON libary parser function*/
@@ -45,10 +47,6 @@ void map_parser(struct point *map_points) {
         exit(-1);
     }
     else {
-
-        /*Counts the amount of elements within the file*/
-        i = points_counter(json) + 1;
-        map_points = calloc(i, sizeof(map_points[1]));
 
         /*Calls the parsing functions*/
         search_and_parse_points(data, map_points);
@@ -67,10 +65,10 @@ void search_and_parse_points(char data[], struct point *map_points) {
     json = cJSON_Parse(data);
 
     points = cJSON_GetObjectItemCaseSensitive(json, "points");
-    i = points_counter(json);
+    i = points_counter();
     /*Uses cJSON libary function to construct an array of all JSON points (Points being coordinates)*/
 
-    cJSON_ArrayForEach(json_point, points) { ;
+    cJSON_ArrayForEach(json_point, points) {
         map_points[j].id = cJSON_GetObjectItemCaseSensitive(json_point, "id")->valuedouble;
         map_points[j].lat = cJSON_GetObjectItemCaseSensitive(json_point, "lat")->valuedouble;
         map_points[j].lon = cJSON_GetObjectItemCaseSensitive(json_point, "lon")->valuedouble;
@@ -86,7 +84,8 @@ int points_counter() {
     long len;
     char *data = NULL;
     FILE *paddress_file;
-    paddress_file = fopen("/usr/local/include/app_data/map_data.json", "rb");
+    const cJSON *json;
+    paddress_file = fopen("map_data.json", "rb");
 
     /*Start of standard modification of file to make it capable of JSON parsing*/
     if (paddress_file == NULL) {
@@ -99,16 +98,19 @@ int points_counter() {
 
     data = (char *) malloc(len + 1);
     fread(data, 1, len, paddress_file);
+    data[len] = '\0';
+
+    json = cJSON_Parse(data);
 
     const cJSON *points = NULL;
     const cJSON *json_point = NULL;
-    int i;
-    points = cJSON_GetObjectItemCaseSensitive(points, "points");
+    int i = 0;
+    points = cJSON_GetObjectItemCaseSensitive(json, "points");
     cJSON_ArrayForEach(json_point, points) {
         i++;
     }
     fclose(paddress_file);
-    return i+1;
+    return i;
 
 }
 
@@ -126,7 +128,6 @@ int sorter_function(const void *a, const void *b) {
 
 }
 
-
 void search_and_parse_streets(char *data, struct point *map_points) {
     /*Function passes streets, and connects the points, so all the points know what points they are connected to.*/
     cJSON *json = NULL;
@@ -143,7 +144,7 @@ void search_and_parse_streets(char *data, struct point *map_points) {
 
     }
     else {
-        array_len = points_counter(json) + 1;
+        array_len = points_counter();
         /*Itterates through the JSON file*/
         roads = cJSON_GetObjectItemCaseSensitive(json, "roads");
         cJSON_ArrayForEach(road, roads) {
@@ -270,7 +271,7 @@ int binary_searcher(double input, struct point *map_points, int array_len) {
     int first;
     int middle;
 
-    first = 1;
+    first = 0;
     middle = (first + array_len) / 2;
 
     while (first <= array_len) {
