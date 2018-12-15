@@ -22,10 +22,21 @@ struct dyn_array_node {
   int items;
   node *nodes;
 };
-
-
 #endif
 
+#ifndef DYN_ADDRESS3
+#define DYN_ADDRESS3
+#include "../map_gen/parser_addresses.h"
+struct dyn_array_address {
+  int low_water_mark;
+  int high_water_mark;
+  int min_capacity;
+  int number_of_elements;
+  int items;
+  struct address *addresses;
+};
+typedef struct dyn_array_address dyn_array_address;
+#endif
 /* HEAP FUNCTIONS */
 /* Makes a empty array */
 dyn_array_heap *make_dyn_array_h(int size);
@@ -64,3 +75,22 @@ dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_
 dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete);
 /* Not implemented yet */
 dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find);
+
+// ADDRESS FUNCTIONS
+dyn_array_address *make_dyn_array_a(int size);
+
+/* Not implemented yet */
+void trim_to_size_a();
+
+/* Maybe implemented */
+void ensure_capacity_a(dyn_array_address *array, int capacity);
+
+/* Implemented */
+dyn_array_address *resize_array_a(dyn_array_address *array, int new_size);
+
+/* Implemented */
+dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, struct address address_to_insert);
+/* Implemented */
+dyn_array_address *delete_address_a(dyn_array_address *array, struct address *address_to_delete);
+/* Not implemented yet */
+dyn_array_address *find_node_a(dyn_array_address *array, struct address address_to_find);

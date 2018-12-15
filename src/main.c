@@ -15,29 +15,26 @@ typedef struct point point;
 main(int argc, char *argv[]) {
 
   printf("%s", argv[0]);
-  struct address *searches = calloc(2, sizeof(struct address));
+  dyn_array_address *searches = make_dyn_array_a(2);
   point *map_points;
   map_points = calloc(points_counter(), sizeof(point));
 
   addresses_prompt(searches);
   map_parser(map_points);
   addresses_to_point_calc(searches, map_points);
-  printf("Size: %ld",sizeof(searches)/ sizeof(struct address));
+  printf("Size: %d",searches->items);
 
   printf("Version %d.%d \n",
       p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
 
-  point start = map_points[searches[0].closest_point];
-  point slut = map_points[searches[1].closest_point];
-
   int **matrix = astar_to_matrix_converter(searches, map_points);
 
   int *min_cost = 0;
-  int plan[count_addresses(searches)];
+  int plan[searches->items];
 
-  held_karp(matrix, count_addresses(searches), 0, min_cost, plan);
+  held_karp(matrix, searches->items, 0, min_cost, plan);
   printf("min cost: %d", *min_cost);
-  for (int i = 0; i < count_addresses(searches); i++) {
+  for (int i = 0; i < searches->items; i++) {
     printf("%d, ", plan[i]);
   }
   return 0;
