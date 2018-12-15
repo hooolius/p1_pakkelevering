@@ -2,6 +2,11 @@
 #define MAP_AND_PARSER_PARSER_ADDRESSES_C_H
 
 
+
+#ifndef ADRESSES
+#define ADRESSES
+#include "../libs/dynamic_array.h"
+#endif
 struct tags {
     char city[30];
     char street[30];
@@ -21,10 +26,7 @@ struct address {
 
 } address;
 
-void parser_addreses(struct address *searches);
 
-int is_in_array(char input_streetname[], char input_housenumber[], struct address *searches);
-
-void convert_to_array(char *text, struct address *searches);
+void parser_addreses(dyn_array_address *searches);
 
 #endif //MAP_AND_PARSER_PARSER_ADDRESSES_C_H

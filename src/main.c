@@ -29,13 +29,14 @@ main(int argc, char *argv[]) {
 
   int **matrix = astar_to_matrix_converter(searches, map_points);
 
-  int *min_cost = 0;
-  int plan[searches->items];
+  int min_cost = 0;
+  int plan[searches->items+1];
 
-  held_karp(matrix, searches->items, 0, min_cost, plan);
-  printf("min cost: %d", *min_cost);
-  for (int i = 0; i < searches->items; i++) {
-    printf("%d, ", plan[i]);
+  min_cost = held_karp(matrix, searches->items, 0, plan);
+  printf("min cost: %d \n", min_cost);
+  for (int i = 0; i < searches->items+1; i++) {
+    printf("%s %s, ", searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   }
+  printf("\n");
   return 0;
 }

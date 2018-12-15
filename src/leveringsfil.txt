@@ -1,1 +1,9 @@
 Aalborg, DK, 23, Aalborg, 9000, Borgergade.
+Aalborg, DK, 30, Aalborg, 9000, Deltavej.
+Aalborg, DK, 12, Aalborg, 9000, Strandvejen.
+Aalborg, DK, 14, Aalborg, 9000, Davids Alle.
+Aalborg, DK, 6, Aalborg, 9000, Gemmavej.
+Aalborg, DK, 96, Aalborg, 9000, Hobrovej.
+Aalborg, DK, 35, Aalborg, 9000, Hobrovej.
+Aalborg, DK, 79, Aalborg, 9000, Frejaparken.
+Aalborg, DK, 2, Aalborg, 9000, Alfavej.

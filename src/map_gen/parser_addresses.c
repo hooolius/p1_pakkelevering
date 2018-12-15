@@ -2,7 +2,12 @@
 #include "cJSON.c"
 #include "cJSON.h"
 
-void parser_addreses(struct address *searches) {
+
+int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_address *searches);
+
+void convert_to_array(char *text, dyn_array_address*searches);
+
+void parser_addreses(dyn_array_address *searches) {
     long len = 0;
     char *data = NULL;
     FILE *paddress_file;
@@ -23,12 +28,12 @@ void parser_addreses(struct address *searches) {
     convert_to_array(data, searches);
 }
 
-void convert_to_array(char *text, struct address *searches) {
+void convert_to_array(char *text, dyn_array_address *searches) {
     cJSON *json = NULL;
     const cJSON *element = NULL;
     const cJSON *elements = NULL;
     cJSON *tags = NULL;
-    struct address addresses[20];
+    struct address addresses[searches->items];
     int j = 0;
 
     json = cJSON_Parse(text);
@@ -64,21 +69,21 @@ void convert_to_array(char *text, struct address *searches) {
             }
         }
     }
-    for (int i = 0; i < sizeof(searches)/ sizeof(struct address); ++i) {
-        strcpy(searches[i].tags.street, addresses[i].tags.street);
-        strcpy(searches[i].tags.house_number, addresses[i].tags.house_number);
-        strcpy(searches[i].tags.country, addresses[i].tags.country);
-        strcpy(searches[i].tags.muncipality, addresses[i].tags.muncipality);
-        strcpy(searches[i].tags.postcode, addresses[i].tags.postcode);
-        searches[i].lat = addresses[i].lat;
-        searches[i].lon = addresses[i].lon;
+    for (int i = 0; i < searches->items; ++i) {
+        strcpy(searches->addresses[i].tags.street, addresses[i].tags.street);
+        strcpy(searches->addresses[i].tags.house_number, addresses[i].tags.house_number);
+        strcpy(searches->addresses[i].tags.country, addresses[i].tags.country);
+        strcpy(searches->addresses[i].tags.muncipality, addresses[i].tags.muncipality);
+        strcpy(searches->addresses[i].tags.postcode, addresses[i].tags.postcode);
+        searches->addresses[i].lat = addresses[i].lat;
+        searches->addresses[i].lon = addresses[i].lon;
     }
 }
 
-int is_in_array(char input_streetname[], char input_housenumber[], struct address *searches) {
-    for (int k = 0; k < sizeof(searches)/ sizeof(struct address); ++k) {
-        if (strcmp(input_streetname, searches[k].tags.street) == 0) {
-            if (strcmp(input_housenumber, searches[k].tags.house_number) == 0) {
+int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_address *searches) {
+    for (int k = 0; k < searches->items; k++) {
+        if (strcmp(input_streetname, searches->addresses[k].tags.street) == 0) {
+            if (strcmp(input_housenumber, searches->addresses[k].tags.house_number) == 0) {
                 return 1;
             }
         }

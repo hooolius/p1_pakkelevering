@@ -4,5 +4,5 @@
 
 /* Main body of the held-karp implementation, this function calls all other in
  * the correct order, and returns the min_cost and plan pointers */
-void held_karp(int **matrix, int size,
-    int start_node, int *min_cost, int plan[]);
+int held_karp(int **matrix, int size,
+    int start_node, int plan[]);

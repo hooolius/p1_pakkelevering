@@ -4,12 +4,13 @@
 #include <string.h>
 #include "addresses_prompt.h"
 
-#define DEBUG 1
+#define DEBUG 0
 
 void addresses_prompt(dyn_array_address *searches) {
   int i = 0, number_of_packages = 0, j = 1;
   char check_for_end[50], end[] = "END", input_choice[2], manual_check[] = "1", document_check[] = "2", newline_find;
   struct address *current_searches = calloc(1, sizeof(struct address));
+
   if (DEBUG != 1) {
     printf("Hello there! - I need to know if you want to insert the addresses manually or using a document."
            "\nPress (1) for typing them in yourself and press (2) for using a document\n");
@@ -54,7 +55,7 @@ void addresses_prompt(dyn_array_address *searches) {
 
       rewind(pinput_file);
       for (i = 0; i < number_of_packages; i++) {
-        fscanf(pinput_file, " %[A-Za-z ], %[A-Za-z], %[0-9], %[A-Za-z-], %[0-9], %[A-Za-z].",
+        fscanf(pinput_file, " %[A-Za-z ], %[A-Za-z], %[0-9A-Za-z], %[A-Za-z-], %[0-9], %[A-Za-z ].",
                current_searches->tags.city, current_searches->tags.country,
                current_searches->tags.house_number, current_searches->tags.muncipality,
                current_searches->tags.postcode, current_searches->tags.street);
@@ -72,9 +73,10 @@ void addresses_prompt(dyn_array_address *searches) {
     strcpy(current_searches->tags.street, "Badehusvej");
     strcpy(current_searches->tags.house_number, "13");
     searches = add_address_to_end_a(searches, *current_searches);
+
     strcpy(current_searches->tags.street, "Deltavej");
     strcpy(current_searches->tags.house_number, "30");
     searches = add_address_to_end_a(searches, *current_searches);
   }
-  parser_addreses(searches->addresses);
+  parser_addreses(searches);
 }

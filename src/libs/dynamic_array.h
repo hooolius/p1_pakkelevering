@@ -3,40 +3,42 @@
 #ifndef DYN_NODE2
 #define DYN_NODE2
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include "../pathfinding/pairing_heap.h"
-//#include "../pathfinding/a_star.h"
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <math.h>
+  #include "../pathfinding/pairing_heap.h"
+  //#include "../pathfinding/a_star.h"
 #endif
 
 #ifndef DYN_NODE
 #define DYN_NODE
-typedef struct dyn_array_node dyn_array_node;
+  typedef struct dyn_array_node dyn_array_node;
 
-struct dyn_array_node {
-  int low_water_mark;
-  int high_water_mark;
-  int min_capacity;
-  int number_of_elements;
-  int items;
-  node *nodes;
-};
+  struct dyn_array_node {
+    int low_water_mark;
+    int high_water_mark;
+    int min_capacity;
+    int number_of_elements;
+    int items;
+    node *nodes;
+  };
 #endif
 
-#ifndef DYN_ADDRESS3
-#define DYN_ADDRESS3
-#include "../map_gen/parser_addresses.h"
-struct dyn_array_address {
-  int low_water_mark;
-  int high_water_mark;
-  int min_capacity;
-  int number_of_elements;
-  int items;
-  struct address *addresses;
-};
-typedef struct dyn_array_address dyn_array_address;
+  #include "../map_gen/parser_addresses.h"
+
+#ifndef DYN_ADDRESS
+#define DYN_ADDRESS
+    struct dyn_array_address {
+      int low_water_mark;
+      int high_water_mark;
+      int min_capacity;
+      int number_of_elements;
+      int items;
+      struct address *addresses;
+    };
+    typedef struct dyn_array_address dyn_array_address;
 #endif
+
 /* HEAP FUNCTIONS */
 /* Makes a empty array */
 dyn_array_heap *make_dyn_array_h(int size);
@@ -77,7 +79,7 @@ dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete);
 dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find);
 
 // ADDRESS FUNCTIONS
-dyn_array_address *make_dyn_array_a(int size);
+dyn_array_address *make_dyn_array_a(int min_capacity);
 
 /* Not implemented yet */
 void trim_to_size_a();

@@ -1,5 +1,6 @@
 #include "a_star.h"
 
+
 node *convert_points_to_nodes(int number_of_points, point *points);
 
 node *convert_point_to_node(point *the_point);
