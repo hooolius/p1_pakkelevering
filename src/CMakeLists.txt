@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 2.6)
 project (p1_pakkelevering)
 #Version number
 set (p1_pakkelevering_VERSION_MAJOR 0)
-set (p1_pakkelevering_VERSION_MINOR 8)
+set (p1_pakkelevering_VERSION_MINOR 11)
 
 #configure the header file to pass CMake settings to the source code
 configure_file (
@@ -13,7 +13,7 @@ configure_file (
 #add the binary tree to the search path for include files
 include_directories ("${PROJECT_BINARY_DIR}")
 
-#include the distance lib
+#include the map_gen lib
 include_directories ("${PROJECT_SOURCE_DIR}/map_gen")
 include_directories ("${PROJECT_SOURCE_DIR}/pathfinding")
 include_directories ("${PROJECT_SOURCE_DIR}/libs")
