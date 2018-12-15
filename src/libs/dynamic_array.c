@@ -8,7 +8,7 @@ dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
 /* HEAP FUNCTIONS */
 dyn_array_heap *make_dyn_array_h(int min_capacity) {
   dyn_array_heap *array = calloc(1, sizeof(dyn_array_heap));
-  array->heap_nodes = calloc(min_capacity, sizeof(pairing_heap) * 2 * min_capacity);
+  array->heap_nodes = calloc(min_capacity, sizeof(pairing_heap*) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
   array->high_water_mark = 2 * min_capacity;
@@ -33,7 +33,7 @@ dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node 
     /* If array is resized then a pointer to the new array is returned */
     res = resize_array_h(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
   }
-  array_to_insert_in->heap_nodes[array_to_insert_in->items] = *heap_to_insert;
+  array_to_insert_in->heap_nodes[array_to_insert_in->items] = heap_to_insert;
   ++array_to_insert_in->items;
   /* If array is not resized then NULL is returned */
   return res;
@@ -46,8 +46,13 @@ void ensure_capacity_h(dyn_array_heap *array, int capacity) {
 dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete) {
   dyn_array_heap *res = array;
   for (int i = 0; i < array->items; ++i) {
-    if(array->heap_nodes[i].element == heap_to_delete->element) {
-      array->heap_nodes[i] = array->heap_nodes[array->items-1];
+    if(array->heap_nodes[i]->element == heap_to_delete->element) {
+      if(i == 0) {
+ //       array->heap_nodes[i] = memset(array->heap_nodes[i], 0 , sizeof(heap_node*));//array->heap_nodes[array->items-1];
+      }
+      else {
+        array->heap_nodes[i] = array->heap_nodes[array->items-1];
+      }
       --array->items;
     }
   }
@@ -60,7 +65,7 @@ dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete) 
 dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
   dyn_array_heap *res;
   for (int i = 0; i < array->items; ++i) {
-    if (array->heap_nodes[i].element == heap_to_find.element) {
+    if (array->heap_nodes[i]->element == heap_to_find.element) {
       res = &array->heap_nodes[i];
     }
     return res;
