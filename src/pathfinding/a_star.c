@@ -90,7 +90,6 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
       if (contains(closed_list, neighbour_list->nodes[i]) || heap_contains(open_list, &neighbour_list->nodes[i])) {
         continue;
       }
-      heap_node *curr_value = find(open_list, &neighbour_list->nodes[i]);
       /* Neighbour is calculated and put in open_list and current is put in came_from */
       //neighbour_list->nodes[i].g = current->g +
       //                             vincent_inv_dist(current->lat, current->lon, neighbour_list->nodes[i].lat,
@@ -106,9 +105,7 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
       neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list->nodes[i].g;
       //heap_insert(open_list, neighbour_list.nodes[i]);
       neighbour_list->nodes[i].came_from = current;
-      if(neighbour_list->nodes[i].id == 60117825.000000) {
-        printf("\n");
-      }
+
       add_element(open_list, &neighbour_list->nodes[i]);
       //add_node_to_end_n(open_list, neighbour_list->nodes[i]);
       //add_node_to_end_n(came_from, *current);
