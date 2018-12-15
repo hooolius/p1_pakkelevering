@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <limits.h>
-#include "held-karp.h"
+#include "held_karp.h"
 
 typedef struct subset {
   int *subsets;
@@ -20,45 +20,6 @@ void combinations_subset(int r, int n, subset *subsets);
 void combinations_subset_helper(int set,
     int at, int r, int n, subset *subsets);
 unsigned long factorial(unsigned long i);
-
-int main(void) {
-  int **matrix;
-  int n = 11;
-  matrix = calloc(n, sizeof(int*));
-  int q;
-  for(q=0;q<n;q++)
-    matrix[q]=(int *) calloc(n, sizeof(int));
-
-  for(int i=0;i<n;i++)
-    {
-    printf("\n Enter Elements of Row # : %d\n", i);
-    for(int j=0;j<n;j++)
-    scanf("%d",&matrix[i][j]);
-    }
-
-for(int i=0;i<n;i++)
-    {
-    printf("\n\n");
-    for(int j=0;j<n;j++)
-         printf("\t%d",matrix[i][j]);
-  }
-
-  int min_cost = 0;
-  int start_node = 0;
-  int a[n+1];
-  int size = (sizeof(a) / sizeof(int)) - 1;
-
-  for (int i = 0; i < size; i++) {
-    a[i] = i*3;
-  }
-
-  held_karp(matrix, size, start_node, &min_cost, a);
-  printf("min cost: %d, optimal route: \n", min_cost);
-  for (int i = 0; i < size+1; i++) {
-    printf("%d, ", a[i]);
-  }
-  printf("\n");
-}
 
 void held_karp(int **matrix, int size,
     int start_node, int *min_cost, int plan[]) {

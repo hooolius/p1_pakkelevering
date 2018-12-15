@@ -201,11 +201,10 @@ dyn_array_node *reconstruct_path(node *end, double start) {
   dyn_array_node *total_path = make_dyn_array_n(100);
   int i = 0;
   node *current = end;
-  printf("ID,LAT,LON\n");
+  printf("Route done.\n");
   while (current->came_from != NULL) {
     add_node_to_end_n(total_path, *current);
     current = current->came_from;
-    printf("%lf,%lf,%lf\n", current->id, current->lat, current->lon);
     i++;
   }
   return total_path;

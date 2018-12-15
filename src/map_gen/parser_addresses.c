@@ -64,7 +64,7 @@ void convert_to_array(char *text, struct address *searches) {
             }
         }
     }
-    for (int i = 0; i < 20; ++i) {
+    for (int i = 0; i < sizeof(searches)/ sizeof(struct address); ++i) {
         strcpy(searches[i].tags.street, addresses[i].tags.street);
         strcpy(searches[i].tags.house_number, addresses[i].tags.house_number);
         strcpy(searches[i].tags.country, addresses[i].tags.country);
@@ -76,7 +76,7 @@ void convert_to_array(char *text, struct address *searches) {
 }
 
 int is_in_array(char input_streetname[], char input_housenumber[], struct address *searches) {
-    for (int k = 0; k < 20; ++k) {
+    for (int k = 0; k < sizeof(searches)/ sizeof(struct address); ++k) {
         if (strcmp(input_streetname, searches[k].tags.street) == 0) {
             if (strcmp(input_housenumber, searches[k].tags.house_number) == 0) {
                 return 1;

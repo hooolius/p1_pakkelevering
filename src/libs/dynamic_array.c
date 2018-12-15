@@ -134,3 +134,66 @@ dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find) {
   }
   return res;
 }
+
+/* Addresses Functions */
+dyn_array_address *make_dyn_array_a(int min_capacity) {
+  dyn_array_address *array = calloc(1, sizeof(dyn_array_address));
+  array->addresses = calloc(min_capacity, sizeof(struct address) * 2 * min_capacity);
+  array->min_capacity = min_capacity;
+  array->low_water_mark = min_capacity;
+  array->high_water_mark = 2 * min_capacity;
+  array->items = 0;
+  return array;
+}
+
+dyn_array_address *resize_array_a(dyn_array_address *array, int new_size) {
+  array->low_water_mark = (int)ceil(new_size/4);
+  array->high_water_mark = new_size;
+  array->addresses = realloc(array->addresses, new_size * sizeof(struct address));
+  if(array->addresses == NULL) {
+    exit(EXIT_FAILURE);
+  }
+  return array;
+}
+
+dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, struct address address_to_insert) {
+  dyn_array_address *res = array_to_insert_in;
+
+  /* If array is not able to hold another element then resize array */
+  if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
+    /* If array is resized then a pointer to the new array is returned */
+    res = resize_array_a(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
+  }
+  array_to_insert_in->addresses[array_to_insert_in->items] = address_to_insert;
+  array_to_insert_in->items += 1;
+  /* If array is not resized then NULL is returned */
+  return res;
+}
+
+void ensure_capacity_a(dyn_array_address *array, int capacity) {
+  array->min_capacity = capacity;
+}
+
+dyn_array_address *delete_address_a(dyn_array_address *array, struct address *address_to_delete) {
+  dyn_array_address *res = array;
+  for (int i = 0; i < array->items; ++i) {
+    if(array->addresses[i].id == address_to_delete->id) {
+      array->addresses[i] = array->addresses[array->items - 1];
+      array->items -= 1;
+    }
+  }
+  if(array->items < array->low_water_mark) {
+    res = resize_array_a(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
+  }
+  return res;
+}
+
+dyn_array_address *find_address_a(dyn_array_address *array, struct address address_to_find) {
+  dyn_array_address *res;
+  for (int i = 0; i < array->items; ++i) {
+    if(array->addresses[i].id == address_to_find.id) {
+      res = &array->addresses[i];
+    }
+  }
+  return res;
+}
