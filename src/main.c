@@ -32,7 +32,7 @@ main(int argc, char *argv[]) {
   min_cost = held_karp(matrix, searches->items, 0, plan);
   printf("min cost: %d \n", min_cost);
   for (int i = 0; i < searches->items+1; i++) {
-    printf("%s %s, ", searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
+    printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   }
   free(searches);
   printf("\n");

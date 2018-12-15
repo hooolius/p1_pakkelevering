@@ -367,7 +367,9 @@ node *remove_from_heap(pairing_heap *pheap, heap_node *hnode) {
   if (pheap->size != 0) {
     make_root(pheap->root);
   }
-  return hnode->element;
+  node *return_node = hnode->element;
+  free(hnode);
+  return return_node;
 }
 
 node *extract_min(pairing_heap *pheap) {
@@ -376,5 +378,18 @@ node *extract_min(pairing_heap *pheap) {
     exit(EXIT_FAILURE);
   } else {
     return remove_from_heap(pheap, pheap->root);
+  }
+}
+
+void clean_heap(pairing_heap *pheap) {
+  heap_node *elem = pheap->AFT.prev->prev;
+  while (elem != &pheap->FORE) {
+    elem->next->child = NULL;
+    elem->next->sib_left = NULL;
+    elem->next->sib_right = NULL;
+    elem->next->next = NULL;
+    elem->next->element = NULL;
+    free(elem->next);
+    elem = elem->prev;
   }
 }
