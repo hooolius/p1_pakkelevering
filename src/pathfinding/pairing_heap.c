@@ -69,7 +69,7 @@ void add_child(heap_node *hnode, heap_node *child) {
   if (hnode->child == NULL) {
     hnode->child = child;
     child->sib_left = hnode;
-  } else if (is_rightmost_child(child)) {
+  } else if (is_rightmost_child(hnode->child)) {
     set_left(child, hnode->child);
   } else {
     set_left(hnode->child->sib_right, child);

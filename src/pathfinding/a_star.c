@@ -70,14 +70,6 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
     if (current == NULL) {
       printf("%d current is null \n", q);
     }
-    if (current->id == 3451659694.0) {
-      printf("jajajajjajaj\n");
-    }
-   if (contains(closed_list, *current)) {
-      printf("aaar det burde ik ske \n");
-      continue;
-   }
-    printf("%lf,%lf,%lf\n", current->id, current->lat, current->lon);
     //printf("G: %lf H: %lf F: %lf\n", current->g, current->h, current->f);
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
@@ -93,9 +85,6 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
     /* Count number of neighbours and check if they exied in closed_list */
     dyn_array_node *neighbour_list = make_neighbours_list(*current, nodes);
     for (size_t i = 0; i < neighbour_list->items; ++i) {
-      if (neighbour_list->nodes[i].id == 3451659694.0) {
-        printf("jajajajjajaj\n");
-      }
       //if (contains(closed_list, neighbour_list->nodes[i]) || contains(open_list, neighbour_list->nodes[i])) {
       if (contains(closed_list, neighbour_list->nodes[i]) || heap_contains(open_list, &neighbour_list->nodes[i])) {
         continue;

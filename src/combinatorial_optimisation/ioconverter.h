@@ -1,11 +1,9 @@
-#include "vincent_inv_dist_points.h"
 #include "a_star.h"
 
 /*input param med antal punkter fra a* filen laves om*/
 //#define ANTALPUNKTER 100
 
 /*prototypes*/
-double converter(gps_point *arr_punkter, int number_of_address);
 
 
 /**
