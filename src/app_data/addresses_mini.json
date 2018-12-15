@@ -8,45 +8,6 @@
   "elements": [
     {
       "type": "node",
-      "id": 28390832,
-      "lat": 57.05132,
-      "lon": 9.9165764,
-      "tags": {
-        "highway": "traffic_signals",
-        "traffic_signals:direction": "backward"
-      }
-    },
-    {
-      "type": "node",
-      "id": 28390842,
-      "lat": 57.0493558,
-      "lon": 9.9163046,
-      "tags": {
-        "crossing_ref": "zebra",
-        "highway": "crossing"
-      }
-    },
-    {
-      "type": "node",
-      "id": 28390853,
-      "lat": 57.0478389,
-      "lon": 9.9156882,
-      "tags": {
-        "crossing": "zebra",
-        "highway": "crossing"
-      }
-    },
-    {
-      "type": "node",
-      "id": 316449375,
-      "lat": 57.0474778,
-      "lon": 9.9205882,
-      "tags": {
-        "highway": "traffic_signals"
-      }
-    },
-    {
-      "type": "node",
       "id": 342989717,
       "lat": 57.048458,
       "lon": 9.9206,
@@ -29369,4 +29330,6 @@
       "tags": {
         "highway": "footway"
       }
-    },
+    }
+  ]
+}

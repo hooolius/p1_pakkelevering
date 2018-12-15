@@ -7466,7 +7466,7 @@
         "highway": "service",
         "service": "parking_aisle"
       }
-    },
+    }
   ],
   "nodes":[
     {
