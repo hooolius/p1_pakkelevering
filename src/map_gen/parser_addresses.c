@@ -5,7 +5,7 @@
 
 int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_address *searches);
 
-void convert_to_array(char *text, dyn_array_address*searches);
+void convert_to_array(char *data, dyn_array_address*searches);
 
 void parser_addreses(dyn_array_address *searches) {
     long len = 0;
@@ -28,7 +28,7 @@ void parser_addreses(dyn_array_address *searches) {
     convert_to_array(data, searches);
 }
 
-void convert_to_array(char *text, dyn_array_address *searches) {
+void convert_to_array(char *data, dyn_array_address *searches) {
     cJSON *json = NULL;
     const cJSON *element = NULL;
     const cJSON *elements = NULL;
@@ -36,7 +36,7 @@ void convert_to_array(char *text, dyn_array_address *searches) {
     struct address addresses[searches->items];
     int j = 0;
 
-    json = cJSON_Parse(text);
+    json = cJSON_Parse(data);
 
     if (json == NULL) {
         printf("Error before: [%s]\n", cJSON_GetErrorPtr());

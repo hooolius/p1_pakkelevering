@@ -34,6 +34,7 @@ int held_karp(int **matrix, int size,
   solve(matrix, memo, start_node, size);
   min_cost = calc_min_cost(matrix, memo, start_node, size);
   calc_best_plan(matrix, memo, start_node, size, plan);
+  free(memo);
   return min_cost;
 }
 

@@ -9,7 +9,7 @@
 #endif
 struct tags {
     char city[30];
-    char street[30];
+    char street[35];
     char country[5];
     char house_number[5];
     char muncipality[20];

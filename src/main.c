@@ -14,7 +14,6 @@ typedef struct point point;
 
 main(int argc, char *argv[]) {
 
-  printf("%s", argv[0]);
   dyn_array_address *searches = make_dyn_array_a(2);
   point *map_points;
   map_points = calloc(points_counter(), sizeof(point));
@@ -22,13 +21,11 @@ main(int argc, char *argv[]) {
   addresses_prompt(searches);
   map_parser(map_points);
   addresses_to_point_calc(searches, map_points);
-  printf("Size: %d",searches->items);
 
   printf("Version %d.%d \n",
       p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
-
   int **matrix = astar_to_matrix_converter(searches, map_points);
-
+  free(map_points);
   int min_cost = 0;
   int plan[searches->items+1];
 
@@ -37,6 +34,7 @@ main(int argc, char *argv[]) {
   for (int i = 0; i < searches->items+1; i++) {
     printf("%s %s, ", searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   }
+  free(searches);
   printf("\n");
   return 0;
 }

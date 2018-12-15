@@ -25,18 +25,15 @@ int cmp_func(const void *a, const void *b);
 dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
   int number_of_points = 1;
   //FILE *fil = fopen("output.txt", "w");
-  printf("ID,LAT,LON\n");
   while (points[number_of_points].id != 0) {
     //fprintf(fil,"%lf, %lf, %lf\n",points[number_of_points].id, points[number_of_points].lat, points[number_of_points].lon);
     ++number_of_points;
   }
-  printf("START LAT: %lf LON: %lf\n", start_p->lat, start_p->lon);
-  printf("GOAL LAT: %lf LON: %lf\n", goal_p->lat, goal_p->lon);
+
   /* Debug code */
   node *start = convert_point_to_node(start_p);
   node *goal = convert_point_to_node(goal_p);
   node *nodes = convert_points_to_nodes(number_of_points, points);
-  printf("%d", number_of_points);
   /*for (int j = 1; j < number_of_points; ++j) {
     printf("ID:%.0lf LAT: %.0lf LON: %.0lf\n", nodes[j].id, nodes[j].lat, nodes[j].lon);
   }*/
@@ -68,15 +65,11 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
     //copy_node_to_node(current, extract_min(open_list));
     current = extract_min(open_list);
 
-    if (current == NULL) {
-      printf("%d current is null \n", q);
-    }
     //printf("G: %lf H: %lf F: %lf\n", current->g, current->h, current->f);
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
-      printf("i did the thing\n");
-      //free(closed_list);
-      //free(open_list);
+      free(closed_list);
+      free(open_list);
       return reconstruct_path(current, start->id);
     }
     /* Move current node from open_list to closed_list */
@@ -129,9 +122,11 @@ int cmp_func(const void *a, const void *b) {
 
   if (aa->f > bb->f) {
     res = -1;
-  } else if (aa->f == aa->f) {
+  }
+  else if (aa->f == aa->f) {
     res = 0;
-  } else {
+  }
+  else {
     res = 1;
   }
   return res;
@@ -199,7 +194,6 @@ dyn_array_node *reconstruct_path(node *end, double start) {
   dyn_array_node *total_path = make_dyn_array_n(100);
   int i = 0;
   node *current = end;
-  printf("Route done.\n");
   while (current->came_from != NULL) {
     add_node_to_end_n(total_path, *current);
     current = current->came_from;

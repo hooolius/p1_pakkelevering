@@ -55,7 +55,7 @@ void addresses_prompt(dyn_array_address *searches) {
 
       rewind(pinput_file);
       for (i = 0; i < number_of_packages; i++) {
-        fscanf(pinput_file, " %[A-Za-z ], %[A-Za-z], %[0-9A-Za-z], %[A-Za-z-], %[0-9], %[A-Za-z ].",
+        fscanf(pinput_file, " %[A-Za-z ], %[A-Za-z], %[0-9A-Za-z], %[A-Za-z -], %[0-9], %[A-Za-z ].",
                current_searches->tags.city, current_searches->tags.country,
                current_searches->tags.house_number, current_searches->tags.muncipality,
                current_searches->tags.postcode, current_searches->tags.street);
