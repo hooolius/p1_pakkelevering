@@ -24,12 +24,13 @@ void addresses_prompt(struct address *searches) {
         scanf("  %[^\n]s  ", check_for_end);
 
         if (0 != strcmp(check_for_end, end)) {
+          searches= realloc(searches, j * sizeof(struct address));
           strcpy(searches[i].tags.street, check_for_end);
           printf("Please enter the housenumber (Element number %d)\n", j);
           scanf("%s", searches[i].tags.house_number);
           i++;
-          number_of_packages++;
           j++;
+          number_of_packages++;
         }
       }
 
@@ -54,6 +55,7 @@ void addresses_prompt(struct address *searches) {
 
       rewind(pinput_file);
       for (i = 0; i < number_of_packages; i++) {
+        searches= realloc(searches,i+1* sizeof(struct address));
         fscanf(pinput_file, " %[A-Za-z ], %[A-Za-z], %[0-9], %[A-Za-z-], %[0-9], %[A-Za-z].",
                searches[i].tags.city, searches[i].tags.country,
                searches[i].tags.house_number, searches[i].tags.muncipality,
@@ -68,11 +70,11 @@ void addresses_prompt(struct address *searches) {
   }
   else {
     printf("\n\tDEBUG MODE \n");
+    searches = realloc(searches,2* sizeof(struct address));
     strcpy(searches[0].tags.street, "Badehusvej");
     strcpy(searches[0].tags.house_number, "13");
-    strcpy(searches[1].tags.street, "Selma Lagerløfs Vej");
-    strcpy(searches[1].tags.house_number, "300");
+    strcpy(searches[1].tags.street, "Deltavej");
+    strcpy(searches[1].tags.house_number, "30");
   }
   parser_addreses(searches);
-  printf("lat is: %lf \n", searches[0].lat);
 }

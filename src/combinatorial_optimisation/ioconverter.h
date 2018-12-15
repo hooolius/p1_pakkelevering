@@ -1,4 +1,4 @@
-#include "a_star.h"
+#include "../pathfinding/a_star.h"
 
 /*input param med antal punkter fra a* filen laves om*/
 //#define ANTALPUNKTER 100
@@ -14,4 +14,5 @@
  * @param nodes
  * @return
  */
-int * converter_main(struct address *addresses, struct point *map_points);
+int **astar_to_matrix_converter(struct address *addresses, struct point *map_points);
+int count_addresses(struct address *addresses);

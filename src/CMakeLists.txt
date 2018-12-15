@@ -17,17 +17,21 @@ include_directories ("${PROJECT_BINARY_DIR}")
 include_directories ("${PROJECT_SOURCE_DIR}/map_gen")
 include_directories ("${PROJECT_SOURCE_DIR}/pathfinding")
 include_directories ("${PROJECT_SOURCE_DIR}/libs")
+include_directories ("${PROJECT_SOURCE_DIR}/combinatorial_optimisation")
 add_subdirectory (pathfinding)
 add_subdirectory (map_gen)
 add_subdirectory (libs)
+add_subdirectory (combinatorial_optimisation)
 
 #include the dyn array lib
 
 #add our executable
 add_executable (p1_pakkelevering main.c)
 target_link_libraries (p1_pakkelevering map_gen)
+target_link_libraries (p1_pakkelevering combinatorial_optimisation)
 target_link_libraries (p1_pakkelevering pathfinding)
 target_link_libraries (p1_pakkelevering libs)
+#include math.h
 target_link_libraries(p1_pakkelevering m)
 
 # add the install targets

@@ -3,14 +3,13 @@
 void addresses_to_point_calc(struct address *searches, struct point *map_points) {
     double difference = 0;
     int points;
-    int number_of_searches = 20;
     double lat_difference;
     double lon_difference;
 
     points = points_counter();
 
     for (int i = 0; i < points; ++i) {
-        for (int j = 0; j < number_of_searches; ++j) {
+        for (int j = 0; j < sizeof(searches)/ sizeof(struct address); ++j) {
             lat_difference = map_points[i].lat - searches[j].lat;
 
             if (lat_difference < 0) {
