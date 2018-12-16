@@ -52,6 +52,7 @@ void map_parser(struct point *map_points) {
         search_and_parse_points(data, map_points);
         search_and_parse_streets(data, map_points);
     }
+    free(data);
 
 }
 
@@ -85,6 +86,10 @@ int points_counter() {
     char *data = NULL;
     FILE *paddress_file;
     const cJSON *json;
+    const cJSON *points = NULL;
+    const cJSON *json_point = NULL;
+    int i = 0;
+
     paddress_file = fopen("map_data.json", "rb");
 
     /*Start of standard modification of file to make it capable of JSON parsing*/
@@ -99,19 +104,14 @@ int points_counter() {
     data = (char *) malloc(len + 1);
     fread(data, 1, len, paddress_file);
     data[len] = '\0';
-
     json = cJSON_Parse(data);
 
-    const cJSON *points = NULL;
-    const cJSON *json_point = NULL;
-    int i = 0;
     points = cJSON_GetObjectItemCaseSensitive(json, "points");
     cJSON_ArrayForEach(json_point, points) {
         i++;
     }
     fclose(paddress_file);
     return i;
-
 }
 
 int sorter_function(const void *a, const void *b) {

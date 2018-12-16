@@ -109,7 +109,8 @@ dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
 */
 dyn_array_node *make_dyn_array_n(int min_capacity) {
   dyn_array_node *array = calloc(1, sizeof(dyn_array_node));
-  array->nodes = calloc(min_capacity, sizeof(node) * 2 * min_capacity);
+  int test = sizeof(node*);
+  array->nodes = (node**)calloc(min_capacity, sizeof(node*) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
   array->high_water_mark = 2 * min_capacity;
@@ -126,20 +127,22 @@ dyn_array_node *make_dyn_array_n(int min_capacity) {
 dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
-  array->nodes = realloc(array->nodes, new_size * sizeof(node));
+  array->nodes = realloc(array->nodes, new_size * sizeof(node*));
   if(array->nodes == NULL) {
     exit(EXIT_FAILURE);
   }
   return array;
 }
 
+
 /**
 *@brief This function adds another element to the end of an array
-*@param[in] "dyn_array_node *array_to_insert_in"  is the array in which a new element has to be added
+*@param[in] "dyn_array_node *array_to_insert_in" is the array in which a new element has to be added
 *@param[in] "node node_to_insert" The data that has to be inserted into the array
 *@return Returns a pointer to the resized array
 */
-dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_to_insert) {
+dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node_to_insert) {
+
   dyn_array_node *res = array_to_insert_in;
 
   /* If array is not able to hold another element then resize array */
@@ -166,7 +169,7 @@ void ensure_capacity_n(dyn_array_node *array, int capacity) {
 dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
   dyn_array_node *res = array;
   for (int i = 0; i < array->items; ++i) {
-    if(array->nodes[i].id == node_to_delete->id) {
+    if(array->nodes[i]->id == node_to_delete->id) {
       array->nodes[i] = array->nodes[array->items - 1];
       array->items -= 1;
     }
@@ -186,8 +189,8 @@ dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
 dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find) {
   dyn_array_node *res;
   for (int i = 0; i < array->items; ++i) {
-    if(array->nodes[i].id == node_to_find.id) {
-      res = &array->nodes[i];
+    if(array->nodes[i]->id == node_to_find.id) {
+      res = array->nodes[i];
     }
   }
   return res;

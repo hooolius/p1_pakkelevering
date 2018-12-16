@@ -1,0 +1,9 @@
+Aalborg, DK, 224, Aalborg, 9000, Sofievej.
+Aalborg, DK, 7K, Aalborg, 9000, Bygaden.
+Aalborg SV, DK, 446C, Aalborg, 9200, Hobrovej.
+Aalborg SV, DK, 349, Aalborg, 9200, Poul Anker Bechs Vej.
+Aalborg, DK, 49, Aalborg, 9000, Rughaven.
+Aalborg, DK, 4A, Aalborg, 9000, Mariendalsvej.
+Aalborg SOe, DK, 101, Aalborg, 9210, Peter Bruuns Vej.
+Aalborg, DK, 6A, Aalborg, 9000, Duevej.
+Aalborg, DK, 100, Aalborg, 9000, Mester Eriks Vej.

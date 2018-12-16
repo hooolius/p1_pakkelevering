@@ -21,18 +21,21 @@ void combinations_subset_helper(int set,
     int at, int r, int n, subset *subsets);
 unsigned long factorial(unsigned long i);
 
-void held_karp(int **matrix, int size,
-    int start_node, int *min_cost, int plan[]) {
+int held_karp(int **matrix, int size,
+    int start_node, int plan[]) {
   int i; 
-  int **memo; 
+  int **memo;
+  int min_cost = INT_MAX;
   memo = calloc(size, sizeof(int*));
   for(i = 0; i < size; i++) {
     memo[i]=(int *) calloc((int) pow(2, size), sizeof(int));
   }
   setup(matrix, memo, start_node, size);
   solve(matrix, memo, start_node, size);
-  *min_cost = calc_min_cost(matrix, memo, start_node, size);
+  min_cost = calc_min_cost(matrix, memo, start_node, size);
   calc_best_plan(matrix, memo, start_node, size, plan);
+  free(memo);
+  return min_cost;
 }
 
 /* finds the optimal route from start_node to i, as given in the distance

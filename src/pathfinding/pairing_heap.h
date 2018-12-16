@@ -91,5 +91,10 @@ void add_element(pairing_heap *pheap, node *element);
  * @return The minimum value of the heap
  */
 node *extract_min(pairing_heap *pheap);
-
+/**
+ * @brief Frees all memory in the heap
+ *
+ * @param[in] pheap The heap to free memory froom
+ */
+void clean_heap(pairing_heap *pheap);
 #endif

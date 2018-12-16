@@ -23,7 +23,7 @@ int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_p
 
   /*distance matrix*/
   /*calloc two dim array of pointer*/
-  int **afstand_matrix = calloc(number_of_address, sizeof(int));
+  int **afstand_matrix = (int **) calloc(number_of_address, sizeof(int *));
   for (int y = 0; y < number_of_address; ++y) {
     afstand_matrix[y] = (int *) calloc(number_of_address, sizeof(int));
   }
@@ -31,18 +31,20 @@ int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_p
     printf("Error! memory not allocated.");
     exit(-1);
   }
-  afstand_matrix[number_of_address][number_of_address];
+
   for (int i = 0; i < number_of_address; ++i) {
     for (int j = 0; j < number_of_address; ++j) {
       if (i == j) {
         afstand_matrix[i][j] = 0;
         afstand_matrix[j][i] = 0;
-      } else {
+      }
+      else {
         if (afstand_matrix[i][j] == 0 || afstand_matrix[j][i] == 0) {
           dyn_array_node *star = a_star(&map_points[searches->addresses[i].closest_point],
-                                        &map_points[searches->addresses[i].closest_point], map_points);
-          afstand_matrix[i][j] = (int) round(star->nodes[0].g);
-          afstand_matrix[j][i] = (int) round(star->nodes[0].g);
+                                        &map_points[searches->addresses[j].closest_point], map_points);
+          afstand_matrix[i][j] = (int) round(star->nodes[0]->g);
+          afstand_matrix[j][i] = (int) round(star->nodes[0]->g);
+          free(star);
         }
       }
     }
