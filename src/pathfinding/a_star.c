@@ -40,7 +40,6 @@ double a_star(point *start_p, point *goal_p, point *points) {
   add_element(open_list, start);
 
   node *current;
-  node neighbour;
 
   /* A star algoritme */
   int q = 0;
@@ -51,6 +50,8 @@ double a_star(point *start_p, point *goal_p, point *points) {
 
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
+      free(start);
+      free(goal);
       free(closed_list->nodes);
       free(closed_list);
       clean_heap(open_list);
