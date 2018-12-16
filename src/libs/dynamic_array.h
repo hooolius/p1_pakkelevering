@@ -20,7 +20,7 @@
     int min_capacity;
     int number_of_elements;
     int items;
-    node *nodes;
+    node **nodes;
   };
 #endif
 
@@ -72,7 +72,7 @@ void ensure_capacity_n(dyn_array_node *array, int capacity);
 dyn_array_node *resize_array_n(dyn_array_node *array, int new_size);
 
 /* Implemented */
-dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_to_insert);
+dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node_to_insert);
 /* Implemented */
 dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete);
 /* Not implemented yet */

@@ -1,6 +1,5 @@
 #include "a_star.h"
 
-
 node *convert_points_to_nodes(int number_of_points, point *points);
 
 node *convert_point_to_node(point *the_point);
@@ -14,29 +13,22 @@ node *find_min_array(dyn_array_node *list);
 
 dyn_array_node *reconstruct_path(node *end, double start);
 
-dyn_array_node *make_neighbours_list(node current, node *nodes);
+dyn_array_node *make_neighbours_list(node *current, node *nodes);
 
-int contains(dyn_array_node *closed_list, node item);
+int contains(dyn_array_node *closed_list, node *item);
 
 int cmp_func(const void *a, const void *b);
-
 
 /* A star setup */
 dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
   int number_of_points = 1;
-  //FILE *fil = fopen("output.txt", "w");
   while (points[number_of_points].id != 0) {
-    //fprintf(fil,"%lf, %lf, %lf\n",points[number_of_points].id, points[number_of_points].lat, points[number_of_points].lon);
     ++number_of_points;
   }
 
-  /* Debug code */
   node *start = convert_point_to_node(start_p);
   node *goal = convert_point_to_node(goal_p);
   node *nodes = convert_points_to_nodes(number_of_points, points);
-  /*for (int j = 1; j < number_of_points; ++j) {
-    printf("ID:%.0lf LAT: %.0lf LON: %.0lf\n", nodes[j].id, nodes[j].lat, nodes[j].lon);
-  }*/
 
   int count = 0;
   dyn_array_node *closed_list = make_dyn_array_n(100);
@@ -45,54 +37,44 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
   start->f = start->g + start->h;
   pairing_heap *open_list = init_heap();
 
-  //dyn_array_node *open_list = make_dyn_array_n(10);
-  //heap_clear(open_list);
-  //add_node_to_end_n(open_list, *start);
   add_element(open_list, start);
-  //dyn_array_node *came_from = make_dyn_array_n(100);;
-  //node *current;
+
   node *current;
   node neighbour;
-  //printf("ID,LAT,LON\n");
-  //heap_insert(open_list, start);
-  //heap_insert(open_list, start);
+
   /* A star algoritme */
   int q = 0;
   while (open_list->size != 0) {
     q++;
     /* Take node with the smallest value and copy to current */
-    //copy_node_to_node(current, find_min_array(open_list));
-    //copy_node_to_node(current, extract_min(open_list));
     current = extract_min(open_list);
 
-    //printf("G: %lf H: %lf F: %lf\n", current->g, current->h, current->f);
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
       free(closed_list->nodes);
       free(closed_list);
       clean_heap(open_list);
       free(open_list);
+      //free(nodes);
       return reconstruct_path(current, start->id);
     }
     /* Move current node from open_list to closed_list */
-    add_node_to_end_n(closed_list, *current);
+    add_node_to_end_n(closed_list, current);
     /* Count number of neighbours and check if they exied in closed_list */
-    dyn_array_node *neighbour_list = make_neighbours_list(*current, nodes);
+    dyn_array_node *neighbour_list = make_neighbours_list(current, nodes);
     for (size_t i = 0; i < neighbour_list->items; ++i) {
-      //if (contains(closed_list, neighbour_list->nodes[i]) || contains(open_list, neighbour_list->nodes[i])) {
-      if (contains(closed_list, neighbour_list->nodes[i]) || heap_contains(open_list, &neighbour_list->nodes[i])) {
+      if (contains(closed_list, neighbour_list->nodes[i]) || heap_contains(open_list, neighbour_list->nodes[i])) {
         continue;
       }
-      neighbour_list->nodes[i].g = current->g +
-                                   vincent_inv_dist(current->lat, current->lon, neighbour_list->nodes[i].lat,
-                                                    neighbour_list->nodes[i].lon);
-      neighbour_list->nodes[i].h = vincent_inv_dist(neighbour_list->nodes[i].lat, neighbour_list->nodes[i].lon,
+      neighbour_list->nodes[i]->g = current->g +
+                                   vincent_inv_dist(current->lat, current->lon, neighbour_list->nodes[i]->lat,
+                                                    neighbour_list->nodes[i]->lon);
+      neighbour_list->nodes[i]->h = vincent_inv_dist(neighbour_list->nodes[i]->lat, neighbour_list->nodes[i]->lon,
       goal->lat, goal->lon);
-      neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list->nodes[i].g;
-      //heap_insert(open_list, neighbour_list.nodes[i]);
-      neighbour_list->nodes[i].came_from = current;
+      neighbour_list->nodes[i]->f = neighbour_list->nodes[i]->h + neighbour_list->nodes[i]->g;
+      neighbour_list->nodes[i]->came_from = current;
 
-      add_element(open_list, &neighbour_list->nodes[i]);
+      add_element(open_list, neighbour_list->nodes[i]);
     }
     free(neighbour_list);
   }
@@ -103,7 +85,7 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
 node *find_min_array(dyn_array_node *list) {
   qsort(list->nodes, list->items, sizeof(node), cmp_func);
 
-  return &list->nodes[0];
+  return list->nodes[0];
 }
 
 int cmp_func(const void *a, const void *b) {
@@ -123,27 +105,27 @@ int cmp_func(const void *a, const void *b) {
   return res;
 }
 
-dyn_array_node *make_neighbours_list(node current, node *nodes) {
+dyn_array_node *make_neighbours_list(node *current, node *nodes) {
   /* Follow pointers and count number of neighbours */
   /* return a pointer from a memory space where neighbours are stored */
   dyn_array_node *neighbour_list = make_dyn_array_n(6);
-  if (current.p1 != 0) {
-    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p1]);
+  if (current->p1 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, &nodes[current->p1]);
   }
-  if (current.p2 != 0) {
-    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p2]);
+  if (current->p2 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, &nodes[current->p2]);
   }
-  if (current.p3 != 0) {
-    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p3]);
+  if (current->p3 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, &nodes[current->p3]);
   }
-  if (current.p4 != 0) {
-    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p4]);
+  if (current->p4 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, &nodes[current->p4]);
   }
-  if (current.p5 != 0) {
-    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p5]);
+  if (current->p5 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, &nodes[current->p5]);
   }
-  if (current.p6 != 0) {
-    neighbour_list = add_node_to_end_n(neighbour_list, nodes[current.p6]);
+  if (current->p6 != 0) {
+    neighbour_list = add_node_to_end_n(neighbour_list, &nodes[current->p6]);
   }
   return neighbour_list;
 }
@@ -170,10 +152,10 @@ int count_elements_in_list(dyn_array_node *list) {
   return list->items;
 }
 
-int contains(dyn_array_node *closed_list, node item) {
+int contains(dyn_array_node *closed_list, node *item) {
   int res = 0;
   for (int i = 0; i < closed_list->items; ++i) {
-    if (closed_list->nodes[i].id == item.id) {
+    if (closed_list->nodes[i]->id == item->id) {
       res = 1;
       break;
     }
@@ -186,7 +168,7 @@ dyn_array_node *reconstruct_path(node *end, double start) {
   int i = 0;
   node *current = end;
   while (current->came_from != NULL) {
-    add_node_to_end_n(total_path, *current);
+    add_node_to_end_n(total_path, current);
     current = current->came_from;
     i++;
   }
