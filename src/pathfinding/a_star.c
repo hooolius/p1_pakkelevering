@@ -20,7 +20,7 @@ int contains(dyn_array_node *closed_list, node *item);
 int cmp_func(const void *a, const void *b);
 
 /* A star setup */
-dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
+double a_star(point *start_p, point *goal_p, point *points) {
   int number_of_points = 1;
   while (points[number_of_points].id != 0) {
     ++number_of_points;
@@ -56,7 +56,11 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
       clean_heap(open_list);
       free(open_list);
       //free(nodes);
-      return reconstruct_path(current, start->id);
+      //return reconstruct_path(current, start->id);
+      dyn_array_node *output = reconstruct_path(current, start->id);
+      double output_distance = output->nodes[0]->g;
+      free(output);
+      return output_distance;
     }
     /* Move current node from open_list to closed_list */
     add_node_to_end_n(closed_list, current);
@@ -76,6 +80,7 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
 
       add_element(open_list, neighbour_list->nodes[i]);
     }
+    free(neighbour_list->nodes);
     free(neighbour_list);
   }
   printf("A star: No path exiting program!\n");

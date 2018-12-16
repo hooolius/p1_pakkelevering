@@ -40,11 +40,11 @@ int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_p
       }
       else {
         if (afstand_matrix[i][j] == 0 || afstand_matrix[j][i] == 0) {
-          dyn_array_node *star = a_star(&map_points[searches->addresses[i].closest_point],
+          double star = a_star(&map_points[searches->addresses[i].closest_point],
                                         &map_points[searches->addresses[j].closest_point], map_points);
-          afstand_matrix[i][j] = (int) round(star->nodes[0]->g);
-          afstand_matrix[j][i] = (int) round(star->nodes[0]->g);
-          free(star);
+          afstand_matrix[i][j] = (int) round(star);
+          afstand_matrix[j][i] = (int) round(star);
+          //free(star);
         }
       }
     }
