@@ -1,2 +1,2 @@
-#define p1_pakkelevering_VERSION_MAJOR 0
-#define p1_pakkelevering_VERSION_MINOR 11
+#define p1_pakkelevering_VERSION_MAJOR 1
+#define p1_pakkelevering_VERSION_MINOR 1

@@ -1,0 +1,16 @@
+Aalborg, DK, 9, Aalborg, 9000, Brohusgade.
+Aalborg, DK, 8, Aalborg, 9000, Gravenstenvej.
+Aalborg, DK, 41, Aalborg, 9000, Soendervangsvej.
+Aalborg, DK, 12, Aalborg, 9000, Perikumvej.
+Aalborg, DK, 19, Aalborg, 9000, Flintevej.
+Aalborg SOe, DK, 38, Aalborg, 9210, Poseidonvej.
+Aalborg Oest, DK, 53, Aalborg, 9220, Oddesundvej.
+Aalborg, DK, 4A, Aalborg, 9000, Moelleparkvej.
+Gistrup, DK, 5, Aalborg, 9260, Knuden.
+Aalborg, DK, 88, Aalborg, 9000, Hadsundvej.
+Aalborg SV, DK, 5, Aalborg, 9200, Graesvænget.
+Aalborg, DK, 61, Aalborg, 9000, Riishoejsvej.
+Aalborg Oest, DK, 41B, Aalborg, 9220, Myrdalstraede.
+Aalborg, DK, 116, Aalborg, 9000, Golfparken.
+Noerresundby, DK, 7, Aalborg, 9400, Dronningensgade.
+Aalborg SOe, DK, 58, Aalborg, 9210, C. P. Holboells Plads.

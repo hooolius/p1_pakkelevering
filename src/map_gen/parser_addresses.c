@@ -5,6 +5,7 @@
 
 int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_address *searches);
 
+
 void convert_to_array(char *data, dyn_array_address *searches);
 
 int is_in_searches(char input_streetname[], char input_housenumber[], struct address input_array[], int number_of_adresses) ;
@@ -43,47 +44,45 @@ void convert_to_array(char *data, dyn_array_address *searches) {
   if (json == NULL) {
     printf("Error before: [%s]\n", cJSON_GetErrorPtr());
 
-  }
-  else {
+  } else {
     elements = cJSON_GetObjectItemCaseSensitive(json, "elements");
     cJSON_ArrayForEach(element, elements) {
       tags = cJSON_GetObjectItemCaseSensitive(element, "tags");
-      /*Is in array, checks whether the current street name is in the searches array*/
+
       if (is_in_array(cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring,
-                      cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring, searches) == 1) {
+            cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring, searches) == 1) {
 
         addresses[j].lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
         addresses[j].lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
 
         strcpy(addresses[j].tags.street,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring);
+            cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring);
         strcpy(addresses[j].tags.country,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:country")->valuestring);
+            cJSON_GetObjectItemCaseSensitive(tags, "addr:country")->valuestring);
         strcpy(addresses[j].tags.muncipality,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:municipality")->valuestring);
+            cJSON_GetObjectItemCaseSensitive(tags, "addr:municipality")->valuestring);
         strcpy(addresses[j].tags.city,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:city")->valuestring);
+            cJSON_GetObjectItemCaseSensitive(tags, "addr:city")->valuestring);
         strcpy(addresses[j].tags.house_number,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring);
+            cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring);
 
         strcpy(addresses[j].tags.postcode,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
+            cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
         j++;
       }
     }
   }
   for (int i = 0; i < searches->items; ++i) {
-   // if (is_in_searches(searches->addresses[i].tags.street,searches->addresses[i].tags.house_number,addresses,searches->items)) {
-      strcpy(searches->addresses[i].tags.street, addresses[i].tags.street);
-      strcpy(searches->addresses[i].tags.house_number, addresses[i].tags.house_number);
-      strcpy(searches->addresses[i].tags.country, addresses[i].tags.country);
-      strcpy(searches->addresses[i].tags.muncipality, addresses[i].tags.muncipality);
-      strcpy(searches->addresses[i].tags.postcode, addresses[i].tags.postcode);
-      searches->addresses[i].lat = addresses[i].lat;
-      searches->addresses[i].lon = addresses[i].lon;
-   // }
+    strcpy(searches->addresses[i].tags.street, addresses[i].tags.street);
+    strcpy(searches->addresses[i].tags.house_number, addresses[i].tags.house_number);
+    strcpy(searches->addresses[i].tags.country, addresses[i].tags.country);
+    strcpy(searches->addresses[i].tags.muncipality, addresses[i].tags.muncipality);
+    strcpy(searches->addresses[i].tags.postcode, addresses[i].tags.postcode);
+    searches->addresses[i].lat = addresses[i].lat;
+    searches->addresses[i].lon = addresses[i].lon;
   }
 }
+
 
 int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_address *searches) {
   for (int k = 0; k < searches->items; k++) {
