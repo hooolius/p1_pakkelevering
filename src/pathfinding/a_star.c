@@ -50,15 +50,16 @@ double a_star(point *start_p, point *goal_p, point *points) {
 
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
+
+      //return reconstruct_path(current, start->id);
+      dyn_array_node *output = reconstruct_path(current, start->id);
+      double output_distance = output->nodes[0]->g;
       free(start);
       free(goal);
       free(closed_list->nodes);
       free(closed_list);
       clean_heap(open_list);
       free(open_list);
-      //return reconstruct_path(current, start->id);
-      dyn_array_node *output = reconstruct_path(current, start->id);
-      double output_distance = output->nodes[0]->g;
       free(output);
       free(nodes);
       return output_distance;

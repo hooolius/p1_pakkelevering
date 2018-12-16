@@ -71,7 +71,7 @@ void solve(int **matrix, int **memo, int start_node, int size) {
       }
     }
     free(subsets->integers);
-    free(subsets);
+    //free(subsets);
   }
 }
 
