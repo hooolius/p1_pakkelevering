@@ -79,4 +79,5 @@ void addresses_prompt(dyn_array_address *searches) {
     searches = add_address_to_end_a(searches, *current_searches);
   }
   parser_addreses(searches);
+  free(current_searches);
 }
