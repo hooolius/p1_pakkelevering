@@ -73,6 +73,11 @@ dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
 }
 
 /* NODE FUNCTIONS */
+/**
+*@brief This function initializes the dyn_array_node
+*@param[in] min_capacity This parameter decides the inital size of the dynamic array
+*@return Returns a pointer to the dynamic array
+*/
 dyn_array_node *make_dyn_array_n(int min_capacity) {
   dyn_array_node *array = calloc(1, sizeof(dyn_array_node));
   array->nodes = calloc(min_capacity, sizeof(node) * 2 * min_capacity);
@@ -83,6 +88,12 @@ dyn_array_node *make_dyn_array_n(int min_capacity) {
   return array;
 }
 
+/**
+*@brief This function resizes the dynamic array
+*@param[in] dyn_array_node *array The dynamic array that needs resizing
+*@param[in] new_size The number of possible elements in the array
+*@return Returns a pointer to the dynamic array
+*/
 dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
@@ -93,6 +104,11 @@ dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   return array;
 }
 
+/**
+*@brief This function adds another element to the end of an array
+*@param[in] min_capacity This parameter decides the inital size of the dynamic array
+*@return Returns a pointer to the dynamic array
+*/
 dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_to_insert) {
   dyn_array_node *res = array_to_insert_in;
 
