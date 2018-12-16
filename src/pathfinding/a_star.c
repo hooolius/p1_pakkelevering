@@ -59,7 +59,6 @@ double a_star(point *start_p, point *goal_p, point *points) {
       free(closed_list->nodes);
       free(closed_list);
       clean_heap(open_list);
-      free(open_list);
       free(output);
       free(nodes);
       return output_distance;
