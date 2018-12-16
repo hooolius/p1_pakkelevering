@@ -1,13 +1,3 @@
-/* 
- * converter.c
- *
- *  Created on: Dec 6, 2018
- *      Author: 
- * 
- * a star ind matrixe ud
- * a star punkt lat lon ind i gps point struct og afstand ud som matrixe
- */
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -15,15 +5,13 @@
 #include "ioconverter.h"
 
 int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_points) {
-  /*start and end point to A-star*/
-  //node start;
-  //node slut;
-  /*count number of searches*/
-  int number_of_address = searches->items;
 
-  /*distance matrix*/
-  /*calloc two dim array of pointer*/
-  int **afstand_matrix = (int **) calloc(number_of_address, sizeof(int *));
+
+/*count number of searches */
+  int number_of_address = searches->items; 
+
+/*calloc two dim array of pointer  */
+  int **afstand_matrix = (int **) calloc(number_of_address, sizeof(int *)); 
   for (int y = 0; y < number_of_address; ++y) {
     afstand_matrix[y] = (int *) calloc(number_of_address, sizeof(int));
   }
