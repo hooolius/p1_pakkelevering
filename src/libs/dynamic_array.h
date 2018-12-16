@@ -20,7 +20,7 @@
     int min_capacity;
     int number_of_elements;
     int items;
-    node *nodes;
+    node **nodes;
   };
 #endif
 

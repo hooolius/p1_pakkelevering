@@ -174,6 +174,7 @@ heap_node *dequeue(dyn_array_heap *detached);
 node *remove_from_heap(pairing_heap *pheap, heap_node *hnode);
 
 heap_node *init_node(node *element) {
+  int test = sizeof(heap_node);
   heap_node *hnode = calloc(1, sizeof(heap_node));
   hnode->element = element;
   hnode->child = NULL;

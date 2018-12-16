@@ -75,7 +75,8 @@ dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
 /* NODE FUNCTIONS */
 dyn_array_node *make_dyn_array_n(int min_capacity) {
   dyn_array_node *array = calloc(1, sizeof(dyn_array_node));
-  array->nodes = calloc(min_capacity, sizeof(node*) * 2 * min_capacity);
+  int test = sizeof(node*);
+  array->nodes = (node**)calloc(min_capacity, sizeof(node*) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
   array->high_water_mark = 2 * min_capacity;
@@ -101,7 +102,7 @@ dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node
     /* If array is resized then a pointer to the new array is returned */
     res = resize_array_n(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
   }
-  array_to_insert_in->nodes[array_to_insert_in->items] = *node_to_insert;
+  array_to_insert_in->nodes[array_to_insert_in->items] = node_to_insert;
   array_to_insert_in->items += 1;
   /* If array is not resized then NULL is returned */
   return res;
@@ -114,7 +115,7 @@ void ensure_capacity_n(dyn_array_node *array, int capacity) {
 dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
   dyn_array_node *res = array;
   for (int i = 0; i < array->items; ++i) {
-    if(array->nodes[i].id == node_to_delete->id) {
+    if(array->nodes[i]->id == node_to_delete->id) {
       array->nodes[i] = array->nodes[array->items - 1];
       array->items -= 1;
     }
@@ -128,8 +129,8 @@ dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
 dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find) {
   dyn_array_node *res;
   for (int i = 0; i < array->items; ++i) {
-    if(array->nodes[i].id == node_to_find.id) {
-      res = &array->nodes[i];
+    if(array->nodes[i]->id == node_to_find.id) {
+      res = array->nodes[i];
     }
   }
   return res;
