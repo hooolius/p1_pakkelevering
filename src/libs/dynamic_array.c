@@ -198,3 +198,66 @@ dyn_array_address *find_address_a(dyn_array_address *array, struct address addre
   }
   return res;
 }
+
+/* INTEGER Functions */
+dyn_array_int *make_dyn_array_i(int min_capacity) {
+  dyn_array_int *array = calloc(1, sizeof(int));
+  array->integers = calloc(min_capacity, sizeof(int) * 2 * min_capacity);
+  array->min_capacity = min_capacity;
+  array->low_water_mark = min_capacity;
+  array->high_water_mark = 2 * min_capacity;
+  array->items = 0;
+  return array;
+}
+
+dyn_array_int *resize_array_i(dyn_array_int *array, int new_size) {
+  array->low_water_mark = (int)ceil(new_size/4);
+  array->high_water_mark = new_size;
+  array->integers = realloc(array->integers, new_size * sizeof(struct address));
+  if(array->integers == NULL) {
+    exit(EXIT_FAILURE);
+  }
+  return array;
+}
+
+dyn_array_int *add_int_to_end_i(dyn_array_int *array_to_insert_in, int int_to_insert) {
+  dyn_array_int *res = array_to_insert_in;
+
+  /* If array is not able to hold another element then resize array */
+  if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
+    /* If array is resized then a pointer to the new array is returned */
+    res = resize_array_i(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
+  }
+  array_to_insert_in->integers[array_to_insert_in->items] = int_to_insert;
+  array_to_insert_in->items += 1;
+  /* If array is not resized then NULL is returned */
+  return res;
+}
+
+void ensure_capacity_i(dyn_array_int *array, int capacity) {
+  array->min_capacity = capacity;
+}
+
+dyn_array_int *delete_int_i(dyn_array_int *array, int int_to_delete) {
+  dyn_array_int *res = array;
+  for (int i = 0; i < array->items; ++i) {
+    if(array->integers[i] == int_to_delete) {
+      array->integers[i] = array->integers[array->items - 1];
+      array->items -= 1;
+    }
+  }
+  if(array->items < array->low_water_mark) {
+    res = resize_array_i(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
+  }
+  return res;
+}
+
+dyn_array_int *find_int_i(dyn_array_int *array, int int_to_find) {
+  dyn_array_int *res;
+  for (int i = 0; i < array->items; ++i) {
+    if(array->integers[i] == int_to_find) {
+      res = &array->integers[i];
+    }
+  }
+  return res;
+}
