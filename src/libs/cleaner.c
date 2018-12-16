@@ -1,11 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
-void freeArray(int **a, int m) {
-  int i;
-  for (i = 0; i < m; ++i) {
-    free(a[i]);
+int **make_array(int row, int col) {
+  int ** ptr = (int **) calloc(sizeof(int *), row);
+  for(int i = 0; i < row; i++) {
+    ptr[i] = (int *) calloc(sizeof(int), col);
   }
-  free(a);
+  return ptr;
+}
+
+void free_array(int **ptr, int row) {
+  for (int i = 0; i < row; ++i) {
+    free(ptr[i]);
+  }
+  free(ptr);
 }

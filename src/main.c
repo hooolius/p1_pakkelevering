@@ -56,8 +56,6 @@ int main(int argc, char *argv[]) {
     printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   }
   free(searches);
-  freeArray(matrix,searches->items);
-  free(matrix);
 
   printf("\n");
   return 0;

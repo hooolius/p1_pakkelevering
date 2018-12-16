@@ -16,12 +16,12 @@ include_directories ("${PROJECT_BINARY_DIR}")
 #include the map_gen lib
 include_directories ("${PROJECT_SOURCE_DIR}/map_gen")
 include_directories ("${PROJECT_SOURCE_DIR}/pathfinding")
-include_directories ("${PROJECT_SOURCE_DIR}/libs")
 include_directories ("${PROJECT_SOURCE_DIR}/combinatorial_optimisation")
+include_directories ("${PROJECT_SOURCE_DIR}/libs")
 add_subdirectory (pathfinding)
 add_subdirectory (map_gen)
-add_subdirectory (libs)
 add_subdirectory (combinatorial_optimisation)
+add_subdirectory (libs)
 
 #include the dyn array lib
 

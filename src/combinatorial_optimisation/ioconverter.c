@@ -32,7 +32,6 @@ int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_p
                                         &map_points[searches->addresses[j].closest_point], map_points);
           afstand_matrix[i][j] = (int) round(star);
           afstand_matrix[j][i] = (int) round(star);
-          //free(star);
         }
       }
     }

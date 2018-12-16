@@ -4,6 +4,7 @@
 #include <limits.h>
 #include "held_karp.h"
 #include "../libs/dynamic_array.h"
+#include "../libs/cleaner.h"
 
 void setup(int **matrix, int **memo, int start_node, int size);
 void solve(int **matrix, int **memo, int start_node, int size);
@@ -20,17 +21,16 @@ unsigned long factorial(unsigned long i);
 int held_karp(int **matrix, int size,
     int start_node, int plan[]) {
   int i; 
-  int **memo;
+  int **memo = make_array(size, pow(2, size));
   int min_cost = INT_MAX;
-  memo = calloc(size, sizeof(int*));
-  for(i = 0; i < size; i++) {
-    memo[i]=(int *) calloc((int) pow(2, size), sizeof(int));
-  }
   setup(matrix, memo, start_node, size);
   solve(matrix, memo, start_node, size);
   min_cost = calc_min_cost(matrix, memo, start_node, size);
   calc_best_plan(matrix, memo, start_node, size, plan);
-  free(memo);
+
+  free_array(memo, size);
+  free_array(matrix, size);
+
   return min_cost;
 }
 
@@ -71,7 +71,7 @@ void solve(int **matrix, int **memo, int start_node, int size) {
       }
     }
     free(subsets->integers);
-    //free(subsets);
+    free(subsets);
   }
 }
 
