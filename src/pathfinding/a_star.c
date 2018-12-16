@@ -55,11 +55,11 @@ double a_star(point *start_p, point *goal_p, point *points) {
       free(closed_list);
       clean_heap(open_list);
       free(open_list);
-      //free(nodes);
       //return reconstruct_path(current, start->id);
       dyn_array_node *output = reconstruct_path(current, start->id);
       double output_distance = output->nodes[0]->g;
       free(output);
+      free(nodes);
       return output_distance;
     }
     /* Move current node from open_list to closed_list */

@@ -1,20 +1,20 @@
-Aalborg, DK, 2, Aalborg, 9000, Alfavej.
-Aalborg, DK, 23, Aalborg, 9000, Borgergade.
-Aalborg, DK, 14, Aalborg, 9000, Davids Alle.
-Aalborg, DK, 30, Aalborg, 9000, Deltavej.
-Aalborg, DK, 79, Aalborg, 9000, Frejaparken.
-Aalborg, DK, 6, Aalborg, 9000, Gemmavej.
-Aalborg, DK, 35, Aalborg, 9000, Hobrovej.
-Aalborg, DK, 96, Aalborg, 9000, Hobrovej.
-Aalborg, DK, 13A, Aalborg, 9000, Strandvejen.
-Aalborg, DK, 2, Aalborg, 9000, James Tobins Alle.
-Aalborg, DK, 30, Aalborg, 9000, Kalkskraenten.
-Aalborg, DK, 11, Aalborg, 9000, Amagergade.
-Aalborg, DK, 34, Aalborg, 9000, Vejgaard Bymidte.
-Aalborg, DK, 51A, Aalborg, 9000, Sohngaardsholmsvej.
-Aalborg, DK, 7M, Aalborg, 9000, Borgmester Joergensens Vej.
-Aalborg, DK, 22, Aalborg, 9000, Vester Faelledvej.
-Aalborg, DK, 5C, Aalborg, 9000, Danmarksgade.
-Aalborg, DK, 23, Aalborg, 9000, Kaervangs Alle.
-Aalborg, DK, 300, Aalborg Oest, 9220, Selma Lagerloefs Vej.
-Aalborg, DK, 81, Aalborg SOe, 9210, Hellevangen.
+Aalborg SV, DK, 446C, Aalborg, 9200, Hobrovej.
+Aalborg SV, DK, 349, Aalborg, 9200, Poul Anker Bechs Vej.
+Aalborg, DK, 49, Aalborg, 9000, Rughaven.
+Aalborg, DK, 4A, Aalborg, 9000, Mariendalsvej.
+Aalborg SOe, DK, 101, Aalborg, 9210, Peter Bruuns Vej.
+Aalborg, DK, 6A, Aalborg, 9000, Duevej.
+Aalborg, DK, 100, Aalborg, 9000, Mester Eriks Vej.
+Aalborg, DK, 25, Aalborg, 9000, Peder Skrams Gade.
+Aalborg, DK, 97, Aalborg, 9000, Hobrovej.
+Aalborg, DK, 13, Aalborg, 9000, Kappavej.
+Aalborg, DK, 2A, Aalborg, 9000, Hadsundvej.
+Aalborg, DK, 7, Aalborg, 9000, Nytorv.
+Aalborg, DK, 9, Aalborg, 9000, Brohusgade.
+Aalborg, DK, 8, Aalborg, 9000, Gravenstenvej.
+Aalborg, DK, 41, Aalborg, 9000, Soendervangsvej.
+Aalborg, DK, 12, Aalborg, 9000, Perikumvej.
+Aalborg, DK, 19, Aalborg, 9000, Flintevej.
+Aalborg SOe, DK, 38, Aalborg, 9210, Poseidonvej.
+Aalborg Oest, DK, 53, Aalborg, 9220, Oddesundvej.
+Aalborg, DK, 4A, Aalborg, 9000, Moelleparkvej.
