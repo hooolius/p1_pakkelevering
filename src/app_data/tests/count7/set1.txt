@@ -1,0 +1,7 @@
+Aalborg, DK, 56, Aalborg, 9000, Loevstikkevej.
+Aalborg, DK, 13, Aalborg, 9000, Wibroesvej.
+Aalborg Oest, DK, 24, Aalborg, 9220, Oelandvej.
+Aalborg Oest, DK, 49, Aalborg, 9220, Oddesundvej.
+Aalborg, DK, 36, Aalborg, 9000, Tovesvej.
+Aalborg Oest, DK, 84A, Aalborg, 9220, Blaakildevej.
+Aalborg, DK, 175, Aalborg, 9000, Vesterkaeret.

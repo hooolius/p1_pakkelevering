@@ -28,5 +28,6 @@ struct address {
 
 
 void parser_addreses(dyn_array_address *searches);
+int parser_addreses_ALL(dyn_array_address *searches);
 
 #endif //MAP_AND_PARSER_PARSER_ADDRESSES_C_H

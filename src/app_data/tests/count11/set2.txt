@@ -1,0 +1,11 @@
+Aalborg, DK, 26, Aalborg, 9000, Fyensgade.
+Aalborg, DK, 28, Aalborg, 9000, Golfparken.
+Aalborg SV, DK, 12, Aalborg, 9200, Jupitervej.
+Aalborg, DK, 10, Aalborg, 9000, Oester Sundby Vej.
+Aalborg, DK, 31, Aalborg, 9000, Klokkestabelen.
+Aalborg, DK, 28, Aalborg, 9000, Johannesmindevej.
+Aalborg, DK, 3, Aalborg, 9000, Soenderbro.
+Aalborg, DK, 224, Aalborg, 9000, Sofievej.
+Aalborg, DK, 7K, Aalborg, 9000, Bygaden.
+Aalborg SV, DK, 446C, Aalborg, 9200, Hobrovej.
+Aalborg SV, DK, 349, Aalborg, 9200, Poul Anker Bechs Vej.
