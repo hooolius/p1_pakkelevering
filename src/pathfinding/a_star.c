@@ -20,6 +20,13 @@ int contains(dyn_array_node *closed_list, node *item);
 int cmp_func(const void *a, const void *b);
 
 /* A star setup */
+/**
+*@brief In this is the main function in A* that calculates the distances inbetween the nodes 
+*@param[in] *start_p This is where the route has to start
+*@param[in] "point *goal_point" This is where the route has to end
+*@param[in] "point *points" The list of nodes the route has to visit 
+*@return 
+*/
 dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
   int number_of_points = 1;
   while (points[number_of_points].id != 0) {
@@ -82,6 +89,11 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
   exit(-1);
 }
 
+/**
+*@brief This function will find the neighbour node with the smallest f(x) value 
+*@param[in] "dyn_array_noce *list" This array contains all the neighbours in the open list
+*@return returns the node with the smallest f(x) value
+*/
 node *find_min_array(dyn_array_node *list) {
   qsort(list->nodes, list->items, sizeof(node), cmp_func);
 
@@ -105,6 +117,12 @@ int cmp_func(const void *a, const void *b) {
   return res;
 }
 
+/**
+*@brief This function makes the list of neighbours to each node
+*@param[in] "node *current" this is the node A* is currently working on
+*@param[in] "node *nodes" The array of all streetpoints
+*@return returns all the neighbours to a singe point
+*/
 dyn_array_node *make_neighbours_list(node *current, node *nodes) {
   /* Follow pointers and count number of neighbours */
   /* return a pointer from a memory space where neighbours are stored */
@@ -131,6 +149,11 @@ dyn_array_node *make_neighbours_list(node *current, node *nodes) {
 }
 
 /* Function copys one node to a other node */
+/**
+*@brief This copies a node from one destination to another. 
+*@param[in] "node *destination" This is where the node is copied to.
+*@param[in] "noce *source" This is where the node originally was.
+*/
 void copy_node_to_node(node *destination, node *source) {
   destination->id = source->id;
   destination->lat = source->lat;
@@ -148,10 +171,17 @@ void copy_node_to_node(node *destination, node *source) {
   destination->came_from = source->came_from;
 }
 
+
 int count_elements_in_list(dyn_array_node *list) {
   return list->items;
 }
 
+/**
+*@brief Checks if an element i in the closed list 
+*@param[in] "dyn_array_noce *closed_list" An array of all the elements in the closed list
+*@param[in] "node *item" The specific node that is being checked for
+*@return True or false depending if the node is in the list
+*/
 int contains(dyn_array_node *closed_list, node *item) {
   int res = 0;
   for (int i = 0; i < closed_list->items; ++i) {
@@ -163,6 +193,12 @@ int contains(dyn_array_node *closed_list, node *item) {
   return res;
 }
 
+/**
+*@brief This function reconstructs the path from the goal node to the start node
+*@param[in] "node *end" The end node
+*@param[in] start the start node
+*@return The path that has been determined to be the fastest one
+*/
 dyn_array_node *reconstruct_path(node *end, double start) {
   dyn_array_node *total_path = make_dyn_array_n(100);
   int i = 0;
@@ -175,6 +211,12 @@ dyn_array_node *reconstruct_path(node *end, double start) {
   return total_path;
 }
 
+/**
+*@brief Copies the data from the points struct to the nodes struckt
+*@param[in] number_of_points The amount of street nodes
+*@param[in] "point *points" The array of points where the mapdata is stored
+*@return The array of nodes
+*/
 node *convert_points_to_nodes(int number_of_points, point *points) {
   node *nodes = calloc(number_of_points, sizeof(struct node));
   for (int i = 0; i < number_of_points; ++i) {
@@ -195,6 +237,11 @@ node *convert_points_to_nodes(int number_of_points, point *points) {
   return nodes;
 }
 
+/** 
+*@brief copies the data from a single point into a single node 
+*@param[in] "point *point" the array of points where the mapata is stored
+*@return The node the data has been copied into.
+*/
 node *convert_point_to_node(point *point) {
   node *node = calloc(1, sizeof(struct node));
   node->id = point->id;
