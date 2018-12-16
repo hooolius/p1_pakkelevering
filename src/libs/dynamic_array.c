@@ -6,6 +6,11 @@
 dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
 
 /* HEAP FUNCTIONS */
+/**
+*@brief This function initializes the dyn_array_node
+*@param[in] min_capacity This parameter decides the inital size of the dynamic array
+*@return Returns a pointer to the dynamic array
+*/
 dyn_array_heap *make_dyn_array_h(int min_capacity) {
   dyn_array_heap *array = calloc(1, sizeof(dyn_array_heap));
   array->heap_nodes = calloc(min_capacity, sizeof(pairing_heap*) * 2 * min_capacity);
@@ -16,6 +21,12 @@ dyn_array_heap *make_dyn_array_h(int min_capacity) {
   return array;
 }
 
+/**
+*@brief This function resizes the dynamic array
+*@param[in] "dyn_array_heap *array" The dynamic array that needs resizing
+*@param[in] new_size The number of possible elements in the array
+*@return Returns a pointer to the dynamic array
+*/
 dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
@@ -26,6 +37,12 @@ dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size) {
   return array;
 }
 
+/**
+*@brief This function adds another element to the end of an array
+*@param[in] "dyn_array_heap* array_to_insert_in"  is the array in which a new element has to be added
+*@param[in] "heap_node heap_to_insert" The data that has to be inserted into the array
+*@return Returns a pointer to the resized array
+*/
 dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node *heap_to_insert) {
   dyn_array_heap *res = array_to_insert_in;
   /* If array is not able to hold another element then resize array */
@@ -43,6 +60,12 @@ void ensure_capacity_h(dyn_array_heap *array, int capacity) {
     array->min_capacity = capacity;
 }
 
+/**
+*@brief This function deletes a node in the dynamic array
+*@param[in] "dyn_array_heap *array" The array in which a node has to be deleted
+*@param[in] "heap_node *heap_to_delete" is the node that will be deleted
+*@return Returns a pointer to the resized array
+*/
 dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete) {
   dyn_array_heap *res = array;
   for (int i = 0; i < array->items; ++i) {
@@ -62,6 +85,12 @@ dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete) 
   return res;
 }
 
+/**
+*@brief This function finds a specific node
+*@param[in] "dyn_array_heap *array" The array in which there will be looked for a specific node
+*@param[in] "heap_node heap_to_find" The speciic node that is looked for
+*@return Returns a pointer to the resized array
+*/
 dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
   dyn_array_heap *res;
   for (int i = 0; i < array->items; ++i) {
@@ -73,6 +102,11 @@ dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
 }
 
 /* NODE FUNCTIONS */
+/**
+*@brief This function initializes the dyn_array_node
+*@param[in] min_capacity This parameter decides the inital size of the dynamic array
+*@return Returns a pointer to the dynamic array
+*/
 dyn_array_node *make_dyn_array_n(int min_capacity) {
   dyn_array_node *array = calloc(1, sizeof(dyn_array_node));
   int test = sizeof(node*);
@@ -84,6 +118,12 @@ dyn_array_node *make_dyn_array_n(int min_capacity) {
   return array;
 }
 
+/**
+*@brief This function resizes the dynamic array
+*@param[in] "dyn_array_node *array" The dynamic array that needs resizing
+*@param[in] new_size The number of possible elements in the array
+*@return Returns a pointer to the dynamic array
+*/
 dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
@@ -94,7 +134,15 @@ dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   return array;
 }
 
+
+/**
+*@brief This function adds another element to the end of an array
+*@param[in] "dyn_array_node *array_to_insert_in" is the array in which a new element has to be added
+*@param[in] "node node_to_insert" The data that has to be inserted into the array
+*@return Returns a pointer to the resized array
+*/
 dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node_to_insert) {
+
   dyn_array_node *res = array_to_insert_in;
 
   /* If array is not able to hold another element then resize array */
@@ -112,6 +160,12 @@ void ensure_capacity_n(dyn_array_node *array, int capacity) {
   array->min_capacity = capacity;
 }
 
+/**
+*@brief This function deletes a node in the dynamic array
+*@param[in] "dyn_array_node *array" The array in which a node has to be deleted
+*@param[in] "node *node_to_delete" is the node that will be deleted
+*@return Returns a pointer to the resized array
+*/
 dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
   dyn_array_node *res = array;
   for (int i = 0; i < array->items; ++i) {
@@ -126,6 +180,12 @@ dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
   return res;
 }
 
+/**
+*@brief This function finds a specific node
+*@param[in] "dyn_array_node *array" The array in which there will be looked for a specific node
+*@param[in] "node node_to_find" The speciic node that is looked for
+*@return Returns a pointer to the resized array
+*/
 dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find) {
   dyn_array_node *res;
   for (int i = 0; i < array->items; ++i) {
@@ -137,6 +197,11 @@ dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find) {
 }
 
 /* Addresses Functions */
+/**
+*@brief This function makes a dynamic array for addresses
+*@param[in] min_capacity This parameter decides the inital size of the dynamic array
+*@return Returns a pointer to the resized array
+*/
 dyn_array_address *make_dyn_array_a(int min_capacity) {
   dyn_array_address *array = calloc(1, sizeof(dyn_array_address));
   array->addresses = calloc(min_capacity, sizeof(struct address) * 2 * min_capacity);
@@ -147,6 +212,12 @@ dyn_array_address *make_dyn_array_a(int min_capacity) {
   return array;
 }
 
+/**
+*@brief This function resizes the dynamic array
+*@param[in] "dyn_array_address *array" The dynamic array that needs resizing
+*@param[in] new_size The number of possible elements in the array
+*@return Returns a pointer to the dynamic array
+*/
 dyn_array_address *resize_array_a(dyn_array_address *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
@@ -157,6 +228,12 @@ dyn_array_address *resize_array_a(dyn_array_address *array, int new_size) {
   return array;
 }
 
+/**
+*@brief This function adds another element to the end of an array
+*@param[in] "dyn_array_address *array_to_insert_in"  is the array in which a new element has to be added
+*@param[in] "address address_to_insert" The data that has to be inserted into the array
+*@return Returns a pointer to the resized array
+*/
 dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, struct address address_to_insert) {
   dyn_array_address *res = array_to_insert_in;
 
@@ -175,6 +252,12 @@ void ensure_capacity_a(dyn_array_address *array, int capacity) {
   array->min_capacity = capacity;
 }
 
+/**
+*@brief This function deletes a node in the dynamic array
+*@param[in] "dyn_array_address *array" The array in which a node has to be deleted
+*@param[in] "address *address_to_delete" The node that will be deleted
+*@return Returns a pointer to the resized array
+*/
 dyn_array_address *delete_address_a(dyn_array_address *array, struct address *address_to_delete) {
   dyn_array_address *res = array;
   for (int i = 0; i < array->items; ++i) {
@@ -189,6 +272,12 @@ dyn_array_address *delete_address_a(dyn_array_address *array, struct address *ad
   return res;
 }
 
+/**
+*@brief This function finds a specific node
+*@param[in] "dyn_array_address *array" The array in which there will be looked for a specific node
+*@param[in] "address address_to_find" The speciic node that is looked for
+*@return Returns a pointer to the resized array
+*/
 dyn_array_address *find_address_a(dyn_array_address *array, struct address address_to_find) {
   dyn_array_address *res;
   for (int i = 0; i < array->items; ++i) {
