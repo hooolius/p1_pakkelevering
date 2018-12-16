@@ -87,7 +87,7 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
                                    vincent_inv_dist(current->lat, current->lon, neighbour_list->nodes[i].lat,
                                                     neighbour_list->nodes[i].lon);
       neighbour_list->nodes[i].h = vincent_inv_dist(neighbour_list->nodes[i].lat, neighbour_list->nodes[i].lon,
-                                                    goal->lat, goal->lon);
+      goal->lat, goal->lon);
       neighbour_list->nodes[i].f = neighbour_list->nodes[i].h + neighbour_list->nodes[i].g;
       //heap_insert(open_list, neighbour_list.nodes[i]);
       neighbour_list->nodes[i].came_from = current;

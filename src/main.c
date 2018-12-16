@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "main_config.h"
 #include "libs/dynamic_array.h"
+#include "libs/cleaner.h"
 #include "pathfinding/a_star.h"
 #include "map_gen/addresses_prompt.h"
 #include "map_gen/parser_addresses.h"
@@ -35,6 +36,8 @@ main(int argc, char *argv[]) {
     printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   }
   free(searches);
+  freeArray(matrix,searches->items);
+  free(matrix);
   printf("\n");
   return 0;
 }
