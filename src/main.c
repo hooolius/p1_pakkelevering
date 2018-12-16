@@ -38,6 +38,7 @@ main(int argc, char *argv[]) {
   free(searches);
   freeArray(matrix,searches->items);
   free(matrix);
+
   printf("\n");
   return 0;
 }
