@@ -12,7 +12,7 @@
 typedef struct point point;
 
 
-main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
 
   dyn_array_address *searches = make_dyn_array_a(2);
   point *map_points;

@@ -75,7 +75,7 @@ dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
 /* NODE FUNCTIONS */
 dyn_array_node *make_dyn_array_n(int min_capacity) {
   dyn_array_node *array = calloc(1, sizeof(dyn_array_node));
-  array->nodes = calloc(min_capacity, sizeof(node) * 2 * min_capacity);
+  array->nodes = calloc(min_capacity, sizeof(node*) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
   array->high_water_mark = 2 * min_capacity;
@@ -86,14 +86,14 @@ dyn_array_node *make_dyn_array_n(int min_capacity) {
 dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
-  array->nodes = realloc(array->nodes, new_size * sizeof(node));
+  array->nodes = realloc(array->nodes, new_size * sizeof(node*));
   if(array->nodes == NULL) {
     exit(EXIT_FAILURE);
   }
   return array;
 }
 
-dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_to_insert) {
+dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node_to_insert) {
   dyn_array_node *res = array_to_insert_in;
 
   /* If array is not able to hold another element then resize array */
@@ -101,7 +101,7 @@ dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_
     /* If array is resized then a pointer to the new array is returned */
     res = resize_array_n(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
   }
-  array_to_insert_in->nodes[array_to_insert_in->items] = node_to_insert;
+  array_to_insert_in->nodes[array_to_insert_in->items] = *node_to_insert;
   array_to_insert_in->items += 1;
   /* If array is not resized then NULL is returned */
   return res;
