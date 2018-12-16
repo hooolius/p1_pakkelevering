@@ -13,7 +13,7 @@ dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
 */
 dyn_array_heap *make_dyn_array_h(int min_capacity) {
   dyn_array_heap *array = calloc(1, sizeof(dyn_array_heap));
-  array->heap_nodes = calloc(min_capacity, sizeof(pairing_heap*) * 2 * min_capacity);
+  array->heap_nodes = calloc(min_capacity, sizeof(heap_node*) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
   array->high_water_mark = 2 * min_capacity;
@@ -109,7 +109,6 @@ dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
 */
 dyn_array_node *make_dyn_array_n(int min_capacity) {
   dyn_array_node *array = calloc(1, sizeof(dyn_array_node));
-  int test = sizeof(node*);
   array->nodes = (node**)calloc(min_capacity, sizeof(node*) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
@@ -290,7 +289,7 @@ dyn_array_address *find_address_a(dyn_array_address *array, struct address addre
 
 /* INTEGER Functions */
 dyn_array_int *make_dyn_array_i(int min_capacity) {
-  dyn_array_int *array = calloc(1, sizeof(int));
+  dyn_array_int *array = calloc(1, sizeof(dyn_array_int));
   array->integers = calloc(min_capacity, sizeof(int) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
