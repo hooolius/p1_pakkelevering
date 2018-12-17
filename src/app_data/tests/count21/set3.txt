@@ -1,4 +1,4 @@
-Aalborg SV, DK, 5, Aalborg, 9200, Graesvænget
+Aalborg SV, DK, 5, Aalborg, 9200, Graesvaenget
 Aalborg, DK, 61, Aalborg, 9000, Riishoejsvej
 Aalborg Oest, DK, 41B, Aalborg, 9220, Myrdalstraede
 Aalborg, DK, 116, Aalborg, 9000, Golfparken
