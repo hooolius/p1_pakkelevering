@@ -318,6 +318,7 @@ int is_written(struct point point, int array_key, int old_array_key) {
   else if (point.p8 == old_array_key) {
     return 1;
   }
+  return 0;
 }
 
 /**

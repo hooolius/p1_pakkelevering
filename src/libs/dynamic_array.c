@@ -1,3 +1,4 @@
+#include <string.h>
 #include "dynamic_array.h"
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
@@ -288,6 +289,25 @@ dyn_array_int *delete_int_i(dyn_array_int *array, int int_to_delete) {
   }
   if(array->items < array->low_water_mark) {
     res = resize_array_i(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
+  }
+  return res;
+}
+
+/**
+*@brief This function finds a specific node
+*@param[in] "dyn_array_address *array" The array in which there will be looked for a specific node
+*@param[in] "address address_to_find" The speciic node that is looked for
+*@return Returns a pointer to the resized array
+*/
+int find_address_a(dyn_array_address *array, struct address address_to_find) {
+  int res = 0;
+  for (int i = 0; i < array->items; ++i) {
+    if(strcmp(array->addresses[i].tags.house_number,address_to_find.tags.house_number)==0 && strcmp(array->addresses[i].tags.street,address_to_find.tags.street)==0) {
+      res = 1;
+    }
+    else{
+      res = 0;
+    }
   }
   return res;
 }

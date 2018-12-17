@@ -16,6 +16,11 @@ typedef struct point point;
 
 int main(int argc, char *argv[]) {
 
+  FILE* input = fopen(NULL, "r");
+  if (argc == 2) {
+    input = fopen(argv[1], "r");
+  }
+
   time_t start_map, end_map;
   time_t start_a, end_a;
   time_t start_held, end_held;
@@ -23,7 +28,7 @@ int main(int argc, char *argv[]) {
   dyn_array_address *searches = make_dyn_array_a(2);
   point *map_points = calloc(points_counter(), sizeof(point));
 
-  addresses_prompt(searches);
+  addresses_prompt(searches, input);
   start_map = time(NULL);
   printf("Map parsed started \n");
   map_parser(map_points);
