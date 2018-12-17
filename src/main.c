@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
   map_parser(map_points);
   addresses_to_point_calc(searches, map_points);
   end_map = clock();
-  printf("Map and addresses parsed time %f \n",(double )(start_map-end_map/CLOCKS_PER_SEC));
+  printf("Map and addresses parsed time %f \n",(double )(end_map-start_map/CLOCKS_PER_SEC));
 
   printf("Version %d.%d \n",
       p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
@@ -41,7 +41,9 @@ int main(int argc, char *argv[]) {
   start_a = clock();
   int **matrix = astar_to_matrix_converter(searches, map_points);
   end_a = clock();
-  printf("All A* done, time: %f \n",(double ) (start_a-end_a/CLOCKS_PER_SEC));
+
+  printf("All A* done, time: %f \n",(double ) (end_a-start_a/CLOCKS_PER_SEC));
+
   int min_cost = 0;
   int plan[searches->items+1];
 
@@ -49,7 +51,7 @@ int main(int argc, char *argv[]) {
   start_held = clock();
   min_cost = held_karp(matrix, searches->items, 0, plan);
   end_held = clock();
-  printf("Held karp done, time: %f \n",(double) (start_held-end_held/CLOCKS_PER_SEC));
+  printf("Held karp done, time: %f \n",(double) (end_held-start_held/CLOCKS_PER_SEC));
   printf("min cost: %d \n", min_cost);
   for (int i = 0; i < searches->items+1; i++) {
     printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
