@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
   min_cost = held_karp(matrix, searches->items, 0, plan);
   end_held = clock();
   printf("Held karp done, time: %f \n",(double) (end_held-start_held)/1000000);
-  printf("min cost: %d \n", min_cost);
+  printf("Rutens kilometer: %.2lf km \n",(double) min_cost/1000);
   for (int i = 0; i < searches->items+1; i++) {
     printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   }
