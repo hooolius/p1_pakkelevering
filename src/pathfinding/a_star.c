@@ -1,9 +1,5 @@
 #include "a_star.h"
 
-node *convert_points_to_nodes(int number_of_points, point *points);
-
-node *convert_point_to_node(point *the_point);
-
 int count_elements_in_list(dyn_array_node *list);
 
 /* Function copys one node to a other node */
@@ -20,6 +16,9 @@ int contains(dyn_array_node *closed_list, node *item);
 int cmp_func(const void *a, const void *b);
 
 /* A star setup */
+<<<<<<< HEAD
+double a_star(node *start, node *goal, node *nodes, int number_of_points) {
+=======
 /**
 *@brief In this is the main function in A* that calculates the distances inbetween the nodes 
 *@param[in] *start_p This is where the route has to start
@@ -36,6 +35,7 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
   node *start = convert_point_to_node(start_p);
   node *goal = convert_point_to_node(goal_p);
   node *nodes = convert_points_to_nodes(number_of_points, points);
+>>>>>>> a87f3517f950a2aae6a144e4488fb5b4e407e3db
 
   int count = 0;
   dyn_array_node *closed_list = make_dyn_array_n(100);
@@ -61,13 +61,10 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
       //return reconstruct_path(current, start->id);
       dyn_array_node *output = reconstruct_path(current, start->id);
       double output_distance = output->nodes[0]->g;
-      free(start);
-      free(goal);
       free(closed_list->nodes);
       free(closed_list);
       clean_heap(open_list);
       free(output);
-      free(nodes);
       return output_distance;
     }
     /* Move current node from open_list to closed_list */
@@ -219,6 +216,8 @@ dyn_array_node *reconstruct_path(node *end, double start) {
   return total_path;
 }
 
+<<<<<<< HEAD
+=======
 /**
 *@brief Copies the data from the points struct to the nodes struckt
 *@param[in] number_of_points The amount of street nodes
@@ -271,3 +270,4 @@ node *convert_point_to_node(point *point) {
   node->p8 = point->p8;
   return node;
 }
+>>>>>>> a87f3517f950a2aae6a144e4488fb5b4e407e3db
