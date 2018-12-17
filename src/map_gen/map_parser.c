@@ -111,6 +111,7 @@ int points_counter() {
     i++;
   }
   fclose(paddress_file);
+  free(data);
   return i;
 }
 
@@ -260,7 +261,7 @@ int is_written(struct point point, int array_key, int old_array_key) {
   else if (point.p6 == array_key) {
     return 1;
   }
-  else if (point.p8 == array_key) {
+  else if (point.p7 == array_key) {
     return 1;
   }
   else if (point.p8 == array_key) {

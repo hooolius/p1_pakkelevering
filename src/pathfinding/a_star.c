@@ -16,26 +16,14 @@ int contains(dyn_array_node *closed_list, node *item);
 int cmp_func(const void *a, const void *b);
 
 /* A star setup */
-<<<<<<< HEAD
-double a_star(node *start, node *goal, node *nodes, int number_of_points) {
-=======
 /**
-*@brief In this is the main function in A* that calculates the distances inbetween the nodes 
+*@brief In this is the main function in A* that calculates the distances inbetween the nodes
 *@param[in] *start_p This is where the route has to start
 *@param[in] "point *goal_point" This is where the route has to end
-*@param[in] "point *points" The list of nodes the route has to visit 
-*@return 
+*@param[in] "point *points" The list of nodes the route has to visit
+*@return
 */
-dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
-  int number_of_points = 1;
-  while (points[number_of_points].id != 0) {
-    ++number_of_points;
-  }
-
-  node *start = convert_point_to_node(start_p);
-  node *goal = convert_point_to_node(goal_p);
-  node *nodes = convert_points_to_nodes(number_of_points, points);
->>>>>>> a87f3517f950a2aae6a144e4488fb5b4e407e3db
+double a_star(node *start, node *goal, node *nodes, int number_of_points) {
 
   int count = 0;
   dyn_array_node *closed_list = make_dyn_array_n(100);
@@ -215,59 +203,3 @@ dyn_array_node *reconstruct_path(node *end, double start) {
   }
   return total_path;
 }
-
-<<<<<<< HEAD
-=======
-/**
-*@brief Copies the data from the points struct to the nodes struckt
-*@param[in] number_of_points The amount of street nodes
-*@param[in] "point *points" The array of points where the mapdata is stored
-*@return The array of nodes
-*/
-node *convert_points_to_nodes(int number_of_points, point *points) {
-  node *nodes = calloc(number_of_points, sizeof(struct node));
-  for (int i = 0; i < number_of_points; ++i) {
-    nodes[i].id = points[i].id;
-    nodes[i].lon = points[i].lon;
-    nodes[i].lat = points[i].lat;
-    nodes[i].is_active = 0;
-    nodes[i].g = 0;
-    nodes[i].h = 0;
-    nodes[i].f = 0;
-    nodes[i].p1 = points[i].p1;
-    nodes[i].p2 = points[i].p2;
-    nodes[i].p3 = points[i].p3;
-    nodes[i].p4 = points[i].p4;
-    nodes[i].p5 = points[i].p5;
-    nodes[i].p6 = points[i].p6;
-    nodes[i].p7 = points[i].p7;
-    nodes[i].p8 = points[i].p8;
-  }
-  return nodes;
-}
-
-/** 
-*@brief copies the data from a single point into a single node 
-*@param[in] "point *point" the array of points where the mapata is stored
-*@return The node the data has been copied into.
-*/
-node *convert_point_to_node(point *point) {
-  node *node = calloc(1, sizeof(struct node));
-  node->id = point->id;
-  node->lon = point->lon;
-  node->lat = point->lat;
-  node->is_active = 0;
-  node->g = 0;
-  node->h = 0;
-  node->f = 0;
-  node->p1 = point->p1;
-  node->p2 = point->p2;
-  node->p3 = point->p3;
-  node->p4 = point->p4;
-  node->p5 = point->p5;
-  node->p6 = point->p6;
-  node->p7 = point->p7;
-  node->p8 = point->p8;
-  return node;
-}
->>>>>>> a87f3517f950a2aae6a144e4488fb5b4e407e3db
