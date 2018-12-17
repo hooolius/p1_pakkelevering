@@ -5,6 +5,7 @@
 #ifndef P1_PAKKELEVERING_CLEANER_H
 #define P1_PAKKELEVERING_CLEANER_H
 
-void freeArray(int **a, int m);
+int **make_array(int row, int col);
+void free_array(int **a, int m);
 
 #endif //P1_PAKKELEVERING_CLEANER_H

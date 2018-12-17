@@ -393,4 +393,7 @@ void clean_heap(pairing_heap *pheap) {
     free(elem->next);
     elem = elem->prev;
   }
+  free(pheap->detached->heap_nodes);
+  free(pheap->detached);
+  free(pheap);
 }

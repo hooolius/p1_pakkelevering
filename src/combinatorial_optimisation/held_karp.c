@@ -3,11 +3,8 @@
 #include <math.h>
 #include <limits.h>
 #include "held_karp.h"
-
-typedef struct subset {
-  int *subsets;
-  int index;
-} subset; 
+#include "../libs/dynamic_array.h"
+#include "../libs/cleaner.h"
 
 void setup(int **matrix, int **memo, int start_node, int size);
 void solve(int **matrix, int **memo, int start_node, int size);
@@ -16,25 +13,24 @@ void calc_best_plan(int **matrix, int **memo,
     int start_node, int size, int plan[]);
 int in_subset(int i, int subset);
 int combinations(int r, int n);
-void combinations_subset(int r, int n, subset *subsets);
+void combinations_subset(int r, int n, dyn_array_int *subsets);
 void combinations_subset_helper(int set,
-    int at, int r, int n, subset *subsets);
+    int at, int r, int n, dyn_array_int *subsets);
 unsigned long factorial(unsigned long i);
 
 int held_karp(int **matrix, int size,
     int start_node, int plan[]) {
   int i; 
-  int **memo;
+  int **memo = make_array(size, pow(2, size));
   int min_cost = INT_MAX;
-  memo = calloc(size, sizeof(int*));
-  for(i = 0; i < size; i++) {
-    memo[i]=(int *) calloc((int) pow(2, size), sizeof(int));
-  }
   setup(matrix, memo, start_node, size);
   solve(matrix, memo, start_node, size);
   min_cost = calc_min_cost(matrix, memo, start_node, size);
   calc_best_plan(matrix, memo, start_node, size, plan);
-  free(memo);
+
+  free_array(memo, size);
+  free_array(matrix, size);
+
   return min_cost;
 }
 
@@ -46,27 +42,23 @@ void setup(int **matrix, int **memo, int start_node, int size) {
   for (int i = 0; i < size; i++) {
     if (i != start_node) {
       memo[i][1 << start_node | 1 << i] = matrix[start_node][i];
-      //printf("memo %d: %d\n", i, matrix[start_node][i]);
     }
   }
 }
 
 void solve(int **matrix, int **memo, int start_node, int size) {
   for (int r = 3; r <= size; r++) {
-    subset asubsets;
-    subset *subsets = &asubsets;
-    subsets->index = 0;
-    subsets->subsets = calloc(combinations(r, size), sizeof(int));
+    dyn_array_int *subsets = make_dyn_array_i(10);
     combinations_subset(r, size, subsets);
-    for (int i = 0; i < combinations(r, size); i++) {
-      if (in_subset(start_node, subsets->subsets[i])) {
+    for (int i = 0; i < subsets->items; i++) {
+      if (in_subset(start_node, subsets->integers[i])) {
         for (int next = 0; next < size; next++) {
           int min_dist = INT_MAX;
-          if (next != start_node && in_subset(next, subsets->subsets[i])) {
-            int state = subsets->subsets[i] ^ (1 << next);
+          if (next != start_node && in_subset(next, subsets->integers[i])) {
+            int state = subsets->integers[i] ^ (1 << next);
             for (int end = 0; end < size; end++) {
               if (end != start_node && end != next
-                  && in_subset(end, subsets->subsets[i])) {
+                  && in_subset(end, subsets->integers[i])) {
                 int new_dist = memo[end][state] + matrix[end][next];
                 if (new_dist < min_dist) {
                   min_dist = new_dist;
@@ -74,11 +66,12 @@ void solve(int **matrix, int **memo, int start_node, int size) {
               }
             }
           }
-          memo[next][subsets->subsets[i]] = min_dist;
+          memo[next][subsets->integers[i]] = min_dist;
         }
       }
     }
-    free(subsets->subsets);
+    free(subsets->integers);
+    free(subsets);
   }
 }
 
@@ -86,10 +79,6 @@ void solve(int **matrix, int **memo, int start_node, int size) {
 int in_subset(int i, int subset) {
   return !(((1 << i) & subset) == 0);
 }
-
-int combinations(int r, int n) {
-  return (factorial(n))/(factorial(r) * (factorial(n-r)));
-} 
 
 unsigned long factorial(unsigned long i) {
   if (i == 0) {
@@ -100,16 +89,14 @@ unsigned long factorial(unsigned long i) {
   }
 }
 
-void combinations_subset(int r, int n, subset *subsets) {
+void combinations_subset(int r, int n, dyn_array_int *subsets) {
   combinations_subset_helper(0, 0, r, n, subsets);
 }
 
 void combinations_subset_helper(int set,
-    int at, int r, int n, subset *subsets) {
+    int at, int r, int n, dyn_array_int *subsets) {
   if (r == 0) {
-    subsets->subsets[subsets->index] = set;
-    //printf("index: %d set: %d \n", subsets->index, set);
-    subsets->index++;
+    add_int_to_end_i(subsets, set);
   }
   else {
     for (int i = at; i < n; i++) {

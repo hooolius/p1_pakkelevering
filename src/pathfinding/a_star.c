@@ -47,7 +47,6 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
   add_element(open_list, start);
 
   node *current;
-  node neighbour;
 
   /* A star algoritme */
   int q = 0;
@@ -58,12 +57,18 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
 
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
+
+      //return reconstruct_path(current, start->id);
+      dyn_array_node *output = reconstruct_path(current, start->id);
+      double output_distance = output->nodes[0]->g;
+      free(start);
+      free(goal);
       free(closed_list->nodes);
       free(closed_list);
       clean_heap(open_list);
-      free(open_list);
-      //free(nodes);
-      return reconstruct_path(current, start->id);
+      free(output);
+      free(nodes);
+      return output_distance;
     }
     /* Move current node from open_list to closed_list */
     add_node_to_end_n(closed_list, current);
@@ -83,6 +88,7 @@ dyn_array_node *a_star(point *start_p, point *goal_p, point *points) {
 
       add_element(open_list, neighbour_list->nodes[i]);
     }
+    free(neighbour_list->nodes);
     free(neighbour_list);
   }
   printf("A star: No path exiting program!\n");

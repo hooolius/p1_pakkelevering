@@ -7,4 +7,4 @@
 
 typedef struct point point;
 
-dyn_array_node *a_star(struct point *start_p, struct point *goal_p, struct point *points);
+double a_star(struct point *start_p, struct point *goal_p, struct point *points);

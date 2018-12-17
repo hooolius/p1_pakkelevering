@@ -39,6 +39,20 @@
     typedef struct dyn_array_address dyn_array_address;
 #endif
 
+#ifndef DYN_INT
+#define DYN_INT
+    typedef struct dyn_array_int dyn_array_int;
+
+    struct dyn_array_int {
+      int low_water_mark;
+      int high_water_mark;
+      int min_capacity;
+      int number_of_elements;
+      int items;
+      int *integers;
+    };
+#endif
+
 /* HEAP FUNCTIONS */
 /* Makes a empty array */
 dyn_array_heap *make_dyn_array_h(int size);
@@ -96,3 +110,22 @@ dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, s
 dyn_array_address *delete_address_a(dyn_array_address *array, struct address *address_to_delete);
 /* Not implemented yet */
 dyn_array_address *find_node_a(dyn_array_address *array, struct address address_to_find);
+
+// INTEGER FUNCTIONS
+dyn_array_int *make_dyn_array_i(int min_capacity);
+
+/* Not implemented yet */
+void trim_to_size_a();
+
+/* Maybe implemented */
+void ensure_capacity_i(dyn_array_int *array, int capacity);
+
+/* Implemented */
+dyn_array_int *resize_array_i(dyn_array_int *array, int new_size);
+
+/* Implemented */
+dyn_array_int *add_int_to_end_i(dyn_array_int *array_to_insert_in, int int_to_insert);
+/* Implemented */
+dyn_array_int *delete_int_i(dyn_array_int *array, int int_to_delete);
+/* Not implemented yet */
+dyn_array_int *find_node_i(dyn_array_int *array, int address_to_find);
