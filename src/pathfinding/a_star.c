@@ -151,6 +151,8 @@ void copy_node_to_node(node *destination, node *source) {
   destination->p4 = source->p4;
   destination->p5 = source->p5;
   destination->p6 = source->p6;
+  destination->p7 = source->p7;
+  destination->p8 = source->p8;
   destination->came_from = source->came_from;
 }
 
@@ -197,6 +199,8 @@ node *convert_points_to_nodes(int number_of_points, point *points) {
     nodes[i].p4 = points[i].p4;
     nodes[i].p5 = points[i].p5;
     nodes[i].p6 = points[i].p6;
+    nodes[i].p7 = points[i].p7;
+    nodes[i].p8 = points[i].p8;
   }
   return nodes;
 }
@@ -216,5 +220,7 @@ node *convert_point_to_node(point *point) {
   node->p4 = point->p4;
   node->p5 = point->p5;
   node->p6 = point->p6;
+  node->p7 = point->p7;
+  node->p8 = point->p8;
   return node;
 }
