@@ -11,8 +11,8 @@ void convert_to_array(char *data, dyn_array_address *searches);
 int is_in_searches(char input_streetname[], char input_housenumber[], struct address input_array[], int number_of_adresses) ;
 
 /**
-*brief Passes addresses from the adresses file using cJSON
-*param[in] "dyn_array_address *searches" These are the addresses asked for in the command prompt if chosen to manually type them
+*@brief Passes addresses from the adresses file using cJSON
+*@param[in] "dyn_array_address *searches" These are the addresses asked for in the command prompt if chosen to manually type them
 */
 void parser_addreses(dyn_array_address *searches) {
   long len = 0;
@@ -36,9 +36,9 @@ void parser_addreses(dyn_array_address *searches) {
   free(data);
 }
 /**
-*brief Takes all the information from the JSON file that is needed and puts it into an array of structs
-*param[in] *data A sting that contains all the information from the input file
-*param[in] "dyn_array_address *searches" These aree the addresses asked for in the command prompt if chosen to manually type them 
+*@brief Takes all the information from the JSON file that is needed and puts it into an array of structs
+*@param[in] *data A sting that contains all the information from the input file
+*@param[in] "dyn_array_address *searches" These aree the addresses asked for in the command prompt if chosen to manually type them 
 */
 void convert_to_array(char *data, dyn_array_address *searches) {
   cJSON *json = NULL;
@@ -90,14 +90,13 @@ void convert_to_array(char *data, dyn_array_address *searches) {
     searches->addresses[i].lat = addresses[i].lat;
     searches->addresses[i].lon = addresses[i].lon;
   }
-  free(addresses);
 }
 
 /**
-*brief Checks if a certain address is in the array passed to JSON through manual typing 
-*param[in] input_streetname[] Checks for the certain streetname
-*param[in] input_housenumber[] Checks for the certain housenumber
-*param[in] "dyn_array_address *searches" These aree the addresses asked for in the command prompt if chosen to manually type them 
+*@brief Checks if a certain address is in the array passed to JSON through manual typing 
+*@param[in] input_streetname[] Checks for the certain streetname
+*@param[in] input_housenumber[] Checks for the certain housenumber
+*@param[in] "dyn_array_address *searches" These aree the addresses asked for in the command prompt if chosen to manually type them 
 */
 int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_address *searches) {
   for (int k = 0; k < searches->items; k++) {
@@ -111,11 +110,11 @@ int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_add
 }
 
 /**
-*brief Checks if a certain addrss is in the string to JSON trough the input file
-*param[in] input_streetname[] Checks for the certain streetname
-*param[in] input_housenumber[] Checks for the certain housenumber
-*param[in] "address input_array[]" An array that contains the addresses of the houses that have to be visited
-*param[in] number_of_addresses The number of addesses registered in the command prompt
+*@brief Checks if a certain addrss is in the string to JSON trough the input file
+*@param[in] input_streetname[] Checks for the certain streetname
+*@param[in] input_housenumber[] Checks for the certain housenumber
+*@param[in] "address input_array[]" An array that contains the addresses of the houses that have to be visited
+*@param[in] number_of_addresses The number of addesses registered in the command prompt
 */
 int is_in_searches(char input_streetname[], char input_housenumber[], struct address input_array[], int number_of_adresses) {
   for (int i = 0; i < number_of_adresses; ++i) {
