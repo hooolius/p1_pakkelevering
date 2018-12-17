@@ -65,8 +65,7 @@ void map_parser(struct point *map_points) {
 *@param[in] data[] a string that contains a certain map node.
 *@param[in] "point *map_points" The array of structs that contains the map data
 */
-void search_and_parse_points(char data[], struct point *map_points) {
-  cJSON *json = NULL;
+void search_and_parse_points(cJSON *json, struct point *map_points) {
   const cJSON *points = NULL;
   const cJSON *json_point = NULL;
   int i = 0, j = 1;
@@ -147,7 +146,7 @@ int sorter_function(const void *a, const void *b) {
 *@param[in] *data Contains all the data from the map file
 *@param[in] "points *map_points" The array of structs where all the data is copied into
 */
-void search_and_parse_streets(char *data, struct point *map_points) {
+void search_and_parse_streets(cJSON *json, struct point *map_points) {
 
   /*Function passes streets, and connects the points, so all the points know what points they are connected to.*/
   const cJSON *road_points = NULL;
@@ -269,22 +268,22 @@ void pointer_writer(struct point *map_points, int array_key, int old_array_key) 
 *@param[in] old_array_key the array key of the neighbour to the examined node
 */
 int is_written(struct point point, int array_key, int old_array_key) {
-    /*Checks if the point is already written into the points.*/
-    if (point.p1 == array_key) {
-        return 1;
-    }
-    else if (point.p2 == array_key) {
-        return 1;
-    }
-    else if (point.p3 == array_key) {
-        return 1;
-    }
-    else if (point.p4 == array_key) {
-        return 1;
-    }
-    else if (point.p5 == array_key) {
-       return 1;
-          }
+  /*Checks if the point is already written into the points.*/
+  if (point.p1 == array_key) {
+    return 1;
+  }
+  else if (point.p2 == array_key) {
+    return 1;
+  }
+  else if (point.p3 == array_key) {
+    return 1;
+  }
+  else if (point.p4 == array_key) {
+    return 1;
+  }
+  else if (point.p5 == array_key) {
+    return 1;
+  }
   else if (point.p6 == array_key) {
     return 1;
   }
@@ -317,6 +316,8 @@ int is_written(struct point point, int array_key, int old_array_key) {
   }
   else if (point.p8 == old_array_key) {
     return 1;
+  }
+}
 
 /**
 *@brief Searches binay for a certain map node
