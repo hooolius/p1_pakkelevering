@@ -8,6 +8,8 @@ dyn_array_node *make_neighbours_list(node *current, node *nodes);
 
 dyn_array_node *reconstruct_path(node *end, double start);
 
+int contains(dyn_array_node *closed_list, node *item);
+
 int cmp_func(const void *a, const void *b);
 
 /* A star setup */
@@ -54,7 +56,7 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
     /* Count number of neighbours and check if they exied in closed_list */
     dyn_array_node *neighbour_list = make_neighbours_list(current, nodes);
     for (size_t i = 0; i < neighbour_list->items; ++i) {
-      if (neighbour_list->nodes[i]->f == -1 || contains(open_list, neighbour_list[i])) {
+      if (neighbour_list->nodes[i]->f == -1 || contains(open_list, neighbour_list->nodes[i])) {
         continue;
       }
       neighbour_list->nodes[i]->g = current->g +
