@@ -81,15 +81,17 @@ void convert_to_array(char *data, dyn_array_address *searches) {
       }
     }
   }
+  int q=0;
   for (int i = 0; i < searches->items; ++i) {
     if (find_address_a(searches,addresses[i]) == 0) {
-      strcpy(searches->addresses[i].tags.street, addresses[i].tags.street);
-      strcpy(searches->addresses[i].tags.house_number, addresses[i].tags.house_number);
-      strcpy(searches->addresses[i].tags.country, addresses[i].tags.country);
-      strcpy(searches->addresses[i].tags.muncipality, addresses[i].tags.muncipality);
-      strcpy(searches->addresses[i].tags.postcode, addresses[i].tags.postcode);
-      searches->addresses[i].lat = addresses[i].lat;
-      searches->addresses[i].lon = addresses[i].lon;
+      strcpy(searches->addresses[q].tags.street, addresses[q].tags.street);
+      strcpy(searches->addresses[q].tags.house_number, addresses[q].tags.house_number);
+      strcpy(searches->addresses[q].tags.country, addresses[q].tags.country);
+      strcpy(searches->addresses[q].tags.muncipality, addresses[q].tags.muncipality);
+      strcpy(searches->addresses[q].tags.postcode, addresses[q].tags.postcode);
+      searches->addresses[q].lat = addresses[q].lat;
+      searches->addresses[q].lon = addresses[q].lon;
+      q++;
     }
     else {
       printf("The address %s %s was not found. \n",searches->addresses[i].tags.street,searches->addresses[i].tags.house_number);

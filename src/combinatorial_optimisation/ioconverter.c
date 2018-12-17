@@ -5,17 +5,19 @@
 #include "ioconverter.h"
 
 node *convert_points_to_nodes(int number_of_points, point *points);
+
 node *convert_point_to_node(point *the_point);
+
 void remove_from_closed(int number_of_points, node *nodes);
 
 int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_points) {
 
 /*count number of searches */
   int number_of_points = points_counter();
-  int number_of_address = searches->items; 
+  int number_of_address = searches->items;
 
 /*calloc two dim array of pointer  */
-  int **afstand_matrix = (int **) calloc(number_of_address, sizeof(int *)); 
+  int **afstand_matrix = (int **) calloc(number_of_address, sizeof(int *));
   for (int y = 0; y < number_of_address; ++y) {
     afstand_matrix[y] = (int *) calloc(number_of_address, sizeof(int));
   }
@@ -34,9 +36,15 @@ int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_p
         if (afstand_matrix[i][j] == 0 || afstand_matrix[j][i] == 0) {
           node *start = convert_point_to_node(&map_points[searches->addresses[i].closest_point]);
           node *goal = convert_point_to_node(&map_points[searches->addresses[j].closest_point]);
-          double star = a_star(start, goal, nodes, number_of_points);
-          afstand_matrix[i][j] = (int) round(star);
-          afstand_matrix[j][i] = (int) round(star);
+          if (start->id == goal->id) {
+            afstand_matrix[i][j] = (int) 1;
+            afstand_matrix[j][i] = (int) 1;
+          }
+          else {
+            double star = a_star(start, goal, nodes, number_of_points);
+            afstand_matrix[i][j] = (int) round(star);
+            afstand_matrix[j][i] = (int) round(star);
+          }
           free(start);
           free(goal);
           remove_from_closed(number_of_points, nodes);
