@@ -34,7 +34,7 @@ sudo make install p1_pakkelevering
 ## Usage
 ### Linux:
 
-After this run the file with the wanted parameter, any file written after will be taken as the input file for the addresses you want to search for.
+After this run the program with the wanted parameter, any file written after will be taken as the input file for the addresses you want to search for.
 
 #### Example:
 
