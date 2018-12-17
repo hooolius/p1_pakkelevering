@@ -33,6 +33,7 @@ void parser_addreses(dyn_array_address *searches) {
   data[len] = '\0';
   fclose(paddress_file);
   convert_to_array(data, searches);
+  free(data);
 }
 /**
 *@brief Takes all the information from the JSON file that is needed and puts it into an array of structs
@@ -89,6 +90,7 @@ void convert_to_array(char *data, dyn_array_address *searches) {
     searches->addresses[i].lat = addresses[i].lat;
     searches->addresses[i].lon = addresses[i].lon;
   }
+  free(addresses);
 }
 
 /**

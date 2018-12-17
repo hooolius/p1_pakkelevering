@@ -85,22 +85,6 @@ dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete) 
   return res;
 }
 
-/**
-*@brief This function finds a specific node
-*@param[in] "dyn_array_heap *array" The array in which there will be looked for a specific node
-*@param[in] "heap_node heap_to_find" The speciic node that is looked for
-*@return Returns a pointer to the resized array
-*/
-dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
-  dyn_array_heap *res;
-  for (int i = 0; i < array->items; ++i) {
-    if (array->heap_nodes[i]->element == heap_to_find.element) {
-      res = &array->heap_nodes[i];
-    }
-    return res;
-  }
-}
-
 /* NODE FUNCTIONS */
 /**
 *@brief This function initializes the dyn_array_node
@@ -175,22 +159,6 @@ dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
   }
   if(array->items < array->low_water_mark) {
     res = resize_array_n(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
-  }
-  return res;
-}
-
-/**
-*@brief This function finds a specific node
-*@param[in] "dyn_array_node *array" The array in which there will be looked for a specific node
-*@param[in] "node node_to_find" The speciic node that is looked for
-*@return Returns a pointer to the resized array
-*/
-dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find) {
-  dyn_array_node *res;
-  for (int i = 0; i < array->items; ++i) {
-    if(array->nodes[i]->id == node_to_find.id) {
-      res = array->nodes[i];
-    }
   }
   return res;
 }
@@ -271,22 +239,6 @@ dyn_array_address *delete_address_a(dyn_array_address *array, struct address *ad
   return res;
 }
 
-/**
-*@brief This function finds a specific node
-*@param[in] "dyn_array_address *array" The array in which there will be looked for a specific node
-*@param[in] "address address_to_find" The speciic node that is looked for
-*@return Returns a pointer to the resized array
-*/
-dyn_array_address *find_address_a(dyn_array_address *array, struct address address_to_find) {
-  dyn_array_address *res;
-  for (int i = 0; i < array->items; ++i) {
-    if(array->addresses[i].id == address_to_find.id) {
-      res = &array->addresses[i];
-    }
-  }
-  return res;
-}
-
 /* INTEGER Functions */
 dyn_array_int *make_dyn_array_i(int min_capacity) {
   dyn_array_int *array = calloc(1, sizeof(dyn_array_int));
@@ -336,16 +288,6 @@ dyn_array_int *delete_int_i(dyn_array_int *array, int int_to_delete) {
   }
   if(array->items < array->low_water_mark) {
     res = resize_array_i(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
-  }
-  return res;
-}
-
-dyn_array_int *find_int_i(dyn_array_int *array, int int_to_find) {
-  dyn_array_int *res;
-  for (int i = 0; i < array->items; ++i) {
-    if(array->integers[i] == int_to_find) {
-      res = &array->integers[i];
-    }
   }
   return res;
 }

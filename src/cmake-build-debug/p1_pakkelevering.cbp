@@ -5,7 +5,7 @@
 		<Option title="p1_pakkelevering"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\pathfinding\;CMake Files\map_gen\;CMake Files\libs\;CMake Files\combinatorial_optimisation\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\pathfinding\;CMake Files\map_gen\;CMake Files\combinatorial_optimisation\;CMake Files\libs\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
@@ -47,8 +47,8 @@
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -75,8 +75,8 @@
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -143,8 +143,8 @@
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -171,8 +171,8 @@
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -199,8 +199,8 @@
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -227,8 +227,8 @@
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -245,62 +245,6 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/map_gen/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="libs">
-				<Option output="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/liblibs.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 libs"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="libs/fast">
-				<Option output="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/liblibs.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 libs/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="combinatorial_optimisation">
 				<Option output="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/combinatorial_optimisation/libcombinatorial_optimisation.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/combinatorial_optimisation"/>
@@ -311,8 +255,8 @@
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -339,8 +283,8 @@
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
-					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -357,6 +301,62 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/combinatorial_optimisation/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="libs">
+				<Option output="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/liblibs.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 libs"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="libs/fast">
+				<Option output="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/liblibs.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation"/>
+					<Add directory="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 libs/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/cmake-build-debug/libs/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
 		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation/held_karp.c">
 			<Option target="combinatorial_optimisation"/>
@@ -369,6 +369,12 @@
 		</Unit>
 		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation/ioconverter.h">
 			<Option target="combinatorial_optimisation"/>
+		</Unit>
+		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs/cleaner.c">
+			<Option target="libs"/>
+		</Unit>
+		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs/cleaner.h">
+			<Option target="libs"/>
 		</Unit>
 		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs/dynamic_array.c">
 			<Option target="libs"/>
@@ -421,12 +427,6 @@
 		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding/a_star.h">
 			<Option target="pathfinding"/>
 		</Unit>
-		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding/convert_distance_from_points.c">
-			<Option target="pathfinding"/>
-		</Unit>
-		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding/convert_distance_from_points.h">
-			<Option target="pathfinding"/>
-		</Unit>
 		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/pathfinding/pairing_heap.c">
 			<Option target="pathfinding"/>
 		</Unit>
@@ -445,11 +445,11 @@
 		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/map_gen/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\map_gen\"/>
 		</Unit>
-		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\libs\"/>
-		</Unit>
 		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/combinatorial_optimisation/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\combinatorial_optimisation\"/>
+		</Unit>
+		<Unit filename="/home/alexandern/CLionProjects/SkoleProjekter/P1pakker/p1_pakkelevering/src/libs/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\libs\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
