@@ -1,3 +1,0 @@
-Aalborg, DK, 175, Aalborg, 9000, Vesterkaeret
-Aalborg, DK, 54, Aalborg, 9000, Helgolandsgade
-Aalborg, DK, 17, Aalborg, 9000, Stroeybergsvej
