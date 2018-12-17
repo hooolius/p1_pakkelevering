@@ -42,8 +42,8 @@ int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_p
       }
     }
   }
-  free(map_points);
   free(nodes);
+  free(map_points);
   return afstand_matrix;
 }
 

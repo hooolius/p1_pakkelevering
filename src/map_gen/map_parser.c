@@ -1,11 +1,11 @@
 #include "map_parser.h"
 #include "cJSON.h"
 
-void search_and_parse_points(char data[], struct point *map_points);
+void search_and_parse_points(cJSON *json, struct point *map_points);
 
 int sorter_function(const void *a, const void *b);
 
-void search_and_parse_streets(char *data, struct point map_points[]);
+void search_and_parse_streets(cJSON *json, struct point map_points[]);
 
 int binary_searcher(double input, struct point *map_points, int array_len);
 
@@ -49,21 +49,18 @@ void map_parser(struct point *map_points) {
   else {
 
     /*Calls the parsing functions*/
-    search_and_parse_points(data, map_points);
-    search_and_parse_streets(data, map_points);
+    search_and_parse_points(json, map_points);
+    search_and_parse_streets(json, map_points);
   }
   free(data);
 
 }
 
 
-void search_and_parse_points(char data[], struct point *map_points) {
-  cJSON *json = NULL;
+void search_and_parse_points(cJSON *json, struct point *map_points) {
   const cJSON *points = NULL;
   const cJSON *json_point = NULL;
   int i = 0, j = 1;
-
-  json = cJSON_Parse(data);
 
   points = cJSON_GetObjectItemCaseSensitive(json, "points");
   i = points_counter();
@@ -111,7 +108,7 @@ int points_counter() {
     i++;
   }
   fclose(paddress_file);
-  free(data);
+  //free(data);
   return i;
 }
 
@@ -129,16 +126,13 @@ int sorter_function(const void *a, const void *b) {
 
 }
 
-void search_and_parse_streets(char *data, struct point *map_points) {
+void search_and_parse_streets(cJSON *json, struct point *map_points) {
   /*Function passes streets, and connects the points, so all the points know what points they are connected to.*/
-  cJSON *json = NULL;
   const cJSON *road_points = NULL;
   const cJSON *road_point = NULL;
   const cJSON *roads = NULL;
   const cJSON *road = NULL;
   int array_len = 0, array_key, old_array_key = 0;
-
-  json = cJSON_Parse(data);
 
   if (json == NULL) {
     printf("Error before: [%s]\n", cJSON_GetErrorPtr());
