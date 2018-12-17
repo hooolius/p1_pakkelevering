@@ -8,9 +8,6 @@ int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_add
 
 void convert_to_array(char *data, dyn_array_address *searches);
 
-int
-is_in_searches(char input_streetname[], char input_housenumber[], struct address input_array[], int number_of_adresses);
-
 /**
 *@brief Passes addresses from the adresses file using cJSON
 *@param[in] "dyn_array_address *searches" These are the addresses asked for in the command prompt if chosen to manually type them
@@ -85,6 +82,7 @@ void convert_to_array(char *data, dyn_array_address *searches) {
     }
   }
   for (int i = 0; i < searches->items; ++i) {
+    if (find_address_a(searches,addresses[i]) == 0) {
       strcpy(searches->addresses[i].tags.street, addresses[i].tags.street);
       strcpy(searches->addresses[i].tags.house_number, addresses[i].tags.house_number);
       strcpy(searches->addresses[i].tags.country, addresses[i].tags.country);
@@ -92,6 +90,10 @@ void convert_to_array(char *data, dyn_array_address *searches) {
       strcpy(searches->addresses[i].tags.postcode, addresses[i].tags.postcode);
       searches->addresses[i].lat = addresses[i].lat;
       searches->addresses[i].lon = addresses[i].lon;
+    }
+    else {
+      printf("The address %s %s was not found. \n",searches->addresses[i].tags.street,searches->addresses[i].tags.house_number);
+    }
   }
 }
 

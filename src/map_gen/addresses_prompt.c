@@ -44,7 +44,7 @@ void addresses_prompt(dyn_array_address *searches, FILE *input_file) {
     else if (strcmp(input_choice, document_check) == 0) {
 
       FILE *pinput_file;
-      pinput_file = fopen("leveringsfil.txt", "r");
+      pinput_file = fopen("set1.txt", "r");
 
       if (pinput_file == NULL) {
         printf("Input file not found");

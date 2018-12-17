@@ -105,7 +105,7 @@ dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, s
 /* Implemented */
 dyn_array_address *delete_address_a(dyn_array_address *array, struct address *address_to_delete);
 /* Not implemented yet */
-int find_node_a(dyn_array_address *array, struct address address_to_find);
+int find_address_a(dyn_array_address *array, struct address address_to_find);
 
 // INTEGER FUNCTIONS
 dyn_array_int *make_dyn_array_i(int min_capacity);
