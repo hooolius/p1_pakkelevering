@@ -21,7 +21,7 @@ int cmp_func(const void *a, const void *b);
 *@param[in] *start_p This is where the route has to start
 *@param[in] "point *goal_point" This is where the route has to end
 *@param[in] "point *points" The list of nodes the route has to visit
-*@return
+*@return 
 */
 double a_star(node *start, node *goal, node *nodes, int number_of_points) {
 
@@ -142,8 +142,8 @@ dyn_array_node *make_neighbours_list(node *current, node *nodes) {
 /* Function copys one node to a other node */
 /**
 *@brief This copies a node from one destination to another. 
-*@param[in] "node *destination" This is where the node is copied to.
 *@param[in] "noce *source" This is where the node originally was.
+*@param[out] "node *destination" This is where the node is copied to.
 */
 void copy_node_to_node(node *destination, node *source) {
   destination->id = source->id;

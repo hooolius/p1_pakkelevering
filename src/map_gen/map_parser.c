@@ -144,7 +144,7 @@ int sorter_function(const void *a, const void *b) {
 /**
 *@brief Function passes streets, and connects the points, so all the points know what points they are connected to. 
 *@param[in] *data Contains all the data from the map file
-*@param[in] "points *map_points" The array of structs where all the data is copied into
+*@param[out] "points *map_points" The array of structs where all the data is copied into
 */
 void search_and_parse_streets(cJSON *json, struct point *map_points) {
 
@@ -266,6 +266,7 @@ void pointer_writer(struct point *map_points, int array_key, int old_array_key) 
 *@param[in] "point point" The array of structs that contains the neighbours
 *@param[in] array_key The array key of the examined node
 *@param[in] old_array_key the array key of the neighbour to the examined node
+*@return A true or false value depending id a ceratin node is already marked as the neighbour
 */
 int is_written(struct point point, int array_key, int old_array_key) {
   /*Checks if the point is already written into the points.*/
@@ -324,6 +325,7 @@ int is_written(struct point point, int array_key, int old_array_key) {
 *@param[in] input A certain node from the map file
 *@param[in] "point *map_points" The array of structs that contains the map data
 *@param[in] "array_len" The length of the array
+*@return Returns the node
 */
 int binary_searcher(double input, struct point *map_points, int array_len) {
   int first;

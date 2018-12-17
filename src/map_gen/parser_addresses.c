@@ -38,7 +38,7 @@ void parser_addreses(dyn_array_address *searches) {
 /**
 *@brief Takes all the information from the JSON file that is needed and puts it into an array of structs
 *@param[in] *data A sting that contains all the information from the input file
-*@param[in] "dyn_array_address *searches" These aree the addresses asked for in the command prompt if chosen to manually type them 
+*@param[out] "dyn_array_address *searches" An array with the adresses wanted by the user 
 */
 void convert_to_array(char *data, dyn_array_address *searches) {
   cJSON *json = NULL;
@@ -96,7 +96,7 @@ void convert_to_array(char *data, dyn_array_address *searches) {
 *@brief Checks if a certain address is in the array passed to JSON through manual typing 
 *@param[in] input_streetname[] Checks for the certain streetname
 *@param[in] input_housenumber[] Checks for the certain housenumber
-*@param[in] "dyn_array_address *searches" These aree the addresses asked for in the command prompt if chosen to manually type them 
+*@param[out] "dyn_array_address *searches" Contains the information the user provied 
 */
 int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_address *searches) {
   for (int k = 0; k < searches->items; k++) {
@@ -113,7 +113,7 @@ int is_in_array(char input_streetname[], char input_housenumber[], dyn_array_add
 *@brief Checks if a certain addrss is in the string to JSON trough the input file
 *@param[in] input_streetname[] Checks for the certain streetname
 *@param[in] input_housenumber[] Checks for the certain housenumber
-*@param[in] "address input_array[]" An array that contains the addresses of the houses that have to be visited
+*@param[out] "address input_array[]" An array that contains the addresses of the houses that have to be visited
 *@param[in] number_of_addresses The number of addesses registered in the command prompt
 */
 int is_in_searches(char input_streetname[], char input_housenumber[], struct address input_array[], int number_of_adresses) {

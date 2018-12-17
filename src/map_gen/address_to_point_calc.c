@@ -1,6 +1,10 @@
 #include <dynamic_array.h>
 #include "address_to_point_calc.h"
 
+/**
+*@param[in] "dyn_array_address *searches" Contains the adresses the user has given
+*@param[in] "point *map_points" Contains all the map data
+*/
 void addresses_to_point_calc(dyn_array_address *searches, struct point *map_points) {
     double lat_difference = 0;
     double lon_difference = 0;
