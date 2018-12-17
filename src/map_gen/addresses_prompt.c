@@ -17,13 +17,13 @@ void addresses_prompt(dyn_array_address *searches, FILE *input_file) {
   struct address *current_searches = calloc(1, sizeof(struct address));
 
   if (DEBUG != 1 && input_file == NULL) {
-    printf("Hello there! - I need to know if you want to insert the addresses manually or using a document."
-        "\nPress (1) for typing them in yourself and press (2) for using a document\n");
+    //printf("Hello there! - I need to know if you want to insert the addresses manually or using a document."
+     //   "\nPress (1) for typing them in yourself and press (2) for using a document\n");
     //scanf("%s", input_choice);
     strcpy(input_choice, "2");
     if (strcmp(input_choice, manual_check) == 0) {
-      printf("You have chosen to type in the addresses yourself\n "
-          "When you are done typing your addresses type 'END' to end the process of typing in addresses \n");
+      //printf("You have chosen to type in the addresses yourself\n "
+      //    "When you are done typing your addresses type 'END' to end the process of typing in addresses \n");
 
       while (strcmp(check_for_end, end) != 0) {
         printf("Please enter the streetname streetname (Element number %d)\n", j);

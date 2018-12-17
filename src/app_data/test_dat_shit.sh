@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!~/bin/env bash
 
 for f in $(find . -name '*.txt' | sort -V)
 do

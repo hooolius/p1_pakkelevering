@@ -1,0 +1,1173 @@
+Map parsed started 
+Map and addresses parsed time 0.346072 
+Version 1.1 
+A* started 
+All A* done, time: 0.275543 
+Held karp started 
+Held karp done, time: 0.000009 
+Rutens kilometer: 22.99 km 
+0: Loevstikkevej 56 
+1: Wibroesvej 13 
+2: Oelandvej 24 
+3: Oddesundvej 49 
+4: Tovesvej 36 
+5: Loevstikkevej 56 
+
+Map parsed started 
+Map and addresses parsed time 0.346928 
+Version 1.1 
+A* started 
+All A* done, time: 0.293799 
+Held karp started 
+Held karp done, time: 0.000009 
+Rutens kilometer: 25.26 km 
+0: Helgolandsgade 54 
+1: Blaakildevej 84A 
+2: Sigten 8 
+3: Stroeybergsvej 17 
+4: Vesterkaeret 175 
+5: Helgolandsgade 54 
+
+Map parsed started 
+Map and addresses parsed time 0.343786 
+Version 1.1 
+A* started 
+All A* done, time: 0.125940 
+Held karp started 
+Held karp done, time: 0.000009 
+Rutens kilometer: 15.33 km 
+0: Fyensgade 26 
+1: Oester Sundby Vej 10 
+2: Golfparken 28 
+3: Jupitervej 12 
+4: Oesterbrogade 94 
+5: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.346403 
+Version 1.1 
+A* started 
+All A* done, time: 0.363744 
+Held karp started 
+Held karp done, time: 0.000016 
+Rutens kilometer: 23.55 km 
+0: Loevstikkevej 56 
+1: Wibroesvej 13 
+2: Oelandvej 24 
+3: Blaakildevej 84A 
+4: Oddesundvej 49 
+5: Tovesvej 36 
+6: Loevstikkevej 56 
+
+Map parsed started 
+Map and addresses parsed time 0.341999 
+Version 1.1 
+A* started 
+All A* done, time: 0.226946 
+Held karp started 
+Held karp done, time: 0.000014 
+Rutens kilometer: 19.30 km 
+0: Fyensgade 26 
+1: Oesterbrogade 94 
+2: Helgolandsgade 54 
+3: Vesterkaeret 175 
+4: Stroeybergsvej 17 
+5: Sigten 8 
+6: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.340374 
+Version 1.1 
+A* started 
+All A* done, time: 0.205075 
+Held karp started 
+Held karp done, time: 0.000016 
+Rutens kilometer: 18.32 km 
+0: Golfparken 28 
+1: Oester Sundby Vej 10 
+2: Soenderbro 3 
+3: Johannesmindevej 28 
+4: Klokkestabelen 31 
+5: Jupitervej 12 
+6: Golfparken 28 
+
+Map parsed started 
+Map and addresses parsed time 0.341499 
+Version 1.1 
+A* started 
+All A* done, time: 0.531926 
+Held karp started 
+Held karp done, time: 0.000033 
+Rutens kilometer: 24.73 km 
+0: Loevstikkevej 56 
+1: Vesterkaeret 175 
+2: Oelandvej 24 
+3: Blaakildevej 84A 
+4: Oddesundvej 49 
+5: Tovesvej 36 
+6: Wibroesvej 13 
+7: Loevstikkevej 56 
+
+Map parsed started 
+Map and addresses parsed time 0.339436 
+Version 1.1 
+A* started 
+All A* done, time: 0.230998 
+Held karp started 
+Held karp done, time: 0.000031 
+Rutens kilometer: 20.30 km 
+0: Fyensgade 26 
+1: Oesterbrogade 94 
+2: Helgolandsgade 54 
+3: Stroeybergsvej 17 
+4: Jupitervej 12 
+5: Sigten 8 
+6: Golfparken 28 
+7: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.341814 
+Version 1.1 
+A* started 
+All A* done, time: 0.341240 
+Held karp started 
+Held karp done, time: 0.000029 
+Rutens kilometer: 21.84 km 
+0: Bygaden 7K 
+1: Klokkestabelen 31 
+2: Hobrovej 446C 
+3: Sofievej 224 
+4: Oester Sundby Vej 10 
+5: Soenderbro 3 
+6: Johannesmindevej 28 
+7: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.342689 
+Version 1.1 
+A* started 
+All A* done, time: 0.626801 
+Held karp started 
+Held karp done, time: 0.000067 
+Rutens kilometer: 24.80 km 
+0: Helgolandsgade 54 
+1: Vesterkaeret 175 
+2: Loevstikkevej 56 
+3: Wibroesvej 13 
+4: Tovesvej 36 
+5: Oddesundvej 49 
+6: Blaakildevej 84A 
+7: Oelandvej 24 
+8: Helgolandsgade 54 
+
+Map parsed started 
+Map and addresses parsed time 0.346815 
+Version 1.1 
+A* started 
+All A* done, time: 0.278393 
+Held karp started 
+Held karp done, time: 0.000064 
+Rutens kilometer: 22.15 km 
+0: Fyensgade 26 
+1: Oester Sundby Vej 10 
+2: Golfparken 28 
+3: Sigten 8 
+4: Jupitervej 12 
+5: Klokkestabelen 31 
+6: Stroeybergsvej 17 
+7: Oesterbrogade 94 
+8: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.345321 
+Version 1.1 
+A* started 
+All A* done, time: 0.423153 
+Held karp started 
+Held karp done, time: 0.000066 
+Rutens kilometer: 22.03 km 
+0: Bygaden 7K 
+1: Poul Anker Bechs Vej 349 
+2: Hobrovej 446C 
+3: Rughaven 49 
+4: Sofievej 224 
+5: Mariendalsvej 4A 
+6: Soenderbro 3 
+7: Johannesmindevej 28 
+8: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.341897 
+Version 1.1 
+A* started 
+All A* done, time: 0.732098 
+Held karp started 
+Held karp done, time: 0.000142 
+Rutens kilometer: 25.14 km 
+0: Helgolandsgade 54 
+1: Vesterkaeret 175 
+2: Loevstikkevej 56 
+3: Stroeybergsvej 17 
+4: Wibroesvej 13 
+5: Tovesvej 36 
+6: Oddesundvej 49 
+7: Blaakildevej 84A 
+8: Oelandvej 24 
+9: Helgolandsgade 54 
+
+Map parsed started 
+Map and addresses parsed time 0.346182 
+Version 1.1 
+A* started 
+All A* done, time: 0.370144 
+Held karp started 
+Held karp done, time: 0.000143 
+Rutens kilometer: 23.75 km 
+0: Fyensgade 26 
+1: Oester Sundby Vej 10 
+2: Golfparken 28 
+3: Sigten 8 
+4: Jupitervej 12 
+5: Klokkestabelen 31 
+6: Johannesmindevej 28 
+7: Oesterbrogade 94 
+8: Soenderbro 3 
+9: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.344202 
+Version 1.1 
+A* started 
+All A* done, time: 0.469560 
+Held karp started 
+Held karp done, time: 0.000142 
+Rutens kilometer: 22.00 km 
+0: Bygaden 7K 
+1: Poul Anker Bechs Vej 349 
+2: Hobrovej 446C 
+3: Peter Bruuns Vej 101 
+4: Rughaven 49 
+5: Mariendalsvej 4A 
+6: Sofievej 224 
+7: Duevej 6A 
+8: Mester Eriks Vej 100 
+9: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.344301 
+Version 1.1 
+A* started 
+All A* done, time: 0.933361 
+Held karp started 
+Held karp done, time: 0.000322 
+Rutens kilometer: 29.93 km 
+0: Helgolandsgade 54 
+1: Vesterkaeret 175 
+2: Loevstikkevej 56 
+3: Stroeybergsvej 17 
+4: Wibroesvej 13 
+5: Sigten 8 
+6: Oddesundvej 49 
+7: Blaakildevej 84A 
+8: Oelandvej 24 
+9: Tovesvej 36 
+10: Helgolandsgade 54 
+
+Map parsed started 
+Map and addresses parsed time 0.344609 
+Version 1.1 
+A* started 
+All A* done, time: 0.499358 
+Held karp started 
+Held karp done, time: 0.000322 
+Rutens kilometer: 22.56 km 
+0: Bygaden 7K 
+1: Klokkestabelen 31 
+2: Jupitervej 12 
+3: Golfparken 28 
+4: Sofievej 224 
+5: Oester Sundby Vej 10 
+6: Fyensgade 26 
+7: Soenderbro 3 
+8: Oesterbrogade 94 
+9: Johannesmindevej 28 
+10: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.340096 
+Version 1.1 
+A* started 
+All A* done, time: 0.442811 
+Held karp started 
+Held karp done, time: 0.000329 
+Rutens kilometer: 22.36 km 
+0: Duevej 6A 
+1: Peter Bruuns Vej 101 
+2: Rughaven 49 
+3: Mariendalsvej 4A 
+4: Peder Skrams Gade 25 
+5: Kappavej 13 
+6: Mester Eriks Vej 100 
+7: Poul Anker Bechs Vej 349 
+8: Hobrovej 446C 
+9: Hobrovej 97 
+10: Duevej 6A 
+
+Map parsed started 
+Map and addresses parsed time 0.345585 
+Version 1.1 
+A* started 
+All A* done, time: 1.088026 
+Held karp started 
+Held karp done, time: 0.000796 
+Rutens kilometer: 31.82 km 
+0: Helgolandsgade 54 
+1: Vesterkaeret 175 
+2: Loevstikkevej 56 
+3: Stroeybergsvej 17 
+4: Wibroesvej 13 
+5: Sigten 8 
+6: Oddesundvej 49 
+7: Blaakildevej 84A 
+8: Oelandvej 24 
+9: Tovesvej 36 
+10: Oesterbrogade 94 
+11: Helgolandsgade 54 
+
+Map parsed started 
+Map and addresses parsed time 0.351074 
+Version 1.1 
+A* started 
+All A* done, time: 0.672714 
+Held karp started 
+Held karp done, time: 0.000745 
+Rutens kilometer: 23.60 km 
+0: Bygaden 7K 
+1: Klokkestabelen 31 
+2: Poul Anker Bechs Vej 349 
+3: Hobrovej 446C 
+4: Jupitervej 12 
+5: Golfparken 28 
+6: Sofievej 224 
+7: Oester Sundby Vej 10 
+8: Fyensgade 26 
+9: Soenderbro 3 
+10: Johannesmindevej 28 
+11: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.348288 
+Version 1.1 
+A* started 
+All A* done, time: 0.489501 
+Held karp started 
+Held karp done, time: 0.000800 
+Rutens kilometer: 18.48 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Mariendalsvej 4A 
+4: Rughaven 49 
+5: Peter Bruuns Vej 101 
+6: Duevej 6A 
+7: Hobrovej 97 
+8: Mester Eriks Vej 100 
+9: Kappavej 13 
+10: Peder Skrams Gade 25 
+11: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.413267 
+Version 1.1 
+A* started 
+All A* done, time: 1.537514 
+Held karp started 
+Held karp done, time: 0.001988 
+Rutens kilometer: 31.92 km 
+0: Fyensgade 26 
+1: Oesterbrogade 94 
+2: Helgolandsgade 54 
+3: Vesterkaeret 175 
+4: Loevstikkevej 56 
+5: Stroeybergsvej 17 
+6: Wibroesvej 13 
+7: Sigten 8 
+8: Oddesundvej 49 
+9: Blaakildevej 84A 
+10: Oelandvej 24 
+11: Tovesvej 36 
+12: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.361903 
+Version 1.1 
+A* started 
+All A* done, time: 0.766948 
+Held karp started 
+Held karp done, time: 0.001677 
+Rutens kilometer: 24.02 km 
+0: Bygaden 7K 
+1: Klokkestabelen 31 
+2: Poul Anker Bechs Vej 349 
+3: Hobrovej 446C 
+4: Jupitervej 12 
+5: Rughaven 49 
+6: Golfparken 28 
+7: Sofievej 224 
+8: Mariendalsvej 4A 
+9: Oester Sundby Vej 10 
+10: Soenderbro 3 
+11: Johannesmindevej 28 
+12: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.351252 
+Version 1.1 
+A* started 
+All A* done, time: 0.533463 
+Held karp started 
+Held karp done, time: 0.001683 
+Rutens kilometer: 20.71 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Soendervangsvej 41 
+4: Peter Bruuns Vej 101 
+5: Duevej 6A 
+6: Hobrovej 97 
+7: Perikumvej 12 
+8: Mester Eriks Vej 100 
+9: Gravenstenvej 8 
+10: Kappavej 13 
+11: Peder Skrams Gade 25 
+12: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.351328 
+Version 1.1 
+A* started 
+All A* done, time: 1.288568 
+Held karp started 
+Held karp done, time: 0.003907 
+Rutens kilometer: 32.07 km 
+0: Fyensgade 26 
+1: Oesterbrogade 94 
+2: Helgolandsgade 54 
+3: Vesterkaeret 175 
+4: Loevstikkevej 56 
+5: Stroeybergsvej 17 
+6: Wibroesvej 13 
+7: Sigten 8 
+8: Oddesundvej 49 
+9: Blaakildevej 84A 
+10: Oelandvej 24 
+11: Tovesvej 36 
+12: Golfparken 28 
+13: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.351425 
+Version 1.1 
+A* started 
+All A* done, time: 0.809942 
+Held karp started 
+Held karp done, time: 0.003906 
+Rutens kilometer: 25.47 km 
+0: Bygaden 7K 
+1: Klokkestabelen 31 
+2: Poul Anker Bechs Vej 349 
+3: Hobrovej 446C 
+4: Jupitervej 12 
+5: Duevej 6A 
+6: Peter Bruuns Vej 101 
+7: Rughaven 49 
+8: Sofievej 224 
+9: Mariendalsvej 4A 
+10: Oester Sundby Vej 10 
+11: Soenderbro 3 
+12: Johannesmindevej 28 
+13: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.358887 
+Version 1.1 
+A* started 
+All A* done, time: 1.065267 
+Held karp started 
+Held karp done, time: 0.003910 
+Rutens kilometer: 28.84 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Soendervangsvej 41 
+4: Oddesundvej 53 
+5: Poseidonvej 38 
+6: Hobrovej 97 
+7: Perikumvej 12 
+8: Mester Eriks Vej 100 
+9: Gravenstenvej 8 
+10: Flintevej 19 
+11: Kappavej 13 
+12: Peder Skrams Gade 25 
+13: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.365321 
+Version 1.1 
+A* started 
+All A* done, time: 1.462224 
+Held karp started 
+Held karp done, time: 0.009099 
+Rutens kilometer: 33.35 km 
+0: Fyensgade 26 
+1: Oesterbrogade 94 
+2: Helgolandsgade 54 
+3: Vesterkaeret 175 
+4: Loevstikkevej 56 
+5: Stroeybergsvej 17 
+6: Wibroesvej 13 
+7: Jupitervej 12 
+8: Sigten 8 
+9: Oddesundvej 49 
+10: Blaakildevej 84A 
+11: Oelandvej 24 
+12: Tovesvej 36 
+13: Golfparken 28 
+14: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.352650 
+Version 1.1 
+A* started 
+All A* done, time: 1.003036 
+Held karp started 
+Held karp done, time: 0.009391 
+Rutens kilometer: 25.96 km 
+0: Bygaden 7K 
+1: Mester Eriks Vej 100 
+2: Johannesmindevej 28 
+3: Peder Skrams Gade 25 
+4: Soenderbro 3 
+5: Oester Sundby Vej 10 
+6: Mariendalsvej 4A 
+7: Sofievej 224 
+8: Rughaven 49 
+9: Peter Bruuns Vej 101 
+10: Duevej 6A 
+11: Hobrovej 446C 
+12: Poul Anker Bechs Vej 349 
+13: Klokkestabelen 31 
+14: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.357875 
+Version 1.1 
+A* started 
+All A* done, time: 1.300860 
+Held karp started 
+Held karp done, time: 0.009078 
+Rutens kilometer: 29.93 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Hadsundvej 88 
+4: Soendervangsvej 41 
+5: Oddesundvej 53 
+6: Knuden 5 
+7: Poseidonvej 38 
+8: Perikumvej 12 
+9: Hobrovej 97 
+10: Moelleparkvej 4A 
+11: Gravenstenvej 8 
+12: Flintevej 19 
+13: Kappavej 13 
+14: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.347893 
+Version 1.1 
+A* started 
+All A* done, time: 1.529369 
+Held karp started 
+Held karp done, time: 0.022024 
+Rutens kilometer: 34.05 km 
+0: Fyensgade 26 
+1: Oester Sundby Vej 10 
+2: Golfparken 28 
+3: Tovesvej 36 
+4: Oelandvej 24 
+5: Blaakildevej 84A 
+6: Oddesundvej 49 
+7: Sigten 8 
+8: Jupitervej 12 
+9: Wibroesvej 13 
+10: Stroeybergsvej 17 
+11: Loevstikkevej 56 
+12: Vesterkaeret 175 
+13: Helgolandsgade 54 
+14: Oesterbrogade 94 
+15: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.414530 
+Version 1.1 
+A* started 
+All A* done, time: 1.111082 
+Held karp started 
+Held karp done, time: 0.022066 
+Rutens kilometer: 25.99 km 
+0: Bygaden 7K 
+1: Mester Eriks Vej 100 
+2: Kappavej 13 
+3: Johannesmindevej 28 
+4: Peder Skrams Gade 25 
+5: Soenderbro 3 
+6: Mariendalsvej 4A 
+7: Sofievej 224 
+8: Rughaven 49 
+9: Peter Bruuns Vej 101 
+10: Duevej 6A 
+11: Hobrovej 97 
+12: Hobrovej 446C 
+13: Poul Anker Bechs Vej 349 
+14: Klokkestabelen 31 
+15: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.362738 
+Version 1.1 
+A* started 
+All A* done, time: 1.298222 
+Held karp started 
+Held karp done, time: 0.020541 
+Rutens kilometer: 31.52 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Hadsundvej 88 
+4: Riishoejsvej 61 
+5: Soendervangsvej 41 
+6: Oddesundvej 53 
+7: Knuden 5 
+8: Myrdalstraede 41B 
+9: Poseidonvej 38 
+10: Graesvaenget 5 
+11: Perikumvej 12 
+12: Moelleparkvej 4A 
+13: Gravenstenvej 8 
+14: Flintevej 19 
+15: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.349364 
+Version 1.1 
+A* started 
+All A* done, time: 1.742830 
+Held karp started 
+Held karp done, time: 0.047122 
+Rutens kilometer: 35.16 km 
+0: Fyensgade 26 
+1: Oester Sundby Vej 10 
+2: Golfparken 28 
+3: Tovesvej 36 
+4: Oelandvej 24 
+5: Blaakildevej 84A 
+6: Oddesundvej 49 
+7: Sigten 8 
+8: Jupitervej 12 
+9: Klokkestabelen 31 
+10: Loevstikkevej 56 
+11: Vesterkaeret 175 
+12: Wibroesvej 13 
+13: Stroeybergsvej 17 
+14: Helgolandsgade 54 
+15: Oesterbrogade 94 
+16: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.353177 
+Version 1.1 
+A* started 
+All A* done, time: 1.181944 
+Held karp started 
+Held karp done, time: 0.048787 
+Rutens kilometer: 26.27 km 
+0: Bygaden 7K 
+1: Poul Anker Bechs Vej 349 
+2: Hobrovej 446C 
+3: Hobrovej 97 
+4: Duevej 6A 
+5: Peter Bruuns Vej 101 
+6: Rughaven 49 
+7: Sofievej 224 
+8: Mariendalsvej 4A 
+9: Hadsundvej 2A 
+10: Soenderbro 3 
+11: Nytorv 7 
+12: Peder Skrams Gade 25 
+13: Johannesmindevej 28 
+14: Kappavej 13 
+15: Mester Eriks Vej 100 
+16: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.362984 
+Version 1.1 
+A* started 
+All A* done, time: 1.572910 
+Held karp started 
+Held karp done, time: 0.049206 
+Rutens kilometer: 37.44 km 
+0: Brohusgade 9 
+1: Flintevej 19 
+2: Gravenstenvej 8 
+3: Moelleparkvej 4A 
+4: Perikumvej 12 
+5: Graesvaenget 5 
+6: C. P. Holboells Plads 58 
+7: Poseidonvej 38 
+8: Myrdalstraede 41B 
+9: Knuden 5 
+10: Oddesundvej 53 
+11: Golfparken 116 
+12: Soendervangsvej 41 
+13: Hadsundvej 88 
+14: Riishoejsvej 61 
+15: Dronningensgade 7 
+16: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.367120 
+Version 1.1 
+A* started 
+All A* done, time: 2.044803 
+Held karp started 
+Held karp done, time: 0.123260 
+Rutens kilometer: 35.75 km 
+0: Fyensgade 26 
+1: Oester Sundby Vej 10 
+2: Golfparken 28 
+3: Tovesvej 36 
+4: Oelandvej 24 
+5: Blaakildevej 84A 
+6: Oddesundvej 49 
+7: Sigten 8 
+8: Jupitervej 12 
+9: Klokkestabelen 31 
+10: Loevstikkevej 56 
+11: Johannesmindevej 28 
+12: Vesterkaeret 175 
+13: Wibroesvej 13 
+14: Stroeybergsvej 17 
+15: Helgolandsgade 54 
+16: Oesterbrogade 94 
+17: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.365640 
+Version 1.1 
+A* started 
+All A* done, time: 1.264464 
+Held karp started 
+Held karp done, time: 0.117644 
+Rutens kilometer: 26.91 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Soenderbro 3 
+3: Hadsundvej 2A 
+4: Mariendalsvej 4A 
+5: Sofievej 224 
+6: Rughaven 49 
+7: Peter Bruuns Vej 101 
+8: Duevej 6A 
+9: Hobrovej 97 
+10: Hobrovej 446C 
+11: Poul Anker Bechs Vej 349 
+12: Bygaden 7K 
+13: Mester Eriks Vej 100 
+14: Gravenstenvej 8 
+15: Kappavej 13 
+16: Peder Skrams Gade 25 
+17: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.356082 
+Version 1.1 
+A* started 
+All A* done, time: 1.515398 
+Held karp started 
+Held karp done, time: 0.144539 
+Rutens kilometer: 36.73 km 
+0: C. P. Holboells Plads 58 
+1: Poseidonvej 38 
+2: Myrdalstraede 41B 
+3: Knuden 5 
+4: Oddesundvej 53 
+5: Vilsundvej 27 
+6: Soendervangsvej 41 
+7: Golfparken 116 
+8: Liselund 33 
+9: Hadsundvej 88 
+10: Riishoejsvej 61 
+11: Dronningensgade 7 
+12: Flintevej 19 
+13: Moelleparkvej 4A 
+14: Perikumvej 12 
+15: Graesvaenget 5 
+16: C. P. Holboells Plads 86 
+17: C. P. Holboells Plads 58 
+
+Map parsed started 
+Map and addresses parsed time 0.359796 
+Version 1.1 
+A* started 
+All A* done, time: 2.206260 
+Held karp started 
+Held karp done, time: 0.299549 
+Rutens kilometer: 36.10 km 
+0: Fyensgade 26 
+1: Oester Sundby Vej 10 
+2: Golfparken 28 
+3: Tovesvej 36 
+4: Oelandvej 24 
+5: Blaakildevej 84A 
+6: Oddesundvej 49 
+7: Sigten 8 
+8: Jupitervej 12 
+9: Klokkestabelen 31 
+10: Loevstikkevej 56 
+11: Johannesmindevej 28 
+12: Vesterkaeret 175 
+13: Wibroesvej 13 
+14: Stroeybergsvej 17 
+15: Helgolandsgade 54 
+16: Oesterbrogade 94 
+17: Soenderbro 3 
+18: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.354909 
+Version 1.1 
+A* started 
+All A* done, time: 1.492629 
+Held karp started 
+Held karp done, time: 0.302811 
+Rutens kilometer: 27.18 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Mariendalsvej 4A 
+4: Sofievej 224 
+5: Soendervangsvej 41 
+6: Rughaven 49 
+7: Peter Bruuns Vej 101 
+8: Duevej 6A 
+9: Hobrovej 97 
+10: Perikumvej 12 
+11: Hobrovej 446C 
+12: Poul Anker Bechs Vej 349 
+13: Bygaden 7K 
+14: Mester Eriks Vej 100 
+15: Gravenstenvej 8 
+16: Kappavej 13 
+17: Peder Skrams Gade 25 
+18: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.358933 
+Version 1.1 
+A* started 
+All A* done, time: 1.833795 
+Held karp started 
+Held karp done, time: 0.305666 
+Rutens kilometer: 38.60 km 
+0: C. P. Holboells Plads 58 
+1: Poseidonvej 38 
+2: Myrdalstraede 41B 
+3: Knuden 5 
+4: Oddesundvej 53 
+5: Vilsundvej 27 
+6: Golfparken 116 
+7: Riishoejsvej 61 
+8: Hadsundvej 88 
+9: Liselund 33 
+10: Koebkesvej 10 
+11: Slotspladsen 1B 
+12: Dronningensgade 7 
+13: Stroeybergs Minde 7 
+14: Flintevej 19 
+15: Moelleparkvej 4A 
+16: Graesvaenget 5 
+17: C. P. Holboells Plads 86 
+18: C. P. Holboells Plads 58 
+
+Map parsed started 
+Map and addresses parsed time 0.359269 
+Version 1.1 
+A* started 
+All A* done, time: 2.450675 
+Held karp started 
+Held karp done, time: 0.781161 
+Rutens kilometer: 36.35 km 
+0: Fyensgade 26 
+1: Oester Sundby Vej 10 
+2: Golfparken 28 
+3: Tovesvej 36 
+4: Sofievej 224 
+5: Oelandvej 24 
+6: Blaakildevej 84A 
+7: Oddesundvej 49 
+8: Sigten 8 
+9: Jupitervej 12 
+10: Klokkestabelen 31 
+11: Loevstikkevej 56 
+12: Johannesmindevej 28 
+13: Vesterkaeret 175 
+14: Wibroesvej 13 
+15: Stroeybergsvej 17 
+16: Helgolandsgade 54 
+17: Oesterbrogade 94 
+18: Soenderbro 3 
+19: Fyensgade 26 
+
+Map parsed started 
+Map and addresses parsed time 0.360967 
+Version 1.1 
+A* started 
+All A* done, time: 1.575262 
+Held karp started 
+Held karp done, time: 0.742097 
+Rutens kilometer: 31.16 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Mariendalsvej 4A 
+4: Soendervangsvej 41 
+5: Rughaven 49 
+6: Poseidonvej 38 
+7: Peter Bruuns Vej 101 
+8: Duevej 6A 
+9: Hobrovej 97 
+10: Perikumvej 12 
+11: Hobrovej 446C 
+12: Poul Anker Bechs Vej 349 
+13: Bygaden 7K 
+14: Mester Eriks Vej 100 
+15: Gravenstenvej 8 
+16: Flintevej 19 
+17: Kappavej 13 
+18: Peder Skrams Gade 25 
+19: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.354921 
+Version 1.1 
+A* started 
+All A* done, time: 1.810165 
+Held karp started 
+Held karp done, time: 0.784726 
+Rutens kilometer: 36.31 km 
+0: C. P. Holboells Plads 58 
+1: Myrdalstraede 41B 
+2: Myrdalstraede 243 
+3: Knuden 5 
+4: Oddesundvej 53 
+5: Vilsundvej 27 
+6: Golfparken 116 
+7: Riishoejsvej 61 
+8: Hadsundvej 88 
+9: Liselund 33 
+10: Koebkesvej 10 
+11: Slotspladsen 1B 
+12: Dronningensgade 7 
+13: Stroeybergs Minde 7 
+14: Moelleparkvej 4A 
+15: Neshoej 37 
+16: Graesvaenget 5 
+17: J.P. Kochs Vej 10 
+18: C. P. Holboells Plads 86 
+19: C. P. Holboells Plads 58 
+
+Map parsed started 
+Map and addresses parsed time 0.351240 
+Version 1.1 
+A* started 
+All A* done, time: 2.744247 
+Held karp started 
+Held karp done, time: 1.859900 
+Rutens kilometer: 36.43 km 
+0: Bygaden 7K 
+1: Loevstikkevej 56 
+2: Johannesmindevej 28 
+3: Vesterkaeret 175 
+4: Wibroesvej 13 
+5: Stroeybergsvej 17 
+6: Helgolandsgade 54 
+7: Oesterbrogade 94 
+8: Soenderbro 3 
+9: Fyensgade 26 
+10: Oester Sundby Vej 10 
+11: Golfparken 28 
+12: Tovesvej 36 
+13: Sofievej 224 
+14: Oelandvej 24 
+15: Blaakildevej 84A 
+16: Oddesundvej 49 
+17: Sigten 8 
+18: Jupitervej 12 
+19: Klokkestabelen 31 
+20: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.354208 
+Version 1.1 
+A* started 
+All A* done, time: 1.891535 
+Held karp started 
+Held karp done, time: 1.895044 
+Rutens kilometer: 36.63 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Rughaven 49 
+4: Mariendalsvej 4A 
+5: Soendervangsvej 41 
+6: Oddesundvej 53 
+7: Poseidonvej 38 
+8: Peter Bruuns Vej 101 
+9: Duevej 6A 
+10: Moelleparkvej 4A 
+11: Hobrovej 97 
+12: Perikumvej 12 
+13: Hobrovej 446C 
+14: Poul Anker Bechs Vej 349 
+15: Mester Eriks Vej 100 
+16: Gravenstenvej 8 
+17: Flintevej 19 
+18: Kappavej 13 
+19: Peder Skrams Gade 25 
+20: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.358258 
+Version 1.1 
+A* started 
+All A* done, time: 2.272651 
+Held karp started 
+Held karp done, time: 2.059292 
+Rutens kilometer: 40.41 km 
+0: C. P. Holboells Plads 58 
+1: Engen 58 
+2: Graesvaenget 5 
+3: Neshoej 37 
+4: Nordens Huse 16 
+5: Stroeybergs Minde 7 
+6: Dronningensgade 7 
+7: Slotspladsen 1B 
+8: Koebkesvej 10 
+9: Vilsundvej 27 
+10: Knuden 5 
+11: Myrdalstraede 243 
+12: Myrdalstraede 41B 
+13: Golfparken 116 
+14: Liselund 33 
+15: Hadsundvej 88 
+16: Riishoejsvej 61 
+17: Haandvaerkervej 15B 
+18: J.P. Kochs Vej 10 
+19: C. P. Holboells Plads 86 
+20: C. P. Holboells Plads 58 
+
+Map parsed started 
+Map and addresses parsed time 0.349160 
+Version 1.1 
+A* started 
+All A* done, time: 3.212665 
+Held karp started 
+Held karp done, time: 4.623349 
+Rutens kilometer: 38.91 km 
+0: Bygaden 7K 
+1: Loevstikkevej 56 
+2: Johannesmindevej 28 
+3: Vesterkaeret 175 
+4: Wibroesvej 13 
+5: Stroeybergsvej 17 
+6: Helgolandsgade 54 
+7: Oesterbrogade 94 
+8: Soenderbro 3 
+9: Fyensgade 26 
+10: Oester Sundby Vej 10 
+11: Golfparken 28 
+12: Tovesvej 36 
+13: Sofievej 224 
+14: Oelandvej 24 
+15: Blaakildevej 84A 
+16: Oddesundvej 49 
+17: Sigten 8 
+18: Jupitervej 12 
+19: Hobrovej 446C 
+20: Klokkestabelen 31 
+21: Bygaden 7K 
+
+Map parsed started 
+Map and addresses parsed time 0.382443 
+Version 1.1 
+A* started 
+All A* done, time: 2.436793 
+Held karp started 
+Held karp done, time: 4.568190 
+Rutens kilometer: 36.08 km 
+0: Brohusgade 9 
+1: Nytorv 7 
+2: Hadsundvej 2A 
+3: Rughaven 49 
+4: Mariendalsvej 4A 
+5: Hadsundvej 88 
+6: Soendervangsvej 41 
+7: Oddesundvej 53 
+8: Knuden 5 
+9: Poseidonvej 38 
+10: Peter Bruuns Vej 101 
+11: Duevej 6A 
+12: Moelleparkvej 4A 
+13: Hobrovej 97 
+14: Perikumvej 12 
+15: Poul Anker Bechs Vej 349 
+16: Mester Eriks Vej 100 
+17: Gravenstenvej 8 
+18: Flintevej 19 
+19: Kappavej 13 
+20: Peder Skrams Gade 25 
+21: Brohusgade 9 
+
+Map parsed started 
+Map and addresses parsed time 0.371413 
+Version 1.1 
+A* started 
+All A* done, time: 2.336724 
+Held karp started 
+Held karp done, time: 4.667091 
+Rutens kilometer: 38.60 km 
+0: C. P. Holboells Plads 58 
+1: Engen 58 
+2: Graesvaenget 5 
+3: Neshoej 37 
+4: Nordens Huse 16 
+5: Stroeybergs Minde 7 
+6: Fredericiagade 5K 
+7: Gravensgade 1A 
+8: Vesterbrogade 2A 
+9: Dronningensgade 7 
+10: Slotspladsen 1B 
+11: Koebkesvej 10 
+12: Vilsundvej 27 
+13: Myrdalstraede 243 
+14: Myrdalstraede 41B 
+15: Golfparken 116 
+16: Liselund 33 
+17: Riishoejsvej 61 
+18: Haandvaerkervej 15B 
+19: J.P. Kochs Vej 10 
+20: C. P. Holboells Plads 86 
+21: C. P. Holboells Plads 58 
+
