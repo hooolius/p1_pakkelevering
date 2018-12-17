@@ -177,7 +177,7 @@ int count_elements_in_list(dyn_array_node *list) {
 */
 int contains(dyn_array_node *closed_list, node *item) {
   int res = 0;
-  for (int i = 0; i < closed_list->items; ++i) {
+  for (int i = closed_list->items - 1; i >= 0; --i) {
     if (closed_list->nodes[i]->id == item->id) {
       res = 1;
       break;
