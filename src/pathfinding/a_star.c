@@ -56,11 +56,12 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
       return output_distance;
     }
     /* Move current node from open_list to closed_list */
-    add_node_to_end_n(closed_list, current);
+    //add_node_to_end_n(closed_list, current);
+    current->f = -1;
     /* Count number of neighbours and check if they exied in closed_list */
     dyn_array_node *neighbour_list = make_neighbours_list(current, nodes);
     for (size_t i = 0; i < neighbour_list->items; ++i) {
-      if (contains(closed_list, neighbour_list->nodes[i]) || heap_contains(open_list, neighbour_list->nodes[i])) {
+      if (/*contains(closed_list, neighbour_list->nodes[i])*/ neighbour_list->nodes[i]->f == -1 || heap_contains(open_list, neighbour_list->nodes[i])) {
         continue;
       }
       neighbour_list->nodes[i]->g = current->g +
@@ -177,7 +178,7 @@ int count_elements_in_list(dyn_array_node *list) {
 */
 int contains(dyn_array_node *closed_list, node *item) {
   int res = 0;
-  for (int i = closed_list->items - 1; i >= 0; --i) {
+  for (int i = closed_list->items; i >= 0; --i) {
     if (closed_list->nodes[i]->id == item->id) {
       res = 1;
       break;
