@@ -1,4 +1,4 @@
-Aalborg, DK, 36, Aalborg, 9000, Tovesvej.
-Aalborg Oest, DK, 84A, Aalborg, 9220, Blaakildevej.
-Aalborg, DK, 175, Aalborg, 9000, Vesterkaeret.
-Aalborg, DK, 54, Aalborg, 9000, Helgolandsgade.
+Aalborg, DK, 36, Aalborg, 9000, Tovesvej
+Aalborg Oest, DK, 84A, Aalborg, 9220, Blaakildevej
+Aalborg, DK, 175, Aalborg, 9000, Vesterkaeret
+Aalborg, DK, 54, Aalborg, 9000, Helgolandsgade
