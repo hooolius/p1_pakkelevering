@@ -305,9 +305,6 @@ int find_address_a(dyn_array_address *array, struct address address_to_find) {
     if(strcmp(array->addresses[i].tags.house_number,address_to_find.tags.house_number)==0 && strcmp(array->addresses[i].tags.street,address_to_find.tags.street)==0) {
       res = 1;
     }
-    else{
-      res = 0;
-    }
   }
   return res;
 }
