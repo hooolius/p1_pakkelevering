@@ -70,8 +70,6 @@ dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
 dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node *heap_to_insert);
 /* Implemented */
 dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete);
-/* Not implemented yet */
-dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find);
 
 // NODE FUNCTIONS
 dyn_array_node *make_dyn_array_n(int size);
@@ -89,8 +87,6 @@ dyn_array_node *resize_array_n(dyn_array_node *array, int new_size);
 dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node_to_insert);
 /* Implemented */
 dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete);
-/* Not implemented yet */
-dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find);
 
 // ADDRESS FUNCTIONS
 dyn_array_address *make_dyn_array_a(int min_capacity);
@@ -109,7 +105,7 @@ dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, s
 /* Implemented */
 dyn_array_address *delete_address_a(dyn_array_address *array, struct address *address_to_delete);
 /* Not implemented yet */
-dyn_array_address *find_node_a(dyn_array_address *array, struct address address_to_find);
+int find_node_a(dyn_array_address *array, struct address address_to_find);
 
 // INTEGER FUNCTIONS
 dyn_array_int *make_dyn_array_i(int min_capacity);
@@ -127,5 +123,3 @@ dyn_array_int *resize_array_i(dyn_array_int *array, int new_size);
 dyn_array_int *add_int_to_end_i(dyn_array_int *array_to_insert_in, int int_to_insert);
 /* Implemented */
 dyn_array_int *delete_int_i(dyn_array_int *array, int int_to_delete);
-/* Not implemented yet */
-dyn_array_int *find_node_i(dyn_array_int *array, int address_to_find);
