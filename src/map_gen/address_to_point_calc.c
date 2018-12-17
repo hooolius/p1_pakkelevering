@@ -22,7 +22,7 @@ void addresses_to_point_calc(dyn_array_address *searches, struct point *map_poin
 
             difference = sqrt(pow(lat_difference,2)+pow(lon_difference,2));
 
-            if (searches->addresses[j].closest_point == 0) {
+            if (searches->addresses[j].closest_point <= 0) {
                 searches->addresses[j].closest_point_dist = difference;
                 searches->addresses[j].closest_point = i;
             }

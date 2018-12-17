@@ -45,6 +45,7 @@ void convert_to_array(char *data, dyn_array_address *searches) {
   const cJSON *elements = NULL;
   cJSON *tags = NULL;
   struct address addresses[searches->items];
+  dyn_array_address *results = make_dyn_array_a(searches->items);
   int j = 0;
 
   json = cJSON_Parse(data);
@@ -60,10 +61,13 @@ void convert_to_array(char *data, dyn_array_address *searches) {
 
       if (is_in_array(cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring,
                       cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring, searches) == 1) {
+        struct address curr_address;
 
-        addresses[j].lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
-        addresses[j].lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
-
+        curr_address.lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
+        curr_address.lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
+        //addresses[j].lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
+        //addresses[j].lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
+/*
         strcpy(addresses[j].tags.street,
                cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring);
         strcpy(addresses[j].tags.country,
@@ -77,24 +81,54 @@ void convert_to_array(char *data, dyn_array_address *searches) {
 
         strcpy(addresses[j].tags.postcode,
                cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
-        j++;
+  */
+        strcpy(curr_address.tags.street,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring);
+        strcpy(curr_address.tags.country,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:country")->valuestring);
+        strcpy(curr_address.tags.muncipality,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:municipality")->valuestring);
+        strcpy(curr_address.tags.city,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:city")->valuestring);
+        strcpy(curr_address.tags.house_number,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring);
+
+        strcpy(curr_address.tags.postcode,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
+        curr_address.closest_point = 0;
+        add_address_to_end_a(results, curr_address);
       }
     }
   }
   for (int i = 0; i < searches->items; ++i) {
-    if (find_address_a(searches,addresses[i]) == 0) {
-      strcpy(searches->addresses[i].tags.street, addresses[i].tags.street);
-      strcpy(searches->addresses[i].tags.house_number, addresses[i].tags.house_number);
-      strcpy(searches->addresses[i].tags.country, addresses[i].tags.country);
-      strcpy(searches->addresses[i].tags.muncipality, addresses[i].tags.muncipality);
-      strcpy(searches->addresses[i].tags.postcode, addresses[i].tags.postcode);
-      searches->addresses[i].lat = addresses[i].lat;
-      searches->addresses[i].lon = addresses[i].lon;
+    if (i < results->items) {
+      if (find_address_a(searches, results->addresses[i]) == 1) {
+        //strcpy(searches->addresses[q].tags.street, addresses[q].tags.street);
+        //strcpy(searches->addresses[q].tags.house_number, addresses[q].tags.house_number);
+        //strcpy(searches->addresses[q].tags.country, addresses[q].tags.country);
+        //strcpy(searches->addresses[q].tags.muncipality, addresses[q].tags.muncipality);
+        //strcpy(searches->addresses[q].tags.postcode, addresses[q].tags.postcode);
+        //searches->addresses[q].lat = addresses[q].lat;
+        //searches->addresses[q].lon = addresses[q].lon;
+        //q++;
+      }
+      else {
+        printf("The address %s %s was not found. \n", searches->addresses[i].tags.street,
+               searches->addresses[i].tags.house_number);
+      }
     }
     else {
-      printf("The address %s %s was not found. \n",searches->addresses[i].tags.street,searches->addresses[i].tags.house_number);
+      printf("The address %s %s was not found. \n", searches->addresses[i].tags.street,
+             searches->addresses[i].tags.house_number);
     }
   }
+  searches->addresses = results->addresses;
+  searches->items = results->items;
+  searches->high_water_mark = results->high_water_mark;
+  searches->low_water_mark = results->low_water_mark;
+  searches->min_capacity = results->min_capacity;
+  searches->number_of_elements = results->number_of_elements;
+  searches = results;
 }
 
 /**
