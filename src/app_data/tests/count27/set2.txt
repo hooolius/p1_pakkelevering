@@ -13,7 +13,7 @@ Aalborg Oest, DK, 53, Aalborg, 9220, Oddesundvej
 Aalborg, DK, 4A, Aalborg, 9000, Moelleparkvej
 Gistrup, DK, 5, Aalborg, 9260, Knuden
 Aalborg, DK, 88, Aalborg, 9000, Hadsundvej
-Aalborg SV, DK, 5, Aalborg, 9200, Graesvænget
+Aalborg SV, DK, 5, Aalborg, 9200, Graesvaenget
 Aalborg, DK, 61, Aalborg, 9000, Riishoejsvej
 Aalborg Oest, DK, 41B, Aalborg, 9220, Myrdalstraede
 Aalborg, DK, 116, Aalborg, 9000, Golfparken
