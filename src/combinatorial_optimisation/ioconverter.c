@@ -8,7 +8,6 @@ node *convert_points_to_nodes(int number_of_points, point *points);
 node *convert_point_to_node(point *the_point);
 int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_points) {
 
-
 /*count number of searches */
   int number_of_points = points_counter();
   int number_of_address = searches->items; 
@@ -46,7 +45,6 @@ int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_p
   free(nodes);
   return afstand_matrix;
 }
-
 
 node *convert_points_to_nodes(int number_of_points, point *points) {
   node *nodes = calloc(number_of_points, sizeof(struct node));
