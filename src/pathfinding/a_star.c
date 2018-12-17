@@ -83,7 +83,9 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
 *@return returns the node with the smallest f value
 */
 node *find_min_array(dyn_array_node *list) {
-  qsort(list->nodes, list->items, sizeof(node), cmp_func);
+  if (list->items < 1) {
+    qsort(*list->nodes, list->items, sizeof(node *), cmp_func);
+  }
   return list->nodes[0];
 }
 
