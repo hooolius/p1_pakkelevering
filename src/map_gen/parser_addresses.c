@@ -95,13 +95,11 @@ void convert_to_array(char *data, dyn_array_address *searches) {
 
         strcpy(curr_address.tags.postcode,
                cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
-
-        j++;
+        curr_address.closest_point = 0;
         add_address_to_end_a(results, curr_address);
       }
     }
   }
-  int q=0;
   for (int i = 0; i < searches->items; ++i) {
     if (i < results->items) {
       if (find_address_a(searches, results->addresses[i]) == 1) {
@@ -124,6 +122,12 @@ void convert_to_array(char *data, dyn_array_address *searches) {
              searches->addresses[i].tags.house_number);
     }
   }
+  searches->addresses = results->addresses;
+  searches->items = results->items;
+  searches->high_water_mark = results->high_water_mark;
+  searches->low_water_mark = results->low_water_mark;
+  searches->min_capacity = results->min_capacity;
+  searches->number_of_elements = results->number_of_elements;
   searches = results;
 }
 
