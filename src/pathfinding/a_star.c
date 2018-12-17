@@ -1,9 +1,5 @@
 #include "a_star.h"
 
-node *convert_points_to_nodes(int number_of_points, point *points);
-
-node *convert_point_to_node(point *the_point);
-
 int count_elements_in_list(dyn_array_node *list);
 
 /* Function copys one node to a other node */
@@ -20,15 +16,7 @@ int contains(dyn_array_node *closed_list, node *item);
 int cmp_func(const void *a, const void *b);
 
 /* A star setup */
-double a_star(point *start_p, point *goal_p, point *points) {
-  int number_of_points = 1;
-  while (points[number_of_points].id != 0) {
-    ++number_of_points;
-  }
-
-  node *start = convert_point_to_node(start_p);
-  node *goal = convert_point_to_node(goal_p);
-  node *nodes = convert_points_to_nodes(number_of_points, points);
+double a_star(node *start, node *goal, node *nodes, int number_of_points) {
 
   int count = 0;
   dyn_array_node *closed_list = make_dyn_array_n(100);
@@ -54,13 +42,10 @@ double a_star(point *start_p, point *goal_p, point *points) {
       //return reconstruct_path(current, start->id);
       dyn_array_node *output = reconstruct_path(current, start->id);
       double output_distance = output->nodes[0]->g;
-      free(start);
-      free(goal);
       free(closed_list->nodes);
       free(closed_list);
       clean_heap(open_list);
       free(output);
-      free(nodes);
       return output_distance;
     }
     /* Move current node from open_list to closed_list */
@@ -183,44 +168,3 @@ dyn_array_node *reconstruct_path(node *end, double start) {
   return total_path;
 }
 
-node *convert_points_to_nodes(int number_of_points, point *points) {
-  node *nodes = calloc(number_of_points, sizeof(struct node));
-  for (int i = 0; i < number_of_points; ++i) {
-    nodes[i].id = points[i].id;
-    nodes[i].lon = points[i].lon;
-    nodes[i].lat = points[i].lat;
-    nodes[i].is_active = 0;
-    nodes[i].g = 0;
-    nodes[i].h = 0;
-    nodes[i].f = 0;
-    nodes[i].p1 = points[i].p1;
-    nodes[i].p2 = points[i].p2;
-    nodes[i].p3 = points[i].p3;
-    nodes[i].p4 = points[i].p4;
-    nodes[i].p5 = points[i].p5;
-    nodes[i].p6 = points[i].p6;
-    nodes[i].p7 = points[i].p7;
-    nodes[i].p8 = points[i].p8;
-  }
-  return nodes;
-}
-
-node *convert_point_to_node(point *point) {
-  node *node = calloc(1, sizeof(struct node));
-  node->id = point->id;
-  node->lon = point->lon;
-  node->lat = point->lat;
-  node->is_active = 0;
-  node->g = 0;
-  node->h = 0;
-  node->f = 0;
-  node->p1 = point->p1;
-  node->p2 = point->p2;
-  node->p3 = point->p3;
-  node->p4 = point->p4;
-  node->p5 = point->p5;
-  node->p6 = point->p6;
-  node->p7 = point->p7;
-  node->p8 = point->p8;
-  return node;
-}

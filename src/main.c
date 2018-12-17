@@ -42,7 +42,6 @@ int main(int argc, char *argv[]) {
   int **matrix = astar_to_matrix_converter(searches, map_points);
   end_a = clock();
   printf("All A* done, time: %f \n",(double ) (start_a-end_a/CLOCKS_PER_SEC));
-  free(map_points);
   int min_cost = 0;
   int plan[searches->items+1];
 
