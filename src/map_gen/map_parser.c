@@ -13,6 +13,10 @@ void pointer_writer(struct point *map_points, int array_key, int old_array_key);
 
 int is_written(struct point point, int array_key, int old_array_key);
 
+/**
+*@brief Updates the data from the map file using cJSOM
+*@param[in] "point *map_points" The array of structs the contains the map data.
+*/
 void map_parser(struct point *map_points) {
     /*Terms:
      *  Points: A representation of a geographical point.*/
@@ -56,7 +60,11 @@ void map_parser(struct point *map_points) {
 
 }
 
-
+/**
+*@brief Searches for a specific map node
+*@param[in] data[] a string that contains a certain map node.
+*@param[in] "point *map_points" The array of structs that contains the map data
+*/
 void search_and_parse_points(char data[], struct point *map_points) {
     cJSON *json = NULL;
     const cJSON *points = NULL;
@@ -80,6 +88,10 @@ void search_and_parse_points(char data[], struct point *map_points) {
 
 }
 
+/**
+*@brief Counts the amount of nodes in the JSON map file
+*@return Returns the amount of nodes in the JSON map file
+*/
 int points_counter() {
     /*Counts points within the JSON file*/
     long len;
@@ -114,6 +126,9 @@ int points_counter() {
     return i;
 }
 
+/**
+*@brief Sorts all the nodes in the map file after node id 
+*/
 int sorter_function(const void *a, const void *b) {
     /*Qsort helper function.*/
     struct point *ia = (struct point *) a;
@@ -128,6 +143,11 @@ int sorter_function(const void *a, const void *b) {
 
 }
 
+/**
+*@brief Function passes streets, and connects the points, so all the points know what points they are connected to. 
+*@param[in] *data Contains all the data from the map file
+*@param[in] "points *map_points" The array of structs where all the data is copied into
+*/
 void search_and_parse_streets(char *data, struct point *map_points) {
     /*Function passes streets, and connects the points, so all the points know what points they are connected to.*/
     cJSON *json = NULL;
@@ -167,6 +187,12 @@ void search_and_parse_streets(char *data, struct point *map_points) {
     }
 }
 
+/**
+*@brief Connects the neighbours in the map data to eachother
+*@param[in] "point *map_points" The array of structs that contains the map data
+*@param[in] array_key The arra_key of the examined node
+*@param[in] old_array_key The array key of the neighbour to the examined node.
+*/
 void pointer_writer(struct point *map_points, int array_key, int old_array_key) {
     /*Inputs the array_key and old_array key into the points.
      * The points gets connected to eachoter, by writing the array key into the struct,
@@ -225,7 +251,12 @@ void pointer_writer(struct point *map_points, int array_key, int old_array_key) 
         }
     }
 }
-
+/**
+*@brief Checks if the point is already written into the points
+*@param[in] "point point" The array of structs that contains the neighbours
+*@param[in] array_key The array key of the examined node
+*@param[in] old_array_key the array key of the neighbour to the examined node
+*/
 int is_written(struct point point, int array_key, int old_array_key) {
     /*Checks if the point is already written into the points.*/
     if (point.p1 == array_key) {
@@ -267,6 +298,12 @@ int is_written(struct point point, int array_key, int old_array_key) {
     return 0;
 }
 
+/**
+*@brief Searches binay for a certain map node
+*@param[in] input A certain node from the map file
+*@param[in] "point *map_points" The array of structs that contains the map data
+*@param[in] "array_len" The length of the array
+*/
 int binary_searcher(double input, struct point *map_points, int array_len) {
     int first;
     int middle;
