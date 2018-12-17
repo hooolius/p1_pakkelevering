@@ -89,6 +89,7 @@ void convert_to_array(char *data, dyn_array_address *searches) {
     searches->addresses[i].lat = addresses[i].lat;
     searches->addresses[i].lon = addresses[i].lon;
   }
+  free(addresses);
 }
 
 /**
