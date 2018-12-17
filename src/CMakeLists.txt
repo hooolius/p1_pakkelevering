@@ -1,8 +1,39 @@
 cmake_minimum_required (VERSION 2.6)
 project (p1_pakkelevering)
-#Version number
-set (p1_pakkelevering_VERSION_MAJOR 1)
-set (p1_pakkelevering_VERSION_MINOR 1)
+
+
+if(CMAKE_CL_64)
+target_link_libraries (p1_pakkelevering "DBRx64")
+else()
+  target_link_libraries (p1_pakkelevering "DBRx86")
+endif()
+
+
+if(CMAKE_CL_64)
+  add_custom_command(TARGET(p1_pakkelevering POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different
+  "${PROJECT_SOURCE_DIR}/platforms/win/Dynamsof(p1_pakkeleveringx64.dll"        
+   $<TARGET_FILE_DIR:p1_pakkelevering>)
+   else()
+    add_custom_command(TARGET(p1_pakkelevering POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+      "${PROJECT_SOURCE_DIR}/platforms/win/Dynamsof(p1_pakkeleveringx86.dll"            
+      $<TARGET_FILE_DIR:p1_pakkelevering>)
+    endif()
+
+
+  if(CMAKE_CL_64)
+    install (FILES "${PROJECT_SOURCE_DIR}/platforms/win/Dynamsof(p1_pakkeleverinx64.dll" DESTINATION bin)
+  else()
+    install (FILES "${PROJECT_SOURCE_DIR}/platforms/win/Dynamsof(p1_pakkeleverinx86.dll" DESTINATION bin)
+  endif()
+
+  if(LINUX)
+    link_directories("${PROJECT_SOURCE_DIR}/platforms/linux")
+    elseif(MACOS)
+    link_directories("${PROJECT_SOURCE_DIR}/platforms/macos")
+  endif()
+
 
 #configure the header file to pass CMake settings to the source code
 configure_file (
@@ -36,6 +67,5 @@ target_link_libraries(p1_pakkelevering m)
 
 # add the install targets
 install (TARGETS p1_pakkelevering DESTINATION bin)
-install (FILES "${PROJECT_BINARY_DIR}/main_config.h"        
-         DESTINATION include)
+install (FILES "${PROJECT_BINARY_DIR}/main_config.h" DESTINATION include)
 install(DIRECTORY app_data/ DESTINATION include/app_data)
