@@ -23,8 +23,7 @@ int main(int argc, char *argv[]) {
   double cpu_time_used;
 
   dyn_array_address *searches = make_dyn_array_a(2);
-  point *map_points;
-  map_points = calloc(points_counter(), sizeof(point));
+  point *map_points = calloc(points_counter(), sizeof(point));
 
   addresses_prompt(searches);
   start_map =clock();
@@ -41,7 +40,6 @@ int main(int argc, char *argv[]) {
   start_a = clock();
   int **matrix = astar_to_matrix_converter(searches, map_points);
   end_a = clock();
-
   printf("All A* done, time: %f \n",(double ) (end_a-start_a/CLOCKS_PER_SEC));
 
   int min_cost = 0;
