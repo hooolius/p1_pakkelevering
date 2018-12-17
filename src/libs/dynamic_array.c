@@ -291,3 +291,19 @@ dyn_array_int *delete_int_i(dyn_array_int *array, int int_to_delete) {
   }
   return res;
 }
+
+/**
+*@brief This function finds a specific node
+*@param[in] "dyn_array_address *array" The array in which there will be looked for a specific node
+*@param[in] "address address_to_find" The speciic node that is looked for
+*@return Returns a pointer to the resized array
+*/
+int find_address_a(dyn_array_address *array, struct address address_to_find) {
+  int res = 0;
+  for (int i = 0; i < array->items; ++i) {
+    if(array->addresses[i].id == address_to_find.id) {
+      res = 1;
+    }
+  }
+  return res;
+}

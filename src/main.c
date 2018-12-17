@@ -16,40 +16,38 @@ typedef struct point point;
 
 int main(int argc, char *argv[]) {
 
-
-  clock_t start_map, end_map;
-  clock_t start_a, end_a;
-  clock_t start_held, end_held;
-  double cpu_time_used;
+  time_t start_map, end_map;
+  time_t start_a, end_a;
+  time_t start_held, end_held;
 
   dyn_array_address *searches = make_dyn_array_a(2);
   point *map_points = calloc(points_counter(), sizeof(point));
 
   addresses_prompt(searches);
-  start_map =clock();
+  start_map = time(NULL);
   printf("Map parsed started \n");
   map_parser(map_points);
   addresses_to_point_calc(searches, map_points);
-  end_map = clock();
-  printf("Map and addresses parsed time %f \n",(double )(end_map-start_map/CLOCKS_PER_SEC));
+  end_map = time(NULL);
+  printf("Map and addresses parsed time %f \n",(double )(end_map-start_map));
 
   printf("Version %d.%d \n",
       p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
 
   printf("A* started \n");
-  start_a = clock();
+  start_a = time(NULL);
   int **matrix = astar_to_matrix_converter(searches, map_points);
-  end_a = clock();
-  printf("All A* done, time: %f \n",(double ) (end_a-start_a/CLOCKS_PER_SEC));
+  end_a = time(NULL);
+  printf("All A* done, time: %f \n",(double ) (end_a-start_a));
 
   int min_cost = 0;
   int plan[searches->items+1];
 
   printf("Held karp started \n");
-  start_held = clock();
+  start_held = time(NULL);
   min_cost = held_karp(matrix, searches->items, 0, plan);
-  end_held = clock();
-  printf("Held karp done, time: %f \n",(double) (end_held-start_held/CLOCKS_PER_SEC));
+  end_held = time(NULL);
+  printf("Held karp done, time: %f \n",(double) (end_held-start_held));
   printf("min cost: %d \n", min_cost);
   for (int i = 0; i < searches->items+1; i++) {
     printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
