@@ -150,7 +150,7 @@ void ensure_capacity_n(dyn_array_node *array, int capacity) {
 *@param[in] "node *node_to_delete" is the node that will be deleted
 *@return Returns a pointer to the resized array
 */
-dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
+/*dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
   dyn_array_node *res = array;
   for (int i = 0; i < array->items; ++i) {
     if(array->nodes[i]->id == node_to_delete->id) {
@@ -158,6 +158,17 @@ dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
       array->items -= 1;
     }
   }
+  if(array->items < array->low_water_mark) {
+    res = resize_array_n(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
+  }
+  return res;
+}*/
+
+dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
+  dyn_array_node *res = array;
+  array->nodes[0] = array->nodes[array->items - 1];
+  array->items -= 1;
+
   if(array->items < array->low_water_mark) {
     res = resize_array_n(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
   }

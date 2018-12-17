@@ -18,11 +18,12 @@ int cmp_func(const void *a, const void *b);
 */
 double a_star(node *start, node *goal, node *nodes, int number_of_points) {
   dyn_array_node *closed_list = make_dyn_array_n(100);
+  //dyn_array_node *open_list = make_dyn_array_n(10);
   start->g = 0;
   start->h = vincent_inv_dist(start->lat, start->lon, goal->lat, goal->lon);
   start->f = start->g + start->h;
   pairing_heap *open_list = init_heap();
-
+  //add_node_to_end_n(open_list, start);
   add_element(open_list, start);
 
   node *current;
@@ -31,10 +32,10 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
   while (open_list->size != 0) {
     /* Take node with the smallest value and copy to current */
     current = extract_min(open_list);
-
+    //current = find_min_array(open_list);
+    //delete_node_n(open_list, current);
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
-
       //return reconstruct_path(current, start->id);
       dyn_array_node *output = reconstruct_path(current, start->id);
       double output_distance = output->nodes[0]->g;
@@ -42,6 +43,8 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
       free(closed_list);
       clean_heap(open_list);
       free(output);
+      //free(open_list->nodes);
+      //free(open_list);
       return output_distance;
     }
     /* Move current node from open_list to closed_list */
@@ -61,6 +64,7 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
       neighbour_list->nodes[i]->came_from = current;
 
       add_element(open_list, neighbour_list->nodes[i]);
+      //add_node_to_end_n(open_list, neighbour_list->nodes[i]);
     }
     free(neighbour_list->nodes);
     free(neighbour_list);
