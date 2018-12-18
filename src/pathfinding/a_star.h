@@ -7,5 +7,5 @@
 
 typedef struct point point;
 
-double a_star(node *start, node *goal_p, node *points, int number_of_nodes);
+double a_star(node *start, node *goal_p, node *points);
 
