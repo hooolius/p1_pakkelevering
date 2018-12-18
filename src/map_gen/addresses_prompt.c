@@ -4,10 +4,9 @@
 #include <string.h>
 #include "addresses_prompt.h"
 
-
 #define DEBUG 0
 /**
-*@brief In this function the user can input the addresse he or she has to visit - This can happen through a file or manually typing them
+*@brief In this function the user can input the addresse they have to visit - This can happen through a file or manually typing them
 *@param[in] dyn_array_address *searches Is an empty array that is going to be filld up with adresses
 */
 void addresses_prompt(dyn_array_address *searches, FILE *input_file) {
@@ -17,13 +16,13 @@ void addresses_prompt(dyn_array_address *searches, FILE *input_file) {
   struct address *current_searches = calloc(1, sizeof(struct address));
 
   if (DEBUG != 1 && input_file == NULL) {
-    //printf("Hello there! - I need to know if you want to insert the addresses manually or using a document."
-     //   "\nPress (1) for typing them in yourself and press (2) for using a document\n");
-    //scanf("%s", input_choice);
-    strcpy(input_choice, "2");
+    printf("Hello there! - I need to know if you want to insert the addresses manually or using a document."
+        "\nPress (1) for typing them in yourself and press (2) for using a document\n");
+    scanf("%s", input_choice);
+
     if (strcmp(input_choice, manual_check) == 0) {
-      //printf("You have chosen to type in the addresses yourself\n "
-      //    "When you are done typing your addresses type 'END' to end the process of typing in addresses \n");
+      printf("You have chosen to type in the addresses yourself\n "
+          "When you are done typing your addresses type 'END' to end the process of typing in addresses \n");
 
       while (strcmp(check_for_end, end) != 0) {
         printf("Please enter the streetname streetname (Element number %d)\n", j);
@@ -39,12 +38,11 @@ void addresses_prompt(dyn_array_address *searches, FILE *input_file) {
           number_of_packages++;
         }
       }
-
     }
     else if (strcmp(input_choice, document_check) == 0) {
 
       FILE *pinput_file;
-      pinput_file = fopen("set1.txt", "r");
+      pinput_file = fopen("leveringsfil.txt", "r");
 
       if (pinput_file == NULL) {
         printf("Input file not found");
