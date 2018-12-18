@@ -16,7 +16,9 @@ void parser_addreses(dyn_array_address *searches) {
   long len = 0;
   char *data = NULL;
   FILE *paddress_file;
-  paddress_file = fopen("addresses.json", "rb");
+
+  paddress_file = fopen(DATDIR"addresses.json", "rb");
+
   /* get the length */
   if (paddress_file == NULL) {
     printf("File not found - Parser adddresses");
@@ -65,23 +67,6 @@ void convert_to_array(char *data, dyn_array_address *searches) {
 
         curr_address.lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
         curr_address.lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
-        //addresses[j].lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
-        //addresses[j].lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
-/*
-        strcpy(addresses[j].tags.street,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring);
-        strcpy(addresses[j].tags.country,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:country")->valuestring);
-        strcpy(addresses[j].tags.muncipality,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:municipality")->valuestring);
-        strcpy(addresses[j].tags.city,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:city")->valuestring);
-        strcpy(addresses[j].tags.house_number,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring);
-
-        strcpy(addresses[j].tags.postcode,
-               cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
-  */
         strcpy(curr_address.tags.street,
                cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring);
         strcpy(curr_address.tags.country,
@@ -103,14 +88,7 @@ void convert_to_array(char *data, dyn_array_address *searches) {
   for (int i = 0; i < searches->items; ++i) {
     if (i < results->items) {
       if (find_address_a(searches, results->addresses[i]) == 1) {
-        //strcpy(searches->addresses[q].tags.street, addresses[q].tags.street);
-        //strcpy(searches->addresses[q].tags.house_number, addresses[q].tags.house_number);
-        //strcpy(searches->addresses[q].tags.country, addresses[q].tags.country);
-        //strcpy(searches->addresses[q].tags.muncipality, addresses[q].tags.muncipality);
-        //strcpy(searches->addresses[q].tags.postcode, addresses[q].tags.postcode);
-        //searches->addresses[q].lat = addresses[q].lat;
-        //searches->addresses[q].lon = addresses[q].lon;
-        //q++;
+        //do nothing
       }
       else {
         printf("The address %s %s was not found. \n", searches->addresses[i].tags.street,

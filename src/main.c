@@ -1,27 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "main_config.h"
-#include "libs/dynamic_array.h"
-#include "libs/cleaner.h"
-#include "pathfinding/a_star.h"
-#include "map_gen/addresses_prompt.h"
-#include "map_gen/parser_addresses.h"
-#include "map_gen/map_parser.h"
-#include "map_gen/address_to_point_calc.h"
-#include "combinatorial_optimisation/held_karp.h"
-#include "combinatorial_optimisation/ioconverter.h"
+#include "dynamic_array.h"
+#include "cleaner.h"
+#include "a_star.h"
+#include "addresses_prompt.h"
+#include "parser_addresses.h"
+#include "map_parser.h"
+#include "address_to_point_calc.h"
+#include "held_karp.h"
+#include "ioconverter.h"
 #include <time.h>
-
-#if defined(__linux) || defined(__linux__) || defined(linux)
-# define LINUX
-  
-#elif defined(__APPLE__)
-# define MACOS
-  
-#elif defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(_WIN64)
-# define WINDOWS
-  
-#endif
 
 typedef struct point point;
 

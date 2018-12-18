@@ -1,7 +1,7 @@
 #ifndef MAP_AND_PARSER_PARSER_ADDRESSES_C_H
 #define MAP_AND_PARSER_PARSER_ADDRESSES_C_H
 
-#define DATDIR "/usr/local/app_data/"
+#define DATDIR "@DATDIR@"
 
 #ifndef ADRESSES
 #define ADRESSES

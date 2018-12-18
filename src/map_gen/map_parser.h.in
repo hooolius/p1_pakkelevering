@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define DATDIR "/usr/local/app_data/"
+#define DATDIR "@DATDIR@"
 
 struct point {
     double id;
