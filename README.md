@@ -38,9 +38,25 @@ sudo make install
 ```
 
 ### Windows:
+Clone the repository:
+```
+git clone https://github.com/hooolius/p1_pakkelevering.git
+```
+Navigate to the build directory:
 
-????????????
+```
+cd p1_pakkelevering/src/build
+```
+Open MinGW as administrator in src/build
+Generate makefiles:
 
+```
+cmake ..
+```
+Install to Program Files (x86):
+```
+make install 
+```
 
 ## Usage
 ### Linux:
