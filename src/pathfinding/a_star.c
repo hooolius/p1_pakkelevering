@@ -50,11 +50,12 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
       return output_distance;
     }
     /* Move current node from open_list to closed_list */
-    current->f = -1;
+    //current->f = -1;
+    add_node_to_end_n(closed_list, current);
     /* Count number of neighbours and check if they exied in closed_list */
     dyn_array_node *neighbour_list = make_neighbours_list(current, nodes);
     for (size_t i = 0; i < neighbour_list->items; ++i) {
-      if (neighbour_list->nodes[i]->f == -1 || heap_contains(open_list, current)) {
+      if (contains(closed_list, neighbour_list->nodes[i])|| heap_contains(open_list, neighbour_list->nodes[i])) {
         continue;
       }
       neighbour_list->nodes[i]->g = current->g +
