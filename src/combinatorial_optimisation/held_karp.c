@@ -18,6 +18,14 @@ void combinations_subset_helper(int set,
     int at, int r, int n, dyn_array_int *subsets);
 unsigned long factorial(unsigned long i);
 
+/**
+ * @brief This function handels the fil, when the file is called from other files
+ * @param matrix is the matrix of distances
+ * @param size is the size of the memo array
+ * @param start_node is the starting node
+ * @param plan is an array of the plan
+ * @return min_cost the minimum cost from the matrix
+ */
 int held_karp(int **matrix, int size,
     int start_node, int plan[]) {
   int i; 
@@ -34,10 +42,15 @@ int held_karp(int **matrix, int size,
   return min_cost;
 }
 
-/* finds the optimal route from start_node to i, as given in the distance
- * matrix. We bitshift the memo table to store the optimal route as 1's.
- * There's obviously no reason to calculate the otpimal route from start to 
- * start, so we skip that case */
+/**
+ * @brief This function finds the optimal route from start_node to i, as given in the distance
+ * matrix. There is no reason to calculate the optimal route from start to
+ * start, so we skip that case
+ * @param matrix is a distance matrix
+ * @param memo is the bitshift table used to store the optimal route as 1's
+ * @param start_node is the starting note from which the route begins
+ * @param size is the size of the memo array
+ */
 void setup(int **matrix, int **memo, int start_node, int size) {
   for (int i = 0; i < size; i++) {
     if (i != start_node) {
@@ -45,7 +58,13 @@ void setup(int **matrix, int **memo, int start_node, int size) {
     }
   }
 }
-
+/**
+ * @brief This function findes the shortest total distance
+ * @param matrix is a matrix of distances
+ * @param memo is the bitshift table used to store the optimal route as 1's
+ * @param start_node is the starting note from which the route begins
+ * @param size is the size of the memo array
+ */
 void solve(int **matrix, int **memo, int start_node, int size) {
   for (int r = 3; r <= size; r++) {
     dyn_array_int *subsets = make_dyn_array_i(10);
@@ -75,24 +94,35 @@ void solve(int **matrix, int **memo, int start_node, int size) {
   }
 }
 
-/* checks whether or not bit i in the subset is a 1 and returns a bool */
+
+/**
+ * @brief checks whether or not bit i in the subset is a 1 and returns a bool
+ * @param i is counter value in the subset which counts bits
+ * @param subset is a set of the matrix containing distances
+ * @return if the bit is in the subset or not
+ */
 int in_subset(int i, int subset) {
   return !(((1 << i) & subset) == 0);
 }
 
-unsigned long factorial(unsigned long i) {
-  if (i == 0) {
-    return 1;
-  }
-  else {
-    return (i * factorial(i - 1));
-  }
-}
 
+/**
+ * @brief generate all possible subset
+ * @param r 
+ * @param n
+ * @param subsets
+ */
 void combinations_subset(int r, int n, dyn_array_int *subsets) {
   combinations_subset_helper(0, 0, r, n, subsets);
 }
-
+/**
+ * @brief
+ * @param set
+ * @param at
+ * @param r
+ * @param n
+ * @param subsets
+ */
 void combinations_subset_helper(int set,
     int at, int r, int n, dyn_array_int *subsets) {
   if (r == 0) {
@@ -108,6 +138,14 @@ void combinations_subset_helper(int set,
     }
   }
 }
+/**
+ * @brief
+ * @param matrix is a matrix of distances
+ * @param memo is the bitshift table used to store the optimal route as 1's
+ * @param start_node is the starting note from which the route begins
+ * @param size is the size of the memo array
+ * @return returns the minimal cost of the total plan thorugh all notes
+ */
 int calc_min_cost(int **matrix, int **memo, int start_node, int size) {
   int plan_cost = INT_MAX;
   int end_state = (1 << size) - 1;
@@ -123,6 +161,14 @@ int calc_min_cost(int **matrix, int **memo, int start_node, int size) {
   }
   return min_plan_cost;
 }
+/**
+ * @brief
+ * @param matrix is a matrix of distances
+ * @param memo is the bitshift table used to store the optimal route as 1's
+ * @param start_node is the starting note from which the route begins
+ * @param size is the size of the memo array
+ * @param plan
+ */
 void calc_best_plan(int **matrix, int **memo,
     int start_node, int size, int plan[]) {
   int last_index = start_node;
