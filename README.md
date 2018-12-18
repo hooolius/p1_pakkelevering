@@ -1,30 +1,41 @@
 # P1: Pakkelevering
-## Traveling salesman
+## Traveling Salesman Problem
+P1: Pakkelevering is a program written in C that can find the shortest route inbetween a series of addresses within the city of Aalborg.
+As this program uses the Held-Karp algorithm, the ram usages will grow exponentially as more addresses are used, with 27 addresses taking around 15 GB of RAM, no matter the PC, therefore, use at own risk. We recommend using at most 25 addresses on most computers.
 
-P1: Pakkelevering is a program written in C that can find the shortest route inbetween a series of nodes (Up to 20 addresses depending on your RAM and limited to the city of Aalborg).
-As this programs is trying to calculate a pn the ram usages from the combinatorial algorithm will grow exponentially, with 27 addresses taking around 15 gb of ram, no matter the pc, therefor, use at own risk.
+##Prerequisites
+###Windows
+* [MinGW](http://www.mingw.org/) with CMake installed
+* Git
+
+###Linux
+* CMake
+* Git
 
 ## Installation
-
 ### Linux:
-
-Navigate to build directory.
-
-Run Cmake command:
+Download the repository:
+```
+git clone https://github.com/hooolius/p1_pakkelevering.git
+```
+Navigate to the build directory:
 
 ```
-Cmake build
+cd p1_pakkelevering/src/build
 ```
-
-**build** being the directory in which the Cmake files lies.
-
-Run 
+Generate makefiles:
 
 ```
-sudo make install p1_pakkelevering
+cmake -G "Unix Makefiles" ..
 ```
-
-
+Install to a location:
+```
+sudo make DESTDIR=/path/to/location install 
+```
+Or to your bin directory:
+```
+sudo make install
+```
 
 ### Windows:
 
@@ -33,23 +44,27 @@ sudo make install p1_pakkelevering
 
 ## Usage
 ### Linux:
+To use a specific input file:
 
-After this run the program with the wanted parameter, any file written after will be taken as the input file for the addresses you want to search for.
+```
+p1_pakkelevering <input file>
+```
+
+Or simply
+
+```
+p1_pakkelevering
+```
+Then input addresses at the prompt.
 
 #### Example:
 
 ```
-p1_pakkelevering <filename.txt>
+p1_pakkelevering test_file.txt
 ```
 
-This will make **p1_pakkelevering** calculate the plan from the addresses within **filename.txt**
-
-
-
-
-
-
+This will make **p1_pakkelevering** calculate the optimal tour from the addresses within **test_file.txt**
 
 ## License
 
-[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+[MIT](https://choosealicense.com/licenses/mit/)
