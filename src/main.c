@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
   //  printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   //}
   total_end_timer = clock();
-  printf("%lf , %lf, %lf ",(double) (end_a-start_a)/1000000,(double) (end_held-start_held)/1000000,(double) (total_end_timer-total_timer)/1000000);
+  printf("%lf, %lf, %lf, %d",(double) (end_a-start_a)/1000000,(double) (end_held-start_held)/1000000,(double) (total_end_timer-total_timer)/1000000, min_cost);
   free(searches);
 
   printf("\n");
