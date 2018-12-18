@@ -69,7 +69,7 @@ void price(int point, int n, int **mat, int *closed, int *dist) {
   if (npoint == INF) {
     npoint = 0;
     //printf("%d\n", npoint + 1);
-    dist += mat[point][npoint];
+    *dist += mat[point][npoint];
     return;
   }
   price(npoint, n, mat, closed, dist);
