@@ -15,20 +15,19 @@ int in_subset(int i, int subset);
 int combinations(int r, int n);
 void combinations_subset(int r, int n, dyn_array_int *subsets);
 void combinations_subset_helper(int set,
-    int at, int r, int n, dyn_array_int *subsets);
-unsigned long factorial(unsigned long i);
+    int index_pos, int r, int n, dyn_array_int *subsets);
 
 /**
- * @brief This function handels the fil, when the file is called from other files
- * @param matrix is the matrix of distances
- * @param size is the size of the memo array
- * @param start_node is the starting node
- * @param plan is an array of the plan
- * @return min_cost the minimum cost from the matrix
+ * @brief Main function of held_karp, from which all other functions are called
+ * @param[in] matrix is the matrix of distances
+ * @param[in] size is the size of the memo array
+ * @param[in] start_node is the starting node
+ * @param[out] plan is an array containing the total route
+ * @return the total minimum cost of the solution 
  */
 int held_karp(int **matrix, int size,
     int start_node, int plan[]) {
-  int i; 
+
   int **memo = make_array(size, pow(2, size));
   int min_cost = INT_MAX;
   setup(matrix, memo, start_node, size);
@@ -43,13 +42,13 @@ int held_karp(int **matrix, int size,
 }
 
 /**
- * @brief This function finds the optimal route from start_node to i, as given in the distance
- * matrix. There is no reason to calculate the optimal route from start to
- * start, so we skip that case
- * @param matrix is a distance matrix
- * @param memo is the bitshift table used to store the optimal route as 1's
- * @param start_node is the starting note from which the route begins
- * @param size is the size of the memo array
+ * @brief This function finds the optimal route from start_node to every other
+ * node, as given in the distance matrix. There is no reason to calculate the
+ * optimal route from start to start, so we skip that case
+ * @param[in] matrix is a distance matrix
+ * @param[out] memo is the bitshift table used to store the optimal route as 1's
+ * @param[in] start_node is the starting node from which the route begins
+ * @param[in] size is the size of the memo array
  */
 void setup(int **matrix, int **memo, int start_node, int size) {
   for (int i = 0; i < size; i++) {
@@ -59,11 +58,11 @@ void setup(int **matrix, int **memo, int start_node, int size) {
   }
 }
 /**
- * @brief This function findes the shortest total distance
- * @param matrix is a matrix of distances
- * @param memo is the bitshift table used to store the optimal route as 1's
- * @param start_node is the starting note from which the route begins
- * @param size is the size of the memo array
+ * @brief 
+ * @param[in] matrix is a matrix of distances
+ * @param[out] memo is the bitshift table used to store the optimal route as 1's
+ * @param[in] start_node is the starting note from which the route begins
+ * @param[in] size is the size of the memo array
  */
 void solve(int **matrix, int **memo, int start_node, int size) {
   for (int r = 3; r <= size; r++) {
@@ -97,8 +96,8 @@ void solve(int **matrix, int **memo, int start_node, int size) {
 
 /**
  * @brief checks whether or not bit i in the subset is a 1 and returns a bool
- * @param i is counter value in the subset which counts bits
- * @param subset is a set of the matrix containing distances
+ * @param[in] i is counter value in the subset which counts bits
+ * @param[in] subset is a set of the matrix containing distances
  * @return if the bit is in the subset or not
  */
 int in_subset(int i, int subset) {
@@ -107,29 +106,29 @@ int in_subset(int i, int subset) {
 
 
 /**
- * @brief generate all possible subset
- * @param r
- * @param n
- * @param subsets
+ * @brief Generates all possible subsets of size n with r bits set to 1
+ * @param[in] r how many bits in each set should be 1
+ * @param[in] n the size of the subset
+ * @param[out] subsets array of the generated subsets
  */
 void combinations_subset(int r, int n, dyn_array_int *subsets) {
   combinations_subset_helper(0, 0, r, n, subsets);
 }
 /**
- * @brief
- * @param set
- * @param at
- * @param r
- * @param n
- * @param subsets
+ * @brief Recursively generates all subsets
+ * @param[in] set current set
+ * @param[in] index_pos current index position
+ * @param[in] r how many bits should be 1
+ * @param[in] n the size of the subset
+ * @param[out] subsets array of the generated subsets
  */
 void combinations_subset_helper(int set,
-    int at, int r, int n, dyn_array_int *subsets) {
+    int index_pos, int r, int n, dyn_array_int *subsets) {
   if (r == 0) {
     add_int_to_end_i(subsets, set);
   }
   else {
-    for (int i = at; i < n; i++) {
+    for (int i = index_pos; i < n; i++) {
       set = set | (1 << i);
 
       combinations_subset_helper(set, i + 1, r - 1, n, subsets);
@@ -139,12 +138,12 @@ void combinations_subset_helper(int set,
   }
 }
 /**
- * @brief
- * @param matrix is a matrix of distances
- * @param memo is the bitshift table used to store the optimal route as 1's
- * @param start_node is the starting note from which the route begins
- * @param size is the size of the memo array
- * @return returns the minimal cost of the total plan thorugh all notes
+ * @brief Calculates the minimum cost of the total route
+ * @param[in] matrix is a matrix of distance
+ * @param[in] memo is the bitshift table used to store the optimal route as 1's
+ * @param[in] start_node is the starting note from which the route begins
+ * @param[in] size is the size of the matrix
+ * @return the minimal cost of the total plan thorugh all notes
  */
 int calc_min_cost(int **matrix, int **memo, int start_node, int size) {
   int plan_cost = INT_MAX;
@@ -162,12 +161,13 @@ int calc_min_cost(int **matrix, int **memo, int start_node, int size) {
   return min_plan_cost;
 }
 /**
- * @brief
- * @param matrix is a matrix of distances
- * @param memo is the bitshift table used to store the optimal route as 1's
- * @param start_node is the starting note from which the route begins
- * @param size is the size of the memo array
- * @param plan
+ * @brief Finds the optimal route, and outputs it to the plan array
+ * @param[in] matrix is a matrix of distances
+ * @param[in] memo is the bitshift table used to store the optimal route as 1's
+ * @param[in] start_node is the starting note from which the route begins
+ * @param[in] size is the size of the matrix
+ * @param[out] plan an array holding the optimal tour, by their index
+ * in the matrix array
  */
 void calc_best_plan(int **matrix, int **memo,
     int start_node, int size, int plan[]) {
