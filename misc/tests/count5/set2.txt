@@ -1,0 +1,5 @@
+Aalborg Oest, DK, 84A, Aalborg, 9220, Blaakildevej
+Aalborg, DK, 175, Aalborg, 9000, Vesterkaeret
+Aalborg, DK, 54, Aalborg, 9000, Helgolandsgade
+Aalborg, DK, 17, Aalborg, 9000, Stroeybergsvej
+Aalborg SOe, DK, 8, Aalborg, 9210, Sigten

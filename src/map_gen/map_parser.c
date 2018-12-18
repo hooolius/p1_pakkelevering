@@ -21,11 +21,11 @@ void map_parser(struct point *map_points) {
   /*Terms:
    *  Points: A representation of a geographical point.*/
   cJSON *json = NULL;
-  int i = 0;
   long len;
   char *data = NULL;
   FILE *paddress_file;
-  paddress_file = fopen("map_data.json", "rb");
+
+  paddress_file = fopen(DATDIR"map_data.json", "rb");
 
   /*Start of standard modification of file to make it capable of JSON parsing*/
   if (paddress_file == NULL) {
@@ -99,7 +99,7 @@ int points_counter() {
   const cJSON *json_point = NULL;
   int i = 0;
 
-  paddress_file = fopen("map_data.json", "rb");
+  paddress_file = fopen(DATDIR"map_data.json", "rb");
 
   /*Start of standard modification of file to make it capable of JSON parsing*/
   if (paddress_file == NULL) {

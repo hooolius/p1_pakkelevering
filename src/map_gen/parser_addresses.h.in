@@ -1,0 +1,33 @@
+#ifndef MAP_AND_PARSER_PARSER_ADDRESSES_C_H
+#define MAP_AND_PARSER_PARSER_ADDRESSES_C_H
+
+#define DATDIR "@DATDIR@"
+
+#ifndef ADRESSES
+#define ADRESSES
+#include "../libs/dynamic_array.h"
+#endif
+struct tags {
+    char city[30];
+    char street[35];
+    char country[5];
+    char house_number[5];
+    char muncipality[20];
+    char postcode[4];
+};
+
+struct address {
+    int id;
+    double lat;
+    double lon;
+    int closest_point;
+    double closest_point_dist;
+    struct tags tags;
+
+} address;
+
+
+void parser_addreses(dyn_array_address *searches);
+int parser_addreses_ALL(dyn_array_address *searches);
+
+#endif

@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define DATDIR "/usr/local/app_data/"
 
 struct point {
     double id;
@@ -26,5 +27,4 @@ void map_parser(struct point *map_points);
 int points_counter();
 
 
-
-#endif //MAP_AND_PARSER_PARSERS_H
+#endif

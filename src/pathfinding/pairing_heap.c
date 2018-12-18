@@ -11,7 +11,7 @@
 #ifndef dynamic_array_h
 #define dynamic_array_h
 
-#include "../libs/dynamic_array.h"
+#include "dynamic_array.h"
 
 #endif
 

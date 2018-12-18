@@ -108,7 +108,7 @@ int in_subset(int i, int subset) {
 
 /**
  * @brief generate all possible subset
- * @param r 
+ * @param r
  * @param n
  * @param subsets
  */

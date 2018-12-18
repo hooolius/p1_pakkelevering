@@ -1,5 +1,0 @@
-Noerresundby, DK, 94, Aalborg, 9400, Oesterbrogade
-Aalborg, DK, 26, Aalborg, 9000, Fyensgade
-Aalborg, DK, 28, Aalborg, 9000, Golfparken
-Aalborg SV, DK, 12, Aalborg, 9200, Jupitervej
-Aalborg, DK, 10, Aalborg, 9000, Oester Sundby Vej
