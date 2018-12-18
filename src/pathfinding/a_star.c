@@ -22,22 +22,22 @@ int cmp_func(const void *a, const void *b);
 */
 double a_star(node *start, node *goal, node *nodes, int number_of_points) {
   dyn_array_node *closed_list = make_dyn_array_n(100);
-  dyn_array_node *open_list = make_dyn_array_n(10);
+  //dyn_array_node *open_list = make_dyn_array_n(10);
   start->g = 0;
   start->h = vincent_inv_dist(start->lat, start->lon, goal->lat, goal->lon);
   start->f = start->g + start->h;
-  //pairing_heap *open_list = init_heap();
-  add_node_to_end_n(open_list, start);
-  // add_element(open_list, start);
+  pairing_heap *open_list = init_heap();
+  //add_node_to_end_n(open_list, start);
+  add_element(open_list, start);
 
   node *current;
 
   /* A star algoritme */
-  while (open_list->items != 0) {
+  while (open_list->size != 0) {
     /* Take node with the smallest value and copy to current */
-    // current = extract_min(open_list);
-    current = find_min_array(open_list);
-    delete_node_n(open_list, current);
+    current = extract_min(open_list);
+    //current = find_min_array(open_list);
+    //delete_node_n(open_list, current);
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
       //return reconstruct_path(current, start->id);
@@ -45,10 +45,8 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
       double output_distance = output->nodes[0]->g;
       free(closed_list->nodes);
       free(closed_list);
-      // clean_heap(open_list);
+      clean_heap(open_list);
       free(output);
-      free(open_list->nodes);
-      free(open_list);
       return output_distance;
     }
     /* Move current node from open_list to closed_list */
@@ -56,7 +54,7 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
     /* Count number of neighbours and check if they exied in closed_list */
     dyn_array_node *neighbour_list = make_neighbours_list(current, nodes);
     for (size_t i = 0; i < neighbour_list->items; ++i) {
-      if (neighbour_list->nodes[i]->f == -1 || contains(open_list, neighbour_list->nodes[i])) {
+      if (neighbour_list->nodes[i]->f == -1 || heap_contains(open_list, current)) {
         continue;
       }
       neighbour_list->nodes[i]->g = current->g +
@@ -67,8 +65,8 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
       neighbour_list->nodes[i]->f = neighbour_list->nodes[i]->h + neighbour_list->nodes[i]->g;
       neighbour_list->nodes[i]->came_from = current;
 
-      // add_element(open_list, neighbour_list->nodes[i]);
-      add_node_to_end_n(open_list, neighbour_list->nodes[i]);
+      add_element(open_list, neighbour_list->nodes[i]);
+      //add_node_to_end_n(open_list, neighbour_list->nodes[i]);
     }
     free(neighbour_list->nodes);
     free(neighbour_list);
