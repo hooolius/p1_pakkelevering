@@ -63,12 +63,12 @@ int least(int c, int n, int **mat, int *closed, int *dist) {
 void price(int point, int n, int **mat, int *closed, int *dist) {
   int i, npoint = 0;
   closed[point] = 1;
-  printf("%d ===> ", point + 1);
+  //printf("%d ===> ", point + 1);
   npoint = least(point, n, mat, closed, dist);
 
   if (npoint == INF) {
     npoint = 0;
-    printf("%d\n", npoint + 1);
+    //printf("%d\n", npoint + 1);
     dist += mat[point][npoint];
     return;
   }
@@ -106,11 +106,11 @@ int *run_greedy(int **afstand_matrix, int n) {
   afstand_matrix[2][1] = 60;
   afstand_matrix[2][2] = 70;
 */
-  matrix(n, afstand_matrix);
-  printf("\n The rute:\n\n");
+  //matrix(n, afstand_matrix);
+  //printf("\n The rute:\n\n");
   int *dist = (int *) calloc(1, sizeof(int));
   price(0, n, afstand_matrix, closed, dist);
-  min_g(dist);
+  //min_g(dist);
   free(afstand_matrix);
   free(closed);
   return dist;

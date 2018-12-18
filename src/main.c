@@ -37,6 +37,7 @@ int main(int argc, char *argv[]) {
   time_t start_map, end_map;
   time_t start_a, end_a;
   time_t start_held, end_held;
+  time_t start_greed, end_greed;
   total_timer = clock();
 
   dyn_array_address *searches = make_dyn_array_a(2);
@@ -63,9 +64,11 @@ int main(int argc, char *argv[]) {
   int plan[searches->items+1];
 
   //printf("Held karp started \n");
-  start_held = clock();
+  start_greed = clock();
   min_cost = run_greedy(matrix, searches->items);
-  //min_cost = held_karp(matrix, searches->items, 0, plan);
+  end_greed = clock();
+  start_held = clock();
+  min_cost = held_karp(matrix, searches->items, 0, plan);
   end_held = clock();
   //printf("Held karp done, time: %f \n",(double) (end_held-start_held)/1000000);
   //printf("Rutens kilometer: %.2lf km \n",(double) min_cost/1000);
@@ -73,9 +76,9 @@ int main(int argc, char *argv[]) {
   //  printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   //}
   total_end_timer = clock();
-  printf("%lf , %lf, %lf ",(double) (end_a-start_a)/1000000,(double) (end_held-start_held)/1000000,(double) (total_end_timer-total_timer)/1000000);
+  printf("%lf , %lf, %lf, %lf",(double) (end_a-start_a)/1000000,(double) (end_held-start_held)/1000000, (double) (end_greed-start_greed)/1000000, (double) (total_end_timer-total_timer)/1000000);
   free(searches);
 
-  printf("min cost: %d\n", min_cost);
+  //printf("min cost: %d\n", min_cost);
   return 0;
 }
