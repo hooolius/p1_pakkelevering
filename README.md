@@ -48,6 +48,7 @@ Navigate to the build directory:
 cd p1_pakkelevering/src/build
 ```
 Open MinGW as administrator in src/build
+
 Generate makefiles:
 
 ```
