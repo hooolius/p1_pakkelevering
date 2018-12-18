@@ -60,15 +60,16 @@ int main(int argc, char *argv[]) {
   end_a = clock();
   //printf("All A* done, time: %f \n",(double ) (end_a-start_a)/1000000);
 
-  int min_cost = 0;
+  int min_cost_held = 0;
+  int min_cost_greed = 0;
   int plan[searches->items+1];
 
   //printf("Held karp started \n");
   start_greed = clock();
-  min_cost = run_greedy(matrix, searches->items);
+  min_cost_greed = run_greedy(matrix, searches->items);
   end_greed = clock();
   start_held = clock();
-  min_cost = held_karp(matrix, searches->items, 0, plan);
+  min_cost_held = held_karp(matrix, searches->items, 0, plan);
   end_held = clock();
   //printf("Held karp done, time: %f \n",(double) (end_held-start_held)/1000000);
   //printf("Rutens kilometer: %.2lf km \n",(double) min_cost/1000);
@@ -76,7 +77,7 @@ int main(int argc, char *argv[]) {
   //  printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
   //}
   total_end_timer = clock();
-  printf("%lf , %lf, %lf, %lf",(double) (end_a-start_a)/1000000,(double) (end_held-start_held)/1000000, (double) (end_greed-start_greed)/1000000, (double) (total_end_timer-total_timer)/1000000);
+  printf("%lf , %lf, %d, %lf, %d, %lf",(double) (end_a-start_a)/1000000, (double) (end_greed-start_greed)/1000000, min_cost_greed, (double) (end_held-start_held)/1000000, min_cost_held, (double) (total_end_timer-total_timer)/1000000);
   free(searches);
 
   //printf("min cost: %d\n", min_cost);

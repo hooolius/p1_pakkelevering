@@ -6,7 +6,7 @@ void matrix(int n, int **matrix);
 int least(int c, int n, int **mat, int *closed, int *dist);
 void price(int point, int n, int **mat, int *closed, int *dist);
 void min_g(int *dist);
-int *run_greedy(int **afstand_matrix, int n);
+//int *run_greedy(int **afstand_matrix, int n);
 
 #define INF INT_MAX
 
@@ -80,7 +80,7 @@ void min_g(int *dist) {
   printf("%d\n", *dist);
 }
 
-int *run_greedy(int **afstand_matrix, int n) {
+int run_greedy(int **afstand_matrix, int n) {
   /*int **afstand_matrix = (int **) calloc(n, sizeof(int *));
   for (int y = 0; y < n; ++y) {
     afstand_matrix[y] = (int *) calloc(n, sizeof(int));
@@ -111,7 +111,6 @@ int *run_greedy(int **afstand_matrix, int n) {
   int *dist = (int *) calloc(1, sizeof(int));
   price(0, n, afstand_matrix, closed, dist);
   //min_g(dist);
-  free(afstand_matrix);
   free(closed);
-  return dist;
+  return *dist;
 }
