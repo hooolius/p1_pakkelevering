@@ -156,7 +156,7 @@ dyn_array_node *reconstruct_path(node *end, double start) {
 
  int contains(dyn_array_node *closed_list, node *item) {
    int res = 0;
-   for (int i = closed_list->items - 1; i >= 0; --i) {
+   for (int i = 0; i < closed_list->items; i++) {
      if (closed_list->nodes[i]->id == item->id) {
        res = 1;
        break;
