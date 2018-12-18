@@ -24,8 +24,7 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
   dyn_array_node *closed_list = make_dyn_array_n(100);
   dyn_array_node *open_list = make_dyn_array_n(10);
   start->g = 0;
-  //start->h = vincent_inv_dist(start->lat, start->lon, goal->lat, goal->lon);
-  start->h = 0;
+  start->h = vincent_inv_dist(start->lat, start->lon, goal->lat, goal->lon);
   start->f = start->g + start->h;
   //pairing_heap *open_list = init_heap();
   add_node_to_end_n(open_list, start);
@@ -63,9 +62,8 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
       neighbour_list->nodes[i]->g = current->g +
                                    vincent_inv_dist(current->lat, current->lon, neighbour_list->nodes[i]->lat,
                                                     neighbour_list->nodes[i]->lon);
-      //neighbour_list->nodes[i]->h = vincent_inv_dist(neighbour_list->nodes[i]->lat, neighbour_list->nodes[i]->lon,
-      //goal->lat, goal->lon);
-      neighbour_list->nodes[i]->h = 0;
+      neighbour_list->nodes[i]->h = vincent_inv_dist(neighbour_list->nodes[i]->lat, neighbour_list->nodes[i]->lon,
+      goal->lat, goal->lon);
       neighbour_list->nodes[i]->f = neighbour_list->nodes[i]->h + neighbour_list->nodes[i]->g;
       neighbour_list->nodes[i]->came_from = current;
 
