@@ -11,6 +11,7 @@
 #include "combinatorial_optimisation/held_karp.h"
 #include "combinatorial_optimisation/ioconverter.h"
 #include <time.h>
+#include "combinatorial_optimisation/greedy.h"
 
 #if defined(__linux) || defined(__linux__) || defined(linux)
 # define LINUX
@@ -63,7 +64,8 @@ int main(int argc, char *argv[]) {
 
   //printf("Held karp started \n");
   start_held = clock();
-  min_cost = held_karp(matrix, searches->items, 0, plan);
+  min_cost = run_greedy(matrix, searches->items);
+  //min_cost = held_karp(matrix, searches->items, 0, plan);
   end_held = clock();
   //printf("Held karp done, time: %f \n",(double) (end_held-start_held)/1000000);
   //printf("Rutens kilometer: %.2lf km \n",(double) min_cost/1000);
@@ -74,6 +76,6 @@ int main(int argc, char *argv[]) {
   printf("%lf , %lf, %lf ",(double) (end_a-start_a)/1000000,(double) (end_held-start_held)/1000000,(double) (total_end_timer-total_timer)/1000000);
   free(searches);
 
-  printf("\n");
+  printf("min cost: %d\n", min_cost);
   return 0;
 }

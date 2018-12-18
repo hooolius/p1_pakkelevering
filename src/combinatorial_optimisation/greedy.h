@@ -1,2 +1,2 @@
 //GREEEEEEEEEEEEEEEEED
-int greedy(int **matrix, int size);
+int run_greedy(int **afstand_matrix, int n);
