@@ -3,18 +3,18 @@
 P1: Pakkelevering is a program written in C that can find the shortest route inbetween a series of addresses within the city of Aalborg.
 As this program uses the Held-Karp algorithm, the ram usages will grow exponentially as more addresses are used, with 27 addresses taking around 15 GB of RAM, no matter the PC, therefore, use at own risk. We recommend using at most 25 addresses on most computers.
 
-##Prerequisites
-###Windows
+## Prerequisites
+### Windows
 * [MinGW](http://www.mingw.org/) with CMake installed
 * Git
 
-###Linux
+### Linux
 * CMake
 * Git
 
 ## Installation
-### Linux:
-Download the repository:
+### Linux
+Clone the repository:
 ```
 git clone https://github.com/hooolius/p1_pakkelevering.git
 ```
