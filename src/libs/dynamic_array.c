@@ -1,15 +1,7 @@
 #include <string.h>
 #include "dynamic_array.h"
 
-/* Prototypes */
-dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
-
 /* HEAP FUNCTIONS */
-/**
-*@brief This function initializes the dyn_array_heap
-*@param[in] min_capacity This parameter decides the initial size of the dynamic array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_heap *make_dyn_array_h(int min_capacity) {
   dyn_array_heap *array = calloc(1, sizeof(dyn_array_heap));
   array->heap_nodes = calloc(min_capacity, sizeof(heap_node*) * 2 * min_capacity);
@@ -20,12 +12,6 @@ dyn_array_heap *make_dyn_array_h(int min_capacity) {
   return array;
 }
 
-/**
-*@brief This function resizes the dynamic array
-*@param[in] "dyn_array_heap *array" The dynamic array that needs resizing
-*@param[in] new_size The number of possible elements in the array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
@@ -36,12 +22,6 @@ dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size) {
   return array;
 }
 
-/**
-*@brief This function adds another element to the end of an array
-*@param[in] "dyn_array_heap* array_to_insert_in"  is the array in which a new element has to be added
-*@param[in] "heap_node heap_to_insert" The data that has to be inserted into the array
-*@return Returns a pointer to the array
-*/
 dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node *heap_to_insert) {
   dyn_array_heap *res = array_to_insert_in;
   if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
@@ -53,11 +33,6 @@ dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node 
 }
 
 /* NODE FUNCTIONS */
-/**
-*@brief This function initializes the dyn_array_node
-*@param[in] min_capacity This parameter decides the initial size of the dynamic array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_node *make_dyn_array_n(int min_capacity) {
   dyn_array_node *array = calloc(1, sizeof(dyn_array_node));
   array->nodes = (node**)calloc(min_capacity, sizeof(node*) * 2 * min_capacity);
@@ -68,12 +43,6 @@ dyn_array_node *make_dyn_array_n(int min_capacity) {
   return array;
 }
 
-/**
-*@brief This function resizes the dynamic array
-*@param[in] "dyn_array_node *array" The dynamic array that needs resizing
-*@param[in] new_size The number of possible elements in the array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
@@ -84,12 +53,6 @@ dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   return array;
 }
 
-/**
-*@brief This function adds another element to the end of a dyn array
-*@param[in] "dyn_array_node *array_to_insert_in" is the array in which a new element has to be added
-*@param[in] "node node_to_insert" The data that has to be inserted into the array
-*@return Returns a pointer to the dyn array
-*/
 dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node_to_insert) {
   dyn_array_node *res = array_to_insert_in;
   if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
@@ -101,11 +64,6 @@ dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node
 }
 
 /* Addresses Functions */
-/**
-*@brief This function makes a dynamic array for addresses
-*@param[in] min_capacity This parameter decides the initial size of the dynamic array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_address *make_dyn_array_a(int min_capacity) {
   dyn_array_address *array = calloc(1, sizeof(dyn_array_address));
   array->addresses = calloc(min_capacity, sizeof(struct address) * 2 * min_capacity);
@@ -116,12 +74,6 @@ dyn_array_address *make_dyn_array_a(int min_capacity) {
   return array;
 }
 
-/**
-*@brief This function resizes the dynamic array
-*@param[in] "dyn_array_address *array" The dynamic array that needs resizing
-*@param[in] new_size The number of possible elements in the array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_address *resize_array_a(dyn_array_address *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
@@ -132,12 +84,6 @@ dyn_array_address *resize_array_a(dyn_array_address *array, int new_size) {
   return array;
 }
 
-/**
-*@brief This function adds another element to the end of an array
-*@param[in] "dyn_array_address *array_to_insert_in"  is the array in which a new element has to be added
-*@param[in] "address address_to_insert" The data that has to be inserted into the array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, struct address address_to_insert) {
   dyn_array_address *res = array_to_insert_in;
   if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
@@ -149,11 +95,6 @@ dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, s
 }
 
 /* INTEGER Functions */
-/**
-*@brief This function makes a dynamic array for integers
-*@param[in] min_capacity This parameter decides the initial size of the dynamic array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_int *make_dyn_array_i(int min_capacity) {
   dyn_array_int *array = calloc(1, sizeof(dyn_array_int));
   array->integers = calloc(min_capacity, sizeof(int) * 2 * min_capacity);
@@ -164,12 +105,6 @@ dyn_array_int *make_dyn_array_i(int min_capacity) {
   return array;
 }
 
-/**
-*@brief This function resizes the dynamic array
-*@param[in] "dyn_array_int *array" The dynamic array that needs resizing
-*@param[in] new_size The number of possible integers in the array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_int *resize_array_i(dyn_array_int *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
@@ -180,12 +115,6 @@ dyn_array_int *resize_array_i(dyn_array_int *array, int new_size) {
   return array;
 }
 
-/**
-*@brief This function adds another integer to the end of an array
-*@param[in] "dyn_array_int *array_to_insert_in"  is the array in which a new integer has to be added
-*@param[in] "int int_to_insert" The integer that has to be inserted into the array
-*@return Returns a pointer to the dynamic array
-*/
 dyn_array_int *add_int_to_end_i(dyn_array_int *array_to_insert_in, int int_to_insert) {
   dyn_array_int *res = array_to_insert_in;
   if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
