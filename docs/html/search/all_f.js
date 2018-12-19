@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['r',['R',['../vincent__inv__dist__points_8h.html#a5c71a5e59a53413cd6c270266d63b031',1,'vincent_inv_dist_points.h']]],
   ['raw',['raw',['../c_j_s_o_n_8h.html#a788db922597cf2fb6389e278f822e59f',1,'cJSON.h']]],
   ['reallocate',['reallocate',['../structinternal__hooks.html#a72edb43b1666feca7d43c8dc3981be39',1,'internal_hooks']]],
   ['reconstruct_5fpath',['reconstruct_path',['../a__star_8c.html#ad0a29f96ff9cb79827af851545ff5f5c',1,'a_star.c']]],
