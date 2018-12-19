@@ -1,7 +1,8 @@
 # P1: Pakkelevering
-## Traveling Salesman Problem
 P1: Pakkelevering is a program written in C that can find the shortest route inbetween a series of addresses within the city of Aalborg.
 As this program uses the Held-Karp algorithm, the ram usages will grow exponentially as more addresses are used, with 27 addresses taking around 15 GB of RAM, therefore, use at own risk. We recommend using at most 25 addresses on most computers.
+
+The program was written as part of our 1. semester project at Aalborg University.
 
 ## Prerequisites
 ### Windows
