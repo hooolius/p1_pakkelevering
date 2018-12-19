@@ -1,37 +1,34 @@
+#include <dynamic_array.h>
 #include "address_to_point_calc.h"
 
-void addresses_to_point_calc(struct address *searches, struct point *map_points) {
+/**
+*@param[in] "dyn_array_address *searches" Contains the adresses the user has given
+*@param[in] "point *map_points" Contains all the map data
+*/
+void addresses_to_point_calc(dyn_array_address *searches, struct point *map_points) {
+    double lat_difference = 0;
+    double lon_difference = 0;
     double difference = 0;
     int points;
-    int number_of_searches = 20;
-    double lat_difference;
-    double lon_difference;
+
 
     points = points_counter();
 
-    for (int i = 0; i < points; ++i) {
-        for (int j = 0; j < number_of_searches; ++j) {
-            lat_difference = map_points[i].lat - searches[j].lat;
+    for (int i = 1; i < points; ++i) {
+        for (int j = 0; j < searches->items; ++j) {
 
-            if (lat_difference < 0) {
-                lat_difference = lat_difference * (-1);
+            lat_difference = map_points[i].lat - searches->addresses[j].lat;
+            lon_difference = map_points[i].lon - searches->addresses[j].lon;
+
+            difference = sqrt(pow(lat_difference,2)+pow(lon_difference,2));
+
+            if (searches->addresses[j].closest_point <= 0) {
+                searches->addresses[j].closest_point_dist = difference;
+                searches->addresses[j].closest_point = i;
             }
-
-            lon_difference = map_points[i].lon - searches[j].lon;
-
-            if (lon_difference < 0) {
-                lon_difference = lon_difference * (-1);
-            }
-
-            difference = lat_difference + lon_difference;
-
-            if (searches[j].closest_point == 0) {
-                searches[j].closest_point_dist = difference;
-                searches[j].closest_point = i;
-            }
-            else if (difference < searches[j].closest_point_dist) {
-                searches[j].closest_point_dist = difference;
-                searches[j].closest_point = i;
+            else if (difference < searches->addresses[j].closest_point_dist) {
+                searches->addresses[j].closest_point_dist = difference;
+                searches->addresses[j].closest_point = i;
             }
         }
     }

@@ -1,14 +1,10 @@
+#include <string.h>
 #include "dynamic_array.h"
-
-#define MAX(x, y) (((x) > (y)) ? (x) : (y))
-#define MIN(x, y) (((x) < (y)) ? (x) : (y))
-
-dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size);
 
 /* HEAP FUNCTIONS */
 dyn_array_heap *make_dyn_array_h(int min_capacity) {
   dyn_array_heap *array = calloc(1, sizeof(dyn_array_heap));
-  array->heap_nodes = calloc(min_capacity, sizeof(pairing_heap*) * 2 * min_capacity);
+  array->heap_nodes = calloc(min_capacity, sizeof(heap_node*) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
   array->high_water_mark = 2 * min_capacity;
@@ -28,54 +24,18 @@ dyn_array_heap *resize_array_h(dyn_array_heap *array, int new_size) {
 
 dyn_array_heap *add_heap_to_end_h(dyn_array_heap *array_to_insert_in, heap_node *heap_to_insert) {
   dyn_array_heap *res = array_to_insert_in;
-  /* If array is not able to hold another element then resize array */
   if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
-    /* If array is resized then a pointer to the new array is returned */
     res = resize_array_h(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
   }
   array_to_insert_in->heap_nodes[array_to_insert_in->items] = heap_to_insert;
   ++array_to_insert_in->items;
-  /* If array is not resized then NULL is returned */
   return res;
-}
-
-void ensure_capacity_h(dyn_array_heap *array, int capacity) {
-    array->min_capacity = capacity;
-}
-
-dyn_array_heap *delete_heap_h(dyn_array_heap *array, heap_node *heap_to_delete) {
-  dyn_array_heap *res = array;
-  for (int i = 0; i < array->items; ++i) {
-    if(array->heap_nodes[i]->element == heap_to_delete->element) {
-      if(i == 0) {
- //       array->heap_nodes[i] = memset(array->heap_nodes[i], 0 , sizeof(heap_node*));//array->heap_nodes[array->items-1];
-      }
-      else {
-        array->heap_nodes[i] = array->heap_nodes[array->items-1];
-      }
-      --array->items;
-    }
-  }
-  if(array->items < array->low_water_mark) {
-    res = resize_array_h(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
-  }
-  return res;
-}
-
-dyn_array_heap *find_heap_h(dyn_array_heap *array, heap_node heap_to_find) {
-  dyn_array_heap *res;
-  for (int i = 0; i < array->items; ++i) {
-    if (array->heap_nodes[i]->element == heap_to_find.element) {
-      res = &array->heap_nodes[i];
-    }
-    return res;
-  }
 }
 
 /* NODE FUNCTIONS */
 dyn_array_node *make_dyn_array_n(int min_capacity) {
   dyn_array_node *array = calloc(1, sizeof(dyn_array_node));
-  array->nodes = calloc(min_capacity, sizeof(node) * 2 * min_capacity);
+  array->nodes = (node**)calloc(min_capacity, sizeof(node*) * 2 * min_capacity);
   array->min_capacity = min_capacity;
   array->low_water_mark = min_capacity;
   array->high_water_mark = 2 * min_capacity;
@@ -86,50 +46,95 @@ dyn_array_node *make_dyn_array_n(int min_capacity) {
 dyn_array_node *resize_array_n(dyn_array_node *array, int new_size) {
   array->low_water_mark = (int)ceil(new_size/4);
   array->high_water_mark = new_size;
-  array->nodes = realloc(array->nodes, new_size * sizeof(node));
+  array->nodes = realloc(array->nodes, new_size * sizeof(node*));
   if(array->nodes == NULL) {
     exit(EXIT_FAILURE);
   }
   return array;
 }
 
-dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node node_to_insert) {
+dyn_array_node *add_node_to_end_n(dyn_array_node *array_to_insert_in, node *node_to_insert) {
   dyn_array_node *res = array_to_insert_in;
-
-  /* If array is not able to hold another element then resize array */
   if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
-    /* If array is resized then a pointer to the new array is returned */
     res = resize_array_n(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
   }
   array_to_insert_in->nodes[array_to_insert_in->items] = node_to_insert;
   array_to_insert_in->items += 1;
-  /* If array is not resized then NULL is returned */
   return res;
 }
 
-void ensure_capacity_n(dyn_array_node *array, int capacity) {
-  array->min_capacity = capacity;
+/* Addresses Functions */
+dyn_array_address *make_dyn_array_a(int min_capacity) {
+  dyn_array_address *array = calloc(1, sizeof(dyn_array_address));
+  array->addresses = calloc(min_capacity, sizeof(struct address) * 2 * min_capacity);
+  array->min_capacity = min_capacity;
+  array->low_water_mark = min_capacity;
+  array->high_water_mark = 2 * min_capacity;
+  array->items = 0;
+  return array;
 }
 
-dyn_array_node *delete_node_n(dyn_array_node *array, node *node_to_delete) {
-  dyn_array_node *res = array;
-  for (int i = 0; i < array->items; ++i) {
-    if(array->nodes[i].id == node_to_delete->id) {
-      array->nodes[i] = array->nodes[array->items - 1];
-      array->items -= 1;
-    }
+dyn_array_address *resize_array_a(dyn_array_address *array, int new_size) {
+  array->low_water_mark = (int)ceil(new_size/4);
+  array->high_water_mark = new_size;
+  array->addresses = realloc(array->addresses, new_size * sizeof(struct address));
+  if(array->addresses == NULL) {
+    exit(EXIT_FAILURE);
   }
-  if(array->items < array->low_water_mark) {
-    res = resize_array_n(res, MAX((int)ceil(array->high_water_mark/4), array->min_capacity));
+  return array;
+}
+
+dyn_array_address *add_address_to_end_a(dyn_array_address *array_to_insert_in, struct address address_to_insert) {
+  dyn_array_address *res = array_to_insert_in;
+  if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
+    res = resize_array_a(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
   }
+  array_to_insert_in->addresses[array_to_insert_in->items] = address_to_insert;
+  array_to_insert_in->items += 1;
   return res;
 }
 
-dyn_array_node *find_node_n(dyn_array_node *array, node node_to_find) {
-  dyn_array_node *res;
+/* INTEGER Functions */
+dyn_array_int *make_dyn_array_i(int min_capacity) {
+  dyn_array_int *array = calloc(1, sizeof(dyn_array_int));
+  array->integers = calloc(min_capacity, sizeof(int) * 2 * min_capacity);
+  array->min_capacity = min_capacity;
+  array->low_water_mark = min_capacity;
+  array->high_water_mark = 2 * min_capacity;
+  array->items = 0;
+  return array;
+}
+
+dyn_array_int *resize_array_i(dyn_array_int *array, int new_size) {
+  array->low_water_mark = (int)ceil(new_size/4);
+  array->high_water_mark = new_size;
+  array->integers = realloc(array->integers, new_size * sizeof(struct address));
+  if(array->integers == NULL) {
+    exit(EXIT_FAILURE);
+  }
+  return array;
+}
+
+dyn_array_int *add_int_to_end_i(dyn_array_int *array_to_insert_in, int int_to_insert) {
+  dyn_array_int *res = array_to_insert_in;
+  if(array_to_insert_in->items >= array_to_insert_in->high_water_mark) {
+    res = resize_array_i(array_to_insert_in, 2 * array_to_insert_in->high_water_mark);
+  }
+  array_to_insert_in->integers[array_to_insert_in->items] = int_to_insert;
+  array_to_insert_in->items += 1;
+  return res;
+}
+/**
+*@brief This function finds a specific address
+*@param[in] "dyn_array_address *array" The array in which there will be looked for a specific address
+*@param[in] "address address_to_find" The specific address that is looked for
+*@return Returns the requested address
+*/
+int find_address_a(dyn_array_address *array, struct address address_to_find) {
+  int res = 0;
   for (int i = 0; i < array->items; ++i) {
-    if(array->nodes[i].id == node_to_find.id) {
-      res = &array->nodes[i];
+    if(strcmp(array->addresses[i].tags.house_number,address_to_find.tags.house_number)==0 && strcmp(array->addresses[i].tags.street,address_to_find.tags.street)==0) {
+      res = 1;
     }
   }
   return res;

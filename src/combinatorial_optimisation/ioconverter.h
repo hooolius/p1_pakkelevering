@@ -1,17 +1,12 @@
-#include "a_star.h"
-
-/*input param med antal punkter fra a* filen laves om*/
-//#define ANTALPUNKTER 100
-
-/*prototypes*/
-
+#include "../pathfinding/a_star.h"
+#include "../libs/dynamic_array.h"
 
 /**
- *main function in converter remember to add param:
- * an array of pointers of struct of point AKA param points_adress
- * an array of pointer from point struct from map parser
- * @param addresses
- * @param nodes
- * @return
+ * prototypes
+/**
+ *main function in input output converter:
+ * @param[in] "*searches" is a dynamic array of addresses
+ * @param[in] "*map_points" is a pointer of type point
+ * @return "afstand_matrix" 2D integer distance matrix
  */
-int * converter_main(struct address *addresses, struct point *map_points);
+int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_points);

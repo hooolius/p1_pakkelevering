@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../map_gen/map_parser.h"
-#include "../libs/vincent_inv_dist_points.h"
 #include "pairing_heap.h"
 #include "../libs/dynamic_array.h"
+#include "../libs/vincent_inv_dist_points.h"
 
 typedef struct point point;
 
-#define SOME_VALUE 10
+double a_star(node *start, node *goal_p, node *points);
 
-dyn_array_node *a_star(struct point *start_p, struct point *goal_p, struct point *points);

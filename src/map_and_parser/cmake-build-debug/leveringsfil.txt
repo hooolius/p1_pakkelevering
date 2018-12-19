@@ -1,6 +1,0 @@
-Ringkoebing, Danmark, 11, Ringkoebing-skjern, 6950, Kongevejen.
-Aalborg, Danmark, 23, Aalborg, 9000, Borgergade.
-Hvide Sande, Danmark, 53, Ringkoebing-skjern, 6950, Livadiavej.
-Aarhus, Danmark, 32, Aarhus, 8100, Aarhusvejen.
-Lem, Danmark, 123, Ringkoebing-skjern, 6950, Lemernemvej.
-Tarm, Danmark, 67, Ringkoebing-skjern, 6950, Tarmernemve
