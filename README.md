@@ -61,7 +61,7 @@ make install
 ```
 
 ## Usage
-### Linux:
+### Linux and Windows:
 To use a specific input file:
 
 ```
