@@ -18,8 +18,15 @@
   <body>
 
 
-
-    <div id="mapid" style="width: 600px; height: 400px;"></div>
+    <center>
+      <div id="mapid" style="width: 900px; height: 600px;"></div>
+      <form action="/action_page.php" id="usrform">
+      </form>
+      <br>
+      <textarea rows="4" cols="50" name="comment" form="usrform">
+        Enter text here...</textarea>
+        <input type="submit">
+    </center>
     <script>
 
       var mymap = L.map('mapid').setView([57.0429, 9.9261], 13);
