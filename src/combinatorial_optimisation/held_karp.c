@@ -58,7 +58,8 @@ void setup(int **matrix, int **memo, int start_node, int size) {
   }
 }
 /**
- * @brief 
+ * @brief The function solve shortest distance from start_node in subsets with cardinality from
+ * 3 until int size and save it in the memo array.
  * @param[in] matrix is a matrix of distances
  * @param[out] memo is the bitshift table used to store the optimal route as 1's
  * @param[in] start_node is the starting note from which the route begins
