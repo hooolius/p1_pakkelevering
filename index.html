@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="styles.css">
 
     <title>P1 Pakkelevering - Web Frontend</title>
 
@@ -17,16 +18,20 @@
   </head>
   <body>
 
-
-    <center>
-      <div id="mapid" style="width: 900px; height: 600px;"></div>
-      <form action="/action_page.php" id="usrform">
-      </form>
-      <br>
-      <textarea rows="4" cols="50" name="comment" form="usrform">
-        Enter text here...</textarea>
-        <input type="submit">
-    </center>
+    <div class="map_and_input">
+      <center>
+        <div id="mapid" style="width: 900px; height: 600px;float:left;"></div>
+        <div id="input" style="float:right;">
+          <form action="action_submit_to_file.php" method="post" id="usrform">
+            <br>
+            <textarea rows="30" cols="70" name="addresses_input" form="usrform">Enter addresses</textarea>
+            <div class="controls">
+              <button>Submit</button>
+            </div>
+          </form>
+        </div>
+      </center>
+    </div>
     <script>
 
       var mymap = L.map('mapid').setView([57.0429, 9.9261], 13);

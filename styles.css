@@ -1,0 +1,27 @@
+.map_and_parser div {
+  float: left;
+  clear: none; 
+}
+*{
+  padding: 10;
+  margin:10;
+}
+.input{
+  margin: 30;
+  background: #eee;
+  border: 1px solid #999;
+}
+.input textarea{
+  background: linear-gradient(to bottom, #e5e5e5 0%,#f2f2f2 100%);
+  border:none;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 1px dotted #999;
+  resize: none;
+}
+.input textarea:focus{
+  outline: none;
+}
+.controls{
+  text-align: right;
+}
