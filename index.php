@@ -1,62 +1,87 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="styles.css">
-
-    <title>P1 Pakkelevering - Web Frontend</title>
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-
-   <!--
-leaflet css og js lib
--->
-  <link rel="stylesheet" href="leaflet/leaflet.css" />
-<script src="leaflet/leaflet.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+---
+layout: examples
+title: Starter Template
+extra_css: "starter-template.css"
+---
 
 
-  </head>  <?php
-  if (isset($_SESSION['time'])) {
-      //Do nothing
-      echo $_SESSION['time'];
-  } else {
-      session_start();
-  }
-  ?>
-  <body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.php">P1_Pakkelevering</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="map_and_input">
-      <center>
-        <div id="mapid" style="width: 900px; height: 600px;float:left;"></div>
-        <div id="input" style="float:right;">
-          <form action="action_submit_to_file.php" method="post" id="usrform">
-            <br>
-            <textarea rows="30" cols="70" name="addresses_input" form="usrform">Enter addresses</textarea>
-            <div class="controls">
-              <button>Submit</button>
-            </div>
-          </form>
-        </div>
-      </center>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Placeholder</a>
+                    <a class="dropdown-item" href="#">Placeholder</a>
+                    <a class="dropdown-item" href="#">Placeholder</a>
+                </div>
+            </li>
+        </ul>
     </div>
-    <script>
-
-      var mymap = L.map('mapid').setView([57.0429, 9.9261], 12);
-
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-  maxZoom: 18,
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-  '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-  'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  id: 'mapbox.streets'
-}).addTo(mymap);
-      L.marker([57.050674661396556,9.922714233398438]).addTo(mymap).bindPopup("this is popping");
-
-    </script>
+</nav>
 
 
+<main role="main" class="container">
+    <div class = " spacer">
+        <br>
+        <br>
+        <br>
+        <br>
 
-  </body>
-</html>
+    </div>
+    <div class="starter-template">
+        <link rel="stylesheet" href="leaflet/leaflet.css" />
+        <script src="leaflet/leaflet.js"></script>
+
+
+        <?php
+          if (isset($_SESSION['time'])) {
+              //Do nothing
+              echo $_SESSION['time'];
+          } else {
+              session_start();
+          }
+          ?>
+
+        <div class="map_and_input">
+                <div id="mapid" style="width: 45%; height: 600px;float:left;"></div>
+                <div id="input" style="float:right; width: 45%; height: 600px;">
+                    <p>Enter addresses on form: </p>
+                    <form action="action_submit_to_file.php" method="post" id="usrform">
+                        <textarea rows="23" cols="70" name="addresses_input" form="usrform" placeholder="Enter addresses"></textarea>
+                        <div class="controls">
+                            <button>Submit</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <script>
+
+            var mymap = L.map('mapid').setView([57.0429, 9.9261], 12);
+
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                maxZoom: 18,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                id: 'mapbox.streets'
+            }).addTo(mymap);
+            var marker=L.marker([57.050674661396556,9.922714233398438]).addTo(mymap);
+
+        </script>
+
+
+    </div>
+
+</main><!-- /.container -->
