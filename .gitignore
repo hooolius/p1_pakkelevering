@@ -71,3 +71,4 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 src/p1_pakkelevering
+searches/
