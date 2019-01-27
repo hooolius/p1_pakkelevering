@@ -1,0 +1,13 @@
+body {
+    padding-top: 5rem;
+}
+
+.starter-template {
+    padding: 3rem 1.5rem;
+    margin-top: 30px;
+    padding-top: 30px;
+    text-align: center;
+}
+.navbar navbar-expand-md navbar-dark bg-dark fixed-top {
+    padding-bottom: 30px;
+}
