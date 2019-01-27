@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="styles.css">
+  <!--  <link rel="stylesheet" href="styles.css"> -->
 
     <title>P1 Pakkelevering - Web Frontend</title>
 
@@ -10,11 +10,13 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
-   <!--
+<!--
 leaflet css og js lib
 -->
+
   <link rel="stylesheet" href="leaflet/leaflet.css" />
 <script src="leaflet/leaflet.js"></script>
+
 
 
   </head>  <?php
@@ -52,8 +54,22 @@ leaflet css og js lib
   'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
   id: 'mapbox.streets'
 }).addTo(mymap);
-      L.marker([57.050674661396556,9.922714233398438]).addTo(mymap).bindPopup("this is popping");
-
+<!--kort marker med lang long koordinater-->
+      var marker=L.marker([57.050674661396556,9.922714233398438]).addTo(mymap)
+      .bindPopup("<b>Hej Gruppe 409 software</b><br />Jeg er en popop ændre mig.").openPopup();
+   var marker=L.marker([57.050674661396556,9.902714233398438]).addTo(mymap)
+      .bindPopup("<b>Hej Gruppe 409 software</b><br />Jeg er en popop ændre mig.").openPopup();
+      
+      // create a red polyline from an array of LatLng points
+var latlngs = [
+    [57.050674661396556,9.922714233398438],
+    [57.050674661396556,9.902714233398438],
+    [57.050674661396556,9.912714233398438]
+];
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(mymap)
+.bindPopup("<b>Hej jeg er en polyline</b><br />Jeg er en popop til polyline ændre mig.").openPopup();;
+// zoom the map to the polyline
+mymap.fitBounds(polyline.getBounds());
     </script>
 
 
