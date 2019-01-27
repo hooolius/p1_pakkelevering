@@ -1,7 +1,7 @@
 #ifndef MAP_AND_PARSER_PARSER_ADDRESSES_C_H
 #define MAP_AND_PARSER_PARSER_ADDRESSES_C_H
 
-#define DATDIR "/usr/local/app_data/"
+#define DATDIR "C:/Program Files (x86)/p1_pakkelevering/app_data/"
 
 #ifndef ADRESSES
 #define ADRESSES

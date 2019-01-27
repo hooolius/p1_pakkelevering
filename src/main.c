@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 
   printf("Total tour length: %.2lf km \n",(double) min_cost/1000);
   for (int i = 0; i < searches->items+1; i++) {
-    printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
+    printf("%d: %lf %lf \n", i, searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon);
   }
   free(searches);
 
