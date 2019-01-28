@@ -102,7 +102,7 @@ int main(int argc, char *argv[]) {
     if (j > 0 && j < searches->items + 1) {
       printf(" + ");
     }
-    if (j == searches->items + 1) {
+    if (j == searches->items) {
       printf("\"");
     }
   }
