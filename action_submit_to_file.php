@@ -1,9 +1,8 @@
 <?php
 if (isset($_SESSION['time'])) {
-    $time_stamp = $_SESSION['time'];
 } else {
     session_start();
-    $time_stamp = time();
+
 }
 
 $dir = "searches";
@@ -11,7 +10,7 @@ if ( !file_exists($dir) ) {
     mkdir ($dir, 0744);
 }
 
-$_SESSION['time'] = $time_stamp;
+$time_stamp = $_SESSION['time'];
 
 $path = "searches/" . $time_stamp . "_input.txt";
 if (isset($_POST['addresses_input'])) {

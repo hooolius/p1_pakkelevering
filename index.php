@@ -1,19 +1,20 @@
 <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
----
-layout: examples
-title: Starter Template
-extra_css: "starter-template.css"
----
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    ---
+    layout: examples
+    title: Starter Template
+    extra_css: "starter-template.css"
+    ---
 
-<script src="jquery.js"></script>
+    <script src="jquery.js"></script>
 </head>
 <?php
-	if(isset($_SESSION['time'])) {
-	  echo "This is true";
-	} else {
-	  session_start();
-	}
+if (isset($_SESSION['time'])) {
+    echo "This is true";
+} else {
+    session_start();
+}
 ?>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -43,7 +44,7 @@ extra_css: "starter-template.css"
 
 
 <main role="main" class="container">
-    <div class = " spacer">
+    <div class=" spacer">
         <br>
         <br>
         <br>
@@ -51,35 +52,23 @@ extra_css: "starter-template.css"
 
     </div>
     <div class="starter-template">
-        <link rel="stylesheet" href="leaflet/leaflet.css" />
+        <link rel="stylesheet" href="leaflet/leaflet.css"/>
         <script src="leaflet/leaflet.js"></script>
         <div class="map_and_input">
-                <div id="mapid" style="width: 45%; height: 600px;float:left;"></div>
-                <div id="input" style="float:right; width: 45%; height: 600px;">
-                    <p>Enter addresses on form: </p>
-                    <form id="usrform">
-                        <textarea rows="23" cols="70" name="addresses_input" placeholder="Enter addresses"></textarea>
-                        <input type="submit" value ="Submit" id= "submit" name = "Submit">
-                    </form>
+            <div id="mapid" style="width: 45%; height: 600px;float:left;"></div>
+            <div id="input" style="float:right; width: 45%; height: 600px;">
+                <p>Enter addresses on form: </p>
+                <form id="usrform">
+                    <textarea rows="23" cols="70" name="addresses_input" placeholder="Enter addresses"></textarea>
+                    <input type="submit" value="Submit" id="submit" name="Submit">
+                </form>
 
-                </div>
+            </div>
         </div>
-
-	<script>
-
-            $('#usrform').submit(function() {
-            var post_data = $('#usrform').serialize();
-            $.post('action.php', post_data, function(data) {
-            alert(data);
-            });
-          });
-
-       </script>
-
 
 
         <script>
-
+            var request;
             var mymap = L.map('mapid').setView([57.0429, 9.9261], 12);
 
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9vbGl1cyIsImEiOiJjanJnNTdkNTIxa3RhNDNtbGR1Ync2dHloIn0.9y2imHxvRfjNoiPPBrNCKg', {
@@ -89,12 +78,27 @@ extra_css: "starter-template.css"
                     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 id: 'mapbox.streets'
             }).addTo(mymap);
-	var path = "<?php echo('searches/'.$_SESSION['time'].'_output.js');?>"
-	 var fileref=document.createElement('script');
-    		fileref.setAttribute("type","text/javascript");
-    		fileref.setAttribute("src", path);
- 
-            var marker=L.marker([57.050674661396556,9.922714233398438]).addTo(mymap);
+
+            $('#usrform').submit(function () {
+                var post_data = $('#usrform').serialize();
+                $.post('action_submit_to_file-php', post_data, function (data) {
+                });
+                request = $.ajax({
+                    url: "/form.php",
+                    type: "post",
+                    data: serializedData
+                });
+
+                // Callback handler that will be called on success
+                request.done(function (response, textStatus, jqXHR){
+                    // Log a message to the console
+                    console.log("Hooray, it worked!");
+                });
+
+            });
+
+
+            var marker = L.marker([57.050674661396556, 9.922714233398438]).addTo(mymap);
 
         </script>
 
