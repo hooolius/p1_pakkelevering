@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
       if (strcmp("--version", argv[i]) == 0 || strcmp("--Version", argv[i]) == 0) {
         printf("Version %d.%d \n",
-            p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
+               p1_pakkelevering_VERSION_MAJOR, p1_pakkelevering_VERSION_MINOR);
       }
     }
   }
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  FILE* input = NULL;
+  FILE *input = NULL;
   if (argc >= 2) {
     for (int i = 1; i < argc; i++) {
       input = fopen(argv[i], "r");
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
   }
 
   int min_cost = 0;
-  int plan[searches->items+1];
+  int plan[searches->items + 1];
 
   if (verbose) {
     printf("Held-Karp started \n");
@@ -87,17 +87,19 @@ int main(int argc, char *argv[]) {
     printf("Held-Karp finished successfully \n");
   }
 
-  printf("length = %.2lf; \n",(double) min_cost/1000);
-  for (int i = 0; i < searches->items+1; i++) {
-    printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d \").openPopup(); \n", i, searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon,i);
+  printf("length = %.2lf; \n", (double) min_cost / 1000);
+  for (int i = 0; i < searches->items + 1; i++) {
+    printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d \").openPopup(); \n", i,
+           searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon, i);
   }
 
   printf("$('#input').hide();\n"
          "document.getElementById('result').style.display=\"block\";\n"
          "document.getElementById('result_length').innerHTML = \"Total distance: \" + String(length);\n");
-  for (int j = 0; j < searches->items+1; ++j) {
-    printf("document.getElementById('result_trip').innerHTML = \" %s %s <br>\"",searches->addresses[plan[j]].tags.street,searches->addresses[plan[j]].tags.house_number);
-    if (j>0 && j>searches->items+1) {
+  for (int j = 0; j < searches->items + 1; ++j) {
+    printf("document.getElementById('result_trip').innerHTML = \" %s %s <br>\" ",
+           searches->addresses[plan[j]].tags.street, searches->addresses[plan[j]].tags.house_number);
+    if (j > 0 && j < searches->items + 1) {
       printf(" + ");
     }
   }
