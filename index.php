@@ -43,17 +43,6 @@ extra_css: "starter-template.css"
     <div class="starter-template">
         <link rel="stylesheet" href="leaflet/leaflet.css" />
         <script src="leaflet/leaflet.js"></script>
-
-
-        <?php
-          if (isset($_SESSION['time'])) {
-              //Do nothing
-              echo $_SESSION['time'];
-          } else {
-              session_start();
-          }
-          ?>
-
         <div class="map_and_input">
                 <div id="mapid" style="width: 45%; height: 600px;float:left;"></div>
                 <div id="input" style="float:right; width: 45%; height: 600px;">
