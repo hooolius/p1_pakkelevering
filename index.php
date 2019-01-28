@@ -101,6 +101,7 @@ if ($_SESSION['time']!= 0) {
                         url: url,
                         dataType: "script"
                     });
+                    alert("Done");
                 });
 
             });
