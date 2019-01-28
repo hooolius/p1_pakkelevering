@@ -6,11 +6,11 @@
     title: Starter Template
     extra_css: "starter-template.css"
     ---
-
+    <title>P1 Pakkelevering</title>
     <script src="jquery.js"></script>
 </head>
 <?php
-if ($_SESSION['time']!= 0) {
+if ($_SESSION['time'] != 0) {
     echo "This is true";
 } else {
     session_start();
@@ -88,15 +88,21 @@ if ($_SESSION['time']!= 0) {
             $('#usrform').submit(function (event) {
                 event.preventDefault();
                 var post_data = $('#usrform').serialize();
-
+                var char_length = post_data.length;
+                var index = -1;
+                while (post_data.charAt(char_length - index) == /[0%]/) {
+                    index--;
+                }
+                post_data.slice(0, index);
+                post_data += "%0";
                 request = $.ajax({
                     url: "action_submit_to_file.php",
                     type: "post",
                     data: post_data
                 });
-                var url = "<?php echo ('searches/'.$_SESSION['time'].'_output.js')?>";
+                var url = "<?php echo('searches/' . $_SESSION['time'] . '_output.js')?>";
                 // Callback handler that will be called on success
-                request.done(function (response, textStatus, jqXHR){
+                request.done(function (response, textStatus, jqXHR) {
                     $.ajax({
                         url: url,
                         dataType: "script"
@@ -105,8 +111,6 @@ if ($_SESSION['time']!= 0) {
                 });
 
             });
-
-
 
 
         </script>
