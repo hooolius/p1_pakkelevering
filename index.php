@@ -10,7 +10,7 @@
     <script src="jquery.js"></script>
 </head>
 <?php
-if (isset($_SESSION['time'])) {
+if ($_SESSION['time']!= 0) {
     echo "This is true";
 } else {
     session_start();
@@ -57,6 +57,9 @@ if (isset($_SESSION['time'])) {
         <script src="leaflet/leaflet.js"></script>
         <div class="map_and_input">
             <div id="mapid" style="width: 45%; height: 600px;float:left;"></div>
+            <div id="result" style="display: none;float:right; width: 45%; height: 600px;">
+                <p id="result_length"></p>
+            </div>
             <div id="input" style="float:right; width: 45%; height: 600px;">
                 <p>Enter addresses on form: </p>
                 <form id="usrform">
@@ -70,6 +73,7 @@ if (isset($_SESSION['time'])) {
 
         <script>
             var request;
+            var length;
             var mymap = L.map('mapid').setView([57.0429, 9.9261], 12);
 
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9vbGl1cyIsImEiOiJjanJnNTdkNTIxa3RhNDNtbGR1Ync2dHloIn0.9y2imHxvRfjNoiPPBrNCKg', {
@@ -79,7 +83,6 @@ if (isset($_SESSION['time'])) {
                     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 id: 'mapbox.streets'
             }).addTo(mymap);
-            var marker = L.marker([57.050674661396556, 9.922714233398438]).addTo(mymap);
 
             $('#usrform').submit(function (event) {
                 event.preventDefault();
@@ -90,13 +93,16 @@ if (isset($_SESSION['time'])) {
                     type: "post",
                     data: post_data
                 });
-                var url = "<?php echo ('searches/'.$_SESSION['time'].'_output.js')?>"
+                var url = "<?php echo ('searches/'.$_SESSION['time'].'_output.js')?>";
                 // Callback handler that will be called on success
                 request.done(function (response, textStatus, jqXHR){
                     $.ajax({
                         url: url,
                         dataType: "script"
                     });
+                    $('#input').hide();
+                    document.getElementById('result').style.display="block";
+                    document.getElementById('result_length').innerHTML = "Total distance: " + String(length);
                 });
 
             });

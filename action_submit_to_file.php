@@ -26,7 +26,7 @@ if (isset($_POST['addresses_input'])) {
         echo "Error creating file";
     }
     while (file_exists("searches/".$time_stamp."_output.txt")) {
-        header("location: index.php");
+
     }
 }
 
