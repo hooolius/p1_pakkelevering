@@ -96,7 +96,10 @@ int main(int argc, char *argv[]) {
          "document.getElementById('result').style.display=\"block\";\n"
          "document.getElementById('result_length').innerHTML = \"Total distance: \" + String(length);\n");
   for (int j = 0; j < searches->items+1; ++j) {
-    printf("document.getElementById('result_trip').innerHTML = \" %s %s\" <br> +",searches->addresses[plan[j]].tags.street,searches->addresses[plan[j]].tags.house_number);
+    printf("document.getElementById('result_trip').innerHTML = \" %s %s\" <br>",searches->addresses[plan[j]].tags.street,searches->addresses[plan[j]].tags.house_number);
+    if (j>0 && j>searches->items+1) {
+      printf(" + ");
+    }
   }
   free(searches);
 
