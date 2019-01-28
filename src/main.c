@@ -99,9 +99,9 @@ int main(int argc, char *argv[]) {
   printf("document.getElementById('result_trip').innerHTML = \" ");
   for (int j = 0; j < searches->items + 1; ++j) {
 
-    printf("%s %s <br>", searches->addresses[plan[j]].tags.street, searches->addresses[plan[j]].tags.house_number);
+    printf("%d %s %s <br>",j, searches->addresses[plan[j]].tags.street, searches->addresses[plan[j]].tags.house_number);
     if (j > 0 && j < searches->items + 1) {
-      printf(" + ");
+      printf("\" + \"");
     }
     if (j == searches->items) {
       printf("\"");
