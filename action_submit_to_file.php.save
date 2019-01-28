@@ -1,0 +1,15 @@
+<?php
+$path = 'data.txt';
+ if (isset($_GET['addresses_input'] && !empty$_GET['addresses_input'])) {
+    $fh = fopen($path,"a+");
+    $string = $_GET['addresses_input'].];
+    $stringtwo = "This is a test";
+    fwrite($fh,$string.$stringtwo); // Write information to the file
+    fclose($fh); // Close the file
+    echo "Success";
+ else {
+//  echo "Fail";
+//}
+//echo $_GET['addresses_input'];
+//echo "JAJAJAJAJAJ";
+//?>

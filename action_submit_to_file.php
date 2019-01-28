@@ -16,7 +16,8 @@ if (isset($_POST['addresses_input'])) {
     fclose($fh); // Close the file
 
     if (file_exists("p1_pakkelevering.exe") OR file_exists("p1_pakkelevering.out")) {
-        exec("p1_pakkelevering.out" . $time_stamp . "txt >>" . $time_stamp . "_output.txt");
+       $cmd = "p1_pakkelevering ".$time_stamp.".txt >".$time_stamp."_output.txt";
+	shell_exec($cmd);
     } else {
         echo "<br> No executable found.";
     }
