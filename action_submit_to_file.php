@@ -6,10 +6,10 @@ if (isset($_SESSION['time'])) {
     $time_stamp = time();
 }
 
+$dir = "searches";
 if ( !file_exists($dir) ) {
     mkdir ($dir, 0744);
 }
-$dir = "searches";
 
 $_SESSION['time'] = $time_stamp;
 
@@ -21,9 +21,8 @@ if (isset($_POST['addresses_input'])) {
     fclose($fh); // Close the file
 
     if(file_exists("searches/".$time_stamp."_input.txt")) {
-     	$cmd = "p1_pakkelevering ".$time_stamp.".txt > searches/".$time_stamp."_output.txt";
+     	$cmd = "p1_pakkelevering searches/".$time_stamp."_input.txt > searches/".$time_stamp."_output.js";
 	shell_exec($cmd);
-	echo "succes?";
     } else {
         echo "Error creating file";
     }

@@ -1,3 +1,4 @@
+<head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 ---
 layout: examples
@@ -5,6 +6,15 @@ title: Starter Template
 extra_css: "starter-template.css"
 ---
 
+<script src="jquery.js"></script>
+</head>
+<?php
+	if(isset($_SESSION['time'])) {
+	  echo "This is true";
+	} else {
+	  session_start();
+	}
+?>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="index.php">P1_Pakkelevering</a>
@@ -47,25 +57,43 @@ extra_css: "starter-template.css"
                 <div id="mapid" style="width: 45%; height: 600px;float:left;"></div>
                 <div id="input" style="float:right; width: 45%; height: 600px;">
                     <p>Enter addresses on form: </p>
-                    <form action="action_submit_to_file.php" method="post" id="usrform">
-                        <textarea rows="23" cols="70" name="addresses_input" form="usrform" placeholder="Enter addresses"></textarea>
-                        <div class="controls">
-                            <button>Submit</button>
-                        </div>
+                    <form id="usrform">
+                        <textarea rows="23" cols="70" name="addresses_input" placeholder="Enter addresses"></textarea>
+                        <input type="submit" value ="Submit" id= "submit" name = "Submit">
                     </form>
+
                 </div>
         </div>
+
+	<script>
+
+            $('#usrform').submit(function() {
+            var post_data = $('#usrform').serialize();
+            $.post('action.php', post_data, function(data) {
+            alert(data);
+            });
+          });
+
+       </script>
+
+
+
         <script>
 
             var mymap = L.map('mapid').setView([57.0429, 9.9261], 12);
 
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9vbGl1cyIsImEiOiJjanJnNTdkNTIxa3RhNDNtbGR1Ync2dHloIn0.9y2imHxvRfjNoiPPBrNCKg', {
                 maxZoom: 18,
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
                     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
                     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 id: 'mapbox.streets'
             }).addTo(mymap);
+	var path = "<?php echo('searches/'.$_SESSION['time'].'_output.js');?>"
+	 var fileref=document.createElement('script');
+    		fileref.setAttribute("type","text/javascript");
+    		fileref.setAttribute("src", path);
+ 
             var marker=L.marker([57.050674661396556,9.922714233398438]).addTo(mymap);
 
         </script>
