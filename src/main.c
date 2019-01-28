@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 
   printf("var length = %.2lf; \n",(double) min_cost/1000);
   for (int i = 0; i < searches->items+1; i++) {
-    printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap); \n", i, searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon);
+    printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d \").openPopup(); \n", i, searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon,i);
   }
   free(searches);
 

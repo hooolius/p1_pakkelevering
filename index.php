@@ -14,6 +14,7 @@ if (isset($_SESSION['time'])) {
     echo "This is true";
 } else {
     session_start();
+    $_SESSION['time'] = time();
 }
 ?>
 
@@ -78,27 +79,30 @@ if (isset($_SESSION['time'])) {
                     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 id: 'mapbox.streets'
             }).addTo(mymap);
+            var marker = L.marker([57.050674661396556, 9.922714233398438]).addTo(mymap);
 
-            $('#usrform').submit(function () {
+            $('#usrform').submit(function (event) {
+                event.preventDefault();
                 var post_data = $('#usrform').serialize();
-                $.post('action_submit_to_file-php', post_data, function (data) {
-                });
-                request = $.ajax({
-                    url: "/form.php",
-                    type: "post",
-                    data: serializedData
-                });
 
+                request = $.ajax({
+                    url: "action_submit_to_file.php",
+                    type: "post",
+                    data: post_data
+                });
+                var url = "<?php echo ('searches/'.$_SESSION['time'].'_output.js')?>"
                 // Callback handler that will be called on success
                 request.done(function (response, textStatus, jqXHR){
-                    // Log a message to the console
-                    console.log("Hooray, it worked!");
+                    $.ajax({
+                        url: url,
+                        dataType: "script"
+                    });
                 });
 
             });
 
 
-            var marker = L.marker([57.050674661396556, 9.922714233398438]).addTo(mymap);
+
 
         </script>
 
