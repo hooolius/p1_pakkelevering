@@ -87,9 +87,16 @@ int main(int argc, char *argv[]) {
     printf("Held-Karp finished successfully \n");
   }
 
-  printf("var length = %.2lf; \n",(double) min_cost/1000);
+  printf("length = %.2lf; \n",(double) min_cost/1000);
   for (int i = 0; i < searches->items+1; i++) {
     printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d \").openPopup(); \n", i, searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon,i);
+  }
+
+  printf("$('#input').hide();\n"
+         "document.getElementById('result').style.display=\"block\";\n"
+         "document.getElementById('result_length').innerHTML = \"Total distance: \" + String(length);\n");
+  for (int j = 0; j < searches->items+1; ++j) {
+    printf("document.getElementById(result_trip).innerHTML = \" %s %s\" <br> +",searches->addresses[plan[j]].tags.street,searches->addresses[plan[j]].tags.house_number);
   }
   free(searches);
 
