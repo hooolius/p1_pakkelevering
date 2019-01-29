@@ -20,7 +20,7 @@ if (isset($_POST['addresses_input'])) {
     fclose($fh); // Close the file
 
     if(file_exists("searches/".$time_stamp."_input.txt")) {
-     	$cmd = "p1_pakkelevering searches/".$time_stamp."_input.txt > searches/".$time_stamp."_output.js";
+     	$cmd = "p1_pakkelevering --web searches/".$time_stamp."_input.txt > searches/".$time_stamp."_output.js";
 	shell_exec($cmd);
     } else {
         echo "Error creating file";
