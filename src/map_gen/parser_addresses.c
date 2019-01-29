@@ -48,9 +48,48 @@ void convert_to_array(char *data, dyn_array_address *searches) {
   cJSON *tags = NULL;
   struct address addresses[searches->items];
   dyn_array_address *results = make_dyn_array_a(searches->items);
-  int j = 0;
+  add_address_to_end_a(results, searches->addresses[0]);
 
   json = cJSON_Parse(data);
+
+  if (json == NULL) {
+    printf("Error before: [%s]\n", cJSON_GetErrorPtr());
+
+  }
+  int q = 0;
+    elements = cJSON_GetObjectItemCaseSensitive(json, "elements");
+    cJSON_ArrayForEach(element, elements) {
+      tags = cJSON_GetObjectItemCaseSensitive(element, "tags");
+      if (is_in_array(cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring,
+                      cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring, results) == 1) {
+        struct address curr_address;
+        curr_address.lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
+        curr_address.lon = cJSON_GetObjectItem(element, "lon")->valuedouble;
+        strcpy(curr_address.tags.street,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring);
+        strcpy(curr_address.tags.country,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:country")->valuestring);
+        strcpy(curr_address.tags.muncipality,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:municipality")->valuestring);
+        strcpy(curr_address.tags.city,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:city")->valuestring);
+        strcpy(curr_address.tags.house_number,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring);
+
+        strcpy(curr_address.tags.postcode,
+               cJSON_GetObjectItemCaseSensitive(tags, "addr:postcode")->valuestring);
+        curr_address.closest_point = 0;
+        
+        results->addresses[0] = curr_address;
+        q++;
+      }
+    }
+    if (q != 1) {
+      printf("Starting point not found, aborting.");
+      exit(-1);
+    }
+
+  int j = 0;
 
   if (json == NULL) {
     printf("Error before: [%s]\n", cJSON_GetErrorPtr());
@@ -62,7 +101,9 @@ void convert_to_array(char *data, dyn_array_address *searches) {
       tags = cJSON_GetObjectItemCaseSensitive(element, "tags");
 
       if (is_in_array(cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring,
-                      cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring, searches) == 1) {
+                      cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring, searches) == 1
+                      && is_in_array(cJSON_GetObjectItemCaseSensitive(tags, "addr:street")->valuestring,
+                      cJSON_GetObjectItemCaseSensitive(tags, "addr:housenumber")->valuestring, results) != 1) {
         struct address curr_address;
 
         curr_address.lat = cJSON_GetObjectItem(element, "lat")->valuedouble;
@@ -87,7 +128,7 @@ void convert_to_array(char *data, dyn_array_address *searches) {
   }
   for (int i = 0; i < searches->items; ++i) {
     if (i < results->items) {
-      if (find_address_a(searches, results->addresses[i]) == 1) {
+      if (find_address_a(results, searches->addresses[i]) == 1) {
         //do nothing
       }
       else {

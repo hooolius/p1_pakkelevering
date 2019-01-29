@@ -68,7 +68,6 @@ int main(int argc, char *argv[]) {
   point *map_points = calloc(points_counter(), sizeof(point));
 
   addresses_prompt(searches, input);
-
   if (verbose) {
     printf("Map parsed started \n");
   }
@@ -77,7 +76,6 @@ int main(int argc, char *argv[]) {
   if (verbose) {
     printf("Map parsed successfully \n");
   }
-
   if (verbose) {
     printf("A* started \n");
   }
@@ -85,7 +83,6 @@ int main(int argc, char *argv[]) {
   if (verbose) {
     printf("A* finished successfully \n");
   }
-
   int min_cost = 0;
   int plan[searches->items + 1];
 
