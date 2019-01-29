@@ -134,15 +134,21 @@ void web_output(dyn_array_address *searches, int min_cost, int *plan, point *map
         printf("\"");
       }
     }
-    node *nodes = convert_points_to_nodes(points_counter(), map_points);
+    int number_of_points = points_counter();
+    node *nodes = convert_points_to_nodes(number_of_points, map_points);
 
 
-    for (int i = 0; i < searches->items; i++) {
-      node *start = convert_point_to_node(&map_points[searches->addresses[plan[i]].closest_point]);
-      node *goal = convert_point_to_node(&map_points[searches->addresses[plan[i+1]].closest_point]);
+    for (int i = 1; i < searches->items+1; i++) {
+      node *start = convert_point_to_node(&map_points[searches->addresses[plan[i-1]].closest_point]);
+      node *goal = convert_point_to_node(&map_points[searches->addresses[plan[i]].closest_point]);
+      if (start->id == goal->id) {
+        continue;
+      }
       printf("\nvar latlons%d = [\n", i);
-      a_star(start, goal, nodes, 0, 1);
-      remove_from_closed(points_counter(), nodes);
+      a_star(start, goal, nodes, number_of_points, 1);
+      remove_from_closed(number_of_points, nodes);
+      free(start);
+      free(goal);
       printf("];\n");
       printf("var polyline%d = L.polyline(latlons%d, {color: 'blue'}).addTo(mymap);", i, i);
     }
