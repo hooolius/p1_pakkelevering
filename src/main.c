@@ -144,7 +144,7 @@ void web_output(dyn_array_address *searches, int min_cost, int *plan, point *map
       a_star(start, goal, nodes, 0, 1);
       remove_from_closed(points_counter(), nodes);
       printf("];\n");
-      printf("var polyline%d = L.polyline%d(latlons%d, {color: 'blue'}).addTo(mymap);", i, i, i);
+      printf("var polyline%d = L.polyline(latlons%d, {color: 'blue'}).addTo(mymap);", i, i);
     }
 }
 
