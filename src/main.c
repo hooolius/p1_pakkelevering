@@ -13,9 +13,19 @@
 
 typedef struct point point;
 
+void web_output(dyn_array_address *searches, int min_cost, int *plan);
 void print_help();
 
 int main(int argc, char *argv[]) {
+
+  int web = 0;
+  if (argc >= 2) {
+    for (int i = 0; i < argc; i++) {
+      if (strcmp("--web", argv[i]) == 0 || strcmp("--Web", argv[i]) == 0) {
+        web = 1;
+      }
+    }
+  }
 
   if (argc >= 2) {
     for (int i = 0; i < argc; i++) {
@@ -72,6 +82,7 @@ int main(int argc, char *argv[]) {
     printf("A* started \n");
   }
   int **matrix = astar_to_matrix_converter(searches, map_points);
+  free(map_points);
   if (verbose) {
     printf("A* finished successfully \n");
   }
@@ -86,31 +97,43 @@ int main(int argc, char *argv[]) {
   if (verbose) {
     printf("Held-Karp finished successfully \n");
   }
-
-  printf("length = %.2lf; \n", (double) min_cost / 1000);
-  for (int i = 0; i < searches->items + 1; i++) {
-    printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d \").openPopup(); \n", i,
-           searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon, i);
+  if (web) {
+    web_output(searches, min_cost, plan);
   }
-
-  printf("$('#input').hide();\n"
-         "document.getElementById('result').style.display=\"block\";\n"
-         "document.getElementById('result_length').innerHTML = \"Total distance: \" + String(length);\n");
-  printf("document.getElementById('result_trip').innerHTML = \" ");
-  for (int j = 0; j < searches->items + 1; ++j) {
-
-    printf("%d %s %s <br>",j, searches->addresses[plan[j]].tags.street, searches->addresses[plan[j]].tags.house_number);
-    if (j > 0 && j < searches->items + 1) {
-      printf("\" + \"");
-    }
-    if (j == searches->items) {
-      printf("\"");
+  else {
+    printf("Total tour length: %.2lf km \n", (double) min_cost/1000);
+    for (int i = 0; i < searches->items+1; i++) {
+      printf("%d: %s %s \n", i, searches->addresses[plan[i]].tags.street,
+    searches->addresses[plan[i]].tags.house_number);
     }
   }
   free(searches);
 
   printf("\n");
   return 0;
+}
+
+void web_output(dyn_array_address *searches, int min_cost, int *plan) {
+    printf("length = %.2lf; \n", (double) min_cost / 1000);
+    for (int i = 0; i < searches->items + 1; i++) {
+      printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d \").openPopup(); \n", i,
+             searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon, i);
+    }
+
+    printf("$('#input').hide();\n"
+           "document.getElementById('result').style.display=\"block\";\n"
+           "document.getElementById('result_length').innerHTML = \"Total distance: \" + String(length);\n");
+    printf("document.getElementById('result_trip').innerHTML = \" ");
+    for (int j = 0; j < searches->items + 1; ++j) {
+
+      printf("%d %s %s <br>",j, searches->addresses[plan[j]].tags.street, searches->addresses[plan[j]].tags.house_number);
+      if (j > 0 && j < searches->items + 1) {
+        printf("\" + \"");
+      }
+      if (j == searches->items) {
+        printf("\"");
+      }
+    }
 }
 
 void print_help() {
