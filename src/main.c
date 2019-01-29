@@ -13,7 +13,7 @@
 
 typedef struct point point;
 
-void web_output(dyn_array_address *searches, int min_cost, int *plan);
+void web_output(dyn_array_address *searches, int min_cost, int *plan, point *map_points);
 void print_help();
 
 int main(int argc, char *argv[]) {
@@ -82,7 +82,6 @@ int main(int argc, char *argv[]) {
     printf("A* started \n");
   }
   int **matrix = astar_to_matrix_converter(searches, map_points);
-  free(map_points);
   if (verbose) {
     printf("A* finished successfully \n");
   }
@@ -98,7 +97,7 @@ int main(int argc, char *argv[]) {
     printf("Held-Karp finished successfully \n");
   }
   if (web) {
-    web_output(searches, min_cost, plan);
+    web_output(searches, min_cost, plan, map_points);
   }
   else {
     printf("Total tour length: %.2lf km \n", (double) min_cost/1000);
@@ -107,13 +106,14 @@ int main(int argc, char *argv[]) {
     searches->addresses[plan[i]].tags.house_number);
     }
   }
+  free(map_points);
   free(searches);
 
   printf("\n");
   return 0;
 }
 
-void web_output(dyn_array_address *searches, int min_cost, int *plan) {
+void web_output(dyn_array_address *searches, int min_cost, int *plan, point *map_points) {
     printf("length = %.2lf; \n", (double) min_cost / 1000);
     for (int i = 0; i < searches->items + 1; i++) {
       printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d \").openPopup(); \n", i,
@@ -133,6 +133,18 @@ void web_output(dyn_array_address *searches, int min_cost, int *plan) {
       if (j == searches->items) {
         printf("\"");
       }
+    }
+    node *nodes = convert_points_to_nodes(points_counter(), map_points);
+
+
+    for (int i = 0; i < searches->items; i++) {
+      node *start = convert_point_to_node(&map_points[searches->addresses[plan[i]].closest_point]);
+      node *goal = convert_point_to_node(&map_points[searches->addresses[plan[i+1]].closest_point]);
+      printf("\nvar latlons%d = [\n", i);
+      a_star(start, goal, nodes, 0, 1);
+      remove_from_closed(points_counter(), nodes);
+      printf("];\n");
+      printf("var polyline%d = L.polyline%d(latlons%d, {color: 'blue'}).addTo(mymap);", i, i, i);
     }
 }
 

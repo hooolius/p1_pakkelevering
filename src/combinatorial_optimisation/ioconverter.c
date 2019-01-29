@@ -4,12 +4,6 @@
 #include <parser_addresses.h>
 #include "ioconverter.h"
 
-node *convert_points_to_nodes(int number_of_points, point *points);
-
-node *convert_point_to_node(point *the_point);
-
-void remove_from_closed(int number_of_points, node *nodes);
-
 int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_points) {
 
 /*count number of searches */
@@ -41,7 +35,7 @@ int **astar_to_matrix_converter(dyn_array_address *searches, struct point *map_p
             afstand_matrix[j][i] = (int) 1;
           }
           else {
-            double star = a_star(start, goal, nodes, number_of_points);
+            double star = a_star(start, goal, nodes, number_of_points, 0);
             afstand_matrix[i][j] = (int) round(star);
             afstand_matrix[j][i] = (int) round(star);
           }

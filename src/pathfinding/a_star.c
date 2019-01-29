@@ -2,11 +2,11 @@
 
 node *find_min_array(dyn_array_node *list);
 
-dyn_array_node *reconstruct_path(node *end, double start);
+dyn_array_node *reconstruct_path(node *end, double start, int web);
 
 dyn_array_node *make_neighbours_list(node *current, node *nodes);
 
-dyn_array_node *reconstruct_path(node *end, double start);
+dyn_array_node *reconstruct_path(node *end, double start, int web);
 
 int contains(dyn_array_node *closed_list, node *item);
 
@@ -20,7 +20,7 @@ int cmp_func(const void *a, const void *b);
 *@param[in] "point *points" The list of nodes the route has to visit
 *@return "output_distance" a double that is the distance that a star travels from start to goal
 */
-double a_star(node *start, node *goal, node *nodes, int number_of_points) {
+double a_star(node *start, node *goal, node *nodes, int number_of_points, int web) {
   dyn_array_node *closed_list = make_dyn_array_n(100);
   //dyn_array_node *open_list = make_dyn_array_n(10);
   start->g = 0;
@@ -41,7 +41,7 @@ double a_star(node *start, node *goal, node *nodes, int number_of_points) {
     /* if the distance to goal is less than 1 meter then reconstruct path */
     if (vincent_inv_dist(current->lat, current->lon, goal->lat, goal->lon) < 1.0) {
       //return reconstruct_path(current, start->id);
-      dyn_array_node *output = reconstruct_path(current, start->id);
+      dyn_array_node *output = reconstruct_path(current, start->id, web);
       double output_distance = output->nodes[0]->g;
       free(closed_list->nodes);
       free(closed_list);
@@ -141,11 +141,17 @@ dyn_array_node *make_neighbours_list(node *current, node *nodes) {
 *@param[in] start the start node
 *@return The path that has been determined to be the fastest one
 */
-dyn_array_node *reconstruct_path(node *end, double start) {
+dyn_array_node *reconstruct_path(node *end, double start, int web) {
   dyn_array_node *total_path = make_dyn_array_n(100);
   int i = 0;
   node *current = end;
-  while (current->came_from != NULL) {
+  while (current != NULL) {
+    if (current->came_from != NULL && web) {
+      printf("[%lf, %lf],\n", current->lat, current->lon);
+    }
+    else if (web) {
+      printf("[%lf, %lf]\n", current->lat, current->lon);
+    }
     add_node_to_end_n(total_path, current);
     current = current->came_from;
     i++;
