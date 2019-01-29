@@ -161,6 +161,7 @@ void web_output(dyn_array_address *searches, int min_cost, int *plan, point *map
              "this.setStyle({\n"
              "color: 'red'\n"
              "});\n"
+             "this.bringToFront()\n"
              "});\n",i);
       printf("polyline%d.on('mouseout', function() {\n"
              "this.setStyle({\n"
