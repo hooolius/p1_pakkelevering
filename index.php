@@ -74,7 +74,7 @@ if ($_SESSION['time'] != 0) {
 
         <script>
             var request;
-            var length;
+            var length =0;
             var mymap = L.map('mapid').setView([57.0429, 9.9261], 12);
 
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaG9vbGl1cyIsImEiOiJjanJnNTdkNTIxa3RhNDNtbGR1Ync2dHloIn0.9y2imHxvRfjNoiPPBrNCKg', {
