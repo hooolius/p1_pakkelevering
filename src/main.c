@@ -116,22 +116,28 @@ int main(int argc, char *argv[]) {
 void web_output(dyn_array_address *searches, int min_cost, int *plan, point *map_points) {
     printf("length = %.2lf; \n", (double) min_cost / 1000);
     for (int i = 0; i < searches->items + 1; i++) {
-      printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d \").openPopup(); \n", i,
-             searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon, i);
+      printf("var marker%d = L.marker([%lf,%lf]).addTo(mymap).bindPopup(\" <b>Punkt nummer %d : %s %s\").openPopup(); \n", i,
+             searches->addresses[plan[i]].lat, searches->addresses[plan[i]].lon, i,
+             searches->addresses[plan[i]].tags.street, searches->addresses[plan[i]].tags.house_number);
+      printf("marker%d.on('click', function() {\n"
+         "var select = document.getElementById(\"result_trip\");\n"
+         "select.selectedIndex = %d;\n"
+         "});\n",i,i);
     }
-
     printf("$('#input').hide();\n"
            "document.getElementById('result').style.display=\"block\";\n"
            "document.getElementById('result_length').innerHTML = \"Total distance: \" + String(length);\n");
-    printf("document.getElementById('result_trip').innerHTML = \" ");
+    //printf("document.getElementById('result_trip').innerHTML = \" ");
+    printf("var select = document.getElementById(\"result_trip\");");
+    
     for (int j = 0; j < searches->items + 1; ++j) {
 
-      printf("%d %s %s <br>",j, searches->addresses[plan[j]].tags.street, searches->addresses[plan[j]].tags.house_number);
+      printf("select.options[%d] = new Option(\"%d: %s %s\");\n",j, j, searches->addresses[plan[j]].tags.street, searches->addresses[plan[j]].tags.house_number);
       if (j > 0 && j < searches->items + 1) {
-        printf("\" + \"");
+        //printf("\" + \"");
       }
       if (j == searches->items) {
-        printf("\"");
+        //printf("\"");
       }
     }
     int number_of_points = points_counter();
@@ -150,7 +156,17 @@ void web_output(dyn_array_address *searches, int min_cost, int *plan, point *map
       free(start);
       free(goal);
       printf("];\n");
-      printf("var polyline%d = L.polyline(latlons%d, {color: 'blue'}).addTo(mymap);", i, i);
+      printf("var polyline%d = L.polyline(latlons%d, {color: 'blue'}).addTo(mymap);\n", i, i);
+      printf("polyline%d.on('mouseover', function() {\n"
+             "this.setStyle({\n"
+             "color: 'red'\n"
+             "});\n"
+             "});\n",i);
+      printf("polyline%d.on('mouseout', function() {\n"
+             "this.setStyle({\n"
+             "color: 'blue'\n"
+             "});\n"
+             "});\n",i);
     }
 }
 

@@ -59,7 +59,8 @@ if ($_SESSION['time'] != 0) {
             <div id="mapid" style="width: 45%; height: 600px;float:left;"></div>
             <div id="result" style="display: none;float:right; width: 45%; height: 600px;">
                 <p id="result_length"></p>
-                <p id="result_trip"></p>
+<!                <p id="result_trip"></p>
+                <select id="result_trip" size="30" onchange="changeFunc();"></select>
             </div>
             <div id="input" style="float:right; width: 45%; height: 600px;">
                 <p>Enter addresses on form: </p>
@@ -70,7 +71,15 @@ if ($_SESSION['time'] != 0) {
 
             </div>
         </div>
+        <script type="text/javascript">
 
+        function changeFunc() {
+            var selectBox = document.getElementById("result_trip");
+            var selectedValue = selectBox.selectedIndex;
+            eval('marker' + selectedValue + '.fire(\'click\')');
+        }
+
+  </script>
 
         <script>
             var request;
